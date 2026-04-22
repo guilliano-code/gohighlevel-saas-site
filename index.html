@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[MERKNAAM] — AI Chatbot & Callback Systeem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:        #F0F1F5;
+      --card:      rgba(255,255,255,.58);
+      --card2:     rgba(255,255,255,.35);
+      --border:    rgba(0,0,0,.08);
+      --border2:   rgba(0,0,0,.14);
+      --green:     #00A86B;
+      --green2:    #008A57;
+      --purple:    #7C3AED;
+      --purple2:   #6D28D9;
+      --white:     #1D1D1F;
+      --muted:     rgba(0,0,0,.52);
+      --muted2:    rgba(0,0,0,.36);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--green); color: #FFFFFF; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── BLOBS ─────────────────────────────────────── */
+    .blobs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .blob  { position: absolute; border-radius: 50%; filter: blur(90px); }
+
+    @keyframes blobA { 0%,100%{transform:translate(0,0)} 50%{transform:translate(50px,-40px)} }
+    @keyframes blobB { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-40px,30px)} }
+    @keyframes blobC { 0%,100%{transform:translate(0,0)} 50%{transform:translate(25px,50px)} }
+
+    .blob-a { width:65vw;height:65vw;top:-15%;left:-10%;background:rgba(0,168,107,.07);animation:blobA 20s ease-in-out infinite; }
+    .blob-b { width:55vw;height:55vw;top:30%;right:-12%;background:rgba(124,58,237,.05);animation:blobB 25s ease-in-out infinite; }
+    .blob-c { width:50vw;height:50vw;bottom:-10%;left:20%;background:rgba(0,168,107,.04);animation:blobC 28s ease-in-out infinite; }
+
+    /* ─── FADE IN ────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* ─── LAYOUT ─────────────────────────────────────── */
+    .wrap { max-width: 74rem; margin: 0 auto; padding: 0 2rem; }
+
+    /* ─── NAV ────────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      background: rgba(245,245,247,.88);
+    }
+    @media (max-width: 640px) { nav { display: none; } }
+    .nav-inner {
+      max-width: 74rem; margin: 0 auto; padding: 0 2rem;
+      height: 62px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 17px;
+      color: var(--white); letter-spacing: -.02em;
+    }
+    .nav-logo-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+      box-shadow: 0 0 10px var(--green), 0 0 20px rgba(0,229,160,.4);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100%{ box-shadow: 0 0 8px var(--green), 0 0 16px rgba(0,229,160,.3); }
+      50%    { box-shadow: 0 0 14px var(--green), 0 0 28px rgba(0,229,160,.5); }
+    }
+
+    /* Login button — same hover mechanic as dailyshotsmedia */
+    .login-btn {
+      position: relative; display: inline-flex; align-items: center; justify-content: center;
+      overflow: hidden; border-radius: 9999px;
+      border: 1px solid var(--border2);
+      padding: 8px 22px;
+      background: rgba(0,0,0,.04); color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+      cursor: pointer; outline: none; gap: 8px;
+      transition: border-color .2s;
+    }
+    .login-btn:hover { border-color: var(--green); }
+    .login-btn__dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+      flex-shrink: 0; z-index: 0;
+      transition: transform .5s ease; transform-origin: center;
+    }
+    .login-btn:hover .login-btn__dot { transform: scale(38); }
+    .login-btn__label { position: relative; z-index: 1; transition: transform .5s ease, opacity .5s ease; }
+    .login-btn:hover .login-btn__label { transform: translateX(70px); opacity: 0; }
+    .login-btn__overlay {
+      position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center; gap: 5px;
+      color: #FFFFFF; z-index: 10;
+      transform: translateX(-50px); opacity: 0;
+      transition: transform .5s ease, opacity .5s ease;
+      font-size: 13px; font-weight: 700;
+    }
+    .login-btn:hover .login-btn__overlay { transform: translateX(0); opacity: 1; }
+
+    /* ─── HERO ───────────────────────────────────────── */
+    .hero { padding: 6rem 2rem 4rem; max-width: 74rem; margin: 0 auto; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px 6px 8px; border-radius: 9999px;
+      border: 1px solid rgba(0,168,107,.2);
+      background: rgba(0,168,107,.07);
+      font-size: 12px; font-weight: 500; color: var(--green);
+      margin-bottom: 2rem; letter-spacing: .02em;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--green);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .hero h1 {
+      font-family: 'Poppins', sans-serif; font-weight: 800;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.08; letter-spacing: -.03em;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 .accent-green { color: var(--green); }
+    .hero h1 .accent-purple { color: var(--purple); }
+
+    .hero-sub {
+      font-size: clamp(16px, 2.2vw, 18px);
+      color: var(--muted); line-height: 1.7;
+      max-width: 440px; margin-bottom: 2.5rem;
+    }
+
+    .hero-ctas { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 12px;
+      background: var(--green); color: #FFFFFF;
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px;
+      border: none; cursor: pointer;
+      transition: background .2s, transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 18px rgba(0,168,107,.28);
+    }
+    .btn-primary:hover {
+      background: var(--green2);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(0,168,107,.38);
+    }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 24px; border-radius: 12px;
+      border: 1px solid var(--border2);
+      background: rgba(0,0,0,.03); color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+    }
+    .btn-ghost:hover { border-color: var(--green); background: rgba(0,168,107,.05); color: var(--green); }
+
+    /* ─── VSL / VIDEO BLOCK ──────────────────────────── */
+    .vsl-wrap {
+      width: 100%; border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 2px 8px rgba(0,0,0,.05), 0 24px 64px rgba(0,0,0,.08);
+      position: relative;
+      aspect-ratio: 16 / 9;
+    }
+    /* Replace the placeholder below with an <iframe> or <video> tag when you have a VSL */
+    .vsl-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.25rem;
+      background: linear-gradient(135deg, #EAEAEF 0%, #F0F0F5 100%);
+    }
+    .vsl-play {
+      width: 68px; height: 68px; border-radius: 50%;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 16px rgba(0,168,107,.1), 0 0 0 32px rgba(0,168,107,.05);
+      cursor: pointer; transition: transform .2s, box-shadow .2s;
+      flex-shrink: 0;
+    }
+    .vsl-play:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 0 20px rgba(0,168,107,.14), 0 0 0 40px rgba(0,168,107,.06);
+    }
+    .vsl-play svg { margin-left: 4px; }
+    .vsl-label { font-size: 14px; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; font-weight: 500; }
+
+    /* ─── STATS BAR ──────────────────────────────────── */
+    .stats-bar {
+      display: flex; align-items: center; justify-content: center;
+      gap: 2.5rem; flex-wrap: wrap;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 1.9rem; color: var(--white); letter-spacing: -.03em;
+      line-height: 1;
+    }
+    .stat-num span { color: var(--green); }
+    .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    /* ─── SECTION HEADINGS ───────────────────────────── */
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 600; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--green);
+      margin-bottom: 1rem;
+    }
+    .section-tag::before { content: ''; width: 18px; height: 1.5px; background: var(--green); opacity: .6; }
+    .section-h2 {
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      letter-spacing: -.025em; line-height: 1.15;
+      margin-bottom: .8rem;
+    }
+    .section-sub { font-size: 15px; color: var(--muted); line-height: 1.7; max-width: 420px; }
+
+    /* ─── FEATURES ───────────────────────────────────── */
+    .features-section { padding: 4.5rem 0; }
+    .features-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 640px) { .features-grid { grid-template-columns: 1fr; } }
+
+    .feat-card {
+      background: var(--card);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 2rem;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      display: flex; flex-direction: column;
+      box-shadow: 0 1px 4px rgba(0,0,0,.05);
+    }
+    .feat-card:hover {
+      border-color: rgba(0,168,107,.28);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(0,168,107,.08), 0 2px 8px rgba(0,0,0,.06);
+    }
+    .feat-card.purple:hover {
+      border-color: rgba(124,58,237,.28);
+      box-shadow: 0 8px 32px rgba(124,58,237,.08), 0 2px 8px rgba(0,0,0,.06);
+    }
+
+    .feat-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.4rem; flex-shrink: 0;
+    }
+    .feat-icon.green { background: rgba(0,168,107,.09); border: 1px solid rgba(0,168,107,.15); }
+    .feat-icon.purple { background: rgba(124,58,237,.08); border: 1px solid rgba(124,58,237,.14); }
+
+    .feat-title {
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 1.1rem; line-height: 1.3; margin-bottom: .7rem;
+      letter-spacing: -.015em;
+    }
+    .feat-text { font-size: 14px; color: var(--muted); line-height: 1.75; flex: 1; margin-bottom: 1.5rem; }
+    .feat-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .feat-tag {
+      font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 9999px;
+    }
+    .feat-tag.green { background: rgba(0,168,107,.09); color: var(--green); border: 1px solid rgba(0,168,107,.18); }
+    .feat-tag.purple { background: rgba(124,58,237,.08); color: var(--purple); border: 1px solid rgba(124,58,237,.18); }
+
+    /* Span full row */
+    .feat-card.wide { grid-column: 1 / -1; flex-direction: row; align-items: flex-start; gap: 2rem; }
+    @media (max-width: 640px) { .feat-card.wide { flex-direction: column; } }
+
+    /* ─── HOW IT WORKS ───────────────────────────────── */
+    .hiw-section { padding: 4.5rem 0; }
+    .steps { display: flex; flex-direction: column; gap: 0; margin-top: 3rem; }
+    .step {
+      display: grid; grid-template-columns: 48px 1fr; gap: 1.25rem;
+      padding-bottom: 2.5rem; position: relative;
+    }
+    .step:not(:last-child)::after {
+      content: ''; position: absolute;
+      left: 23px; top: 48px; bottom: 0;
+      width: 1px; background: var(--border2);
+    }
+    .step-num {
+      width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 16px;
+      border: 1px solid var(--border2); background: var(--card);
+      color: var(--green); z-index: 1;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    .step-body { padding-top: 10px; }
+    .step-title {
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 1.05rem; margin-bottom: .5rem; letter-spacing: -.015em;
+    }
+    .step-text { font-size: 14px; color: var(--muted); line-height: 1.75; }
+
+    /* ─── SOCIAL PROOF ───────────────────────────────── */
+    .proof-section { padding: 4.5rem 0; }
+
+    /* Glass Testimonial Swiper */
+    .testi-swiper { position: relative; margin-top: 2rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .testi-stack {
+      position: relative;
+      min-height: 300px;
+      padding-bottom: 26px; /* room for peeking cards */
+    }
+    .testi-card {
+      position: absolute; top: 0; left: 0; right: 0;
+      background: rgba(255,255,255,.58);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 20px; padding: 1.75rem 2rem;
+      cursor: grab;
+      box-shadow: 0 4px 24px rgba(0,0,0,.07), 0 1px 4px rgba(0,0,0,.04);
+      transition: transform .45s cubic-bezier(.4,0,.2,1), opacity .45s ease, box-shadow .45s ease;
+      will-change: transform, opacity;
+      user-select: none;
+      touch-action: pan-y;
+    }
+    .testi-card.is-dragging {
+      cursor: grabbing;
+      transition: opacity .2s ease;
+    }
+    .testi-card-inner { pointer-events: none; }
+    .testi-header { display: flex; align-items: center; gap: 14px; margin-bottom: 1.1rem; }
+    .testi-avatar {
+      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px; color: #FFFFFF;
+    }
+    .testi-name { font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.3; }
+    .testi-role { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .testi-quote {
+      font-size: 14px; color: rgba(0,0,0,.72); line-height: 1.75;
+      margin-bottom: 1.25rem; font-style: italic;
+    }
+    .testi-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(0,0,0,.07); padding-top: 1rem;
+      gap: 8px; flex-wrap: wrap;
+    }
+    .testi-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .testi-tag {
+      font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 9999px;
+      background: rgba(0,0,0,.05); color: var(--muted);
+      border: 1px solid rgba(0,0,0,.08);
+    }
+    .testi-tag.featured {
+      background: rgba(0,168,107,.09); color: var(--green);
+      border-color: rgba(0,168,107,.2);
+    }
+    .testi-stars { color: #F59E0B; font-size: 13px; letter-spacing: 2px; flex-shrink: 0; }
+
+    /* Dots */
+    .testi-dots {
+      display: flex; justify-content: center; gap: 7px;
+      margin-top: 0.75rem;
+    }
+    .testi-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(0,0,0,.18); border: none; cursor: pointer; padding: 0;
+      transition: background .25s, transform .25s;
+    }
+    .testi-dot.active {
+      background: var(--green);
+      transform: scale(1.25);
+    }
+
+    /* ─── PRICING ─────────────────────────────────────── */
+    .pricing-section { padding: 4.5rem 0; }
+    .pricing-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+      margin-top: 2.5rem; align-items: stretch;
+    }
+    .price-card-wrap { height: 100%; }
+    .price-card-wrap .price-card { height: 100%; }
+    @media (max-width: 620px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+    /* Billing tabs */
+    .billing-tabs-wrap {
+      display: flex; justify-content: center;
+      margin-top: 2rem;
+    }
+    .billing-tabs {
+      display: inline-flex; align-items: center;
+      background: rgba(0,0,0,.05); border: 1px solid var(--border2);
+      border-radius: 12px; padding: 4px;
+    }
+    .billing-tab {
+      padding: 8px 20px; border-radius: 9px; border: none;
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: background .22s, color .22s, opacity .22s;
+      background: transparent; color: var(--muted);
+      white-space: nowrap;
+    }
+    .billing-tab .tab-save {
+      font-size: 11px; font-weight: 700; color: var(--green);
+      margin-left: 5px;
+    }
+    .billing-tab.active {
+      background: rgba(255,255,255,.75);
+      color: var(--white);
+      box-shadow: 0 1px 4px rgba(0,0,0,.08);
+    }
+    .billing-tab:not(.active) { opacity: .5; }
+
+    /* Price card wrapper (for Most Value tag) */
+    .price-card-wrap { position: relative; }
+    .most-value-tag {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      font-size: 10px; font-weight: 700; letter-spacing: .1em;
+      padding: 3px 14px; border-radius: 9999px;
+      background: var(--green); color: #FFFFFF;
+      white-space: nowrap; z-index: 2;
+    }
+
+    .price-card {
+      background: var(--card); border: 1px solid var(--border);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-radius: 20px; padding: 2rem;
+      display: flex; flex-direction: column;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      box-shadow: 0 1px 6px rgba(0,0,0,.05);
+    }
+    .price-card.featured {
+      border-color: rgba(0,168,107,.35);
+      background: linear-gradient(160deg, rgba(0,168,107,.04) 0%, var(--card) 55%);
+      box-shadow: 0 4px 24px rgba(0,168,107,.1);
+    }
+    .price-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,.09); }
+
+    /* Card header row */
+    .price-card-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .price-billing-label {
+      font-size: 12px; font-weight: 500; color: var(--muted);
+      transition: opacity .35s ease;
+      letter-spacing: .01em;
+    }
+    .price-billing-label.faded { opacity: 0; }
+
+    /* Plan name badge */
+    .price-plan-badge {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 4px 13px; border-radius: 9999px;
+    }
+    .price-plan-badge.starter {
+      background: rgba(0,0,0,.05);
+      color: rgba(0,0,0,.45);
+      border: 1px solid rgba(0,0,0,.1);
+    }
+    .price-plan-badge.pro {
+      background: rgba(0,168,107,.1);
+      color: var(--green);
+      border: 1px solid rgba(0,168,107,.25);
+    }
+    .price-amount {
+      display: flex; align-items: baseline; gap: 4px;
+      margin-bottom: .25rem;
+    }
+    .price-currency {
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 1.5rem; color: var(--white);
+      line-height: 1; padding-bottom: 2px;
+    }
+    .price-num {
+      font-family: 'Poppins', sans-serif; font-weight: 800;
+      font-size: 3rem; letter-spacing: .02em; color: var(--white);
+      line-height: 1;
+    }
+    .price-period {
+      font-family: 'DM Sans', sans-serif; font-size: 14px;
+      font-weight: 500; color: var(--muted); padding-bottom: 2px;
+    }
+    .price-yearly-note {
+      font-size: 12px; color: var(--green); font-weight: 500;
+      margin-bottom: 1.5rem; min-height: 1.4em;
+      transition: opacity .3s;
+    }
+    .price-yearly-note.hidden { opacity: 0; pointer-events: none; }
+    .price-sub { font-size: 13px; color: var(--muted); margin-bottom: 1.5rem; }
+    .price-divider { height: 1px; background: var(--border); margin-bottom: 1.4rem; }
+    .price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; margin-bottom: 1.75rem; }
+    .price-feature { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: rgba(0,0,0,.68); }
+    .price-check { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
+    .price-cta {
+      display: block; width: 100%; padding: 13px 20px; border-radius: 12px;
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px;
+      text-align: center; cursor: pointer; transition: .2s;
+      border: none; text-decoration: none;
+    }
+    .price-cta.primary {
+      background: var(--green); color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(0,168,107,.28);
+    }
+    .price-cta.primary:hover { background: var(--green2); box-shadow: 0 6px 20px rgba(0,168,107,.38); }
+    .price-cta.ghost {
+      background: rgba(0,0,0,.03); color: var(--white);
+      border: 1px solid var(--border2);
+    }
+    .price-cta.ghost:hover { border-color: var(--green); color: var(--green); background: rgba(0,168,107,.04); }
+
+    /* ─── CTA SECTION ────────────────────────────────── */
+    .cta-section {
+      padding: 4.5rem 2rem;
+      text-align: center;
+    }
+    .cta-card {
+      max-width: 640px; margin: 0 auto;
+      background: var(--card);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(0,168,107,.2);
+      border-radius: 28px; padding: 3.5rem 2.5rem;
+      box-shadow: 0 4px 32px rgba(0,168,107,.08), 0 1px 6px rgba(0,0,0,.05);
+    }
+    .cta-card h2 {
+      font-family: 'Poppins', sans-serif; font-weight: 800;
+      font-size: clamp(1.6rem, 4vw, 2.4rem); letter-spacing: -.03em;
+      line-height: 1.15; margin-bottom: 1rem;
+    }
+    .cta-card p { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 2rem; }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: .9rem; flex-wrap: wrap; }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      max-width: 74rem; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px;
+      color: var(--white);
+    }
+    .footer-copy { font-size: 12px; color: var(--muted2); }
+    .footer-links { display: flex; align-items: center; gap: 1.5rem; }
+    .footer-link { font-size: 12px; color: var(--muted2); transition: color .2s; }
+    .footer-link:hover { color: var(--green); }
+
+    /* ─── HERO CTAS BELOW VSL ────────────────────────── */
+    .hero-ctas-below {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1rem; flex-wrap: wrap;
+      padding: 2.5rem 2rem;
+    }
+
+    /* ─── PROOF CTA ROW ──────────────────────────────── */
+    .proof-ctas {
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 640px) {
+      .hero { padding: 2.5rem 1.5rem 2rem; }
+      .wrap { padding: 0 1.5rem; }
+      .features-section,
+      .hiw-section,
+      .proof-section,
+      .pricing-section { padding: 2.5rem 0; }
+      .cta-section { padding: 2.5rem 1.5rem; }
+      .hero-ctas-below { padding: 1.5rem 1.5rem; }
+      .proof-ctas { margin-bottom: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="blobs" aria-hidden="true">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="blob blob-c"></div>
+  </div>
+
+  <div style="position:relative;z-index:1;">
+
+    <!-- ── NAV ─────────────────────────────────────── -->
+    <nav>
+      <div class="nav-inner">
+        <div class="nav-logo">
+          <div class="nav-logo-dot"></div>
+          <!-- Vervang [MERKNAAM] met jouw merknaam -->
+          [MERKNAAM]
+        </div>
+        <!-- Login knop — vervang de href met jouw GHL subaccount login URL -->
+        <a href="#" class="login-btn">
+          <span class="login-btn__dot"></span>
+          <span class="login-btn__label">Inloggen</span>
+          <span class="login-btn__overlay">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
+          </span>
+        </a>
+      </div>
+    </nav>
+
+
+    <!-- ── HERO ────────────────────────────────────── -->
+    <section class="hero">
+
+      <div class="hero-badge fade-up" data-delay="0">
+        <span class="hero-badge-dot"></span>
+        Aangedreven door AI — 24/7 voor jou actief
+      </div>
+
+      <h1 class="fade-up" data-delay="80">
+        Verkoop 24/7 — Met <span class="accent-green">AI Chatbot</span><br>
+        &amp; <span class="accent-purple">Callback Systeem</span>
+      </h1>
+
+      <p class="hero-sub fade-up" data-delay="160">
+        Vragen beantwoord. Afspraken gepland. Leads binnengekomen. Automatisch
+      </p>
+
+      <div class="hero-ctas fade-up" data-delay="240">
+        <a href="#contact" class="btn-primary">
+          Gratis demo aanvragen
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
+        </a>
+        <a href="#how-it-works" class="btn-ghost">
+          Hoe werkt het?
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+      </div>
+
+      <!-- VSL / Video -->
+      <div class="vsl-wrap fade-up" data-delay="320">
+        <!--
+          VSL PLACEHOLDER
+          ─────────────────────────────────────────────────────
+          Vervang de inhoud hieronder met jouw video embed:
+
+          Voorbeeld Vimeo:
+          <iframe src="https://player.vimeo.com/video/JOUW_VIDEO_ID?autoplay=0&title=0&byline=0&portrait=0"
+            style="position:absolute;inset:0;width:100%;height:100%;" frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+          Voorbeeld YouTube:
+          <iframe src="https://www.youtube.com/embed/JOUW_VIDEO_ID"
+            style="position:absolute;inset:0;width:100%;height:100%;" frameborder="0"
+            allowfullscreen></iframe>
+        -->
+        <div class="vsl-placeholder">
+          <div class="vsl-play" onclick="alert('Voeg hier jouw VSL video toe')">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="vsl-label">Video Sales Letter</span>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ── HERO CTAS (repeated below VSL) ──────────── -->
+    <div class="hero-ctas-below fade-up" data-delay="0">
+      <a href="#contact" class="btn-primary">
+        Gratis demo aanvragen
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
+      </a>
+      <a href="https://wa.me/31600000000?text=Hallo%2C%20ik%20wil%20graag%20meer%20weten%20over%20jullie%20AI%20systemen" class="btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        WhatsApp ons
+      </a>
+    </div>
+
+
+    <!-- ── FEATURES ─────────────────────────────────── -->
+    <section class="features-section" id="features">
+      <div class="wrap">
+        <div class="fade-up" data-delay="0">
+          <div class="section-tag">Wat wij bieden</div>
+          <h2 class="section-h2">Vier systemen.<br>Één resultaat: meer omzet.</h2>
+          <p class="section-sub">Van websitebezoeker naar betalende klant — volledig automatisch, zonder dat jij er iets voor hoeft te doen.</p>
+        </div>
+
+        <div class="features-grid">
+
+          <!-- Website AI Chatbot -->
+          <div class="feat-card fade-up" data-delay="80">
+            <div class="feat-icon green">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8M8 14h5"/></svg>
+            </div>
+            <h3 class="feat-title">AI Chatbot op jouw Website</h3>
+            <p class="feat-text">De chatbot staat 24/7 klaar op jouw website. Hij beantwoordt vragen, kwalificeert bezoekers en stuurt ze richting een afspraak — volledig in jouw eigen tone of voice en huisstijl.</p>
+            <div class="feat-tags">
+              <span class="feat-tag green">Altijd online</span>
+              <span class="feat-tag green">Eigen huisstijl</span>
+              <span class="feat-tag green">Afspraken inplannen</span>
+              <span class="feat-tag green">Lead kwalificatie</span>
+            </div>
+          </div>
+
+          <!-- AI Callback -->
+          <div class="feat-card purple fade-up" data-delay="160">
+            <div class="feat-icon purple">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.96-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <h3 class="feat-title">AI Callback Systeem</h3>
+            <p class="feat-text">Vult iemand zijn nummer in op jouw website? Binnen 60 seconden belt de AI hem automatisch terug. Geen wachttijd, geen gemiste kansen. De AI voert het gesprek, kwalificeert de lead en stuurt alles naar jouw CRM.</p>
+            <div class="feat-tags">
+              <span class="feat-tag purple">Terugbellen binnen 60s</span>
+              <span class="feat-tag purple">Menselijke stem</span>
+              <span class="feat-tag purple">CRM integratie</span>
+              <span class="feat-tag purple">Gespreksverslag</span>
+            </div>
+          </div>
+
+          <!-- CRM Dashboard -->
+          <div class="feat-card fade-up" data-delay="240">
+            <div class="feat-icon green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <h3 class="feat-title">Alles-in-één CRM Dashboard</h3>
+            <p class="feat-text">Alle leads, chatgesprekken, callback-rapporten en afspraken staan op één plek. Met het Pro pakket voeg je ook WhatsApp automations toe — zo bereik je leads via elk kanaal. Aangedreven door GoHighLevel.</p>
+            <div class="feat-tags">
+              <span class="feat-tag green">Pipeline overzicht</span>
+              <span class="feat-tag green">E-mail & SMS</span>
+              <span class="feat-tag green">Rapportages</span>
+              <span class="feat-tag green">WhatsApp (Pro)</span>
+            </div>
+          </div>
+
+          <!-- Google Reviews -->
+          <div class="feat-card fade-up" data-delay="320" style="border-color: rgba(251,188,4,.15);">
+            <div class="feat-icon" style="background:rgba(251,188,4,.1);border:1px solid rgba(251,188,4,.2);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972a6.033 6.033 0 1 1 0-12.064 5.96 5.96 0 0 1 4.076 1.594l2.858-2.858A9.969 9.969 0 0 0 12.545 2C6.981 2 2.5 6.477 2.5 12s4.481 10 10.045 10c5.792 0 9.63-4.074 9.63-9.796 0-.657-.07-1.298-.19-1.914l-9.44-.051z" fill="#FBBC04"/><path d="M6.306 7.691 2.898 5.198A9.965 9.965 0 0 0 2.5 12c0 1.614.384 3.14 1.063 4.494l3.424-2.655A5.98 5.98 0 0 1 6.5 12c0-.804.158-1.57.443-2.272l-.637-2.037z" fill="#EA4335"/><path d="m12.545 22c2.717 0 4.998-.9 6.664-2.44l-3.254-2.524c-.902.603-2.057.963-3.41.963a6.028 6.028 0 0 1-5.726-4.147l-3.424 2.655C5.013 19.833 8.51 22 12.545 22z" fill="#34A853"/></svg>
+            </div>
+            <h3 class="feat-title">Google Reviews Systeem</h3>
+            <p class="feat-text">Wij bouwen een volledig geautomatiseerd systeem dat jouw tevreden klanten actief vraagt om een Google review — en alleen de 4-sterren-en-hoger reviews doorstelt naar jouw Google-pagina. Minder negatieve feedback zichtbaar, meer vertrouwen online.</p>
+            <div class="feat-tags">
+              <span class="feat-tag" style="background:rgba(251,188,4,.1);color:#fbbf24;border:1px solid rgba(251,188,4,.25);">Alleen 4+ sterren</span>
+              <span class="feat-tag" style="background:rgba(251,188,4,.1);color:#fbbf24;border:1px solid rgba(251,188,4,.25);">Volledig automatisch</span>
+              <span class="feat-tag" style="background:rgba(251,188,4,.1);color:#fbbf24;border:1px solid rgba(251,188,4,.25);">Meer vertrouwen</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── HOW IT WORKS ──────────────────────────────── -->
+    <section class="hiw-section" id="how-it-works">
+      <div class="wrap">
+        <div class="fade-up" data-delay="0">
+          <div class="section-tag">Hoe het werkt</div>
+          <h2 class="section-h2">In 3 stappen. Live.<br>Geen technische kennis nodig</h2>
+          <p class="section-sub">Van "ik ben geïnteresseerd" tot eerste klant in minder dan een week</p>
+        </div>
+
+        <div class="steps">
+
+          <div class="step fade-up" data-delay="80">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4 class="step-title">Strategie & AI training</h4>
+              <p class="step-text">Intake-sessie. Jouw business, jouw klanten, jouw taal. Website-strategie. De AI leert alles om perfect voor jouw klanten te werken</p>
+            </div>
+          </div>
+
+          <div class="step fade-up" data-delay="160">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4 class="step-title">Website + AI live</h4>
+              <p class="step-text">Betere website gebouwd (conversie-optimized). Chatbot ingebouwd. Afspraken-planner actief. Alles in jouw huisstijl. Nul technische work van jouw kant</p>
+            </div>
+          </div>
+
+          <div class="step fade-up" data-delay="240">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4 class="step-title">Klanten stromen in</h4>
+              <p class="step-text">Betere website trekt bezoekers. AI beantwoordt vragen 24/7. Plant afspraken. Alles loopt via je CRM. Jij focust op verkopen. Wij optimaliseren voortdurend</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── SOCIAL PROOF ──────────────────────────────── -->
+    <section class="proof-section" id="reviews">
+      <div class="wrap">
+        <div class="fade-up" data-delay="0">
+          <div class="section-tag">Wat klanten zeggen</div>
+          <h2 class="section-h2">Bedrijven die al automatiseren.</h2>
+        </div>
+
+        <div class="proof-ctas fade-up" data-delay="80">
+          <a href="#contact" class="btn-primary">
+            Gratis demo aanvragen
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
+          </a>
+          <a href="https://wa.me/31600000000?text=Hallo%2C%20ik%20wil%20graag%20meer%20weten%20over%20jullie%20AI%20systemen" class="btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            WhatsApp ons
+          </a>
+        </div>
+
+        <div class="testi-swiper fade-up" data-delay="0">
+          <div class="testi-stack" id="testi-stack">
+
+            <!-- Card 0: Jordi -->
+            <div class="testi-card" data-index="0">
+              <div class="testi-card-inner">
+                <div class="testi-header">
+                  <div class="testi-avatar" style="background:var(--green);">JD</div>
+                  <div>
+                    <div class="testi-name">Jordi de Bruin</div>
+                    <div class="testi-role">Eigenaar, Makelaardij De Bruin</div>
+                  </div>
+                </div>
+                <p class="testi-quote">"Binnen twee weken na de lancering had de chatbot al 14 afspraken ingepland. Ik hoef zelf niets meer te doen aan de eerste opvolging van websitebezoekers."</p>
+                <div class="testi-footer">
+                  <div class="testi-tags">
+                    <span class="testi-tag featured">AI Chatbot</span>
+                    <span class="testi-tag">14 afspraken</span>
+                  </div>
+                  <div class="testi-stars">★★★★★</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 1: Sara -->
+            <div class="testi-card" data-index="1">
+              <div class="testi-card-inner">
+                <div class="testi-header">
+                  <div class="testi-avatar" style="background:var(--purple);">SM</div>
+                  <div>
+                    <div class="testi-name">Sara Meijer</div>
+                    <div class="testi-role">Directeur, Kliniek Meijer</div>
+                  </div>
+                </div>
+                <p class="testi-quote">"Het callback systeem is goud waard. Iemand vult zijn nummer in en wordt binnen een minuut teruggebeld door de AI. Klanten zijn altijd verrast hoe snel we reageren."</p>
+                <div class="testi-footer">
+                  <div class="testi-tags">
+                    <span class="testi-tag featured">AI Callback</span>
+                    <span class="testi-tag">Binnen 60s</span>
+                  </div>
+                  <div class="testi-stars">★★★★★</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Rik -->
+            <div class="testi-card" data-index="2">
+              <div class="testi-card-inner">
+                <div class="testi-header">
+                  <div class="testi-avatar" style="background:#FBBC04; color:#08090E;">RV</div>
+                  <div>
+                    <div class="testi-name">Rik van Dam</div>
+                    <div class="testi-role">CEO, Van Dam Solar</div>
+                  </div>
+                </div>
+                <p class="testi-quote">"We hadden een conversieratio van 12% op onze website. Na de AI chatbot en het callback systeem zitten we op 31%. De ROI was er binnen de eerste maand al."</p>
+                <div class="testi-footer">
+                  <div class="testi-tags">
+                    <span class="testi-tag featured">+19% conversie</span>
+                    <span class="testi-tag">ROI maand 1</span>
+                  </div>
+                  <div class="testi-stars">★★★★★</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="testi-dots" id="testi-dots"></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── PRICING ───────────────────────────────────── -->
+    <section class="pricing-section" id="pricing">
+      <div class="wrap">
+        <div class="fade-up" data-delay="0">
+          <div class="section-tag">Tarieven</div>
+          <h2 class="section-h2">Transparante prijzen.<br>Geen verborgen kosten.</h2>
+          <p class="section-sub">Kies het pakket dat past bij jouw bedrijf. Altijd inclusief setup en support.</p>
+        </div>
+
+        <!-- Billing tabs -->
+        <div class="billing-tabs-wrap fade-up" data-delay="60">
+          <div class="billing-tabs">
+            <button class="billing-tab active" id="tab-monthly" onclick="setBilling('monthly')">Maandelijks</button>
+            <button class="billing-tab" id="tab-yearly" onclick="setBilling('yearly')">Jaarlijks <span class="tab-save">— bespaar 20%</span></button>
+          </div>
+        </div>
+
+        <div class="pricing-grid">
+
+          <!-- STARTER -->
+          <div class="price-card-wrap fade-up" data-delay="80">
+            <div class="price-card">
+              <div class="price-card-header">
+                <span class="price-billing-label" id="starter-billing-label">Maandelijks</span>
+                <span class="price-plan-badge starter">Starter</span>
+              </div>
+              <div class="price-amount">
+                <span class="price-currency">€</span>
+                <span class="price-num" id="starter-price">197</span>
+                <span class="price-period">/mnd</span>
+              </div>
+              <div class="price-yearly-note hidden" id="starter-yearly-note"></div>
+              <p class="price-sub">Ideaal voor kleine bedrijven & ZZP'ers</p>
+              <div class="price-divider"></div>
+              <ul class="price-features">
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  AI Chatbot op jouw website
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  AI Callback systeem
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  CRM Dashboard (1 gebruiker)
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  E-mail & SMS automations
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Google Review systeem
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Support
+                </li>
+              </ul>
+              <a href="#contact" class="price-cta ghost">Begin met Starter</a>
+            </div>
+          </div>
+
+          <!-- PRO -->
+          <div class="price-card-wrap fade-up" data-delay="160">
+            <div class="most-value-tag">MOST VALUE</div>
+            <div class="price-card featured">
+              <div class="price-card-header">
+                <span class="price-billing-label" id="pro-billing-label">Maandelijks</span>
+                <span class="price-plan-badge pro">Pro</span>
+              </div>
+              <div class="price-amount">
+                <span class="price-currency">€</span>
+                <span class="price-num" id="pro-price">397</span>
+                <span class="price-period">/mnd</span>
+              </div>
+              <div class="price-yearly-note hidden" id="pro-yearly-note"></div>
+              <p class="price-sub">Voor snelgroeiende bedrijven</p>
+              <div class="price-divider"></div>
+              <ul class="price-features">
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Alles uit Starter
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  WhatsApp integratie
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  5 teamleden kunnen samenwerken
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Onbeperkte leads & klanten
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Priority support
+                </li>
+              </ul>
+              <a href="#contact" class="price-cta primary">Begin met Pro</a>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="fade-up" data-delay="280" style="margin-top:1.5rem;font-size:13px;color:var(--muted);text-align:center;">
+          Maatwerk nodig? <a href="#contact" style="color:var(--green);font-weight:600;">Neem contact op</a> voor een enterprise offerte.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ── CTA SECTION ───────────────────────────────── -->
+    <section class="cta-section" id="contact">
+      <div class="cta-card fade-up" data-delay="0">
+        <h2>Klaar om elke websitebezoeker om te zetten naar een klant?</h2>
+        <p>Plan een gratis demo in en zie live hoe de AI chatbot en het callback systeem werken voor jouw bedrijf. Geen verplichtingen, gewoon resultaten.</p>
+        <div class="cta-actions">
+          <!-- Vervang de href met jouw Calendly of GHL booking link -->
+          <a href="#" class="btn-primary">
+            Gratis demo inplannen
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
+          </a>
+          <!-- Vervang +31 6 XX XX XX XX met jouw WhatsApp nummer -->
+          <a href="https://wa.me/31600000000?text=Hallo%2C%20ik%20wil%20graag%20meer%20weten%20over%20jullie%20AI%20systemen" class="btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            WhatsApp ons
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── FOOTER ────────────────────────────────────── -->
+    <footer>
+      <div class="footer-logo">
+        <div class="nav-logo-dot" style="width:6px;height:6px;"></div>
+        [MERKNAAM]
+      </div>
+      <span class="footer-copy">© 2026 — Alle rechten voorbehouden</span>
+      <div class="footer-links">
+        <a href="#features" class="footer-link">Functies</a>
+        <a href="#pricing" class="footer-link">Prijzen</a>
+        <a href="#contact" class="footer-link">Contact</a>
+      </div>
+    </footer>
+
+  </div>
+
+
+  <script>
+    /* ── FADE IN on scroll ──────────────────────────── */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const d = parseInt(e.target.dataset.delay || '0', 10);
+          e.target.style.transitionDelay = d + 'ms';
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: window.innerWidth < 640 ? 0.05 : 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+    /* ── GLASS TESTIMONIAL SWIPER ───────────────────── */
+    (function() {
+      var stack    = document.getElementById('testi-stack');
+      var dotsWrap = document.getElementById('testi-dots');
+      if (!stack) return;
+
+      var cards   = Array.from(stack.querySelectorAll('.testi-card'));
+      var total   = cards.length;
+      var current = 0;
+      var autoTimer;
+
+      /* Build dots */
+      var dots = cards.map(function(_, i) {
+        var btn = document.createElement('button');
+        btn.className = 'testi-dot' + (i === 0 ? ' active' : '');
+        btn.setAttribute('aria-label', 'Ga naar testimonial ' + (i + 1));
+        btn.addEventListener('click', function() { goTo(i); resetAuto(); });
+        dotsWrap.appendChild(btn);
+        return btn;
+      });
+
+      function layout() {
+        cards.forEach(function(card, i) {
+          var pos = (i - current + total) % total; /* 0 = front, 1 = behind, 2 = further */
+          if (pos === 0) {
+            card.style.transform = 'translateY(0) scale(1)';
+            card.style.opacity   = '1';
+            card.style.zIndex    = total;
+            card.style.pointerEvents = 'auto';
+          } else if (pos === 1) {
+            card.style.transform = 'translateY(14px) scale(0.95)';
+            card.style.opacity   = '0.55';
+            card.style.zIndex    = total - 1;
+            card.style.pointerEvents = 'none';
+          } else {
+            card.style.transform = 'translateY(26px) scale(0.90)';
+            card.style.opacity   = '0.25';
+            card.style.zIndex    = total - 2;
+            card.style.pointerEvents = 'none';
+          }
+        });
+        dots.forEach(function(d, i) {
+          d.classList.toggle('active', i === current);
+        });
+      }
+
+      function goTo(idx) {
+        current = (idx + total) % total;
+        layout();
+      }
+
+      function next() { goTo(current + 1); }
+
+      function resetAuto() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(next, 4500);
+      }
+
+      /* Drag / swipe */
+      var frontCard, startX, startY, isDragging = false;
+
+      function onDragStart(e) {
+        frontCard = cards[(current + total) % total];
+        startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+        startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
+        isDragging = true;
+        frontCard.classList.add('is-dragging');
+      }
+
+      function onDragMove(e) {
+        if (!isDragging) return;
+        var cx = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+        var cy = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+        var dx = cx - startX;
+        var dy = cy - startY;
+        /* Suppress horizontal scroll interference */
+        if (Math.abs(dx) > Math.abs(dy) && e.cancelable) e.preventDefault();
+        frontCard.style.transform = 'translateY(' + (dy * 0.08) + 'px) translateX(' + dx + 'px) scale(1) rotate(' + (dx * 0.03) + 'deg)';
+        frontCard.style.transition = 'none';
+      }
+
+      function onDragEnd(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        if (!frontCard) return;
+        frontCard.classList.remove('is-dragging');
+        frontCard.style.transition = '';
+        var ex = e.type === 'touchend' ? e.changedTouches[0].clientX : e.clientX;
+        var dx = ex - startX;
+        if (Math.abs(dx) > 60) {
+          next();
+          resetAuto();
+        } else {
+          layout(); /* snap back */
+        }
+        frontCard = null;
+      }
+
+      stack.addEventListener('mousedown',  onDragStart);
+      stack.addEventListener('touchstart', onDragStart, { passive: true });
+      window.addEventListener('mousemove',  onDragMove);
+      window.addEventListener('touchmove',  onDragMove, { passive: false });
+      window.addEventListener('mouseup',    onDragEnd);
+      window.addEventListener('touchend',   onDragEnd);
+
+      layout();
+      resetAuto();
+    })();
+
+    /* ── BILLING TOGGLE ─────────────────────────────── */
+    // Starter: €197/mnd → €158/mnd jaarlijks (20% korting, €1.896/jaar, bespaar €468)
+    // Pro:     €397/mnd → €318/mnd jaarlijks (20% korting, €3.816/jaar, bespaar €948)
+    var billing = 'monthly';
+    var animating = false;
+
+    var PRICES = {
+      starter: { monthly: 197, yearly: 158 },
+      pro:     { monthly: 397, yearly: 318 },
+    };
+
+    function animateCount(elId, fromVal, toVal, duration) {
+      var el = document.getElementById(elId);
+      if (!el) return;
+      var start = performance.now();
+      var diff  = toVal - fromVal;
+      function step(now) {
+        var t = Math.min((now - start) / duration, 1);
+        var e = t < 0.5 ? 2*t*t : -1 + (4 - 2*t)*t;
+        el.textContent = Math.round(fromVal + diff * e);
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    function setBilling(mode) {
+      if (mode === billing) return;
+      billing = mode;
+      var yearly = mode === 'yearly';
+
+      document.getElementById('tab-monthly').classList.toggle('active', !yearly);
+      document.getElementById('tab-yearly').classList.toggle('active',  yearly);
+
+      document.getElementById('starter-billing-label').classList.toggle('faded', yearly);
+      document.getElementById('pro-billing-label').classList.toggle('faded',     yearly);
+
+      var fromS = yearly ? PRICES.starter.monthly : PRICES.starter.yearly;
+      var toS   = yearly ? PRICES.starter.yearly  : PRICES.starter.monthly;
+      var fromP = yearly ? PRICES.pro.monthly     : PRICES.pro.yearly;
+      var toP   = yearly ? PRICES.pro.yearly      : PRICES.pro.monthly;
+
+      animateCount('starter-price', fromS, toS, 480);
+      animateCount('pro-price',     fromP, toP, 480);
+
+      var sNote = document.getElementById('starter-yearly-note');
+      var pNote = document.getElementById('pro-yearly-note');
+
+      if (yearly) {
+        sNote.textContent = '€1.896 per jaar gefactureerd — je bespaart €468';
+        pNote.textContent = '€3.816 per jaar gefactureerd — je bespaart €948';
+        sNote.classList.remove('hidden');
+        pNote.classList.remove('hidden');
+      } else {
+        sNote.classList.add('hidden');
+        pNote.classList.add('hidden');
+      }
+    }
+
+    /* ── BLOB PARALLAX ──────────────────────────────── */
+    (function () {
+      const a = document.querySelector('.blob-a');
+      const b = document.querySelector('.blob-b');
+      const c = document.querySelector('.blob-c');
+      let raf = 0;
+      document.addEventListener('mousemove', e => {
+        const mx = e.clientX / window.innerWidth - .5;
+        const my = e.clientY / window.innerHeight - .5;
+        if (!raf) raf = requestAnimationFrame(() => {
+          if (a) a.style.transform = `translate(${mx * 28}px, ${my * 22}px)`;
+          if (b) b.style.transform = `translate(${-mx * 22}px, ${-my * 18}px)`;
+          if (c) c.style.transform = `translate(${mx * 18}px, ${my * 28}px)`;
+          raf = 0;
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
