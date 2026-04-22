@@ -198,12 +198,12 @@
     }
     .vsl-blur {
       position: absolute; inset: 0;
-      backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
-      background: rgba(0,0,0,.28);
+      backdrop-filter: blur(20px) brightness(.55); -webkit-backdrop-filter: blur(20px) brightness(.55);
+      background: rgba(0,0,0,.42);
     }
     .vsl-play-btn {
       position: absolute; inset: 0;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.25rem;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .9rem;
     }
     .vsl-play {
       width: 72px; height: 72px; border-radius: 50%;
@@ -218,7 +218,12 @@
       box-shadow: 0 0 0 22px rgba(59,130,246,.18), 0 0 0 44px rgba(59,130,246,.08);
     }
     .vsl-play svg { margin-left: 5px; }
-    .vsl-label { font-size: 13px; color: rgba(255,255,255,.8); letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
+    .vsl-label { font-size: 11px; color: rgba(255,255,255,.7); letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
+    @media (max-width: 600px) {
+      .vsl-play { width: 52px; height: 52px; box-shadow: 0 0 0 10px rgba(59,130,246,.15), 0 0 0 20px rgba(59,130,246,.07); }
+      .vsl-play svg { width: 20px; height: 20px; margin-left: 3px; }
+      .vsl-label { font-size: 10px; }
+    }
 
     /* ─── STATS BAR ──────────────────────────────────── */
     .stats-bar {
@@ -670,7 +675,6 @@
       <div class="vsl-wrap fade-up" data-delay="320">
         <video id="vsl-video"
           src="vsl-v1.mp4"
-          controls
           playsinline
           preload="metadata"
           poster="vsl-thumb.jpg"
@@ -1178,6 +1182,7 @@
       var overlay = document.getElementById('vsl-overlay');
       var video   = document.getElementById('vsl-video');
       overlay.classList.add('hidden');
+      video.controls = true;
       video.play();
     }
 
