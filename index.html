@@ -198,31 +198,29 @@
     }
     .vsl-blur {
       position: absolute; inset: 0;
-      backdrop-filter: blur(20px) brightness(.55); -webkit-backdrop-filter: blur(20px) brightness(.55);
-      background: rgba(0,0,0,.42);
+      backdrop-filter: blur(10px) brightness(.7); -webkit-backdrop-filter: blur(10px) brightness(.7);
+      background: rgba(0,0,0,.28);
     }
     .vsl-play-btn {
       position: absolute; inset: 0;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .9rem;
+      display: flex; align-items: center; justify-content: center;
     }
     .vsl-play {
-      width: 72px; height: 72px; border-radius: 50%;
+      width: 60px; height: 60px; border-radius: 50%;
       background: var(--green);
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 0 16px rgba(59,130,246,.15), 0 0 0 32px rgba(59,130,246,.07);
+      box-shadow: 0 0 0 14px rgba(59,130,246,.15), 0 0 0 28px rgba(59,130,246,.07);
       cursor: pointer; transition: transform .2s, box-shadow .2s;
       flex-shrink: 0;
     }
     .vsl-play:hover {
       transform: scale(1.08);
-      box-shadow: 0 0 0 22px rgba(59,130,246,.18), 0 0 0 44px rgba(59,130,246,.08);
+      box-shadow: 0 0 0 18px rgba(59,130,246,.18), 0 0 0 36px rgba(59,130,246,.08);
     }
-    .vsl-play svg { margin-left: 5px; }
-    .vsl-label { font-size: 11px; color: rgba(255,255,255,.7); letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
+    .vsl-play svg { margin-left: 4px; }
     @media (max-width: 600px) {
-      .vsl-play { width: 52px; height: 52px; box-shadow: 0 0 0 10px rgba(59,130,246,.15), 0 0 0 20px rgba(59,130,246,.07); }
+      .vsl-play { width: 48px; height: 48px; box-shadow: 0 0 0 10px rgba(59,130,246,.15), 0 0 0 20px rgba(59,130,246,.07); }
       .vsl-play svg { width: 20px; height: 20px; margin-left: 3px; }
-      .vsl-label { font-size: 10px; }
     }
 
     /* ─── STATS BAR ──────────────────────────────────── */
@@ -687,7 +685,6 @@
             <div class="vsl-play">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
             </div>
-            <span class="vsl-label">Bekijk de video</span>
           </div>
         </div>
       </div>
