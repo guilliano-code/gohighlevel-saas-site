@@ -18,10 +18,10 @@
       --card2:     rgba(255,255,255,.35);
       --border:    rgba(0,0,0,.08);
       --border2:   rgba(0,0,0,.14);
-      --green:     #00A86B;
-      --green2:    #008A57;
-      --purple:    #7C3AED;
-      --purple2:   #6D28D9;
+      --green:     #3b82f6;
+      --green2:    #2563eb;
+      --purple:    #0ea5e9;
+      --purple2:   #0284c7;
       --white:     #1D1D1F;
       --muted:     rgba(0,0,0,.52);
       --muted2:    rgba(0,0,0,.36);
@@ -45,9 +45,9 @@
     @keyframes blobB { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-40px,30px)} }
     @keyframes blobC { 0%,100%{transform:translate(0,0)} 50%{transform:translate(25px,50px)} }
 
-    .blob-a { width:65vw;height:65vw;top:-15%;left:-10%;background:rgba(0,168,107,.07);animation:blobA 20s ease-in-out infinite; }
-    .blob-b { width:55vw;height:55vw;top:30%;right:-12%;background:rgba(124,58,237,.05);animation:blobB 25s ease-in-out infinite; }
-    .blob-c { width:50vw;height:50vw;bottom:-10%;left:20%;background:rgba(0,168,107,.04);animation:blobC 28s ease-in-out infinite; }
+    .blob-a { width:65vw;height:65vw;top:-15%;left:-10%;background:rgba(59,130,246,.07);animation:blobA 20s ease-in-out infinite; }
+    .blob-b { width:55vw;height:55vw;top:30%;right:-12%;background:rgba(14,165,233,.05);animation:blobB 25s ease-in-out infinite; }
+    .blob-c { width:50vw;height:50vw;bottom:-10%;left:20%;background:rgba(59,130,246,.04);animation:blobC 28s ease-in-out infinite; }
 
     /* ─── FADE IN ────────────────────────────────────── */
     .fade-up {
@@ -79,12 +79,12 @@
     }
     .nav-logo-dot {
       width: 8px; height: 8px; border-radius: 50%; background: var(--green);
-      box-shadow: 0 0 10px var(--green), 0 0 20px rgba(0,229,160,.4);
+      box-shadow: 0 0 10px var(--green), 0 0 20px rgba(59,130,246,.4);
       animation: pulse 2.5s ease-in-out infinite;
     }
     @keyframes pulse {
-      0%,100%{ box-shadow: 0 0 8px var(--green), 0 0 16px rgba(0,229,160,.3); }
-      50%    { box-shadow: 0 0 14px var(--green), 0 0 28px rgba(0,229,160,.5); }
+      0%,100%{ box-shadow: 0 0 8px var(--green), 0 0 16px rgba(59,130,246,.3); }
+      50%    { box-shadow: 0 0 14px var(--green), 0 0 28px rgba(59,130,246,.5); }
     }
 
     /* Login button — same hover mechanic as dailyshotsmedia */
@@ -123,8 +123,8 @@
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 6px 14px 6px 8px; border-radius: 9999px;
-      border: 1px solid rgba(0,168,107,.2);
-      background: rgba(0,168,107,.07);
+      border: 1px solid rgba(59,130,246,.2);
+      background: rgba(59,130,246,.07);
       font-size: 12px; font-weight: 500; color: var(--green);
       margin-bottom: 2rem; letter-spacing: .02em;
     }
@@ -157,12 +157,12 @@
       font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px;
       border: none; cursor: pointer;
       transition: background .2s, transform .2s, box-shadow .2s;
-      box-shadow: 0 4px 18px rgba(0,168,107,.28);
+      box-shadow: 0 4px 18px rgba(59,130,246,.28);
     }
     .btn-primary:hover {
       background: var(--green2);
       transform: translateY(-1px);
-      box-shadow: 0 6px 24px rgba(0,168,107,.38);
+      box-shadow: 0 6px 24px rgba(59,130,246,.38);
     }
 
     .btn-ghost {
@@ -174,7 +174,7 @@
       cursor: pointer;
       transition: border-color .2s, background .2s;
     }
-    .btn-ghost:hover { border-color: var(--green); background: rgba(0,168,107,.05); color: var(--green); }
+    .btn-ghost:hover { border-color: var(--green); background: rgba(59,130,246,.05); color: var(--green); }
 
     /* ─── VSL / VIDEO BLOCK ──────────────────────────── */
     .vsl-wrap {
@@ -196,13 +196,13 @@
       width: 68px; height: 68px; border-radius: 50%;
       background: var(--green);
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 0 16px rgba(0,168,107,.1), 0 0 0 32px rgba(0,168,107,.05);
+      box-shadow: 0 0 0 16px rgba(59,130,246,.1), 0 0 0 32px rgba(59,130,246,.05);
       cursor: pointer; transition: transform .2s, box-shadow .2s;
       flex-shrink: 0;
     }
     .vsl-play:hover {
       transform: scale(1.07);
-      box-shadow: 0 0 0 20px rgba(0,168,107,.14), 0 0 0 40px rgba(0,168,107,.06);
+      box-shadow: 0 0 0 20px rgba(59,130,246,.14), 0 0 0 40px rgba(59,130,246,.06);
     }
     .vsl-play svg { margin-left: 4px; }
     .vsl-label { font-size: 14px; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; font-weight: 500; }
@@ -258,13 +258,13 @@
       box-shadow: 0 1px 4px rgba(0,0,0,.05);
     }
     .feat-card:hover {
-      border-color: rgba(0,168,107,.28);
+      border-color: rgba(59,130,246,.28);
       transform: translateY(-3px);
-      box-shadow: 0 8px 32px rgba(0,168,107,.08), 0 2px 8px rgba(0,0,0,.06);
+      box-shadow: 0 8px 32px rgba(59,130,246,.08), 0 2px 8px rgba(0,0,0,.06);
     }
     .feat-card.purple:hover {
-      border-color: rgba(124,58,237,.28);
-      box-shadow: 0 8px 32px rgba(124,58,237,.08), 0 2px 8px rgba(0,0,0,.06);
+      border-color: rgba(14,165,233,.28);
+      box-shadow: 0 8px 32px rgba(14,165,233,.08), 0 2px 8px rgba(0,0,0,.06);
     }
 
     .feat-icon {
@@ -272,8 +272,8 @@
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 1.4rem; flex-shrink: 0;
     }
-    .feat-icon.green { background: rgba(0,168,107,.09); border: 1px solid rgba(0,168,107,.15); }
-    .feat-icon.purple { background: rgba(124,58,237,.08); border: 1px solid rgba(124,58,237,.14); }
+    .feat-icon.green { background: rgba(59,130,246,.09); border: 1px solid rgba(59,130,246,.15); }
+    .feat-icon.purple { background: rgba(14,165,233,.08); border: 1px solid rgba(14,165,233,.14); }
 
     .feat-title {
       font-family: 'Poppins', sans-serif; font-weight: 700;
@@ -285,8 +285,8 @@
     .feat-tag {
       font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 9999px;
     }
-    .feat-tag.green { background: rgba(0,168,107,.09); color: var(--green); border: 1px solid rgba(0,168,107,.18); }
-    .feat-tag.purple { background: rgba(124,58,237,.08); color: var(--purple); border: 1px solid rgba(124,58,237,.18); }
+    .feat-tag.green { background: rgba(59,130,246,.09); color: var(--green); border: 1px solid rgba(59,130,246,.18); }
+    .feat-tag.purple { background: rgba(14,165,233,.08); color: var(--purple); border: 1px solid rgba(14,165,233,.18); }
 
     /* Span full row */
     .feat-card.wide { grid-column: 1 / -1; flex-direction: row; align-items: flex-start; gap: 2rem; }
@@ -371,8 +371,8 @@
       border: 1px solid rgba(0,0,0,.08);
     }
     .testi-tag.featured {
-      background: rgba(0,168,107,.09); color: var(--green);
-      border-color: rgba(0,168,107,.2);
+      background: rgba(59,130,246,.09); color: var(--green);
+      border-color: rgba(59,130,246,.2);
     }
     .testi-stars { color: #F59E0B; font-size: 13px; letter-spacing: 2px; flex-shrink: 0; }
 
@@ -448,9 +448,9 @@
       box-shadow: 0 1px 6px rgba(0,0,0,.05);
     }
     .price-card.featured {
-      border-color: rgba(0,168,107,.35);
-      background: linear-gradient(160deg, rgba(0,168,107,.04) 0%, var(--card) 55%);
-      box-shadow: 0 4px 24px rgba(0,168,107,.1);
+      border-color: rgba(59,130,246,.35);
+      background: linear-gradient(160deg, rgba(59,130,246,.04) 0%, var(--card) 55%);
+      box-shadow: 0 4px 24px rgba(59,130,246,.1);
     }
     .price-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,.09); }
 
@@ -479,9 +479,9 @@
       border: 1px solid rgba(0,0,0,.1);
     }
     .price-plan-badge.pro {
-      background: rgba(0,168,107,.1);
+      background: rgba(59,130,246,.1);
       color: var(--green);
-      border: 1px solid rgba(0,168,107,.25);
+      border: 1px solid rgba(59,130,246,.25);
     }
     .price-amount {
       display: flex; align-items: baseline; gap: 4px;
@@ -520,14 +520,14 @@
     }
     .price-cta.primary {
       background: var(--green); color: #FFFFFF;
-      box-shadow: 0 4px 14px rgba(0,168,107,.28);
+      box-shadow: 0 4px 14px rgba(59,130,246,.28);
     }
-    .price-cta.primary:hover { background: var(--green2); box-shadow: 0 6px 20px rgba(0,168,107,.38); }
+    .price-cta.primary:hover { background: var(--green2); box-shadow: 0 6px 20px rgba(59,130,246,.38); }
     .price-cta.ghost {
       background: rgba(0,0,0,.03); color: var(--white);
       border: 1px solid var(--border2);
     }
-    .price-cta.ghost:hover { border-color: var(--green); color: var(--green); background: rgba(0,168,107,.04); }
+    .price-cta.ghost:hover { border-color: var(--green); color: var(--green); background: rgba(59,130,246,.04); }
 
     /* ─── CTA SECTION ────────────────────────────────── */
     .cta-section {
@@ -538,9 +538,9 @@
       max-width: 640px; margin: 0 auto;
       background: var(--card);
       backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(0,168,107,.2);
+      border: 1px solid rgba(59,130,246,.2);
       border-radius: 28px; padding: 3.5rem 2.5rem;
-      box-shadow: 0 4px 32px rgba(0,168,107,.08), 0 1px 6px rgba(0,0,0,.05);
+      box-shadow: 0 4px 32px rgba(59,130,246,.08), 0 1px 6px rgba(0,0,0,.05);
     }
     .cta-card h2 {
       font-family: 'Poppins', sans-serif; font-weight: 800;
@@ -703,7 +703,7 @@
           <!-- Website AI Chatbot -->
           <div class="feat-card fade-up" data-delay="80">
             <div class="feat-icon green">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8M8 14h5"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8M8 14h5"/></svg>
             </div>
             <h3 class="feat-title">AI Chatbot op jouw Website</h3>
             <p class="feat-text">De chatbot staat 24/7 klaar op jouw website. Hij beantwoordt vragen, kwalificeert bezoekers en stuurt ze richting een afspraak — volledig in jouw eigen tone of voice en huisstijl.</p>
@@ -733,7 +733,7 @@
           <!-- CRM Dashboard -->
           <div class="feat-card fade-up" data-delay="240">
             <div class="feat-icon green">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
             </div>
             <h3 class="feat-title">Alles-in-één CRM Dashboard</h3>
             <p class="feat-text">Alle leads, chatgesprekken, callback-rapporten en afspraken staan op één plek. Met het Pro pakket voeg je ook WhatsApp automations toe — zo bereik je leads via elk kanaal. Aangedreven door GoHighLevel.</p>
@@ -928,27 +928,27 @@
               <div class="price-divider"></div>
               <ul class="price-features">
                 <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   AI Chatbot op jouw website
                 </li>
                 <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   AI Callback systeem
                 </li>
                 <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   CRM Dashboard (1 gebruiker)
                 </li>
                 <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   E-mail & SMS automations
                 </li>
                 <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   Google Review systeem
                 </li>
                 <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   Support
                 </li>
               </ul>
@@ -974,23 +974,23 @@
               <div class="price-divider"></div>
               <ul class="price-features">
                 <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   Alles uit Starter
                 </li>
                 <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   WhatsApp integratie
                 </li>
                 <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   5 teamleden kunnen samenwerken
                 </li>
                 <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   Onbeperkte leads & klanten
                 </li>
                 <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   Priority support
                 </li>
               </ul>
