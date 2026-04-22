@@ -1179,9 +1179,16 @@
       var overlay = document.getElementById('vsl-overlay');
       var video   = document.getElementById('vsl-video');
       overlay.classList.add('hidden');
-      video.controls = true;
       video.play();
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var video = document.getElementById('vsl-video');
+      if (!video) return;
+      video.addEventListener('click', function () {
+        if (video.paused) { video.play(); } else { video.pause(); }
+      });
+    });
 
     /* ── BILLING TOGGLE ─────────────────────────────── */
     // Starter: €197/mnd → €158/mnd jaarlijks (20% korting, €1.896/jaar, bespaar €468)
