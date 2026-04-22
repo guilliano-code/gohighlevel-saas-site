@@ -186,26 +186,39 @@
       position: relative;
       aspect-ratio: 16 / 9;
     }
-    /* Replace the placeholder below with an <iframe> or <video> tag when you have a VSL */
-    .vsl-placeholder {
+    .vsl-overlay {
+      position: absolute; inset: 0; border-radius: inherit;
+      cursor: pointer; overflow: hidden;
+      transition: opacity .4s ease;
+    }
+    .vsl-overlay.hidden { opacity: 0; pointer-events: none; }
+    .vsl-thumb {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .vsl-blur {
+      position: absolute; inset: 0;
+      backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+      background: rgba(0,0,0,.28);
+    }
+    .vsl-play-btn {
       position: absolute; inset: 0;
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.25rem;
-      background: linear-gradient(135deg, #EAEAEF 0%, #F0F0F5 100%);
     }
     .vsl-play {
-      width: 68px; height: 68px; border-radius: 50%;
+      width: 72px; height: 72px; border-radius: 50%;
       background: var(--green);
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 0 16px rgba(59,130,246,.1), 0 0 0 32px rgba(59,130,246,.05);
+      box-shadow: 0 0 0 16px rgba(59,130,246,.15), 0 0 0 32px rgba(59,130,246,.07);
       cursor: pointer; transition: transform .2s, box-shadow .2s;
       flex-shrink: 0;
     }
     .vsl-play:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 0 20px rgba(59,130,246,.14), 0 0 0 40px rgba(59,130,246,.06);
+      transform: scale(1.08);
+      box-shadow: 0 0 0 22px rgba(59,130,246,.18), 0 0 0 44px rgba(59,130,246,.08);
     }
-    .vsl-play svg { margin-left: 4px; }
-    .vsl-label { font-size: 14px; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; font-weight: 500; }
+    .vsl-play svg { margin-left: 5px; }
+    .vsl-label { font-size: 13px; color: rgba(255,255,255,.8); letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
 
     /* ─── STATS BAR ──────────────────────────────────── */
     .stats-bar {
@@ -655,13 +668,24 @@
 
       <!-- VSL / Video -->
       <div class="vsl-wrap fade-up" data-delay="320">
-        <video
+        <video id="vsl-video"
           src="vsl-v1.mp4"
           controls
           playsinline
           preload="metadata"
+          poster="vsl-thumb.jpg"
           style="position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;background:#000;"
         ></video>
+        <div class="vsl-overlay" id="vsl-overlay" onclick="playVsl()">
+          <img class="vsl-thumb" src="vsl-thumb.jpg" alt="">
+          <div class="vsl-blur"></div>
+          <div class="vsl-play-btn">
+            <div class="vsl-play">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="vsl-label">Bekijk de video</span>
+          </div>
+        </div>
       </div>
 
     </section>
@@ -1148,6 +1172,14 @@
       layout();
       resetAuto();
     })();
+
+    /* ── VSL PLAY ───────────────────────────────────── */
+    function playVsl() {
+      var overlay = document.getElementById('vsl-overlay');
+      var video   = document.getElementById('vsl-video');
+      overlay.classList.add('hidden');
+      video.play();
+    }
 
     /* ── BILLING TOGGLE ─────────────────────────────── */
     // Starter: €197/mnd → €158/mnd jaarlijks (20% korting, €1.896/jaar, bespaar €468)
