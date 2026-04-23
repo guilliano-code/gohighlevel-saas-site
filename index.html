@@ -706,7 +706,7 @@
       .pricing-section { padding: 2.5rem 0; }
       .cta-section { padding: 2.5rem 1.5rem; }
       .hero-ctas-below { padding: 0.75rem 1.5rem 4rem; }
-      .proof-ctas { margin-bottom: 1.75rem; }
+      .proof-ctas { margin-bottom: 1.75rem; display: none; }
     }
   </style>
 </head>
@@ -745,7 +745,7 @@
         FLOWSA
       </div>
       <a href="#contact" class="mobile-nav-demo-btn">
-        Gratis demo
+        Plan demo
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
       </a>
     </div>
@@ -772,7 +772,7 @@
 
       <div class="hero-ctas fade-up" data-delay="240">
         <a href="#contact" class="btn-primary">
-          Gratis demo
+          Plan demo
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
         </a>
         <a href="#how-it-works" class="btn-ghost">
@@ -888,7 +888,7 @@
 
         <div class="proof-ctas fade-up" data-delay="80" style="margin-top:2rem;">
           <a href="#contact" class="btn-primary">
-            Gratis demo
+            Plan demo
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
           </a>
         </div>
@@ -1185,7 +1185,7 @@
         <p>Plan een gratis demo in en ontdek hoe jouw website meer aanvragen kan genereren</p>
         <div class="cta-actions">
           <a href="#" class="btn-primary">
-            Gratis demo
+            Plan demo
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
           </a>
           <a href="https://wa.me/31600000000?text=Hallo%2C%20ik%20wil%20graag%20meer%20weten%20over%20jullie%20AI%20systemen" class="btn-ghost">
@@ -1459,11 +1459,11 @@
     /* ── MOBILE STICKY NAV SCROLL TRIGGER ──────────── */
     (function () {
       var mobileNav  = document.getElementById('mobile-nav');
-      var whatsappRow = document.querySelector('.hero-ctas-below');
-      if (!mobileNav || !whatsappRow) return;
+      var vslBlock   = document.querySelector('.vsl-wrap');
+      if (!mobileNav || !vslBlock) return;
 
       function onScroll() {
-        var rect = whatsappRow.getBoundingClientRect();
+        var rect = vslBlock.getBoundingClientRect();
         if (rect.bottom < 0) {
           mobileNav.classList.add('is-visible');
         } else {
