@@ -410,11 +410,12 @@
     /* ─── PRICING ─────────────────────────────────────── */
     .pricing-section { padding: 4.5rem 0; }
     .pricing-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;
       margin-top: 2.5rem; align-items: stretch;
     }
     .price-card-wrap { height: 100%; }
     .price-card-wrap .price-card { height: 100%; }
+    @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 620px) { .pricing-grid { grid-template-columns: 1fr; } }
 
     /* Billing tabs */
@@ -650,12 +651,11 @@
       </div>
 
       <h1 class="fade-up" data-delay="80">
-        Verkoop 24/7 — Met <span class="accent-green">AI Chatbot</span><br>
-        &amp; <span class="accent-purple">Callback Systeem</span>
+        Meer klanten via een website<br>die voor je werkt — <span class="accent-green">24/7</span>
       </h1>
 
       <p class="hero-sub fade-up" data-delay="160">
-        Vragen beantwoord. Afspraken gepland. Leads binnengekomen. Automatisch
+        Meer aanvragen, meer afspraken en een website die eindelijk rendement oplevert.
       </p>
 
       <div class="hero-ctas fade-up" data-delay="240">
@@ -706,7 +706,7 @@
       <div class="wrap">
         <div class="fade-up" data-delay="0">
           <div class="section-tag">Wat wij bieden</div>
-          <h2 class="section-h2">Vier systemen.<br>Één resultaat: meer omzet.</h2>
+          <h2 class="section-h2">Een website die klanten aantrekt.<br>En omzet oplevert.</h2>
           <p class="section-sub">Van websitebezoeker naar betalende klant — volledig automatisch, zonder dat jij er iets voor hoeft te doen.</p>
         </div>
 
@@ -732,8 +732,8 @@
             <div class="feat-icon purple">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.96-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </div>
-            <h3 class="feat-title">AI Callback Systeem</h3>
-            <p class="feat-text">Vult iemand zijn nummer in op jouw website? Binnen 60 seconden belt de AI hem automatisch terug. Geen wachttijd, geen gemiste kansen. De AI voert het gesprek, kwalificeert de lead en stuurt alles naar jouw CRM.</p>
+            <h3 class="feat-title">AI Call Systeem</h3>
+            <p class="feat-text">Ben jij niet beschikbaar? Ons call systeem neemt de telefoon voor jou op, zodat jij je kunt blijven focussen op wat echt belangrijk is.</p>
             <div class="feat-tags">
               <span class="feat-tag purple">Terugbellen binnen 60s</span>
               <span class="feat-tag purple">Menselijke stem</span>
@@ -748,7 +748,7 @@
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
             </div>
             <h3 class="feat-title">Alles-in-één CRM Dashboard</h3>
-            <p class="feat-text">Alle leads, chatgesprekken, callback-rapporten en afspraken staan op één plek. Met het Pro pakket voeg je ook WhatsApp automations toe — zo bereik je leads via elk kanaal. Aangedreven door GoHighLevel.</p>
+            <p class="feat-text">Alle leads, chatgesprekken, callback-rapporten en afspraken staan op één plek. Met het Pro pakket voeg je ook WhatsApp automations toe — zo bereik je leads via elk kanaal. Aangedreven door Flowsa.</p>
             <div class="feat-tags">
               <span class="feat-tag green">Pipeline overzicht</span>
               <span class="feat-tag green">E-mail & SMS</span>
@@ -788,8 +788,8 @@
       <div class="wrap">
         <div class="fade-up" data-delay="0">
           <div class="section-tag">Hoe het werkt</div>
-          <h2 class="section-h2">In 3 stappen. Live.<br>Geen technische kennis nodig</h2>
-          <p class="section-sub">Van "ik ben geïnteresseerd" tot eerste klant in minder dan een week</p>
+          <h2 class="section-h2">In 3 stappen naar meer klanten<br>via je website</h2>
+          <p class="section-sub">Wij bouwen, optimaliseren en automatiseren jouw website zodat je meer bezoekers aantrekt en omzet in klanten.</p>
         </div>
 
         <div class="steps">
@@ -797,24 +797,24 @@
           <div class="step fade-up" data-delay="80">
             <div class="step-num">1</div>
             <div class="step-body">
-              <h4 class="step-title">Strategie & AI training</h4>
-              <p class="step-text">Intake-sessie. Jouw business, jouw klanten, jouw taal. Website-strategie. De AI leert alles om perfect voor jouw klanten te werken</p>
+              <h4 class="step-title">Strategie & website plan</h4>
+              <p class="step-text">We bepalen wat jouw doelgroep zoekt en bouwen een website die daarop aansluit.</p>
             </div>
           </div>
 
           <div class="step fade-up" data-delay="160">
             <div class="step-num">2</div>
             <div class="step-body">
-              <h4 class="step-title">Website + AI live</h4>
-              <p class="step-text">Betere website gebouwd (conversie-optimized). Chatbot ingebouwd. Afspraken-planner actief. Alles in jouw huisstijl. Nul technische work van jouw kant</p>
+              <h4 class="step-title">Een website die converteert</h4>
+              <p class="step-text">Je website wordt gebouwd met focus op vindbaarheid in Google en conversie.</p>
             </div>
           </div>
 
           <div class="step fade-up" data-delay="240">
             <div class="step-num">3</div>
             <div class="step-body">
-              <h4 class="step-title">Klanten stromen in</h4>
-              <p class="step-text">Betere website trekt bezoekers. AI beantwoordt vragen 24/7. Plant afspraken. Alles loopt via je CRM. Jij focust op verkopen. Wij optimaliseren voortdurend</p>
+              <h4 class="step-title">Meer bezoekers → meer klanten</h4>
+              <p class="step-text">Je website trekt bezoekers aan en zet ze om in aanvragen en klanten.</p>
             </div>
           </div>
 
@@ -828,7 +828,7 @@
       <div class="wrap">
         <div class="fade-up" data-delay="0">
           <div class="section-tag">Wat klanten zeggen</div>
-          <h2 class="section-h2">Bedrijven die al automatiseren.</h2>
+          <h2 class="section-h2">Ondernemers die al beter converteren.</h2>
         </div>
 
 
@@ -911,32 +911,73 @@
         <div class="fade-up" data-delay="0">
           <div class="section-tag">Tarieven</div>
           <h2 class="section-h2">Transparante prijzen.<br>Geen verborgen kosten.</h2>
-          <p class="section-sub">Kies het pakket dat past bij jouw bedrijf. Altijd inclusief setup en support.</p>
+          <p class="section-sub">Prijzen zijn exclusief btw</p>
         </div>
 
         <!-- Billing tabs -->
         <div class="billing-tabs-wrap fade-up" data-delay="60">
           <div class="billing-tabs">
-            <button class="billing-tab active" id="tab-monthly" onclick="setBilling('monthly')">Maandelijks</button>
-            <button class="billing-tab" id="tab-yearly" onclick="setBilling('yearly')">Jaarlijks <span class="tab-save">— bespaar 20%</span></button>
+            <button class="billing-tab" id="tab-monthly" onclick="setBilling('monthly')">Maandelijks</button>
+            <button class="billing-tab active" id="tab-yearly" onclick="setBilling('yearly')">Jaarlijks <span class="tab-save">— bespaar 20%</span></button>
           </div>
         </div>
 
         <div class="pricing-grid">
 
+          <!-- BASIS -->
+          <div class="price-card-wrap fade-up" data-delay="0">
+            <div class="price-card">
+              <div class="price-card-header">
+                <span class="price-billing-label faded" id="basis-billing-label">Maandelijks</span>
+                <span class="price-plan-badge starter">Basis</span>
+              </div>
+              <div class="price-amount">
+                <span class="price-currency">€</span>
+                <span class="price-num" id="basis-price">48</span>
+                <span class="price-period">/mnd</span>
+              </div>
+              <div class="price-yearly-note" id="basis-yearly-note">€576 per jaar gefactureerd — je bespaart €144</div>
+              <p class="price-sub">Ideaal voor startende ondernemers</p>
+              <div class="price-divider"></div>
+              <ul class="price-features">
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Website
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Desktop & Mobiel geoptimaliseerd
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Website SEO
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Contact formulier
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Chat Widget
+                </li>
+              </ul>
+              <a href="#contact" class="price-cta ghost">Begin met Basis</a>
+            </div>
+          </div>
+
           <!-- STARTER -->
           <div class="price-card-wrap fade-up" data-delay="80">
             <div class="price-card">
               <div class="price-card-header">
-                <span class="price-billing-label" id="starter-billing-label">Maandelijks</span>
+                <span class="price-billing-label faded" id="starter-billing-label">Maandelijks</span>
                 <span class="price-plan-badge starter">Starter</span>
               </div>
               <div class="price-amount">
                 <span class="price-currency">€</span>
-                <span class="price-num" id="starter-price">197</span>
+                <span class="price-num" id="starter-price">158</span>
                 <span class="price-period">/mnd</span>
               </div>
-              <div class="price-yearly-note hidden" id="starter-yearly-note"></div>
+              <div class="price-yearly-note" id="starter-yearly-note">€1.896 per jaar gefactureerd — je bespaart €468</div>
               <p class="price-sub">Ideaal voor kleine bedrijven & ZZP'ers</p>
               <div class="price-divider"></div>
               <ul class="price-features">
@@ -974,15 +1015,15 @@
             <div class="most-value-tag">MOST VALUE</div>
             <div class="price-card featured">
               <div class="price-card-header">
-                <span class="price-billing-label" id="pro-billing-label">Maandelijks</span>
+                <span class="price-billing-label faded" id="pro-billing-label">Maandelijks</span>
                 <span class="price-plan-badge pro">Pro</span>
               </div>
               <div class="price-amount">
                 <span class="price-currency">€</span>
-                <span class="price-num" id="pro-price">397</span>
+                <span class="price-num" id="pro-price">318</span>
                 <span class="price-period">/mnd</span>
               </div>
-              <div class="price-yearly-note hidden" id="pro-yearly-note"></div>
+              <div class="price-yearly-note" id="pro-yearly-note">€3.816 per jaar gefactureerd — je bespaart €948</div>
               <p class="price-sub">Voor snelgroeiende bedrijven</p>
               <div class="price-divider"></div>
               <ul class="price-features">
@@ -1024,7 +1065,7 @@
     <section class="cta-section" id="contact">
       <div class="cta-card fade-up" data-delay="0">
         <h2>Klaar om elke websitebezoeker om te zetten naar een klant?</h2>
-        <p>Plan een gratis demo in en zie live hoe de AI chatbot en het callback systeem werken voor jouw bedrijf. Geen verplichtingen, gewoon resultaten.</p>
+        <p>Plan een gratis demo in en ontdek hoe jouw website meer aanvragen kan genereren.</p>
         <div class="cta-actions">
           <a href="#" class="btn-primary">
             Gratis demo
@@ -1193,10 +1234,11 @@
     /* ── BILLING TOGGLE ─────────────────────────────── */
     // Starter: €197/mnd → €158/mnd jaarlijks (20% korting, €1.896/jaar, bespaar €468)
     // Pro:     €397/mnd → €318/mnd jaarlijks (20% korting, €3.816/jaar, bespaar €948)
-    var billing = 'monthly';
+    var billing = 'yearly';
     var animating = false;
 
     var PRICES = {
+      basis:   { monthly: 60,  yearly: 48  },
       starter: { monthly: 197, yearly: 158 },
       pro:     { monthly: 397, yearly: 318 },
     };
@@ -1223,26 +1265,27 @@
       document.getElementById('tab-monthly').classList.toggle('active', !yearly);
       document.getElementById('tab-yearly').classList.toggle('active',  yearly);
 
+      document.getElementById('basis-billing-label').classList.toggle('faded',   yearly);
       document.getElementById('starter-billing-label').classList.toggle('faded', yearly);
       document.getElementById('pro-billing-label').classList.toggle('faded',     yearly);
 
-      var fromS = yearly ? PRICES.starter.monthly : PRICES.starter.yearly;
-      var toS   = yearly ? PRICES.starter.yearly  : PRICES.starter.monthly;
-      var fromP = yearly ? PRICES.pro.monthly     : PRICES.pro.yearly;
-      var toP   = yearly ? PRICES.pro.yearly      : PRICES.pro.monthly;
+      animateCount('basis-price',   yearly ? PRICES.basis.monthly   : PRICES.basis.yearly,   yearly ? PRICES.basis.yearly   : PRICES.basis.monthly,   480);
+      animateCount('starter-price', yearly ? PRICES.starter.monthly : PRICES.starter.yearly, yearly ? PRICES.starter.yearly : PRICES.starter.monthly, 480);
+      animateCount('pro-price',     yearly ? PRICES.pro.monthly     : PRICES.pro.yearly,     yearly ? PRICES.pro.yearly     : PRICES.pro.monthly,     480);
 
-      animateCount('starter-price', fromS, toS, 480);
-      animateCount('pro-price',     fromP, toP, 480);
-
+      var bNote = document.getElementById('basis-yearly-note');
       var sNote = document.getElementById('starter-yearly-note');
       var pNote = document.getElementById('pro-yearly-note');
 
       if (yearly) {
+        bNote.textContent = '€576 per jaar gefactureerd — je bespaart €144';
         sNote.textContent = '€1.896 per jaar gefactureerd — je bespaart €468';
         pNote.textContent = '€3.816 per jaar gefactureerd — je bespaart €948';
+        bNote.classList.remove('hidden');
         sNote.classList.remove('hidden');
         pNote.classList.remove('hidden');
       } else {
+        bNote.classList.add('hidden');
         sNote.classList.add('hidden');
         pNote.classList.add('hidden');
       }
