@@ -606,6 +606,12 @@
     .footer-link:hover { color: var(--green); }
 
     /* ─── HERO CTAS BELOW VSL ────────────────────────── */
+    .hero-badge-mobile { display: none; }
+    @media (max-width: 640px) {
+      .hero-badge-mobile { display: inline-flex; margin-bottom: 1.25rem; }
+      .vsl-badge-wrap { display: none; }
+    }
+
     .vsl-badge-wrap {
       display: flex; justify-content: center;
       padding: .75rem 2rem 0;
@@ -707,6 +713,11 @@
       <p class="hero-sub fade-up" data-delay="160">
         De slimme website voor aannemers die willen groeien zonder extra personeel.
       </p>
+
+      <div class="hero-social-proof hero-badge-mobile fade-up" data-delay="200">
+        <span class="hero-stars">★</span>
+        <span class="hero-social-text"><strong>4.8</strong> beoordeeld door aannemers</span>
+      </div>
 
       <div class="hero-ctas fade-up" data-delay="240">
         <a href="#contact" class="btn-primary">
