@@ -200,16 +200,16 @@
     .btn-ghost:hover { border-color: var(--green); background: rgba(59,130,246,.05); color: var(--green); }
 
     .btn-whatsapp {
-      border-color: rgba(37,211,102,.55);
-      background: rgba(37,211,102,.20);
-      backdrop-filter: blur(80px); -webkit-backdrop-filter: blur(80px);
-      box-shadow: 0 4px 18px rgba(37,211,102,.18);
+      border-color: rgba(37,211,102,.45);
+      background: rgba(37,211,102,.05);
+      backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      box-shadow: 0 4px 18px rgba(37,211,102,.14), inset 0 1px 0 rgba(255,255,255,.5);
     }
     .btn-whatsapp:hover {
       border-color: #25D366;
-      background: rgba(37,211,102,.28);
+      background: rgba(37,211,102,.10);
       color: var(--white);
-      box-shadow: 0 6px 24px rgba(37,211,102,.28);
+      box-shadow: 0 6px 24px rgba(37,211,102,.22), inset 0 1px 0 rgba(255,255,255,.5);
     }
 
     /* ─── VSL / VIDEO BLOCK ──────────────────────────── */
@@ -746,17 +746,7 @@
         <div class="nav-logo-dot"></div>
         FLOWSA
       </div>
-      <a href="#contact" class="login-btn">
-        <span class="login-btn__dot"></span>
-        <span class="login-btn__label" style="display:inline-flex;align-items:center;gap:5px;">
-          Demo
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
-        </span>
-        <span class="login-btn__overlay">
-          Demo
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
-        </span>
-      </a>
+      <a href="#contact" class="btn-primary" style="padding:9px 20px;font-size:13px;border-radius:10px;">Demo</a>
     </div>
 
 
