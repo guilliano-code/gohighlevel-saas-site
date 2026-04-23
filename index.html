@@ -162,6 +162,8 @@
     @media (max-width: 640px) {
       .hero-stars { font-size: 0; }
       .hero-stars::before { content: '★'; font-size: 14px; color: #F59E0B; letter-spacing: 0; }
+      .hero-social-proof { padding: 10px 16px; border-radius: 10px; gap: 8px; }
+      .hero-social-text { font-size: 12px; }
     }
     .hero-social-text { font-size: 13px; color: var(--muted); }
     .hero-social-text strong { color: var(--white); }
@@ -644,8 +646,7 @@
 
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 640px) {
-      .hero { padding: 1.75rem 1.5rem 1.25rem; text-align: center; }
-      .hero-ctas { justify-content: center; }
+      .hero { padding: 1.75rem 1.5rem 1.25rem; }
       .wrap { padding: 0 1.5rem; }
       .features-section,
       .hiw-section,
@@ -1270,6 +1271,7 @@
       var frontCard, startX, startY, isDragging = false;
 
       function onDragStart(e) {
+        if (e.touches && e.touches.length !== 1) return;
         frontCard = cards[(current + total) % total];
         startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
         startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
@@ -1279,14 +1281,21 @@
 
       function onDragMove(e) {
         if (!isDragging) return;
+        if (e.touches && e.touches.length !== 1) { cancelDrag(); return; }
         var cx = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
         var cy = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
         var dx = cx - startX;
         var dy = cy - startY;
-        /* Suppress horizontal scroll interference */
         if (Math.abs(dx) > Math.abs(dy) && e.cancelable) e.preventDefault();
-        frontCard.style.transform = 'translateY(' + (dy * 0.08) + 'px) translateX(' + dx + 'px) scale(1) rotate(' + (dx * 0.03) + 'deg)';
+        frontCard.style.transform = 'translateY(' + (dy * 0.04) + 'px) translateX(' + dx + 'px) rotate(' + (dx * 0.03) + 'deg)';
         frontCard.style.transition = 'none';
+      }
+
+      function cancelDrag() {
+        isDragging = false;
+        if (frontCard) { frontCard.classList.remove('is-dragging'); frontCard.style.transition = ''; }
+        layout();
+        frontCard = null;
       }
 
       function onDragEnd(e) {
@@ -1297,17 +1306,12 @@
         frontCard.style.transition = '';
         var ex = e.type === 'touchend' ? e.changedTouches[0].clientX : e.clientX;
         var dx = ex - startX;
-        if (Math.abs(dx) > 60) {
-          next();
-          resetAuto();
-        } else {
-          layout(); /* snap back */
-        }
+        if (Math.abs(dx) > 60) { next(); resetAuto(); } else { layout(); }
         frontCard = null;
       }
 
       stack.addEventListener('mousedown',  onDragStart);
-      stack.addEventListener('touchstart', onDragStart, { passive: true });
+      stack.addEventListener('touchstart', onDragStart, { passive: false });
       window.addEventListener('mousemove',  onDragMove);
       window.addEventListener('touchmove',  onDragMove, { passive: false });
       window.addEventListener('mouseup',    onDragEnd);
