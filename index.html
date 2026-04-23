@@ -606,6 +606,12 @@
     .footer-link:hover { color: var(--green); }
 
     /* ─── HERO CTAS BELOW VSL ────────────────────────── */
+    .vsl-badge-wrap {
+      display: flex; justify-content: center;
+      padding: .75rem 2rem 0;
+    }
+    @media (max-width: 640px) { .vsl-badge-wrap { display: none; } }
+
     .hero-ctas-below {
       display: flex; align-items: center; justify-content: center;
       gap: 1rem; flex-wrap: wrap;
@@ -738,9 +744,11 @@
 
 
     <!-- ── HERO CTAS (repeated below VSL) ──────────── -->
-    <div class="hero-social-proof fade-up" style="margin: 0 auto 0; display:flex; justify-content:center;" data-delay="0">
-      <span class="hero-stars">★</span>
-      <span class="hero-social-text"><strong>4.8</strong> beoordeeld door aannemers</span>
+    <div class="vsl-badge-wrap fade-up" data-delay="0">
+      <div class="hero-social-proof">
+        <span class="hero-stars">★</span>
+        <span class="hero-social-text"><strong>4.8</strong> beoordeeld door aannemers</span>
+      </div>
     </div>
     <div class="hero-ctas-below fade-up" data-delay="0">
       <a href="https://wa.me/31600000000?text=Hallo%2C%20ik%20wil%20graag%20meer%20weten%20over%20jullie%20AI%20systemen" class="btn-ghost">
