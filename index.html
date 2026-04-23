@@ -661,6 +661,41 @@
     }
     .faq-item.open .faq-a { max-height: 200px; padding: 0 1.4rem 1.2rem; }
 
+    /* ─── MOBILE STICKY NAV ─────────────────────────── */
+    .mobile-nav {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      background: rgba(245,245,247,.92);
+      padding: 0 1.5rem;
+      height: 62px;
+      align-items: center; justify-content: space-between;
+      opacity: 0;
+      transform: translateY(-100%);
+      transition: opacity .4s ease, transform .4s cubic-bezier(.4,0,.2,1);
+      pointer-events: none;
+    }
+    .mobile-nav.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    @media (max-width: 640px) {
+      .mobile-nav { display: flex; }
+    }
+    .mobile-nav-demo-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 9px 18px; border-radius: 10px;
+      background: var(--green); color: #FFFFFF;
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 13px;
+      border: none; cursor: pointer; text-decoration: none;
+      transition: background .2s;
+      box-shadow: 0 3px 12px rgba(59,130,246,.28);
+      flex-shrink: 0;
+    }
+    .mobile-nav-demo-btn:hover { background: var(--green2); }
+
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 640px) {
       .hero { padding: 1.75rem 1.5rem 1.25rem; }
@@ -702,6 +737,18 @@
         </a>
       </div>
     </nav>
+
+    <!-- ── MOBILE STICKY NAV (only on mobile, triggers after WhatsApp btn) ── -->
+    <div class="mobile-nav" id="mobile-nav">
+      <div class="nav-logo">
+        <div class="nav-logo-dot"></div>
+        FLOWSA
+      </div>
+      <a href="#contact" class="mobile-nav-demo-btn">
+        Gratis demo
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
+      </a>
+    </div>
 
 
     <!-- ── HERO ────────────────────────────────────── -->
@@ -1408,6 +1455,25 @@
         pNote.classList.add('hidden');
       }
     }
+
+    /* ── MOBILE STICKY NAV SCROLL TRIGGER ──────────── */
+    (function () {
+      var mobileNav  = document.getElementById('mobile-nav');
+      var whatsappRow = document.querySelector('.hero-ctas-below');
+      if (!mobileNav || !whatsappRow) return;
+
+      function onScroll() {
+        var rect = whatsappRow.getBoundingClientRect();
+        if (rect.bottom < 0) {
+          mobileNav.classList.add('is-visible');
+        } else {
+          mobileNav.classList.remove('is-visible');
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
 
     /* ── BLOB PARALLAX ──────────────────────────────── */
     (function () {
