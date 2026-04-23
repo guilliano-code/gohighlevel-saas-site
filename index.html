@@ -383,22 +383,42 @@
     }
     .testi-card {
       position: absolute; top: 0; left: 0; right: 0;
-      background: rgba(255,255,255,.58);
-      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(0,0,0,.08);
-      border-radius: 20px; padding: 1.75rem 2rem;
+      background: rgba(255,255,255,.14);
+      backdrop-filter: blur(48px) saturate(200%); -webkit-backdrop-filter: blur(48px) saturate(200%);
+      border: 1px solid rgba(255,255,255,.72);
+      border-bottom-color: rgba(0,0,0,.07);
+      border-right-color: rgba(255,255,255,.45);
+      border-radius: 28px; padding: 1.75rem 2rem;
       cursor: grab;
-      box-shadow: 0 4px 24px rgba(0,0,0,.07), 0 1px 4px rgba(0,0,0,.04);
+      overflow: hidden;
+      box-shadow:
+        0 12px 40px rgba(0,0,0,.10),
+        0 2px 8px rgba(0,0,0,.06),
+        inset 0 1.5px 0 rgba(255,255,255,.9),
+        inset 0 -1px 0 rgba(0,0,0,.04);
       transition: transform .45s cubic-bezier(.4,0,.2,1), opacity .45s ease, box-shadow .45s ease;
       will-change: transform, opacity;
       user-select: none;
       touch-action: pan-y;
     }
+    .testi-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        148deg,
+        rgba(255,255,255,.45) 0%,
+        rgba(255,255,255,.12) 30%,
+        rgba(255,255,255,0) 60%
+      );
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 0;
+    }
     .testi-card.is-dragging {
       cursor: grabbing;
       transition: opacity .2s ease;
     }
-    .testi-card-inner { pointer-events: none; }
+    .testi-card-inner { pointer-events: none; position: relative; z-index: 1; }
     .testi-header { display: flex; align-items: center; gap: 14px; margin-bottom: 1.1rem; }
     .testi-avatar {
       width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
