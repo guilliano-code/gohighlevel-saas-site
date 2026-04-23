@@ -148,6 +148,23 @@
       max-width: 440px; margin-bottom: 2.5rem;
     }
 
+    .hero-social-proof {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(251,188,4,.07);
+      border: 1px solid rgba(251,188,4,.22);
+      border-radius: 12px; padding: 9px 18px;
+      margin-bottom: 2rem;
+      cursor: default;
+      transition: box-shadow .25s, transform .2s;
+    }
+    .hero-social-proof:hover {
+      box-shadow: 0 0 0 6px rgba(251,188,4,.1), 0 4px 20px rgba(251,188,4,.15);
+      transform: translateY(-1px);
+    }
+    .hero-stars { color: #F59E0B; font-size: 15px; letter-spacing: 2px; }
+    .hero-social-text { font-size: 13px; color: var(--muted); }
+    .hero-social-text strong { color: var(--white); }
+
     .hero-ctas { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; justify-content: center; }
 
     .btn-primary {
@@ -599,6 +616,31 @@
       justify-content: flex-start;
     }
 
+    /* ─── FAQ ───────────────────────────────────────── */
+    .faq-section { padding: 4.5rem 0; }
+    .faq-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: .75rem; max-width: 720px; }
+    .faq-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .faq-item:hover { border-color: rgba(59,130,246,.3); box-shadow: 0 0 0 4px rgba(59,130,246,.07); }
+    .faq-q {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 1.4rem; background: none; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600;
+      color: var(--white); text-align: left; gap: 1rem;
+    }
+    .faq-icon { flex-shrink: 0; transition: transform .3s; color: var(--green); }
+    .faq-item.open .faq-icon { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      font-size: 14px; color: var(--muted); line-height: 1.65;
+      transition: max-height .35s ease, padding .3s ease;
+      padding: 0 1.4rem;
+    }
+    .faq-item.open .faq-a { max-height: 200px; padding: 0 1.4rem 1.2rem; }
+
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 640px) {
       .hero { padding: 1.75rem 1.5rem 1.25rem; }
@@ -651,12 +693,17 @@
       </div>
 
       <h1 class="fade-up" data-delay="80">
-        Bezoekers die vertrekken,<br>zijn <span class="accent-green">gemiste omzet</span>
+        Meer klanten. <span class="accent-green">Minder gedoe.</span>
       </h1>
 
       <p class="hero-sub fade-up" data-delay="160">
-        Flowsa zet elke bezoeker automatisch om naar een aanvraag, afspraak of terugbelverzoek — zodat jij nooit meer een lead mist
+        De slimme website voor aannemers die willen groeien zonder extra personeel.
       </p>
+
+      <div class="hero-social-proof fade-up" data-delay="200">
+        <span class="hero-stars">★★★★★</span>
+        <span class="hero-social-text"><strong>4.8</strong> beoordeeld door aannemers over heel Nederland &amp; België</span>
+      </div>
 
       <div class="hero-ctas fade-up" data-delay="240">
         <a href="#contact" class="btn-primary">
@@ -760,14 +807,14 @@
           <!-- Google Reviews -->
           <div class="feat-card fade-up" data-delay="320" style="border-color: rgba(251,188,4,.15);">
             <div class="feat-icon" style="background:rgba(251,188,4,.1);border:1px solid rgba(251,188,4,.2);">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972a6.033 6.033 0 1 1 0-12.064 5.96 5.96 0 0 1 4.076 1.594l2.858-2.858A9.969 9.969 0 0 0 12.545 2C6.981 2 2.5 6.477 2.5 12s4.481 10 10.045 10c5.792 0 9.63-4.074 9.63-9.796 0-.657-.07-1.298-.19-1.914l-9.44-.051z" fill="#FBBC04"/><path d="M6.306 7.691 2.898 5.198A9.965 9.965 0 0 0 2.5 12c0 1.614.384 3.14 1.063 4.494l3.424-2.655A5.98 5.98 0 0 1 6.5 12c0-.804.158-1.57.443-2.272l-.637-2.037z" fill="#EA4335"/><path d="m12.545 22c2.717 0 4.998-.9 6.664-2.44l-3.254-2.524c-.902.603-2.057.963-3.41.963a6.028 6.028 0 0 1-5.726-4.147l-3.424 2.655C5.013 19.833 8.51 22 12.545 22z" fill="#34A853"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972a6.033 6.033 0 1 1 0-12.064 5.96 5.96 0 0 1 4.076 1.594l2.858-2.858A9.969 9.969 0 0 0 12.545 2C6.981 2 2.5 6.477 2.5 12s4.481 10 10.045 10c5.792 0 9.63-4.074 9.63-9.796 0-.657-.07-1.298-.19-1.914l-9.44-.051z" fill="#FBBC04"/><path d="M6.306 7.691 2.898 5.198A9.965 9.965 0 0 0 2.5 12c0 1.614.384 3.14 1.063 4.494l3.424-2.655A5.98 5.98 0 0 1 6.5 12c0-.804.158-1.57.443-2.272l-.637-2.037z" fill="#3b82f6"/><path d="m12.545 22c2.717 0 4.998-.9 6.664-2.44l-3.254-2.524c-.902.603-2.057.963-3.41.963a6.028 6.028 0 0 1-5.726-4.147l-3.424 2.655C5.013 19.833 8.51 22 12.545 22z" fill="#34A853"/></svg>
             </div>
             <h3 class="feat-title">Google Reviews Systeem</h3>
             <p class="feat-text">Wij bouwen een volledig geautomatiseerd systeem dat jouw tevreden klanten actief vraagt om een Google review — en alleen de 4-sterren-en-hoger reviews doorstelt naar jouw Google-pagina. Minder negatieve feedback zichtbaar, meer vertrouwen online.</p>
             <div class="feat-tags">
-              <span class="feat-tag" style="background:rgba(251,188,4,.1);color:#fbbf24;border:1px solid rgba(251,188,4,.25);">Alleen 4+ sterren</span>
-              <span class="feat-tag" style="background:rgba(251,188,4,.1);color:#fbbf24;border:1px solid rgba(251,188,4,.25);">Volledig automatisch</span>
-              <span class="feat-tag" style="background:rgba(251,188,4,.1);color:#fbbf24;border:1px solid rgba(251,188,4,.25);">Meer vertrouwen</span>
+              <span class="feat-tag" style="background:rgba(251,188,4,.1);color:#fbbf24;border:none;">Alleen 4+ sterren</span>
+              <span class="feat-tag" style="background:rgba(251,188,4,.1);color:#fbbf24;border:none;">Volledig automatisch</span>
+              <span class="feat-tag" style="background:rgba(251,188,4,.1);color:#fbbf24;border:none;">Meer vertrouwen</span>
             </div>
           </div>
 
@@ -828,7 +875,7 @@
       <div class="wrap">
         <div class="fade-up" data-delay="0">
           <div class="section-tag">Wat klanten zeggen</div>
-          <h2 class="section-h2">Ondernemers die al beter converteren.</h2>
+          <h2 class="section-h2">Aannemers die al beter converteren.</h2>
         </div>
 
 
@@ -937,7 +984,7 @@
                 <span class="price-period">/mnd</span>
               </div>
               <div class="price-yearly-note" id="basis-yearly-note">€576 per jaar gefactureerd — je bespaart €144</div>
-              <p class="price-sub">Ideaal voor startende ondernemers</p>
+              <p class="price-sub">Ideaal voor aannemers</p>
               <div class="price-divider"></div>
               <ul class="price-features">
                 <li class="price-feature">
@@ -978,24 +1025,40 @@
                 <span class="price-period">/mnd</span>
               </div>
               <div class="price-yearly-note" id="starter-yearly-note">€1.896 per jaar gefactureerd — je bespaart €468</div>
-              <p class="price-sub">Ideaal voor kleine bedrijven & ZZP'ers</p>
+              <p class="price-sub">Ideaal voor aannemers</p>
               <div class="price-divider"></div>
               <ul class="price-features">
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Website
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Desktop & Mobiel geoptimaliseerd
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Website SEO
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Contact formulier
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Chat Widget
+                </li>
                 <li class="price-feature">
                   <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   AI Chatbot op jouw website
                 </li>
                 <li class="price-feature">
                   <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  AI Callback systeem
+                  AI Call systeem
                 </li>
                 <li class="price-feature">
                   <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   CRM Dashboard (1 gebruiker)
-                </li>
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  E-mail & SMS automations
                 </li>
                 <li class="price-feature">
                   <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1024,12 +1087,16 @@
                 <span class="price-period">/mnd</span>
               </div>
               <div class="price-yearly-note" id="pro-yearly-note">€3.816 per jaar gefactureerd — je bespaart €948</div>
-              <p class="price-sub">Voor snelgroeiende bedrijven</p>
+              <p class="price-sub">Voor aannemers die willen groeien</p>
               <div class="price-divider"></div>
               <ul class="price-features">
                 <li class="price-feature">
                   <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   Alles uit Starter
+                </li>
+                <li class="price-feature">
+                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  E-mail & SMS automations
                 </li>
                 <li class="price-feature">
                   <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1079,6 +1146,39 @@
       </div>
     </section>
 
+
+    <!-- ── FAQ ─────────────────────────────────────── -->
+    <section class="faq-section">
+      <div class="wrap">
+        <div class="fade-up" data-delay="0">
+          <div class="section-tag">FAQ</div>
+          <h2 class="section-h2">Dit willen mensen altijd weten</h2>
+        </div>
+        <div class="faq-list fade-up" data-delay="80">
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              Werkt het ook voor mijn branche?
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a">Flowsa wordt gebruikt door aannemers, makelaars, klinieken en meer. Als jij klanten wil, werkt het voor jou.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              Hoe snel is het live?
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a">Gemiddeld binnen 5 werkdagen.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              Wat als ik vragen heb?
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a">Je hebt altijd toegang tot onze support — geen chatbot, gewoon een mens.</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ── FOOTER ────────────────────────────────────── -->
     <footer>
@@ -1214,6 +1314,14 @@
       layout();
       resetAuto();
     })();
+
+    /* ── FAQ ────────────────────────────────────────── */
+    function toggleFaq(btn) {
+      var item = btn.parentElement;
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(el) { el.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    }
 
     /* ── VSL PLAY ───────────────────────────────────── */
     function playVsl() {
