@@ -159,6 +159,10 @@
     }
     .hero-social-proof:hover { box-shadow: none; transform: none; }
     .hero-stars { color: #F59E0B; font-size: 15px; letter-spacing: 2px; }
+    @media (max-width: 640px) {
+      .hero-stars { font-size: 0; }
+      .hero-stars::before { content: '★'; font-size: 14px; color: #F59E0B; letter-spacing: 0; }
+    }
     .hero-social-text { font-size: 13px; color: var(--muted); }
     .hero-social-text strong { color: var(--white); }
 
