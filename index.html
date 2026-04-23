@@ -613,7 +613,7 @@
     .hero-badge-mobile  { display: none; }
     @media (max-width: 640px) {
       .hero-badge-desktop { display: none; }
-      .hero-badge-mobile  { display: inline-flex; margin-bottom: 1.25rem; margin-top: -1.5rem; }
+      .hero-badge-mobile  { display: inline-flex; margin-bottom: 1.25rem; margin-top: 0; }
       .hero-badge-mobile .hero-social-text strong { color: var(--green); }
     }
     .vsl-badge-wrap { display: none; }
@@ -707,9 +707,12 @@
     <!-- ── HERO ────────────────────────────────────── -->
     <section class="hero">
 
-      <div class="hero-badge fade-up" data-delay="0">
-        <span class="hero-badge-dot"></span>
-        Aangedreven door AI — 24/7 voor jou actief
+      <div class="hero-social-proof hero-badge-desktop fade-up" data-delay="0">
+        <span class="hero-stars">★★★★★</span>
+        <span class="hero-social-text"><strong>4.8</strong> — Beoordeeld door aannemers over heel Nederland &amp; België</span>
+      </div>
+      <div class="hero-social-proof hero-badge-mobile fade-up" data-delay="0">
+        <span class="hero-social-text"><strong>4.8</strong> beoordeeld door aannemers in Nederland en België</span>
       </div>
 
       <h1 class="fade-up" data-delay="80">
@@ -719,14 +722,6 @@
       <p class="hero-sub fade-up" data-delay="160">
         De slimme website voor aannemers die willen groeien zonder extra personeel
       </p>
-
-      <div class="hero-social-proof hero-badge-desktop fade-up" data-delay="200">
-        <span class="hero-stars">★★★★★</span>
-        <span class="hero-social-text"><strong>4.8</strong> — Beoordeeld door aannemers over heel Nederland &amp; België</span>
-      </div>
-      <div class="hero-social-proof hero-badge-mobile fade-up" data-delay="200">
-        <span class="hero-social-text"><strong>4.8</strong> beoordeeld door aannemers in Nederland en België</span>
-      </div>
 
       <div class="hero-ctas fade-up" data-delay="240">
         <a href="#contact" class="btn-primary">
