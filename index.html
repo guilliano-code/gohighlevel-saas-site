@@ -118,7 +118,7 @@
     .login-btn:hover .login-btn__overlay { transform: translateX(0); opacity: 1; }
 
     /* ─── HERO ───────────────────────────────────────── */
-    .hero { padding: 6rem 2rem 4rem; max-width: 74rem; margin: 0 auto; }
+    .hero { padding: 6rem 2rem 4rem; max-width: 74rem; margin: 0 auto; text-align: left; }
 
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
@@ -157,15 +157,12 @@
       cursor: default;
       transition: box-shadow .25s, transform .2s;
     }
-    .hero-social-proof:hover {
-      box-shadow: 0 0 0 6px rgba(251,188,4,.1), 0 4px 20px rgba(251,188,4,.15);
-      transform: translateY(-1px);
-    }
+    .hero-social-proof:hover { box-shadow: none; transform: none; }
     .hero-stars { color: #F59E0B; font-size: 15px; letter-spacing: 2px; }
     .hero-social-text { font-size: 13px; color: var(--muted); }
     .hero-social-text strong { color: var(--white); }
 
-    .hero-ctas { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; justify-content: center; }
+    .hero-ctas { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; justify-content: flex-start; }
 
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
@@ -364,12 +361,12 @@
     }
     .testi-card {
       position: absolute; top: 0; left: 0; right: 0;
-      background: rgba(255,255,255,.58);
-      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(0,0,0,.08);
-      border-radius: 20px; padding: 1.75rem 2rem;
+      background: linear-gradient(145deg, rgba(255,255,255,.72) 0%, rgba(255,255,255,.48) 100%);
+      backdrop-filter: blur(32px) saturate(180%); -webkit-backdrop-filter: blur(32px) saturate(180%);
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 24px; padding: 2rem 2.25rem;
       cursor: grab;
-      box-shadow: 0 4px 24px rgba(0,0,0,.07), 0 1px 4px rgba(0,0,0,.04);
+      box-shadow: 0 8px 32px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.6) inset;
       transition: transform .45s cubic-bezier(.4,0,.2,1), opacity .45s ease, box-shadow .45s ease;
       will-change: transform, opacity;
       user-select: none;
@@ -643,7 +640,8 @@
 
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 640px) {
-      .hero { padding: 1.75rem 1.5rem 1.25rem; }
+      .hero { padding: 1.75rem 1.5rem 1.25rem; text-align: center; }
+      .hero-ctas { justify-content: center; }
       .wrap { padding: 0 1.5rem; }
       .features-section,
       .hiw-section,
@@ -693,7 +691,7 @@
       </div>
 
       <h1 class="fade-up" data-delay="80">
-        Meer klanten. <span class="accent-green">Minder gedoe.</span>
+        Meer klanten<br><span class="accent-green">Minder gedoe</span>
       </h1>
 
       <p class="hero-sub fade-up" data-delay="160">
@@ -753,7 +751,7 @@
       <div class="wrap">
         <div class="fade-up" data-delay="0">
           <div class="section-tag">Wat wij bieden</div>
-          <h2 class="section-h2">Een website die klanten aantrekt.<br>En omzet oplevert.</h2>
+          <h2 class="section-h2">Een website die klanten aantrekt<br>en omzet oplevert</h2>
           <p class="section-sub">Van websitebezoeker naar betalende klant — volledig automatisch, zonder dat jij er iets voor hoeft te doen.</p>
         </div>
 
@@ -875,7 +873,7 @@
       <div class="wrap">
         <div class="fade-up" data-delay="0">
           <div class="section-tag">Wat klanten zeggen</div>
-          <h2 class="section-h2">Aannemers die al beter converteren.</h2>
+          <h2 class="section-h2">Aannemers die al beter converteren</h2>
         </div>
 
 
@@ -976,7 +974,7 @@
             <div class="price-card">
               <div class="price-card-header">
                 <span class="price-billing-label faded" id="basis-billing-label">Maandelijks</span>
-                <span class="price-plan-badge starter">Basic</span>
+                <span class="price-plan-badge starter">Starter</span>
               </div>
               <div class="price-amount">
                 <span class="price-currency">€</span>
@@ -984,7 +982,7 @@
                 <span class="price-period">/mnd</span>
               </div>
               <div class="price-yearly-note" id="basis-yearly-note">€576 per jaar gefactureerd — je bespaart €144</div>
-              <p class="price-sub">Ideaal voor aannemers</p>
+              <p class="price-sub">Ideaal voor startende aannemers</p>
               <div class="price-divider"></div>
               <ul class="price-features">
                 <li class="price-feature">
@@ -1017,7 +1015,7 @@
             <div class="price-card">
               <div class="price-card-header">
                 <span class="price-billing-label faded" id="starter-billing-label">Maandelijks</span>
-                <span class="price-plan-badge starter">Starter</span>
+                <span class="price-plan-badge starter">Plus</span>
               </div>
               <div class="price-amount">
                 <span class="price-currency">€</span>
@@ -1025,7 +1023,7 @@
                 <span class="price-period">/mnd</span>
               </div>
               <div class="price-yearly-note" id="starter-yearly-note">€1.896 per jaar gefactureerd — je bespaart €468</div>
-              <p class="price-sub">Ideaal voor aannemers</p>
+              <p class="price-sub">Ideaal voor gevestigde aannemers</p>
               <div class="price-divider"></div>
               <ul class="price-features">
                 <li class="price-feature">
@@ -1087,7 +1085,7 @@
                 <span class="price-period">/mnd</span>
               </div>
               <div class="price-yearly-note" id="pro-yearly-note">€3.816 per jaar gefactureerd — je bespaart €948</div>
-              <p class="price-sub">Voor aannemers die willen groeien</p>
+              <p class="price-sub">Ideaal voor groeiende aannemers</p>
               <div class="price-divider"></div>
               <ul class="price-features">
                 <li class="price-feature">
@@ -1152,7 +1150,7 @@
       <div class="wrap">
         <div class="fade-up" data-delay="0">
           <div class="section-tag">FAQ</div>
-          <h2 class="section-h2">Dit willen mensen altijd weten</h2>
+          <h2 class="section-h2">Veelgestelde vragen</h2>
         </div>
         <div class="faq-list fade-up" data-delay="80">
           <div class="faq-item">
