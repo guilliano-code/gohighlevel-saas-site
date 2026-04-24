@@ -403,7 +403,7 @@
     .proof-section { padding: 4.5rem 0; }
 
     /* Glass Testimonial Swiper */
-    .testi-swiper { position: relative; margin-top: 2rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .testi-swiper { position: relative; margin-top: 2rem; max-width: 560px; margin-left: auto; margin-right: auto; overflow: hidden; }
     .testi-stack {
       position: relative;
       min-height: 300px;
@@ -630,6 +630,76 @@
       border: 1px solid var(--border2);
     }
     .price-cta.ghost:hover { border-color: var(--green); color: var(--green); background: rgba(59,130,246,.04); }
+
+    /* ─── COMPARE TABLE ─────────────────────────────── */
+    .compare-wrap {
+      margin-top: 2.5rem;
+    }
+    .compare-toggle-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; padding: 13px 20px; border-radius: 12px;
+      border: 1px solid var(--border2);
+      background: rgba(255,255,255,.55); color: var(--muted);
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: border-color .2s, color .2s, background .2s;
+      backdrop-filter: blur(10px);
+    }
+    .compare-toggle-btn:hover { border-color: var(--green); color: var(--green); background: rgba(59,130,246,.04); }
+    .compare-toggle-btn .cmp-chevron { transition: transform .3s ease; }
+    .compare-toggle-btn.open .cmp-chevron { transform: rotate(180deg); }
+
+    .compare-table-wrap {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .35s ease;
+      opacity: 0;
+    }
+    .compare-table-wrap.open {
+      max-height: 2000px;
+      opacity: 1;
+    }
+    .compare-table {
+      margin-top: 1.25rem;
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 20px; overflow: hidden;
+    }
+    .compare-table table {
+      width: 100%; border-collapse: collapse;
+    }
+    .compare-table thead tr {
+      border-bottom: 1px solid var(--border2);
+    }
+    .compare-table th {
+      padding: 14px 16px; text-align: center;
+      font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+    }
+    .compare-table th:first-child { text-align: left; }
+    .compare-table th.th-highlight {
+      color: var(--green);
+    }
+    .compare-table tbody tr {
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      transition: background .18s;
+    }
+    .compare-table tbody tr:last-child { border-bottom: none; }
+    .compare-table tbody tr:hover { background: rgba(0,0,0,.025); }
+    .compare-table td {
+      padding: 11px 16px; text-align: center;
+      font-size: 13.5px; color: rgba(0,0,0,.68);
+    }
+    .compare-table td:first-child {
+      text-align: left; font-weight: 500; color: var(--white);
+    }
+    .cmp-check { color: var(--green); font-size: 15px; }
+    .cmp-cross { color: rgba(0,0,0,.2); font-size: 17px; line-height: 1; }
+    .cmp-note { font-size: 12px; color: var(--muted); }
+    @media (max-width: 640px) {
+      .compare-table th, .compare-table td { padding: 10px 10px; font-size: 12.5px; }
+      .compare-table td:first-child { font-size: 12px; }
+    }
 
     /* ─── CTA SECTION ────────────────────────────────── */
     .cta-section {
@@ -1127,6 +1197,7 @@
 
           <!-- STARTER -->
           <div class="price-card-wrap fade-up" data-delay="80">
+            <div class="most-value-tag">MEEST GEKOZEN</div>
             <div class="price-card">
               <div class="price-card-header">
                 <span class="price-billing-label faded" id="starter-billing-label">Maandelijks</span>
@@ -1134,10 +1205,10 @@
               </div>
               <div class="price-amount">
                 <span class="price-currency">€</span>
-                <span class="price-num" id="starter-price">158</span>
+                <span class="price-num" id="starter-price">78</span>
                 <span class="price-period">/mnd</span>
               </div>
-              <div class="price-yearly-note" id="starter-yearly-note">€1.896 per jaar gefactureerd — je bespaart €468</div>
+              <div class="price-yearly-note" id="starter-yearly-note">€936 per jaar gefactureerd — je bespaart €228</div>
               <p class="price-sub">Ideaal voor gevestigde aannemers</p>
               <div class="price-divider"></div>
               <ul class="price-features">
@@ -1172,7 +1243,6 @@
 
           <!-- PRO -->
           <div class="price-card-wrap fade-up" data-delay="160">
-            <div class="most-value-tag">MOST VALUE</div>
             <div class="price-card featured">
               <div class="price-card-header">
                 <span class="price-billing-label faded" id="pro-billing-label">Maandelijks</span>
@@ -1180,10 +1250,10 @@
               </div>
               <div class="price-amount">
                 <span class="price-currency">€</span>
-                <span class="price-num" id="pro-price">318</span>
+                <span class="price-num" id="pro-price">158</span>
                 <span class="price-period">/mnd</span>
               </div>
-              <div class="price-yearly-note" id="pro-yearly-note">€3.816 per jaar gefactureerd — je bespaart €948</div>
+              <div class="price-yearly-note" id="pro-yearly-note">€1.896 per jaar gefactureerd — je bespaart €468</div>
               <p class="price-sub">Ideaal voor groeiende aannemers</p>
               <div class="price-divider"></div>
               <ul class="price-features">
@@ -1216,6 +1286,108 @@
             </div>
           </div>
 
+        </div>
+
+        <!-- Compare Plans -->
+        <div class="compare-wrap fade-up" data-delay="240">
+          <button class="compare-toggle-btn" id="compare-btn" onclick="toggleCompare()">
+            Vergelijk alle functies
+            <svg class="cmp-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="compare-table-wrap" id="compare-table-wrap">
+            <div class="compare-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width:40%;">Functie</th>
+                    <th>Basic</th>
+                    <th class="th-highlight">Plus</th>
+                    <th>Pro</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Website</td>
+                    <td><span class="cmp-check">✓</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                  </tr>
+                  <tr>
+                    <td>Desktop &amp; Mobiel geoptimaliseerd</td>
+                    <td><span class="cmp-check">✓</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                  </tr>
+                  <tr>
+                    <td>Website SEO</td>
+                    <td><span class="cmp-check">✓</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                  </tr>
+                  <tr>
+                    <td>Contact formulier</td>
+                    <td><span class="cmp-check">✓</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                  </tr>
+                  <tr>
+                    <td>Chat Widget</td>
+                    <td><span class="cmp-check">✓</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                  </tr>
+                  <tr>
+                    <td>AI Chatbot op jouw website</td>
+                    <td><span class="cmp-cross">—</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                  </tr>
+                  <tr>
+                    <td>AI Call systeem</td>
+                    <td><span class="cmp-cross">—</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                  </tr>
+                  <tr>
+                    <td>CRM Dashboard</td>
+                    <td><span class="cmp-cross">—</span></td>
+                    <td><span class="cmp-note">1 gebruiker</span></td>
+                    <td><span class="cmp-note">5 gebruikers</span></td>
+                  </tr>
+                  <tr>
+                    <td>Google Review systeem</td>
+                    <td><span class="cmp-cross">—</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                  </tr>
+                  <tr>
+                    <td>E-mail &amp; SMS automations</td>
+                    <td><span class="cmp-cross">—</span></td>
+                    <td><span class="cmp-cross">—</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                  </tr>
+                  <tr>
+                    <td>WhatsApp integratie</td>
+                    <td><span class="cmp-cross">—</span></td>
+                    <td><span class="cmp-cross">—</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                  </tr>
+                  <tr>
+                    <td>Onbeperkte leads &amp; klanten</td>
+                    <td><span class="cmp-cross">—</span></td>
+                    <td><span class="cmp-cross">—</span></td>
+                    <td><span class="cmp-check">✓</span></td>
+                  </tr>
+                  <tr>
+                    <td>Support</td>
+                    <td><span class="cmp-cross">—</span></td>
+                    <td><span class="cmp-note">Standaard</span></td>
+                    <td><span class="cmp-note">Priority</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
 
         <p class="fade-up" data-delay="280" style="margin-top:1.5rem;font-size:13px;color:var(--muted);text-align:center;">
@@ -1444,15 +1616,15 @@
     });
 
     /* ── BILLING TOGGLE ─────────────────────────────── */
-    // Starter: €197/mnd → €158/mnd jaarlijks (20% korting, €1.896/jaar, bespaar €468)
-    // Pro:     €397/mnd → €318/mnd jaarlijks (20% korting, €3.816/jaar, bespaar €948)
+    // Plus: €97/mnd → €78/mnd jaarlijks (20% korting, €936/jaar, bespaar €228)
+    // Pro:  €197/mnd → €158/mnd jaarlijks (20% korting, €1.896/jaar, bespaar €468)
     var billing = 'yearly';
     var animating = false;
 
     var PRICES = {
       basis:   { monthly: 60,  yearly: 48  },
-      starter: { monthly: 197, yearly: 158 },
-      pro:     { monthly: 397, yearly: 318 },
+      starter: { monthly: 97,  yearly: 78  },
+      pro:     { monthly: 197, yearly: 158 },
     };
 
     function animateCount(elId, fromVal, toVal, duration) {
@@ -1491,8 +1663,8 @@
 
       if (yearly) {
         bNote.textContent = '€576 per jaar gefactureerd — je bespaart €144';
-        sNote.textContent = '€1.896 per jaar gefactureerd — je bespaart €468';
-        pNote.textContent = '€3.816 per jaar gefactureerd — je bespaart €948';
+        sNote.textContent = '€936 per jaar gefactureerd — je bespaart €228';
+        pNote.textContent = '€1.896 per jaar gefactureerd — je bespaart €468';
         bNote.classList.remove('hidden');
         sNote.classList.remove('hidden');
         pNote.classList.remove('hidden');
@@ -1501,6 +1673,15 @@
         sNote.classList.add('hidden');
         pNote.classList.add('hidden');
       }
+    }
+
+    /* ── COMPARE PLANS TOGGLE ──────────────────────── */
+    function toggleCompare() {
+      var btn  = document.getElementById('compare-btn');
+      var wrap = document.getElementById('compare-table-wrap');
+      var open = wrap.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.querySelector('.cmp-chevron').style.transform = open ? 'rotate(180deg)' : '';
     }
 
     /* ── MOBILE STICKY NAV SCROLL TRIGGER ──────────── */
