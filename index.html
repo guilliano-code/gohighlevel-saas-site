@@ -403,11 +403,10 @@
     .proof-section { padding: 4.5rem 0; }
 
     /* Glass Testimonial Swiper */
-    .testi-swiper { position: relative; margin-top: 2rem; max-width: 560px; margin-left: auto; margin-right: auto; overflow-x: clip; }
+    .testi-swiper { position: relative; margin-top: 2rem; max-width: 560px; margin-left: auto; margin-right: auto; }
     .testi-stack {
       position: relative;
-      min-height: 300px;
-      padding-bottom: 26px; /* room for peeking cards */
+      padding-bottom: 30px;
     }
     .testi-card {
       position: absolute; top: 0; left: 0; right: 0;
@@ -1474,6 +1473,8 @@
 
 
   <script>
+    if (history.scrollRestoration) history.scrollRestoration = 'manual';
+
     /* ── FADE IN on scroll ──────────────────────────── */
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -1509,8 +1510,11 @@
       });
 
       function layout() {
+        var frontHeight = cards[current].offsetHeight;
+        stack.style.height = (frontHeight + 30) + 'px';
+
         cards.forEach(function(card, i) {
-          var pos = (i - current + total) % total; /* 0 = front, 1 = behind, 2 = further */
+          var pos = (i - current + total) % total;
           if (pos === 0) {
             card.style.transform = 'translateY(0) scale(1)';
             card.style.opacity   = '1';
@@ -1532,6 +1536,8 @@
           d.classList.toggle('active', i === current);
         });
       }
+
+      window.addEventListener('resize', layout);
 
       function goTo(idx) {
         current = (idx + total) % total;
@@ -1564,6 +1570,8 @@
         var cy = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
         var dx = cx - startX;
         var dy = cy - startY;
+        var maxDrag = Math.min(window.innerWidth * 0.7, 300);
+        dx = Math.max(-maxDrag, Math.min(maxDrag, dx));
         if (Math.abs(dx) > Math.abs(dy) && e.cancelable) e.preventDefault();
         frontCard.style.transform = 'translateY(' + (dy * 0.04) + 'px) translateX(' + dx + 'px) rotate(' + (dx * 0.03) + 'deg)';
         frontCard.style.transition = 'none';
