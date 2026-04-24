@@ -1205,10 +1205,10 @@
               </div>
               <div class="price-amount">
                 <span class="price-currency">€</span>
-                <span class="price-num" id="starter-price">102</span>
+                <span class="price-num" id="starter-price">96</span>
                 <span class="price-period">/mnd</span>
               </div>
-              <div class="price-yearly-note" id="starter-yearly-note">€1.224 per jaar gefactureerd — je bespaart €300</div>
+              <div class="price-yearly-note" id="starter-yearly-note">€1.152 per jaar gefactureerd — je bespaart €288</div>
               <p class="price-sub">Ideaal voor gevestigde aannemers</p>
               <div class="price-divider"></div>
               <ul class="price-features">
@@ -1250,10 +1250,10 @@
               </div>
               <div class="price-amount">
                 <span class="price-currency">€</span>
-                <span class="price-num" id="pro-price">158</span>
+                <span class="price-num" id="pro-price">160</span>
                 <span class="price-period">/mnd</span>
               </div>
-              <div class="price-yearly-note" id="pro-yearly-note">€1.896 per jaar gefactureerd — je bespaart €468</div>
+              <div class="price-yearly-note" id="pro-yearly-note">€1.920 per jaar gefactureerd — je bespaart €480</div>
               <p class="price-sub">Ideaal voor groeiende aannemers</p>
               <div class="price-divider"></div>
               <ul class="price-features">
@@ -1623,8 +1623,8 @@
 
     var PRICES = {
       basis:   { monthly: 60,  yearly: 48  },
-      starter: { monthly: 127, yearly: 102 },
-      pro:     { monthly: 197, yearly: 158 },
+      starter: { monthly: 120, yearly: 96  },
+      pro:     { monthly: 200, yearly: 160 },
     };
 
     function animateCount(elId, fromVal, toVal, duration) {
@@ -1663,8 +1663,8 @@
 
       if (yearly) {
         bNote.textContent = '€576 per jaar gefactureerd — je bespaart €144';
-        sNote.textContent = '€1.224 per jaar gefactureerd — je bespaart €300';
-        pNote.textContent = '€1.896 per jaar gefactureerd — je bespaart €468';
+        sNote.textContent = '€1.152 per jaar gefactureerd — je bespaart €288';
+        pNote.textContent = '€1.920 per jaar gefactureerd — je bespaart €480';
         bNote.classList.remove('hidden');
         sNote.classList.remove('hidden');
         pNote.classList.remove('hidden');
