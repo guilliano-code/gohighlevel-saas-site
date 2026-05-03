@@ -1833,6 +1833,13 @@
         });
       }
 
+      document.getElementById('vsl-modal-overlay').addEventListener('click', function (e) {
+        if (e.target === this) {
+          this.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+
       var form = document.getElementById('vsl-lead-form');
       if (!form) return;
 
