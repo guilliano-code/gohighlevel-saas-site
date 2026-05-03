@@ -630,6 +630,102 @@
     }
     .price-cta.ghost:hover { border-color: var(--green); color: var(--green); background: rgba(59,130,246,.04); }
 
+    /* ─── VSL LEAD MODAL ────────────────────────────── */
+    .vsl-modal-overlay {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.25rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity .35s ease;
+    }
+    .vsl-modal-overlay.open {
+      opacity: 1; pointer-events: auto;
+    }
+    .vsl-modal {
+      width: 100%; max-width: 520px;
+      max-height: 90vh; overflow-y: auto;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 28px;
+      padding: 2.25rem 2rem 2rem;
+      box-shadow: 0 24px 80px rgba(0,0,0,.18), inset 0 1.5px 0 rgba(255,255,255,1);
+      transform: translateY(24px) scale(.97);
+      transition: transform .4s cubic-bezier(.4,0,.2,1);
+    }
+    .vsl-modal-overlay.open .vsl-modal {
+      transform: translateY(0) scale(1);
+    }
+    .vsl-modal-header { margin-bottom: 1.5rem; }
+    .vsl-modal-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--green);
+      margin-bottom: .85rem;
+    }
+    .vsl-modal-badge-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--green);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .vsl-modal-title {
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 1.35rem; letter-spacing: -.02em; line-height: 1.25;
+      color: var(--white); margin-bottom: .45rem;
+    }
+    .vsl-modal-sub {
+      font-size: 13.5px; color: var(--muted); line-height: 1.6;
+    }
+    .vsl-form { display: flex; flex-direction: column; gap: .85rem; }
+    .vsl-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    @media (max-width: 480px) { .vsl-form-row { grid-template-columns: 1fr; } }
+    .vsl-field { display: flex; flex-direction: column; gap: 5px; }
+    .vsl-label {
+      font-size: 12px; font-weight: 600; color: var(--white);
+      letter-spacing: .01em;
+    }
+    .vsl-input, .vsl-select {
+      width: 100%; padding: 10px 14px; border-radius: 10px;
+      border: 1px solid var(--border2);
+      background: rgba(255,255,255,.7);
+      font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--white);
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      -webkit-appearance: none; appearance: none;
+    }
+    .vsl-input::placeholder { color: var(--muted2); }
+    .vsl-input:focus, .vsl-select:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(59,130,246,.12);
+    }
+    .vsl-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 34px;
+      cursor: pointer;
+    }
+    .vsl-submit {
+      margin-top: .5rem;
+      width: 100%; padding: 14px 20px; border-radius: 12px;
+      background: var(--green); color: #FFFFFF;
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 15px;
+      border: none; cursor: pointer;
+      box-shadow: 0 4px 18px rgba(59,130,246,.3);
+      transition: background .2s, transform .2s, box-shadow .2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .vsl-submit:hover {
+      background: var(--green2);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(59,130,246,.4);
+    }
+    .vsl-privacy {
+      text-align: center; font-size: 11.5px; color: var(--muted2);
+      margin-top: .6rem; line-height: 1.5;
+    }
+
     /* ─── COMPARE TABLE ─────────────────────────────── */
     .compare-wrap {
       margin-top: 2.5rem;
@@ -1460,6 +1556,102 @@
       </div>
     </section>
 
+    <!-- ── VSL LEAD MODAL ────────────────────────────── -->
+    <div class="vsl-modal-overlay" id="vsl-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="vsl-modal-title">
+      <div class="vsl-modal">
+        <div class="vsl-modal-header">
+          <div class="vsl-modal-badge">
+            <div class="vsl-modal-badge-dot"></div>
+            Bekijk de video gratis
+          </div>
+          <h2 class="vsl-modal-title" id="vsl-modal-title">Vul je gegevens in om de video te bekijken</h2>
+          <p class="vsl-modal-sub">We gebruiken je gegevens alleen om je te helpen meer klanten te krijgen — geen spam.</p>
+        </div>
+
+        <form class="vsl-form" id="vsl-lead-form" novalidate>
+
+          <div class="vsl-form-row">
+            <div class="vsl-field">
+              <label class="vsl-label" for="vsl-naam">Naam</label>
+              <input class="vsl-input" id="vsl-naam" name="naam" type="text" placeholder="Jan de Vries" required>
+            </div>
+            <div class="vsl-field">
+              <label class="vsl-label" for="vsl-bedrijf">Bedrijfsnaam</label>
+              <input class="vsl-input" id="vsl-bedrijf" name="bedrijf" type="text" placeholder="De Vries Bouw" required>
+            </div>
+          </div>
+
+          <div class="vsl-form-row">
+            <div class="vsl-field">
+              <label class="vsl-label" for="vsl-tel">Telefoonnummer</label>
+              <input class="vsl-input" id="vsl-tel" name="telefoon" type="tel" placeholder="+31 6 12345678" required>
+            </div>
+            <div class="vsl-field">
+              <label class="vsl-label" for="vsl-email">E-mailadres</label>
+              <input class="vsl-input" id="vsl-email" name="email" type="email" placeholder="jan@devries.nl" required>
+            </div>
+          </div>
+
+          <div class="vsl-field">
+            <label class="vsl-label" for="vsl-diensten">Welke werkzaamheden voer je uit?</label>
+            <select class="vsl-select" id="vsl-diensten" name="diensten" required>
+              <option value="" disabled selected>Selecteer een categorie</option>
+              <option>Schilderwerk</option>
+              <option>Loodgieterij</option>
+              <option>Elektra & installatie</option>
+              <option>Aanbouw & verbouw</option>
+              <option>Dakrenovatie</option>
+              <option>Vloeren & tegels</option>
+              <option>Tuinonderhoud & bestrating</option>
+              <option>Meerdere / Anders</option>
+            </select>
+          </div>
+
+          <div class="vsl-form-row">
+            <div class="vsl-field">
+              <label class="vsl-label" for="vsl-medewerkers">Aantal medewerkers</label>
+              <select class="vsl-select" id="vsl-medewerkers" name="medewerkers" required>
+                <option value="" disabled selected>Selecteer</option>
+                <option>Alleen ik (ZZP)</option>
+                <option>2 – 5</option>
+                <option>6 – 15</option>
+                <option>Meer dan 15</option>
+              </select>
+            </div>
+            <div class="vsl-field">
+              <label class="vsl-label" for="vsl-klanten">Nieuwe klanten per maand?</label>
+              <select class="vsl-select" id="vsl-klanten" name="klanten_doel" required>
+                <option value="" disabled selected>Selecteer</option>
+                <option>1 – 3</option>
+                <option>3 – 5</option>
+                <option>5 – 10</option>
+                <option>Meer dan 10</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="vsl-field">
+            <label class="vsl-label" for="vsl-aanpak">Hoe reageer je nu op nieuwe aanvragen?</label>
+            <select class="vsl-select" id="vsl-aanpak" name="huidige_aanpak" required>
+              <option value="" disabled selected>Selecteer een situatie</option>
+              <option>Ik bel zo snel mogelijk zelf terug</option>
+              <option>Via e-mail of WhatsApp</option>
+              <option>Via een medewerker of secretaresse</option>
+              <option>Ik heb geen vast systeem hiervoor</option>
+            </select>
+          </div>
+
+          <button type="submit" class="vsl-submit">
+            Bekijk de video
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+
+          <p class="vsl-privacy">🔒 Je gegevens zijn veilig en worden nooit gedeeld met derden.</p>
+
+        </form>
+      </div>
+    </div>
+
     <!-- ── FOOTER ────────────────────────────────────── -->
     <footer>
       <div class="footer-logo">
@@ -1616,7 +1808,14 @@
     }
 
     /* ── VSL PLAY ───────────────────────────────────── */
+    var vslLeadSubmitted = false;
+
     function playVsl() {
+      if (!vslLeadSubmitted) {
+        document.getElementById('vsl-modal-overlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+        return;
+      }
       var overlay = document.getElementById('vsl-overlay');
       var video   = document.getElementById('vsl-video');
       overlay.classList.add('hidden');
@@ -1629,9 +1828,37 @@
 
     document.addEventListener('DOMContentLoaded', function () {
       var video = document.getElementById('vsl-video');
-      if (!video) return;
-      video.addEventListener('click', function () {
-        if (video.paused) { video.play(); } else { video.pause(); }
+      if (video) {
+        video.addEventListener('click', function () {
+          if (video.paused) { video.play(); } else { video.pause(); }
+        });
+      }
+
+      var form = document.getElementById('vsl-lead-form');
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        /* Native HTML5 validation */
+        var inputs = form.querySelectorAll('[required]');
+        var valid  = true;
+        inputs.forEach(function (el) {
+          if (!el.value.trim()) { el.focus(); valid = false; }
+        });
+        if (!valid) return;
+
+        /* Mark submitted & close modal */
+        vslLeadSubmitted = true;
+        document.getElementById('vsl-modal-overlay').classList.remove('open');
+        document.body.style.overflow = '';
+
+        /* Start the video */
+        var overlay = document.getElementById('vsl-overlay');
+        var video   = document.getElementById('vsl-video');
+        overlay.classList.add('hidden');
+        if (!video.src) { video.src = 'vsl-v1.mp4'; video.load(); }
+        video.play();
       });
     });
 
