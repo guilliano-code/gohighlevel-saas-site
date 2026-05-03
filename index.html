@@ -515,6 +515,32 @@
     @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 620px) { .pricing-grid { grid-template-columns: 1fr; } }
 
+    /* Mobile plan switcher */
+    .plan-switcher {
+      display: none;
+    }
+    @media (max-width: 620px) {
+      .plan-switcher {
+        display: flex; align-items: center; justify-content: center;
+        gap: 6px; margin-top: 1.25rem; margin-bottom: .25rem;
+      }
+      .plan-switch-btn {
+        flex: 1; padding: 9px 8px; border-radius: 10px;
+        border: 1px solid var(--border2);
+        background: rgba(255,255,255,.55);
+        font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+        color: var(--muted); cursor: pointer;
+        transition: background .2s, color .2s, border-color .2s, box-shadow .2s;
+      }
+      .plan-switch-btn.active {
+        background: var(--green); color: #fff;
+        border-color: var(--green);
+        box-shadow: 0 2px 12px rgba(59,130,246,.28);
+      }
+      .pricing-grid .price-card-wrap[data-plan] { display: none; }
+      .pricing-grid .price-card-wrap[data-plan].plan-active { display: block; }
+    }
+
     /* Billing tabs */
     .billing-tabs-wrap {
       display: flex; justify-content: center;
@@ -1282,10 +1308,17 @@
           </div>
         </div>
 
+        <!-- Mobile plan switcher -->
+        <div class="plan-switcher" id="plan-switcher">
+          <button class="plan-switch-btn" data-plan="basic" onclick="switchPlan('basic')">Basic</button>
+          <button class="plan-switch-btn active" data-plan="plus" onclick="switchPlan('plus')">Plus</button>
+          <button class="plan-switch-btn" data-plan="pro" onclick="switchPlan('pro')">Pro</button>
+        </div>
+
         <div class="pricing-grid">
 
           <!-- BASIS -->
-          <div class="price-card-wrap fade-up" data-delay="0">
+          <div class="price-card-wrap fade-up" data-delay="0" data-plan="basic">
             <div class="price-card">
               <div class="price-card-header">
                 <span class="price-billing-label faded" id="basis-billing-label">Maandelijks</span>
@@ -1326,7 +1359,7 @@
           </div>
 
           <!-- STARTER -->
-          <div class="price-card-wrap fade-up" data-delay="80">
+          <div class="price-card-wrap fade-up" data-delay="80" data-plan="plus">
             <div class="most-value-tag">MEEST GEKOZEN</div>
             <div class="price-card featured">
               <div class="price-card-header">
@@ -1372,7 +1405,7 @@
           </div>
 
           <!-- PRO -->
-          <div class="price-card-wrap fade-up" data-delay="160">
+          <div class="price-card-wrap fade-up" data-delay="160" data-plan="pro">
             <div class="price-card">
               <div class="price-card-header">
                 <span class="price-billing-label faded" id="pro-billing-label">Maandelijks</span>
@@ -1965,6 +1998,23 @@
       }
     }
 
+    /* ── MOBILE PLAN SWITCHER ───────────────────────── */
+    function switchPlan(plan) {
+      document.querySelectorAll('.pricing-grid .price-card-wrap[data-plan]').forEach(function(el) {
+        el.classList.toggle('plan-active', el.dataset.plan === plan);
+      });
+      document.querySelectorAll('.plan-switch-btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.dataset.plan === plan);
+      });
+    }
+    /* Init: show Plus by default on mobile */
+    if (window.innerWidth <= 620) switchPlan('plus');
+    window.addEventListener('resize', function() {
+      if (window.innerWidth <= 620) switchPlan(
+        document.querySelector('.plan-switch-btn.active')?.dataset.plan || 'plus'
+      );
+    });
+
     /* ── COMPARE PLANS TOGGLE ──────────────────────── */
     function toggleCompare() {
       var btn  = document.getElementById('compare-btn');
@@ -1980,9 +2030,16 @@
       var vslBlock   = document.querySelector('.vsl-wrap');
       if (!mobileNav || !vslBlock) return;
 
+      var lastY = window.scrollY;
+
       function onScroll() {
-        var rect = vslBlock.getBoundingClientRect();
-        if (rect.bottom < 0) {
+        var y       = window.scrollY;
+        var rect    = vslBlock.getBoundingClientRect();
+        var pastVsl = rect.bottom < 0;
+        var goingUp = y < lastY;
+        lastY = y;
+
+        if (pastVsl && goingUp) {
           mobileNav.classList.add('is-visible');
         } else {
           mobileNav.classList.remove('is-visible');
