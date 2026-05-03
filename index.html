@@ -734,6 +734,7 @@
       .vsl-input, .vsl-select { padding: 9px 12px; font-size: 13px; }
       .vsl-submit { padding: 12px 16px; font-size: 14px; }
       .vsl-form-row { gap: .6rem; }
+      .vsl-desktop-only { display: none; }
     }
 
     /* ─── COMPARE TABLE ─────────────────────────────── */
@@ -1617,7 +1618,7 @@
             </select>
           </div>
 
-          <div class="vsl-form-row">
+          <div class="vsl-form-row vsl-desktop-only">
             <div class="vsl-field">
               <label class="vsl-label" for="vsl-medewerkers">Aantal medewerkers</label>
               <select class="vsl-select" id="vsl-medewerkers" name="medewerkers" required>
@@ -1640,7 +1641,7 @@
             </div>
           </div>
 
-          <div class="vsl-field">
+          <div class="vsl-field vsl-desktop-only">
             <label class="vsl-label" for="vsl-aanpak">Hoe reageer je nu op nieuwe aanvragen?</label>
             <select class="vsl-select" id="vsl-aanpak" name="huidige_aanpak" required>
               <option value="" disabled selected>Selecteer een situatie</option>
@@ -1857,10 +1858,11 @@
       form.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        /* Native HTML5 validation */
+        /* Validate only visible required fields */
         var inputs = form.querySelectorAll('[required]');
         var valid  = true;
         inputs.forEach(function (el) {
+          if (el.offsetParent === null) return; /* skip hidden fields */
           if (!el.value.trim()) { el.focus(); valid = false; }
         });
         if (!valid) return;
