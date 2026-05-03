@@ -212,6 +212,20 @@
       box-shadow: 0 6px 24px rgba(37,211,102,.22), inset 0 1px 0 rgba(255,255,255,.5);
     }
 
+    /* ─── VSL LABEL ─────────────────────────────────── */
+    .vsl-label-wrap {
+      display: inline-flex; align-items: center; gap: 9px;
+      margin-bottom: 1rem;
+      font-size: 13.5px; font-weight: 500; color: var(--muted);
+    }
+    .vsl-label-dot {
+      width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+      background: var(--green);
+      box-shadow: 0 0 8px rgba(59,130,246,.5);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    .vsl-label-text { line-height: 1.45; }
+
     /* ─── VSL / VIDEO BLOCK ──────────────────────────── */
     .vsl-wrap {
       width: 100%; border-radius: 20px; overflow: hidden;
@@ -1012,6 +1026,13 @@
           Hoe werkt het?
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </a>
+      </div>
+
+      <!-- VSL label -->
+      <div class="vsl-label-wrap fade-up" data-delay="300">
+        <span class="vsl-label-dot"></span>
+        <span class="vsl-label-text">Bekijk hoe FLOWSA jouw bedrijf laat groeien — in 3 minuten uitgelegd</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.45;flex-shrink:0;"><polyline points="6 9 12 15 18 9"/></svg>
       </div>
 
       <!-- VSL / Video -->
