@@ -1876,7 +1876,7 @@
     }
 
     /* ── VSL PLAY ───────────────────────────────────── */
-    var vslLeadSubmitted = false;
+    var vslLeadSubmitted = localStorage.getItem('vslLeadSubmitted') === '1';
 
     function playVsl() {
       if (!vslLeadSubmitted) {
@@ -1924,8 +1924,9 @@
         });
         if (!valid) return;
 
-        /* Mark submitted & close modal */
+        /* Mark submitted & persist across refreshes */
         vslLeadSubmitted = true;
+        localStorage.setItem('vslLeadSubmitted', '1');
         document.getElementById('vsl-modal-overlay').classList.remove('open');
         document.body.style.overflow = '';
 
