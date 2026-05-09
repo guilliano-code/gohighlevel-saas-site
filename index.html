@@ -121,7 +121,8 @@
     .login-btn:hover .login-btn__overlay { transform: translateX(0); opacity: 1; }
 
     /* ─── HERO ───────────────────────────────────────── */
-    .hero { padding: 3.5rem 2rem 2.5rem; max-width: 74rem; margin: 0 auto; text-align: left; }
+    .hero { padding: 3.5rem 4rem 2.5rem; max-width: 100%; margin: 0 auto; text-align: left; }
+    @media (min-width: 1200px) { .hero { padding-left: 6rem; padding-right: 6rem; } }
 
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
@@ -424,7 +425,7 @@
     }
     .testi-card {
       position: absolute; top: 0; left: 0; right: 0;
-      background: rgba(255,255,255,.14);
+      background: rgba(255,255,255,.78);
       backdrop-filter: blur(48px) saturate(200%); -webkit-backdrop-filter: blur(48px) saturate(200%);
       border: 1px solid rgba(255,255,255,.72);
       border-bottom-color: rgba(0,0,0,.07);
@@ -442,19 +443,7 @@
       user-select: none;
       touch-action: pan-y;
     }
-    .testi-card::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(
-        148deg,
-        rgba(255,255,255,.45) 0%,
-        rgba(255,255,255,.12) 30%,
-        rgba(255,255,255,0) 60%
-      );
-      border-radius: inherit;
-      pointer-events: none;
-      z-index: 0;
-    }
+    .testi-card::before { display: none; }
     .testi-card.is-dragging {
       cursor: grabbing;
       transition: opacity .2s ease;
@@ -857,6 +846,52 @@
       .compare-table td:first-child { font-size: 12px; }
     }
 
+    /* ─── CONTACT FORM SECTION ──────────────────────── */
+    .contact-section { padding: 4.5rem 0; }
+    .contact-form-card {
+      max-width: 680px;
+      background: var(--card);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 24px; padding: 2.5rem;
+      margin-top: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .contact-row { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; margin-bottom: .75rem; }
+    @media (max-width: 640px) { .contact-row { grid-template-columns: 1fr; } .contact-section { padding: 2.5rem 0; } }
+    .contact-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: .75rem; }
+    .contact-label { font-size: 12px; font-weight: 600; color: var(--white); }
+    .contact-input, .contact-textarea {
+      width: 100%; padding: 10px 14px; border-radius: 10px;
+      border: 1px solid var(--border2);
+      background: rgba(255,255,255,.7);
+      font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--white);
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .contact-input::placeholder, .contact-textarea::placeholder { color: var(--muted2); }
+    .contact-input:focus, .contact-textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(59,130,246,.12);
+    }
+    .contact-textarea { resize: vertical; min-height: 110px; }
+    .contact-success {
+      display: none; margin-top: .75rem;
+      padding: 12px 16px; border-radius: 10px;
+      background: rgba(59,130,246,.08); border: 1px solid rgba(59,130,246,.2);
+      color: var(--green); font-size: 14px; font-weight: 500; text-align: center;
+    }
+
+    /* ─── GUARANTEE BADGE ────────────────────────────── */
+    .guarantee-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 1.25rem;
+      padding: 8px 16px; border-radius: 9999px;
+      background: rgba(34,197,94,.07); border: 1px solid rgba(34,197,94,.2);
+      font-size: 12.5px; font-weight: 500; color: #16a34a;
+    }
+    .guarantee-badge svg { flex-shrink: 0; }
+
     /* ─── CTA SECTION ────────────────────────────────── */
     .cta-section {
       padding: 4.5rem 2rem;
@@ -974,7 +1009,7 @@
 
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 640px) {
-      .hero { padding: 1.25rem 1.5rem 1rem; }
+      .hero { padding: 1.25rem 1.5rem 1rem !important; }
       .wrap { padding: 0 1.5rem; }
       .features-section,
       .hiw-section,
@@ -1093,7 +1128,7 @@
         <div class="fade-up" data-delay="0">
           <div class="section-tag">Wat wij bieden</div>
           <h2 class="section-h2">Een website die klanten aantrekt<br>en omzet oplevert</h2>
-          <p class="section-sub">Van websitebezoeker naar betalende klant — volledig automatisch, zonder dat jij er iets voor hoeft te doen</p>
+          <p class="section-sub">Van websitebezoeker naar betalende klant, volledig automatisch, zonder dat jij er iets voor hoeft te doen</p>
         </div>
 
         <div class="features-grid">
@@ -1103,8 +1138,8 @@
             <div class="feat-icon green">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8M8 14h5"/></svg>
             </div>
-            <h3 class="feat-title">AI Chatbot op jouw Website</h3>
-            <p class="feat-text">De chatbot staat 24/7 klaar op jouw website. Hij beantwoordt vragen, kwalificeert bezoekers en stuurt ze richting een afspraak — volledig in jouw eigen tone of voice en huisstijl</p>
+            <h3 class="feat-title">Chatbot op jouw Website</h3>
+            <p class="feat-text">De chatbot staat 24/7 klaar op jouw website. Hij beantwoordt vragen, kwalificeert bezoekers en stuurt ze richting een afspraak, volledig in jouw eigen tone of voice en huisstijl</p>
             <div class="feat-tags">
               <span class="feat-tag green">Altijd online</span>
               <span class="feat-tag green">Eigen huisstijl</span>
@@ -1118,7 +1153,7 @@
             <div class="feat-icon purple">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.96-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </div>
-            <h3 class="feat-title">AI Call Systeem</h3>
+            <h3 class="feat-title">Call Systeem</h3>
             <p class="feat-text">Ben jij niet beschikbaar? Ons call systeem neemt de telefoon voor jou op, zodat jij je kunt blijven focussen op wat echt belangrijk is</p>
             <div class="feat-tags">
               <span class="feat-tag purple">Terugbellen binnen 60s</span>
@@ -1134,7 +1169,7 @@
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
             </div>
             <h3 class="feat-title">Alles-in-één CRM Dashboard</h3>
-            <p class="feat-text">Alle leads, chatgesprekken, callback-rapporten en afspraken staan op één plek. Met het Pro pakket voeg je ook WhatsApp automations toe — zo bereik je leads via elk kanaal. Aangedreven door Flowsa</p>
+            <p class="feat-text">Alle leads, chatgesprekken, callback-rapporten en afspraken staan op één plek. Met het Pro pakket voeg je ook WhatsApp automations toe, zo bereik je leads via elk kanaal. Aangedreven door Flowsa</p>
             <div class="feat-tags">
               <span class="feat-tag green">Pipeline overzicht</span>
               <span class="feat-tag green">E-mail & SMS</span>
@@ -1234,7 +1269,7 @@
                 <p class="testi-quote">"Binnen twee weken na de lancering had de chatbot al 14 afspraken ingepland. Ik hoef zelf niets meer te doen aan de eerste opvolging van websitebezoekers."</p>
                 <div class="testi-footer">
                   <div class="testi-tags">
-                    <span class="testi-tag featured">AI Chatbot</span>
+                    <span class="testi-tag featured">Chatbot</span>
                     <span class="testi-tag">14 afspraken</span>
                   </div>
                   <div class="testi-stars">★★★★★</div>
@@ -1252,10 +1287,10 @@
                     <div class="testi-role">Directeur, Kliniek Meijer</div>
                   </div>
                 </div>
-                <p class="testi-quote">"Het callback systeem is goud waard. Iemand vult zijn nummer in en wordt binnen een minuut teruggebeld door de AI. Klanten zijn altijd verrast hoe snel we reageren."</p>
+                <p class="testi-quote">"Het callback systeem is goud waard. Iemand vult zijn nummer in en wordt binnen een minuut teruggebeld. Klanten zijn altijd verrast hoe snel we reageren."</p>
                 <div class="testi-footer">
                   <div class="testi-tags">
-                    <span class="testi-tag featured">AI Callback</span>
+                    <span class="testi-tag featured">Callback</span>
                     <span class="testi-tag">Binnen 60s</span>
                   </div>
                   <div class="testi-stars">★★★★★</div>
@@ -1273,7 +1308,7 @@
                     <div class="testi-role">CEO, Van Dam Solar</div>
                   </div>
                 </div>
-                <p class="testi-quote">"We hadden een conversieratio van 12% op onze website. Na de AI chatbot en het callback systeem zitten we op 31%. De ROI was er binnen de eerste maand al."</p>
+                <p class="testi-quote">"We hadden een conversieratio van 12% op onze website. Na de chatbot en het callback systeem zitten we op 31%. De ROI was er binnen de eerste maand al."</p>
                 <div class="testi-footer">
                   <div class="testi-tags">
                     <span class="testi-tag featured">+19% conversie</span>
@@ -1304,7 +1339,7 @@
         <div class="billing-tabs-wrap fade-up" data-delay="60">
           <div class="billing-tabs">
             <button class="billing-tab" id="tab-monthly" onclick="setBilling('monthly')">Maandelijks</button>
-            <button class="billing-tab active" id="tab-yearly" onclick="setBilling('yearly')">Jaarlijks <span class="tab-save">— bespaar 20%</span></button>
+            <button class="billing-tab active" id="tab-yearly" onclick="setBilling('yearly')">Jaarlijks <span class="tab-save">bespaar 20%</span></button>
           </div>
         </div>
 
@@ -1329,7 +1364,7 @@
                 <span class="price-num" id="basis-price">48</span>
                 <span class="price-period">/mnd</span>
               </div>
-              <div class="price-yearly-note" id="basis-yearly-note">€576 per jaar gefactureerd — je bespaart €144</div>
+              <div class="price-yearly-note" id="basis-yearly-note">€576 per jaar gefactureerd, je bespaart €144</div>
               <p class="price-sub">Ideaal voor startende aannemers</p>
               <div class="price-divider"></div>
               <ul class="price-features">
@@ -1371,7 +1406,7 @@
                 <span class="price-num" id="starter-price">96</span>
                 <span class="price-period">/mnd</span>
               </div>
-              <div class="price-yearly-note" id="starter-yearly-note">€1.152 per jaar gefactureerd — je bespaart €288</div>
+              <div class="price-yearly-note" id="starter-yearly-note">€1.152 per jaar gefactureerd, je bespaart €288</div>
               <p class="price-sub">Ideaal voor gevestigde aannemers</p>
               <div class="price-divider"></div>
               <ul class="price-features">
@@ -1381,11 +1416,11 @@
                 </li>
                 <li class="price-feature">
                   <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  AI Chatbot op jouw website
+                  Chatbot op jouw website
                 </li>
                 <li class="price-feature">
                   <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  AI Call systeem
+                  Call systeem
                 </li>
                 <li class="price-feature">
                   <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1400,7 +1435,7 @@
                   Support
                 </li>
               </ul>
-              <a href="#contact" class="price-cta ghost">Begin met Plus</a>
+              <a href="#contact" class="price-cta primary">Begin met Plus</a>
             </div>
           </div>
 
@@ -1416,7 +1451,7 @@
                 <span class="price-num" id="pro-price">160</span>
                 <span class="price-period">/mnd</span>
               </div>
-              <div class="price-yearly-note" id="pro-yearly-note">€1.920 per jaar gefactureerd — je bespaart €480</div>
+              <div class="price-yearly-note" id="pro-yearly-note">€1.920 per jaar gefactureerd, je bespaart €480</div>
               <p class="price-sub">Ideaal voor groeiende aannemers</p>
               <div class="price-divider"></div>
               <ul class="price-features">
@@ -1445,7 +1480,7 @@
                   Priority support
                 </li>
               </ul>
-              <a href="#contact" class="price-cta primary">Begin met Pro</a>
+              <a href="#contact" class="price-cta ghost">Begin met Pro</a>
             </div>
           </div>
 
@@ -1565,15 +1600,66 @@
           </div>
         </div>
 
-        <p class="fade-up" data-delay="280" style="margin-top:1.5rem;font-size:13px;color:var(--muted);text-align:center;">
-          Maatwerk nodig? <a href="#contact" style="color:var(--green);font-weight:600;">Neem contact op</a> voor een enterprise offerte.
-        </p>
+        <div class="fade-up" data-delay="280" style="margin-top:1.5rem;text-align:center;">
+          <div class="guarantee-badge" style="display:inline-flex;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            30 dagen niet goed geld terug garantie
+          </div>
+          <p style="margin-top:1rem;font-size:13px;color:var(--muted);">
+            Maatwerk nodig? <a href="#contact" style="color:var(--green);font-weight:600;">Neem contact op</a> voor een enterprise offerte.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── CONTACT FORM ─────────────────────────────── -->
+    <section class="contact-section" id="contact">
+      <div class="wrap">
+        <div class="fade-up" data-delay="0">
+          <div class="section-tag">Contact</div>
+          <h2 class="section-h2">Neem contact op</h2>
+          <p class="section-sub">Vul het formulier in en we nemen binnen 24 uur contact met je op.</p>
+        </div>
+        <div class="contact-form-card fade-up" data-delay="80">
+          <form id="contact-form-main">
+            <div class="contact-row">
+              <div class="contact-field">
+                <label class="contact-label" for="cf-naam">Naam</label>
+                <input class="contact-input" id="cf-naam" name="naam" type="text" placeholder="Jan de Vries" required>
+              </div>
+              <div class="contact-field">
+                <label class="contact-label" for="cf-bedrijf">Bedrijfsnaam</label>
+                <input class="contact-input" id="cf-bedrijf" name="bedrijf" type="text" placeholder="De Vries Bouw" required>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-field">
+                <label class="contact-label" for="cf-tel">Telefoonnummer</label>
+                <input class="contact-input" id="cf-tel" name="telefoon" type="tel" placeholder="+31 6 12345678" required>
+              </div>
+              <div class="contact-field">
+                <label class="contact-label" for="cf-email">E-mailadres</label>
+                <input class="contact-input" id="cf-email" name="email" type="email" placeholder="jan@devries.nl" required>
+              </div>
+            </div>
+            <div class="contact-field">
+              <label class="contact-label" for="cf-bericht">Bericht</label>
+              <textarea class="contact-textarea" id="cf-bericht" name="bericht" placeholder="Vertel ons wat je nodig hebt..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="margin-top:.5rem;">
+              Verstuur bericht
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
+            </button>
+            <div class="contact-success" id="contact-success">Bedankt! We nemen zo snel mogelijk contact met je op.</div>
+          </form>
+        </div>
       </div>
     </section>
 
 
     <!-- ── CTA SECTION ───────────────────────────────── -->
-    <section class="cta-section" id="contact">
+    <section class="cta-section" id="cta">
       <div class="cta-card fade-up" data-delay="0">
         <h2>Klaar om elke websitebezoeker om te zetten naar een klant?</h2>
         <p>Plan een gratis demo in en ontdek hoe jouw website meer aanvragen kan genereren</p>
@@ -1582,7 +1668,7 @@
             Plan demo
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
           </a>
-          <a href="https://wa.me/31600000000?text=Hallo%2C%20ik%20wil%20graag%20meer%20weten%20over%20jullie%20AI%20systemen" class="btn-ghost btn-whatsapp">
+          <a href="https://wa.me/31600000000?text=Hallo%2C%20ik%20wil%20graag%20meer%20weten%20over%20jullie%20systemen" class="btn-ghost btn-whatsapp">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
             WhatsApp ons
           </a>
@@ -1986,9 +2072,9 @@
       var pNote = document.getElementById('pro-yearly-note');
 
       if (yearly) {
-        bNote.textContent = '€576 per jaar gefactureerd — je bespaart €144';
-        sNote.textContent = '€1.152 per jaar gefactureerd — je bespaart €288';
-        pNote.textContent = '€1.920 per jaar gefactureerd — je bespaart €480';
+        bNote.textContent = '€576 per jaar gefactureerd, je bespaart €144';
+        sNote.textContent = '€1.152 per jaar gefactureerd, je bespaart €288';
+        pNote.textContent = '€1.920 per jaar gefactureerd, je bespaart €480';
         bNote.classList.remove('hidden');
         sNote.classList.remove('hidden');
         pNote.classList.remove('hidden');
@@ -2015,6 +2101,25 @@
         document.querySelector('.plan-switch-btn.active')?.dataset.plan || 'plus'
       );
     });
+
+    /* ── CONTACT FORM ───────────────────────────────── */
+    (function () {
+      var form = document.getElementById('contact-form-main');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var naam    = form.querySelector('[name="naam"]').value.trim();
+        var bedrijf = form.querySelector('[name="bedrijf"]').value.trim();
+        var tel     = form.querySelector('[name="telefoon"]').value.trim();
+        var email   = form.querySelector('[name="email"]').value.trim();
+        var bericht = form.querySelector('[name="bericht"]').value.trim();
+        var subject = encodeURIComponent('Nieuwe aanvraag van ' + naam + ' (' + bedrijf + ')');
+        var body    = encodeURIComponent('Naam: ' + naam + '\nBedrijf: ' + bedrijf + '\nTelefoon: ' + tel + '\nE-mail: ' + email + '\n\nBericht:\n' + bericht);
+        window.location.href = 'mailto:Guilliano@dailyshotsmedia.com?subject=' + subject + '&body=' + body;
+        document.getElementById('contact-success').style.display = 'block';
+        form.reset();
+      });
+    })();
 
     /* ── COMPARE PLANS TOGGLE ──────────────────────── */
     function toggleCompare() {
