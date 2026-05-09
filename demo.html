@@ -9,14 +9,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Poppins:wght@600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"></noscript>
-
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     :root {
       --bg:      #F0F1F5;
-      --card:    rgba(255,255,255,.58);
+      --card:    rgba(255,255,255,.72);
       --border:  rgba(0,0,0,.08);
       --border2: rgba(0,0,0,.14);
       --green:   #3b82f6;
@@ -25,32 +23,26 @@
       --muted:   rgba(0,0,0,.52);
       --muted2:  rgba(0,0,0,.36);
     }
-
     body {
-      background: var(--bg);
-      color: var(--white);
+      background: var(--bg); color: var(--white);
       font-family: 'DM Sans', system-ui, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      min-height: 100vh;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh;
     }
-
     a { text-decoration: none; color: inherit; }
 
-    /* ── BLOBS ─────────────────────────────────────── */
+    /* BLOBS */
     .blobs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
     .blob  { position: absolute; border-radius: 50%; filter: blur(90px); }
     @keyframes blobA { 0%,100%{transform:translate(0,0)} 50%{transform:translate(50px,-40px)} }
     @keyframes blobB { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-40px,30px)} }
     .blob-a { width:65vw;height:65vw;top:-15%;left:-10%;background:rgba(59,130,246,.07);animation:blobA 20s ease-in-out infinite; }
     .blob-b { width:55vw;height:55vw;top:30%;right:-12%;background:rgba(14,165,233,.05);animation:blobB 25s ease-in-out infinite; }
-
     @keyframes pulse {
-      0%,100%{ box-shadow: 0 0 8px var(--green), 0 0 16px rgba(59,130,246,.3); }
-      50%    { box-shadow: 0 0 14px var(--green), 0 0 28px rgba(59,130,246,.5); }
+      0%,100%{ box-shadow:0 0 8px var(--green),0 0 16px rgba(59,130,246,.3); }
+      50%    { box-shadow:0 0 14px var(--green),0 0 28px rgba(59,130,246,.5); }
     }
 
-    /* ── NAV ───────────────────────────────────────── */
+    /* NAV */
     nav {
       position: sticky; top: 0; z-index: 100;
       backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
@@ -64,269 +56,567 @@
     .nav-logo {
       display: flex; align-items: center; gap: 10px;
       font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 17px;
-      color: var(--white); letter-spacing: -.02em;
+      letter-spacing: -.02em;
     }
     .nav-logo-dot {
       width: 8px; height: 8px; border-radius: 50%; background: var(--green);
-      box-shadow: 0 0 10px var(--green), 0 0 20px rgba(59,130,246,.4);
-      animation: pulse 2.5s ease-in-out infinite;
+      box-shadow: 0 0 10px var(--green); animation: pulse 2.5s ease-in-out infinite;
     }
     .nav-back {
       display: inline-flex; align-items: center; gap: 7px;
       font-size: 13px; font-weight: 600; color: var(--muted);
       padding: 8px 16px; border-radius: 9999px;
-      border: 1px solid var(--border2);
-      background: rgba(0,0,0,.03);
+      border: 1px solid var(--border2); background: rgba(0,0,0,.03);
       transition: color .2s, border-color .2s;
     }
     .nav-back:hover { color: var(--green); border-color: var(--green); }
 
-    /* ── MAIN LAYOUT ───────────────────────────────── */
+    /* LAYOUT */
     .page-wrap {
       position: relative; z-index: 1;
       max-width: 74rem; margin: 0 auto;
       padding: 3.5rem 2rem 5rem;
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 4rem;
-      align-items: start;
+      display: grid; grid-template-columns: 1fr 1.45fr; gap: 4rem; align-items: start;
     }
     @media (max-width: 860px) {
-      .page-wrap { grid-template-columns: 1fr; gap: 2.5rem; padding: 2rem 1.5rem 4rem; }
+      .page-wrap { grid-template-columns: 1fr; gap: 2rem; padding: 2rem 1.5rem 4rem; }
     }
 
-    /* ── LEFT PANEL ────────────────────────────────── */
+    /* LEFT */
     .demo-left { position: sticky; top: 88px; }
-
     .demo-badge {
       display: inline-flex; align-items: center; gap: 7px;
-      font-size: 11px; font-weight: 700; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--green);
-      margin-bottom: 1.25rem;
+      font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 1.25rem;
     }
-    .demo-badge-dot {
-      width: 6px; height: 6px; border-radius: 50%; background: var(--green);
-      animation: pulse 2s ease-in-out infinite;
-    }
-
+    .demo-badge-dot { width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite; }
     .demo-title {
       font-family: 'Poppins', sans-serif; font-weight: 800;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      line-height: 1.1; letter-spacing: -.03em;
-      margin-bottom: 1rem;
+      font-size: clamp(1.8rem,4vw,2.6rem); line-height: 1.1;
+      letter-spacing: -.03em; margin-bottom: 1rem;
     }
     .demo-title span { color: var(--green); }
-
-    .demo-sub {
-      font-size: 15px; color: var(--muted); line-height: 1.7;
-      margin-bottom: 2rem; max-width: 380px;
-    }
-
-    .demo-what {
-      margin-bottom: 2rem;
-    }
-    .demo-what-title {
-      font-size: 11px; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--muted2);
-      margin-bottom: 1rem;
-    }
-    .demo-what-list { display: flex; flex-direction: column; gap: .75rem; }
-    .demo-what-item {
-      display: flex; align-items: flex-start; gap: 12px;
-      font-size: 14px; color: var(--white); line-height: 1.5;
-    }
+    .demo-sub { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 2rem; max-width: 380px; }
+    .demo-what-title { font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);margin-bottom:1rem; }
+    .demo-what-list { display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem; }
+    .demo-what-item { display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.5; }
     .demo-what-icon {
-      width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(59,130,246,.09); border: 1px solid rgba(59,130,246,.15);
+      width:28px;height:28px;border-radius:8px;flex-shrink:0;
+      display:flex;align-items:center;justify-content:center;
+      background:rgba(59,130,246,.09);border:1px solid rgba(59,130,246,.15);
     }
-    .demo-what-icon svg { width: 14px; height: 14px; }
+    .demo-what-icon svg { width:14px;height:14px; }
+    .demo-trust { display:flex;flex-direction:column;gap:.6rem;padding-top:1.5rem;border-top:1px solid var(--border); }
+    .demo-trust-item { display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted); }
+    .demo-trust-item svg { flex-shrink:0;color:var(--green); }
+    @media (max-width:860px) { .demo-left { position:static; } }
 
-    .demo-trust {
-      display: flex; flex-direction: column; gap: .6rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-    }
-    .demo-trust-item {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 12.5px; color: var(--muted);
-    }
-    .demo-trust-item svg { flex-shrink: 0; color: var(--green); }
-
-    /* ── BOOKING CARD ──────────────────────────────── */
+    /* BOOKING CARD */
     .booking-card {
-      background: rgba(255,255,255,.72);
+      background: var(--card);
       backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
-      border: 1px solid rgba(255,255,255,.85);
-      border-bottom-color: rgba(0,0,0,.07);
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow:
-        0 12px 48px rgba(0,0,0,.09),
-        0 2px 8px rgba(0,0,0,.05),
-        inset 0 1.5px 0 rgba(255,255,255,.9);
+      border: 1px solid rgba(255,255,255,.85); border-bottom-color: rgba(0,0,0,.07);
+      border-radius: 28px; overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,.09), 0 2px 8px rgba(0,0,0,.05), inset 0 1.5px 0 rgba(255,255,255,.9);
     }
-
     .booking-header {
-      padding: 1.75rem 2rem 1.25rem;
+      padding: 1.5rem 1.75rem 1.25rem;
       border-bottom: 1px solid var(--border);
       display: flex; align-items: center; gap: 14px;
     }
     .booking-header-icon {
-      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
-      background: rgba(59,130,246,.09); border: 1px solid rgba(59,130,246,.15);
-      display: flex; align-items: center; justify-content: center;
+      width:42px;height:42px;border-radius:11px;flex-shrink:0;
+      background:rgba(59,130,246,.09);border:1px solid rgba(59,130,246,.15);
+      display:flex;align-items:center;justify-content:center;
     }
-    .booking-header-text h3 {
+    .booking-header-text h3 { font-family:'Poppins',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:-.015em; }
+    .booking-header-text p { font-size:12px;color:var(--muted);margin-top:2px; }
+
+    /* STEP INDICATOR */
+    .step-indicator {
+      display: flex; align-items: center; gap: 6px;
+      padding: 1rem 1.75rem; border-bottom: 1px solid var(--border);
+    }
+    .step-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--border2); transition: background .3s, transform .3s;
+    }
+    .step-dot.active { background: var(--green); transform: scale(1.25); }
+    .step-dot.done { background: rgba(59,130,246,.35); }
+    .step-label { font-size: 12px; color: var(--muted); margin-left: 4px; }
+
+    /* SCREENS */
+    .screen { display: none; padding: 1.5rem 1.75rem; }
+    .screen.active { display: block; }
+
+    /* CALENDAR */
+    .cal-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1.1rem;
+    }
+    .cal-month {
       font-family: 'Poppins', sans-serif; font-weight: 700;
-      font-size: 1rem; letter-spacing: -.015em;
+      font-size: .95rem; letter-spacing: -.01em;
     }
-    .booking-header-text p { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+    .cal-arrow {
+      width: 30px; height: 30px; border-radius: 8px;
+      border: 1px solid var(--border2); background: rgba(0,0,0,.03);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: border-color .2s, background .2s;
+    }
+    .cal-arrow:hover { border-color: var(--green); background: rgba(59,130,246,.05); }
+    .cal-grid {
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
+    }
+    .cal-day-name {
+      text-align: center; font-size: 11px; font-weight: 600;
+      color: var(--muted2); padding: 4px 0 8px; letter-spacing: .04em; text-transform: uppercase;
+    }
+    .cal-day {
+      aspect-ratio: 1; border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13.5px; font-weight: 500;
+      cursor: pointer; transition: background .15s, color .15s, transform .15s;
+      border: 1px solid transparent;
+    }
+    .cal-day:hover:not(.disabled):not(.empty) {
+      background: rgba(59,130,246,.08); border-color: rgba(59,130,246,.2);
+    }
+    .cal-day.disabled { color: rgba(0,0,0,.2); cursor: default; pointer-events: none; }
+    .cal-day.empty { pointer-events: none; }
+    .cal-day.selected {
+      background: var(--green); color: #fff;
+      border-color: var(--green);
+      box-shadow: 0 2px 10px rgba(59,130,246,.35);
+      transform: scale(1.05);
+    }
+    .cal-day.today:not(.selected) { font-weight: 700; color: var(--green); }
 
-    /* Calendly embed container */
-    .calendly-wrap {
-      min-height: 650px;
+    /* TIME SLOTS */
+    .slots-title { font-size: 12px; font-weight: 600; color: var(--muted); margin: 1.25rem 0 .75rem; letter-spacing: .04em; text-transform: uppercase; }
+    .slots-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+    @media (max-width: 400px) { .slots-grid { grid-template-columns: repeat(3,1fr); } }
+    .slot {
+      padding: 9px 4px; border-radius: 9px; text-align: center;
+      font-size: 13px; font-weight: 500; cursor: pointer;
+      border: 1px solid var(--border2); background: rgba(255,255,255,.6);
+      transition: background .15s, border-color .15s, color .15s, transform .15s;
     }
-    .calendly-inline-widget {
-      width: 100%;
-      min-height: 650px;
-      border: none;
+    .slot:hover { border-color: var(--green); background: rgba(59,130,246,.06); color: var(--green); }
+    .slot.selected {
+      background: var(--green); color: #fff; border-color: var(--green);
+      box-shadow: 0 2px 8px rgba(59,130,246,.3); transform: scale(1.04);
     }
 
-    /* ── FOOTER ────────────────────────────────────── */
+    /* NEXT BTN */
+    .btn-next {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; padding: 13px 20px; border-radius: 12px; border: none;
+      background: var(--green); color: #fff;
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px;
+      cursor: pointer; margin-top: 1.5rem;
+      box-shadow: 0 4px 16px rgba(59,130,246,.28);
+      transition: background .2s, transform .2s, box-shadow .2s;
+      opacity: .4; pointer-events: none;
+    }
+    .btn-next.ready { opacity: 1; pointer-events: auto; }
+    .btn-next.ready:hover { background: var(--green2); transform: translateY(-1px); box-shadow: 0 6px 22px rgba(59,130,246,.38); }
+
+    /* DETAILS FORM */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+    .form-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: .7rem; }
+    .form-label { font-size: 12px; font-weight: 600; color: var(--white); }
+    .form-input {
+      width: 100%; padding: 10px 13px; border-radius: 10px;
+      border: 1px solid var(--border2); background: rgba(255,255,255,.7);
+      font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--white); outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .form-input::placeholder { color: var(--muted2); }
+    .form-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(59,130,246,.12); }
+    .summary-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 14px; border-radius: 9999px;
+      background: rgba(59,130,246,.08); border: 1px solid rgba(59,130,246,.18);
+      font-size: 13px; font-weight: 600; color: var(--green);
+      margin-bottom: 1.25rem;
+    }
+    .btn-back {
+      display: flex; align-items: center; gap: 6px;
+      background: none; border: none; cursor: pointer;
+      font-family: 'DM Sans',sans-serif; font-size: 13px; color: var(--muted);
+      margin-top: .75rem; padding: 0;
+      transition: color .2s;
+    }
+    .btn-back:hover { color: var(--white); }
+
+    /* CONFIRM SCREEN */
+    .confirm-icon {
+      width: 64px; height: 64px; border-radius: 20px;
+      background: rgba(59,130,246,.1); border: 1px solid rgba(59,130,246,.2);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    .confirm-title {
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 1.3rem; letter-spacing: -.02em;
+      text-align: center; margin-bottom: .6rem;
+    }
+    .confirm-sub { font-size: 14px; color: var(--muted); line-height: 1.65; text-align: center; margin-bottom: 1.75rem; }
+    .confirm-details {
+      background: rgba(0,0,0,.03); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.1rem 1.25rem;
+      display: flex; flex-direction: column; gap: .65rem;
+    }
+    .confirm-row { display: flex; align-items: center; gap: 10px; font-size: 13.5px; }
+    .confirm-row svg { flex-shrink: 0; color: var(--green); }
+
+    /* FOOTER */
     footer {
       position: relative; z-index: 1;
-      border-top: 1px solid var(--border);
-      padding: 2rem 2rem;
+      border-top: 1px solid var(--border); padding: 2rem;
       max-width: 74rem; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
     }
-    .footer-logo {
-      display: flex; align-items: center; gap: 8px;
-      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px;
-    }
-    .footer-copy { font-size: 12px; color: var(--muted2); }
-
-    @media (max-width: 640px) {
-      .demo-left { position: static; }
-      .booking-header { padding: 1.25rem 1.5rem 1rem; }
-    }
+    .footer-logo { display:flex;align-items:center;gap:8px;font-family:'Poppins',sans-serif;font-weight:700;font-size:14px; }
+    .footer-copy { font-size:12px;color:var(--muted2); }
   </style>
 </head>
 <body>
 
-  <div class="blobs" aria-hidden="true">
-    <div class="blob blob-a"></div>
-    <div class="blob blob-b"></div>
-  </div>
+<div class="blobs" aria-hidden="true">
+  <div class="blob blob-a"></div>
+  <div class="blob blob-b"></div>
+</div>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <div class="nav-logo-dot"></div>
-        FLOWSA
-      </a>
-      <a href="index.html" class="nav-back">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        Terug
-      </a>
-    </div>
-  </nav>
-
-  <!-- MAIN -->
-  <div class="page-wrap">
-
-    <!-- LEFT -->
-    <div class="demo-left">
-      <div class="demo-badge">
-        <div class="demo-badge-dot"></div>
-        Gratis &amp; vrijblijvend
-      </div>
-
-      <h1 class="demo-title">Plan je <span>gratis</span><br>demo call</h1>
-      <p class="demo-sub">In 30 minuten laten we zien hoe FLOWSA jouw bedrijf meer klanten oplevert, volledig afgestemd op jouw situatie.</p>
-
-      <div class="demo-what">
-        <div class="demo-what-title">Wat we bespreken</div>
-        <div class="demo-what-list">
-          <div class="demo-what-item">
-            <div class="demo-what-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            </div>
-            <span>Analyse van jouw huidige website en waar klanten afhaken</span>
-          </div>
-          <div class="demo-what-item">
-            <div class="demo-what-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            </div>
-            <span>Live demo van de chatbot en het call systeem</span>
-          </div>
-          <div class="demo-what-item">
-            <div class="demo-what-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-            </div>
-            <span>Concreet prijsvoorstel op maat voor jouw bedrijf</span>
-          </div>
-          <div class="demo-what-item">
-            <div class="demo-what-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <span>Antwoord op al jouw vragen, geen verplichtingen</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="demo-trust">
-        <div class="demo-trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          30 minuten, geen verkooppraatje
-        </div>
-        <div class="demo-trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          30 dagen niet goed, geld terug garantie
-        </div>
-        <div class="demo-trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          Beoordeeld met 4.8 door aannemers
-        </div>
-      </div>
-    </div>
-
-    <!-- RIGHT: BOOKING -->
-    <div class="booking-card">
-      <div class="booking-header">
-        <div class="booking-header-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        </div>
-        <div class="booking-header-text">
-          <h3>Kies een datum en tijd</h3>
-          <p>Gratis demo call — 30 minuten</p>
-        </div>
-      </div>
-
-      <!-- ✏️ Vervang de data-url hieronder met jouw eigen Calendly link -->
-      <div class="calendly-wrap">
-        <div
-          class="calendly-inline-widget"
-          data-url="https://calendly.com/flowsa/demo?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=3b82f6"
-        ></div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">
-      <div class="nav-logo-dot" style="width:6px;height:6px;"></div>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-dot"></div>
       FLOWSA
+    </a>
+    <a href="index.html" class="nav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Terug
+    </a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="page-wrap">
+
+  <!-- LEFT -->
+  <div class="demo-left">
+    <div class="demo-badge"><div class="demo-badge-dot"></div> Gratis &amp; vrijblijvend</div>
+    <h1 class="demo-title">Plan je <span>gratis</span><br>demo call</h1>
+    <p class="demo-sub">In 30 minuten laten we zien hoe FLOWSA jouw bedrijf meer klanten oplevert, volledig afgestemd op jouw situatie.</p>
+    <div class="demo-what-title">Wat we bespreken</div>
+    <div class="demo-what-list">
+      <div class="demo-what-item">
+        <div class="demo-what-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <span>Analyse van jouw huidige website en waar klanten afhaken</span>
+      </div>
+      <div class="demo-what-item">
+        <div class="demo-what-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <span>Live demo van de chatbot en het call systeem</span>
+      </div>
+      <div class="demo-what-item">
+        <div class="demo-what-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <span>Concreet prijsvoorstel op maat voor jouw bedrijf</span>
+      </div>
+      <div class="demo-what-item">
+        <div class="demo-what-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <span>Antwoord op al jouw vragen, geen verplichtingen</span>
+      </div>
     </div>
-    <span class="footer-copy">© 2026 — Alle rechten voorbehouden</span>
-  </footer>
+    <div class="demo-trust">
+      <div class="demo-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 30 minuten, geen verkooppraatje</div>
+      <div class="demo-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 30 dagen niet goed, geld terug garantie</div>
+      <div class="demo-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Beoordeeld met 4.8 door aannemers</div>
+    </div>
+  </div>
 
-  <!-- Calendly widget script -->
-  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <!-- RIGHT: BOOKING -->
+  <div class="booking-card">
+    <div class="booking-header">
+      <div class="booking-header-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div class="booking-header-text">
+        <h3>Kies een datum en tijd</h3>
+        <p>Gratis demo call — 30 minuten</p>
+      </div>
+    </div>
 
+    <div class="step-indicator">
+      <div class="step-dot active" id="dot-1"></div>
+      <div class="step-dot" id="dot-2"></div>
+      <div class="step-dot" id="dot-3"></div>
+      <span class="step-label" id="step-label">Kies een moment</span>
+    </div>
+
+    <!-- SCREEN 1: date + time -->
+    <div class="screen active" id="screen-1">
+      <div class="cal-nav">
+        <button class="cal-arrow" id="cal-prev" onclick="changeMonth(-1)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <span class="cal-month" id="cal-month"></span>
+        <button class="cal-arrow" id="cal-next" onclick="changeMonth(1)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
+
+      <div id="slots-wrap" style="display:none;">
+        <div class="slots-title" id="slots-title"></div>
+        <div class="slots-grid" id="slots-grid"></div>
+      </div>
+
+      <button class="btn-next" id="btn-next-1" onclick="goToStep2()">
+        Volgende
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
+      </button>
+    </div>
+
+    <!-- SCREEN 2: details -->
+    <div class="screen" id="screen-2">
+      <div class="summary-pill" id="summary-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span id="summary-text"></span>
+      </div>
+
+      <form id="details-form">
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label" for="f-naam">Naam</label>
+            <input class="form-input" id="f-naam" name="naam" type="text" placeholder="Jan de Vries" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="f-bedrijf">Bedrijfsnaam</label>
+            <input class="form-input" id="f-bedrijf" name="bedrijf" type="text" placeholder="De Vries Bouw" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label" for="f-tel">Telefoon</label>
+            <input class="form-input" id="f-tel" name="telefoon" type="tel" placeholder="+31 6 12345678" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="f-email">E-mailadres</label>
+            <input class="form-input" id="f-email" name="email" type="email" placeholder="jan@devries.nl" required>
+          </div>
+        </div>
+        <button type="submit" class="btn-next ready">
+          Bevestig boeking
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </button>
+      </form>
+
+      <button class="btn-back" onclick="goToStep1()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Terug naar datum
+      </button>
+    </div>
+
+    <!-- SCREEN 3: confirmation -->
+    <div class="screen" id="screen-3">
+      <div class="confirm-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="confirm-title">Boeking bevestigd!</div>
+      <p class="confirm-sub">We hebben je aanvraag ontvangen en sturen je een bevestiging per e-mail. Tot dan!</p>
+      <div class="confirm-details" id="confirm-details"></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="nav-logo-dot" style="width:6px;height:6px;"></div>
+    FLOWSA
+  </div>
+  <span class="footer-copy">© 2026 — Alle rechten voorbehouden</span>
+</footer>
+
+<script>
+  // ── CONFIG ────────────────────────────────────────────
+  // Vervang met jouw GHL webhook URL
+  var GHL_WEBHOOK = 'https://hooks.gohighlevel.com/YOUR_WEBHOOK_URL';
+
+  var DAYS_NL   = ['zo','ma','di','wo','do','vr','za'];
+  var MONTHS_NL = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+  var SLOTS = ['09:00','09:30','10:00','10:30','11:00','11:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30'];
+
+  var today     = new Date(); today.setHours(0,0,0,0);
+  var viewYear  = today.getFullYear();
+  var viewMonth = today.getMonth();
+  var selDate   = null;
+  var selTime   = null;
+
+  // ── CALENDAR ──────────────────────────────────────────
+  function renderCal() {
+    var grid  = document.getElementById('cal-grid');
+    var label = document.getElementById('cal-month');
+    label.textContent = MONTHS_NL[viewMonth] + ' ' + viewYear;
+
+    var html = '';
+    // day headers Mon-Sun
+    var dayOrder = ['ma','di','wo','do','vr','za','zo'];
+    dayOrder.forEach(function(d) { html += '<div class="cal-day-name">' + d + '</div>'; });
+
+    var first = new Date(viewYear, viewMonth, 1);
+    var startDow = (first.getDay() + 6) % 7; // Mon=0
+    for (var i = 0; i < startDow; i++) html += '<div class="cal-day empty"></div>';
+
+    var daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+    for (var d = 1; d <= daysInMonth; d++) {
+      var dt  = new Date(viewYear, viewMonth, d);
+      var dow = dt.getDay(); // 0=Sun,6=Sat
+      var isWeekend = dow === 0 || dow === 6;
+      var isPast    = dt < today;
+      var isToday   = dt.getTime() === today.getTime();
+      var isSel     = selDate && dt.getTime() === selDate.getTime();
+
+      var cls = 'cal-day';
+      if (isWeekend || isPast) cls += ' disabled';
+      if (isToday)             cls += ' today';
+      if (isSel)               cls += ' selected';
+
+      html += '<div class="' + cls + '" onclick="selectDate(' + viewYear + ',' + viewMonth + ',' + d + ')">' + d + '</div>';
+    }
+    grid.innerHTML = html;
+
+    // prev arrow disabled if current month
+    document.getElementById('cal-prev').style.opacity = (viewYear === today.getFullYear() && viewMonth === today.getMonth()) ? '.3' : '1';
+    document.getElementById('cal-prev').style.pointerEvents = (viewYear === today.getFullYear() && viewMonth === today.getMonth()) ? 'none' : '';
+  }
+
+  function changeMonth(dir) {
+    viewMonth += dir;
+    if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+    if (viewMonth < 0)  { viewMonth = 11; viewYear--; }
+    renderCal();
+  }
+
+  function selectDate(y, m, d) {
+    selDate = new Date(y, m, d);
+    selTime = null;
+    renderCal();
+    renderSlots();
+    checkReady();
+  }
+
+  // ── TIME SLOTS ────────────────────────────────────────
+  function renderSlots() {
+    var wrap  = document.getElementById('slots-wrap');
+    var title = document.getElementById('slots-title');
+    var grid  = document.getElementById('slots-grid');
+    if (!selDate) { wrap.style.display = 'none'; return; }
+
+    var dName = ['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'][selDate.getDay()];
+    title.textContent = dName + ' ' + selDate.getDate() + ' ' + MONTHS_NL[selDate.getMonth()];
+    wrap.style.display = 'block';
+
+    var html = '';
+    SLOTS.forEach(function(t) {
+      var cls = 'slot' + (t === selTime ? ' selected' : '');
+      html += '<div class="' + cls + '" onclick="selectTime(\'' + t + '\')">' + t + '</div>';
+    });
+    grid.innerHTML = html;
+  }
+
+  function selectTime(t) {
+    selTime = t;
+    renderSlots();
+    checkReady();
+  }
+
+  function checkReady() {
+    var btn = document.getElementById('btn-next-1');
+    btn.classList.toggle('ready', !!(selDate && selTime));
+  }
+
+  // ── STEPS ─────────────────────────────────────────────
+  function goToStep2() {
+    if (!selDate || !selTime) return;
+    document.getElementById('screen-1').classList.remove('active');
+    document.getElementById('screen-2').classList.add('active');
+
+    var dStr = ['zo','ma','di','wo','do','vr','za'][selDate.getDay()] + ' ' +
+               selDate.getDate() + ' ' + MONTHS_NL[selDate.getMonth()];
+    document.getElementById('summary-text').textContent = dStr + ' om ' + selTime;
+    document.getElementById('dot-1').className = 'step-dot done';
+    document.getElementById('dot-2').className = 'step-dot active';
+    document.getElementById('step-label').textContent = 'Jouw gegevens';
+  }
+
+  function goToStep1() {
+    document.getElementById('screen-2').classList.remove('active');
+    document.getElementById('screen-1').classList.add('active');
+    document.getElementById('dot-1').className = 'step-dot active';
+    document.getElementById('dot-2').className = 'step-dot';
+    document.getElementById('step-label').textContent = 'Kies een moment';
+  }
+
+  // ── FORM SUBMIT ───────────────────────────────────────
+  document.getElementById('details-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var naam    = document.getElementById('f-naam').value.trim();
+    var bedrijf = document.getElementById('f-bedrijf').value.trim();
+    var tel     = document.getElementById('f-tel').value.trim();
+    var email   = document.getElementById('f-email').value.trim();
+
+    var payload = {
+      naam:    naam,
+      bedrijf: bedrijf,
+      telefoon: tel,
+      email:   email,
+      datum:   selDate.toISOString().split('T')[0],
+      tijd:    selTime,
+      bron:    'flowsa-website'
+    };
+
+    // Stuur naar GHL webhook
+    fetch(GHL_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch(function() {}); // silent fail — bevestiging altijd tonen
+
+    showConfirmation(naam, bedrijf, email, tel);
+  });
+
+  function showConfirmation(naam, bedrijf, email, tel) {
+    document.getElementById('screen-2').classList.remove('active');
+    document.getElementById('screen-3').classList.add('active');
+    document.getElementById('dot-2').className = 'step-dot done';
+    document.getElementById('dot-3').className = 'step-dot active';
+    document.getElementById('step-label').textContent = 'Bevestigd';
+
+    var dStr = ['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'][selDate.getDay()] + ' ' +
+               selDate.getDate() + ' ' + MONTHS_NL[selDate.getMonth()] + ' ' + selDate.getFullYear();
+
+    document.getElementById('confirm-details').innerHTML =
+      row(calIcon(), dStr + ' om ' + selTime) +
+      row(personIcon(), naam + ' &mdash; ' + bedrijf) +
+      row(mailIcon(), email) +
+      row(phoneIcon(), tel);
+  }
+
+  function row(icon, text) {
+    return '<div class="confirm-row">' + icon + '<span>' + text + '</span></div>';
+  }
+  function calIcon()    { return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>'; }
+  function personIcon() { return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>'; }
+  function mailIcon()   { return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>'; }
+  function phoneIcon()  { return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.41 4.18 2 2 0 0 1 5.38 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L9.91 9.91a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>'; }
+
+  // Init
+  renderCal();
+</script>
 </body>
 </html>
