@@ -121,8 +121,7 @@
     .login-btn:hover .login-btn__overlay { transform: translateX(0); opacity: 1; }
 
     /* ─── HERO ───────────────────────────────────────── */
-    .hero { padding: 3.5rem 4rem 2.5rem; max-width: 100%; margin: 0 auto; text-align: left; }
-    @media (min-width: 1200px) { .hero { padding-left: 6rem; padding-right: 6rem; } }
+    .hero { padding: 3.5rem 2rem 2.5rem; max-width: 74rem; margin: 0 auto; text-align: left; }
 
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
@@ -1009,7 +1008,7 @@
 
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 640px) {
-      .hero { padding: 1.25rem 1.5rem 1rem !important; }
+      .hero { padding: 1.25rem 1.5rem 1rem; }
       .wrap { padding: 0 1.5rem; }
       .features-section,
       .hiw-section,
@@ -1333,6 +1332,10 @@
           <div class="section-tag">Tarieven</div>
           <h2 class="section-h2">Transparante prijzen<br>Geen verborgen kosten</h2>
           <p class="section-sub">Prijzen zijn exclusief btw</p>
+          <div class="guarantee-badge" style="margin-top:.9rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            30 dagen niet goed geld terug garantie
+          </div>
         </div>
 
         <!-- Billing tabs -->
@@ -1600,15 +1603,9 @@
           </div>
         </div>
 
-        <div class="fade-up" data-delay="280" style="margin-top:1.5rem;text-align:center;">
-          <div class="guarantee-badge" style="display:inline-flex;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            30 dagen niet goed geld terug garantie
-          </div>
-          <p style="margin-top:1rem;font-size:13px;color:var(--muted);">
-            Maatwerk nodig? <a href="#contact" style="color:var(--green);font-weight:600;">Neem contact op</a> voor een enterprise offerte.
-          </p>
-        </div>
+        <p class="fade-up" data-delay="280" style="margin-top:1.5rem;font-size:13px;color:var(--muted);text-align:center;">
+          Maatwerk nodig? <a href="#contact" style="color:var(--green);font-weight:600;">Neem contact op</a> voor een enterprise offerte.
+        </p>
       </div>
     </section>
 
