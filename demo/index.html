@@ -616,6 +616,17 @@
 
   // Init
   renderCal();
+
+  /* Prevent iOS zoom on form inputs */
+  var vp = document.querySelector('meta[name="viewport"]');
+  document.addEventListener('focusin', function(e) {
+    if (['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))
+      vp.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0';
+  });
+  document.addEventListener('focusout', function(e) {
+    if (['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))
+      vp.content = 'width=device-width, initial-scale=1.0';
+  });
 </script>
 </body>
 </html>

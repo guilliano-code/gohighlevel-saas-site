@@ -1829,6 +1829,17 @@
     if (history.scrollRestoration) history.scrollRestoration = 'manual';
     window.scrollTo(0, 0);
 
+    /* Prevent iOS zoom on form inputs */
+    var vp = document.querySelector('meta[name="viewport"]');
+    document.addEventListener('focusin', function(e) {
+      if (['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))
+        vp.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0';
+    });
+    document.addEventListener('focusout', function(e) {
+      if (['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))
+        vp.content = 'width=device-width, initial-scale=1.0';
+    });
+
     /* ── FADE IN on scroll ──────────────────────────── */
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
