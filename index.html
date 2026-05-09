@@ -1817,6 +1817,7 @@
 
   <script>
     if (history.scrollRestoration) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
 
     /* ── FADE IN on scroll ──────────────────────────── */
     const io = new IntersectionObserver((entries) => {
@@ -1864,13 +1865,13 @@
             card.style.zIndex    = total;
             card.style.pointerEvents = 'auto';
           } else if (pos === 1) {
-            card.style.transform = 'translateY(14px) scale(0.95)';
-            card.style.opacity   = '0.55';
+            card.style.transform = 'translateY(14px) scale(0.96)';
+            card.style.opacity   = '0.85';
             card.style.zIndex    = total - 1;
             card.style.pointerEvents = 'none';
           } else {
-            card.style.transform = 'translateY(26px) scale(0.90)';
-            card.style.opacity   = '0.25';
+            card.style.transform = 'translateY(26px) scale(0.92)';
+            card.style.opacity   = '0.7';
             card.style.zIndex    = total - 2;
             card.style.pointerEvents = 'none';
           }
