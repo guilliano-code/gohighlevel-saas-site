@@ -1,2031 +1,298 @@
 <!DOCTYPE html>
-<!-- v2 -->
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FLOWSA</title>
+  <title>FLOWSA — Meer klanten, minder gedoe</title>
+  <meta name="description" content="De slimme website voor aannemers die willen groeien zonder extra personeel. Chatbot, callsysteem, CRM en Google Reviews automatisering.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Poppins:wght@600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"></noscript>
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
-
-    :root {
-      --bg:        #F3F5FA;
-      --card:      rgba(255,255,255,.62);
-      --card2:     rgba(255,255,255,.4);
-      --border:    rgba(15,23,42,.07);
-      --border2:   rgba(15,23,42,.12);
-      --green:     #2563eb;
-      --green2:    #2563eb;
-      --purple:    #0ea5e9;
-      --purple2:   #0284c7;
-      --white:     #0f1c34;
-      --muted:     rgba(15,28,52,.56);
-      --muted2:    rgba(15,28,52,.38);
-      --ease:      cubic-bezier(.22,1,.36,1);
-      --shadow-sm: 0 1px 2px rgba(15,23,42,.04), 0 2px 8px rgba(15,23,42,.04);
-      --shadow-md: 0 2px 6px rgba(15,23,42,.05), 0 12px 32px rgba(15,23,42,.07);
-      --shadow-lg: 0 4px 12px rgba(15,23,42,.06), 0 24px 64px rgba(15,23,42,.10);
-      --ring:      0 0 0 1px rgba(15,23,42,.04);
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--white);
-      font-family: 'DM Sans', system-ui, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-    ::selection { background: var(--green); color: #FFFFFF; }
-    a { text-decoration: none; color: inherit; }
-
-    /* ─── BLOBS ─────────────────────────────────────── */
-    .blobs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-    .blob  { position: absolute; border-radius: 50%; filter: blur(90px); }
-
-    @keyframes blobA { 0%,100%{transform:translate(0,0)} 50%{transform:translate(50px,-40px)} }
-    @keyframes blobB { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-40px,30px)} }
-    @keyframes blobC { 0%,100%{transform:translate(0,0)} 50%{transform:translate(25px,50px)} }
-
-    .blob-a { width:65vw;height:65vw;top:-15%;left:-10%;background:rgba(37,99,235,.07);animation:blobA 20s ease-in-out infinite; }
-    .blob-b { width:55vw;height:55vw;top:30%;right:-12%;background:rgba(14,165,233,.05);animation:blobB 25s ease-in-out infinite; }
-    .blob-c { width:50vw;height:50vw;bottom:-10%;left:20%;background:rgba(37,99,235,.04);animation:blobC 28s ease-in-out infinite; }
-
-    /* ─── FADE IN ────────────────────────────────────── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(26px);
-      transition: opacity .8s var(--ease), transform .8s var(--ease);
-    }
-    .fade-up.visible { opacity: 1; transform: none; }
-
-    /* ─── LAYOUT ─────────────────────────────────────── */
-    .wrap { max-width: 74rem; margin: 0 auto; padding: 0 2rem; }
-
-    /* ─── NAV ────────────────────────────────────────── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid var(--border);
-      background: rgba(247,249,253,.85);
-    }
-    @media (max-width: 640px) { nav { display: none; } }
-    .nav-links { display: flex; align-items: center; gap: 2px; }
-    .nav-link {
-      padding: 8px 14px; border-radius: 9999px;
-      font-size: 13.5px; font-weight: 500; color: var(--muted);
-      transition: color .2s, background .2s;
-    }
-    .nav-link:hover { color: var(--white); background: rgba(15,23,42,.045); }
-    @media (max-width: 900px) { .nav-links { display: none; } }
-    .nav-inner {
-      max-width: 74rem; margin: 0 auto; padding: 0 2rem;
-      height: 62px; display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-logo {
-      display: flex; align-items: center; gap: 10px;
-      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 17px;
-      color: var(--white); letter-spacing: -.02em;
-    }
-    .nav-logo-dot {
-      width: 8px; height: 8px; border-radius: 50%; background: var(--green);
-      box-shadow: 0 0 10px var(--green), 0 0 20px rgba(37,99,235,.4);
-      animation: pulse 2.5s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%,100%{ box-shadow: 0 0 8px var(--green), 0 0 16px rgba(37,99,235,.3); }
-      50%    { box-shadow: 0 0 14px var(--green), 0 0 28px rgba(37,99,235,.5); }
-    }
-
-    /* Login button — same hover mechanic as dailyshotsmedia */
-    .login-btn {
-      position: relative; display: inline-flex; align-items: center; justify-content: center;
-      overflow: hidden; border-radius: 9999px;
-      border: 1px solid var(--border2);
-      padding: 8px 22px;
-      background: rgba(255,255,255,.6); color: var(--white);
-      box-shadow: var(--shadow-sm);
-      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
-      cursor: pointer; outline: none; gap: 8px;
-      transition: border-color .2s;
-    }
-    .login-btn:hover { border-color: var(--green); }
-    .login-btn__dot {
-      width: 8px; height: 8px; border-radius: 50%; background: var(--green);
-      flex-shrink: 0; z-index: 0;
-      transition: transform .5s ease; transform-origin: center;
-    }
-    .login-btn:hover .login-btn__dot { transform: scale(38); }
-    .login-btn__label { position: relative; z-index: 1; transition: transform .5s ease, opacity .5s ease; }
-    .login-btn:hover .login-btn__label { transform: translateX(70px); opacity: 0; }
-    .login-btn__overlay {
-      position: absolute; left: 0; top: 0; width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center; gap: 5px;
-      color: #FFFFFF; z-index: 10;
-      transform: translateX(-50px); opacity: 0;
-      transition: transform .5s ease, opacity .5s ease;
-      font-size: 13px; font-weight: 700;
-    }
-    .login-btn:hover .login-btn__overlay { transform: translateX(0); opacity: 1; }
-
-    /* ─── HERO ───────────────────────────────────────── */
-    .hero { padding: 3.5rem 2rem 2.5rem; max-width: 74rem; margin: 0 auto; text-align: left; }
-
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 14px 6px 8px; border-radius: 9999px;
-      border: 1px solid rgba(37,99,235,.2);
-      background: rgba(37,99,235,.07);
-      font-size: 12px; font-weight: 500; color: var(--green);
-      margin-bottom: 2rem; letter-spacing: .02em;
-    }
-    .hero-badge-dot {
-      width: 6px; height: 6px; border-radius: 50%; background: var(--green);
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    .hero h1 {
-      font-family: 'Poppins', sans-serif; font-weight: 800;
-      font-size: clamp(2.6rem, 6.5vw, 4.3rem);
-      line-height: 1.05; letter-spacing: -.035em;
-      margin-bottom: 1rem;
-    }
-    .hero h1 .accent-green {
-      color: var(--green);
-      background: linear-gradient(118deg, var(--green) 10%, var(--purple) 95%);
-      -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero h1 .accent-purple { color: var(--purple); }
-
-    .hero-sub {
-      font-size: clamp(16px, 2.2vw, 18px);
-      color: var(--muted); line-height: 1.65;
-      max-width: 460px; margin-bottom: 1.75rem;
-    }
-
-    .hero-social-proof {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: rgba(255,255,255,.65);
-      border: 1px solid rgba(245,158,11,.3);
-      border-radius: 9999px; padding: 8px 18px 8px 15px;
-      margin-bottom: 1.25rem;
-      cursor: default;
-      box-shadow: var(--shadow-sm);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      transition: box-shadow .25s, transform .2s;
-    }
-    .hero-social-proof:hover { box-shadow: none; transform: none; }
-    .hero-stars { color: #F59E0B; font-size: 15px; letter-spacing: 2px; }
-    @media (max-width: 640px) {
-      .hero-stars { font-size: 0; }
-      .hero-stars::before { content: '★'; font-size: 14px; color: #F59E0B; letter-spacing: 0; }
-      .hero-social-proof { padding: 9px 16px; border-radius: 9999px; gap: 8px; }
-      .hero-social-text { font-size: 12px; }
-    }
-    .hero-social-text { font-size: 13px; color: var(--muted); }
-    .hero-social-text strong { color: var(--white); }
-
-    .hero-ctas { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; justify-content: flex-start; }
-
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 28px; border-radius: 12px;
-      background: linear-gradient(180deg, #3674ee 0%, var(--green2) 100%);
-      color: #FFFFFF;
-      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px;
-      border: none; cursor: pointer;
-      transition: transform .25s var(--ease), box-shadow .25s var(--ease), filter .2s;
-      box-shadow: 0 1px 2px rgba(15,23,42,.14), 0 5px 18px rgba(37,99,235,.32), inset 0 1px 0 rgba(255,255,255,.2);
-    }
-    .btn-primary:hover {
-      filter: brightness(1.06);
-      transform: translateY(-1px);
-      box-shadow: 0 2px 4px rgba(15,23,42,.14), 0 8px 26px rgba(37,99,235,.42), inset 0 1px 0 rgba(255,255,255,.2);
-    }
-    .btn-primary:active { transform: translateY(0); filter: brightness(.98); }
-
-    .btn-ghost {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 24px; border-radius: 12px;
-      border: 1px solid var(--border2);
-      background: rgba(255,255,255,.65); color: var(--white);
-      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 14px;
-      cursor: pointer;
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      box-shadow: var(--shadow-sm);
-      transition: border-color .2s, background .2s, color .2s, transform .25s var(--ease);
-    }
-    .btn-ghost:hover { border-color: rgba(37,99,235,.45); background: rgba(255,255,255,.9); color: var(--green); transform: translateY(-1px); }
-
-    .btn-whatsapp {
-      border-color: rgba(37,211,102,.45);
-      background: rgba(37,211,102,.05);
-      backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4);
-      box-shadow: 0 4px 18px rgba(37,211,102,.14), inset 0 1px 0 rgba(255,255,255,.5);
-    }
-    .btn-whatsapp:hover {
-      border-color: #25D366;
-      background: rgba(37,211,102,.10);
-      color: var(--white);
-      box-shadow: 0 6px 24px rgba(37,211,102,.22), inset 0 1px 0 rgba(255,255,255,.5);
-    }
-
-    /* ─── VSL LABEL ─────────────────────────────────── */
-    .vsl-label-wrap {
-      display: inline-flex; align-items: center; gap: 9px;
-      margin-bottom: .65rem;
-      font-size: 13.5px; font-weight: 500; color: var(--muted);
-    }
-    .vsl-label-dot {
-      width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
-      background: var(--green);
-      box-shadow: 0 0 8px rgba(37,99,235,.5);
-      animation: pulse 2.5s ease-in-out infinite;
-    }
-    .vsl-label-text { line-height: 1.45; }
-
-    /* ─── VSL / VIDEO BLOCK ──────────────────────────── */
-    .vsl-wrap {
-      width: 100%; border-radius: 24px; overflow: hidden;
-      border: 1px solid rgba(255,255,255,.75);
-      background: rgba(255,255,255,.55);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      box-shadow: var(--ring), 0 2px 8px rgba(15,23,42,.06), 0 32px 80px rgba(15,23,42,.13);
-      position: relative;
-      aspect-ratio: 16 / 9;
-    }
-    .vsl-overlay {
-      position: absolute; inset: 0; border-radius: inherit;
-      cursor: pointer; overflow: hidden;
-      transition: opacity .4s ease;
-    }
-    .vsl-overlay.hidden { opacity: 0; pointer-events: none; }
-    .vsl-thumb {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%; object-fit: cover;
-    }
-    .vsl-blur {
-      position: absolute; inset: 0;
-      backdrop-filter: blur(10px) brightness(.7); -webkit-backdrop-filter: blur(10px) brightness(.7);
-      background: rgba(0,0,0,.28);
-    }
-    .vsl-play-btn {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .vsl-play {
-      width: 72px; height: 72px; border-radius: 50%;
-      background: linear-gradient(180deg, #3674ee 0%, var(--green2) 100%);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 0 16px rgba(37,99,235,.15), 0 0 0 32px rgba(37,99,235,.07);
-      cursor: pointer; transition: transform .2s, box-shadow .2s;
-      flex-shrink: 0;
-    }
-    .vsl-play:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 0 22px rgba(37,99,235,.18), 0 0 0 44px rgba(37,99,235,.08);
-    }
-    .vsl-play svg { margin-left: 5px; }
-    @media (max-width: 600px) {
-      .vsl-play { width: 52px; height: 52px; box-shadow: 0 0 0 10px rgba(37,99,235,.15), 0 0 0 20px rgba(37,99,235,.07); }
-      .vsl-play svg { width: 20px; height: 20px; margin-left: 3px; }
-    }
-
-    /* ─── STATS BAR ──────────────────────────────────── */
-    .stats-bar {
-      display: flex; align-items: center; justify-content: center;
-      gap: 2.5rem; flex-wrap: wrap;
-      padding: 3rem 2rem;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .stat-item { text-align: center; }
-    .stat-num {
-      font-family: 'Poppins', sans-serif; font-weight: 700;
-      font-size: 1.9rem; color: var(--white); letter-spacing: -.03em;
-      line-height: 1;
-    }
-    .stat-num span { color: var(--green); }
-    .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
-
-    /* ─── SECTION HEADINGS ───────────────────────────── */
-    .section-tag {
-      display: inline-flex; align-items: center; gap: 7px;
-      font-size: 11px; font-weight: 600; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--green);
-      padding: 5px 13px 5px 11px; border-radius: 9999px;
-      border: 1px solid rgba(37,99,235,.18);
-      background: rgba(37,99,235,.06);
-      margin-bottom: 1.1rem;
-    }
-    .section-tag::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
-    .section-h2 {
-      font-family: 'Poppins', sans-serif; font-weight: 700;
-      font-size: clamp(1.7rem, 4vw, 2.6rem);
-      letter-spacing: -.03em; line-height: 1.12;
-      margin-bottom: .9rem;
-    }
-    .section-sub { font-size: 15.5px; color: var(--muted); line-height: 1.7; max-width: 460px; }
-
-    /* ─── FEATURES ───────────────────────────────────── */
-    .features-section { padding: 5.5rem 0; }
-    .features-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
-      margin-top: 3rem;
-    }
-    @media (max-width: 640px) { .features-grid { grid-template-columns: 1fr; } }
-
-    .feat-card {
-      background: rgba(255,255,255,.55);
-      backdrop-filter: blur(32px) saturate(180%); -webkit-backdrop-filter: blur(32px) saturate(180%);
-      border: 1px solid rgba(255,255,255,.8);
-      border-radius: 24px; padding: 2.25rem;
-      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
-      display: flex; flex-direction: column;
-      overflow: hidden; position: relative;
-      box-shadow:
-        var(--ring),
-        var(--shadow-md),
-        inset 0 1px 0 rgba(255,255,255,.9);
-    }
-    .feat-card::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(
-        148deg,
-        rgba(255,255,255,.35) 0%,
-        rgba(255,255,255,.08) 32%,
-        rgba(255,255,255,0) 60%
-      );
-      border-radius: inherit;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .feat-card > * { position: relative; z-index: 1; }
-    .feat-card:hover {
-      transform: translateY(-4px);
-      box-shadow:
-        0 0 0 1px rgba(37,99,235,.16),
-        0 6px 16px rgba(15,23,42,.06),
-        0 28px 56px rgba(37,99,235,.13),
-        inset 0 1px 0 rgba(255,255,255,.95);
-    }
-    .feat-card.purple:hover {
-      box-shadow:
-        0 0 0 1px rgba(14,165,233,.18),
-        0 6px 16px rgba(15,23,42,.06),
-        0 28px 56px rgba(14,165,233,.13),
-        inset 0 1px 0 rgba(255,255,255,.95);
-    }
-
-    .feat-icon {
-      width: 48px; height: 48px; border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.4rem; flex-shrink: 0;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.65), 0 1px 3px rgba(15,23,42,.05);
-    }
-    .feat-icon.green { background: linear-gradient(180deg, rgba(37,99,235,.13), rgba(37,99,235,.06)); border: 1px solid rgba(37,99,235,.2); }
-    .feat-icon.purple { background: linear-gradient(180deg, rgba(14,165,233,.12), rgba(14,165,233,.05)); border: 1px solid rgba(14,165,233,.2); }
-
-    .feat-title {
-      font-family: 'Poppins', sans-serif; font-weight: 700;
-      font-size: 1.13rem; line-height: 1.3; margin-bottom: .7rem;
-      letter-spacing: -.018em;
-    }
-    .feat-text { font-size: 14.5px; color: var(--muted); line-height: 1.7; flex: 1; margin-bottom: 1.5rem; }
-    .feat-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .feat-tag {
-      font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 9999px;
-    }
-    .feat-tag.green { background: rgba(37,99,235,.09); color: var(--green); border: 1px solid rgba(37,99,235,.18); }
-    .feat-tag.purple { background: rgba(14,165,233,.08); color: var(--purple); border: 1px solid rgba(14,165,233,.18); }
-
-    /* Span full row */
-    .feat-card.wide { grid-column: 1 / -1; flex-direction: row; align-items: flex-start; gap: 2rem; }
-    @media (max-width: 640px) { .feat-card.wide { flex-direction: column; } }
-
-    /* ─── HOW IT WORKS ───────────────────────────────── */
-    .hiw-section { padding: 5.5rem 0; }
-    .steps { display: flex; flex-direction: column; gap: 0; margin-top: 3rem; }
-    .step {
-      display: grid; grid-template-columns: 48px 1fr; gap: 1.25rem;
-      padding-bottom: 2.5rem; position: relative;
-    }
-    .step:not(:last-child)::after {
-      content: ''; position: absolute;
-      left: 23px; top: 52px; bottom: 4px;
-      width: 2px; border-radius: 2px;
-      background: linear-gradient(180deg, rgba(37,99,235,.28), rgba(37,99,235,.05));
-    }
-    .step-num {
-      width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 16px;
-      border: 1px solid rgba(37,99,235,.25);
-      background: linear-gradient(180deg, #ffffff, #f4f7fd);
-      color: var(--green); z-index: 1;
-      box-shadow: 0 0 0 5px rgba(37,99,235,.06), 0 2px 6px rgba(15,23,42,.07);
-    }
-    .step-body { padding-top: 10px; }
-    .step-title {
-      font-family: 'Poppins', sans-serif; font-weight: 700;
-      font-size: 1.05rem; margin-bottom: .5rem; letter-spacing: -.015em;
-    }
-    .step-text { font-size: 14px; color: var(--muted); line-height: 1.75; }
-
-    /* ─── SOCIAL PROOF ───────────────────────────────── */
-    .proof-section { padding: 5.5rem 0; }
-
-    /* ─── PRICING ─────────────────────────────────────── */
-    .pricing-section { padding: 5.5rem 0; }
-    .pricing-grid {
-      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;
-      margin-top: 2.5rem; align-items: stretch;
-    }
-    .price-card-wrap { height: 100%; }
-    .price-card-wrap .price-card { height: 100%; }
-    @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 620px) { .pricing-grid { grid-template-columns: 1fr; } }
-
-    /* Mobile plan switcher */
-    .plan-switcher {
-      display: none;
-    }
-    @media (max-width: 620px) {
-      .plan-switcher {
-        display: flex; align-items: center; justify-content: center;
-        gap: 6px; margin-top: 1.25rem; margin-bottom: .25rem;
-      }
-      .plan-switch-btn {
-        flex: 1; padding: 9px 8px; border-radius: 10px;
-        border: 1px solid var(--border2);
-        background: rgba(255,255,255,.55);
-        font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
-        color: var(--muted); cursor: pointer;
-        transition: background .2s, color .2s, border-color .2s, box-shadow .2s;
-      }
-      .plan-switch-btn.active {
-        background: linear-gradient(180deg, #3674ee 0%, var(--green2) 100%);
-        color: #fff;
-        border-color: var(--green);
-        box-shadow: 0 2px 12px rgba(37,99,235,.3), inset 0 1px 0 rgba(255,255,255,.2);
-      }
-      .pricing-grid .price-card-wrap[data-plan] { display: none; }
-      .pricing-grid .price-card-wrap[data-plan].plan-active { display: block; }
-    }
-
-    /* Billing tabs */
-    .billing-tabs-wrap {
-      display: flex; justify-content: center;
-      margin-top: 2rem;
-    }
-    .billing-tabs {
-      display: inline-flex; align-items: center;
-      background: rgba(15,23,42,.05); border: 1px solid var(--border);
-      border-radius: 12px; padding: 4px;
-      box-shadow: inset 0 1px 2px rgba(15,23,42,.04);
-    }
-    .billing-tab {
-      padding: 8px 20px; border-radius: 9px; border: none;
-      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
-      cursor: pointer; transition: background .22s, color .22s, opacity .22s;
-      background: transparent; color: var(--muted);
-      white-space: nowrap;
-    }
-    .billing-tab .tab-save {
-      font-size: 11px; font-weight: 700; color: var(--green);
-      margin-left: 5px;
-    }
-    .billing-tab.active {
-      background: #ffffff;
-      color: var(--white);
-      box-shadow: 0 1px 4px rgba(15,23,42,.1), 0 4px 10px rgba(15,23,42,.05);
-    }
-    .billing-tab:not(.active) { opacity: .5; }
-
-    /* Price card wrapper (for Most Value tag) */
-    .price-card-wrap { position: relative; }
-    .most-value-tag {
-      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-      font-size: 10px; font-weight: 700; letter-spacing: .12em;
-      padding: 4px 15px; border-radius: 9999px;
-      background: linear-gradient(120deg, var(--green) 0%, var(--purple) 120%);
-      color: #FFFFFF;
-      box-shadow: 0 4px 14px rgba(37,99,235,.35), inset 0 1px 0 rgba(255,255,255,.25);
-      white-space: nowrap; z-index: 2;
-    }
-
-    .price-card {
-      background: rgba(255,255,255,.66); border: 1px solid rgba(255,255,255,.78);
-      backdrop-filter: blur(20px) saturate(170%); -webkit-backdrop-filter: blur(20px) saturate(170%);
-      border-radius: 24px; padding: 2.25rem 2rem;
-      display: flex; flex-direction: column;
-      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
-      box-shadow: var(--ring), var(--shadow-sm), inset 0 1px 0 rgba(255,255,255,.85);
-    }
-    .price-card.featured {
-      border-color: rgba(37,99,235,.4);
-      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.68));
-      box-shadow: 0 0 0 1px rgba(37,99,235,.22), 0 12px 40px rgba(37,99,235,.14), inset 0 1px 0 rgba(255,255,255,.95);
-    }
-    .price-card:hover { transform: translateY(-3px); box-shadow: var(--ring), 0 12px 40px rgba(15,23,42,.1), inset 0 1px 0 rgba(255,255,255,.9); }
-    .price-card.featured:hover { box-shadow: 0 0 0 1px rgba(37,99,235,.3), 0 18px 48px rgba(37,99,235,.18), inset 0 1px 0 rgba(255,255,255,.95); }
-
-    /* Card header row */
-    .price-card-header {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 1rem;
-    }
-    .price-billing-label {
-      font-size: 12px; font-weight: 500; color: var(--muted);
-      transition: opacity .35s ease;
-      letter-spacing: .01em;
-    }
-    .price-billing-label.faded { opacity: 0; }
-
-    /* Plan name badge */
-    .price-plan-badge {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: 4px 13px; border-radius: 9999px;
-    }
-    .price-plan-badge.starter {
-      background: rgba(0,0,0,.05);
-      color: rgba(0,0,0,.45);
-      border: 1px solid rgba(0,0,0,.1);
-    }
-    .price-plan-badge.pro {
-      background: rgba(37,99,235,.1);
-      color: var(--green);
-      border: 1px solid rgba(37,99,235,.25);
-    }
-    .price-amount {
-      display: flex; align-items: baseline; gap: 4px;
-      margin-bottom: .25rem;
-    }
-    .price-currency {
-      font-family: 'Poppins', sans-serif; font-weight: 700;
-      font-size: 1.5rem; color: var(--white);
-      line-height: 1; padding-bottom: 2px;
-    }
-    .price-num {
-      font-family: 'Poppins', sans-serif; font-weight: 800;
-      font-size: 3rem; letter-spacing: -.02em; color: var(--white);
-      line-height: 1;
-      font-variant-numeric: tabular-nums;
-    }
-    .price-period {
-      font-family: 'DM Sans', sans-serif; font-size: 14px;
-      font-weight: 500; color: var(--muted); padding-bottom: 2px;
-    }
-    .price-yearly-note {
-      font-size: 12px; color: var(--green); font-weight: 500;
-      margin-bottom: 1.5rem; overflow: hidden;
-      max-height: 2em;
-      transition: opacity .3s, max-height .3s, margin-bottom .3s;
-    }
-    .price-yearly-note.hidden { opacity: 0; pointer-events: none; max-height: 0; margin-bottom: 0; }
-    .price-sub { font-size: 13px; color: var(--muted); margin-bottom: 1.5rem; }
-    .price-divider { height: 1px; background: var(--border); margin-bottom: 1.4rem; }
-    .price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; margin-bottom: 1.75rem; }
-    .price-feature { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: rgba(0,0,0,.68); }
-    .price-check { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
-    .price-cta {
-      display: block; width: 100%; padding: 13px 20px; border-radius: 12px;
-      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px;
-      text-align: center; cursor: pointer; transition: .2s;
-      border: none; text-decoration: none;
-    }
-    .price-cta.primary {
-      background: linear-gradient(180deg, #3674ee 0%, var(--green2) 100%);
-      color: #FFFFFF;
-      box-shadow: 0 1px 2px rgba(15,23,42,.14), 0 4px 14px rgba(37,99,235,.3), inset 0 1px 0 rgba(255,255,255,.2);
-    }
-    .price-cta.primary:hover { filter: brightness(1.06); box-shadow: 0 2px 4px rgba(15,23,42,.14), 0 6px 20px rgba(37,99,235,.4), inset 0 1px 0 rgba(255,255,255,.2); }
-    .price-cta.ghost {
-      background: rgba(255,255,255,.6); color: var(--white);
-      border: 1px solid var(--border2);
-    }
-    .price-cta.ghost:hover { border-color: rgba(37,99,235,.45); color: var(--green); background: rgba(255,255,255,.9); }
-
-    /* ─── VSL LEAD MODAL ────────────────────────────── */
-    .vsl-modal-overlay {
-      position: fixed; inset: 0; z-index: 500;
-      background: rgba(0,0,0,.55);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      display: flex; align-items: center; justify-content: center;
-      padding: 1.25rem;
-      opacity: 0; pointer-events: none;
-      transition: opacity .35s ease;
-    }
-    .vsl-modal-overlay.open {
-      opacity: 1; pointer-events: auto;
-    }
-    .vsl-modal {
-      width: 100%; max-width: 520px;
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
-      border: 1px solid rgba(255,255,255,.9);
-      border-radius: 28px;
-      padding: 2.25rem 2rem 2rem;
-      box-shadow: 0 24px 80px rgba(15,23,42,.22), 0 4px 16px rgba(15,23,42,.08), inset 0 1.5px 0 rgba(255,255,255,1);
-      transform: translateY(24px) scale(.97);
-      transition: transform .4s cubic-bezier(.4,0,.2,1);
-    }
-    .vsl-modal-overlay.open .vsl-modal {
-      transform: translateY(0) scale(1);
-    }
-    .vsl-modal-header { margin-bottom: 1.5rem; }
-    .vsl-modal-badge {
-      display: inline-flex; align-items: center; gap: 7px;
-      font-size: 11px; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--green);
-      margin-bottom: .85rem;
-    }
-    .vsl-modal-badge-dot {
-      width: 6px; height: 6px; border-radius: 50%; background: var(--green);
-      animation: pulse 2s ease-in-out infinite;
-    }
-    .vsl-modal-title {
-      font-family: 'Poppins', sans-serif; font-weight: 700;
-      font-size: 1.35rem; letter-spacing: -.02em; line-height: 1.25;
-      color: var(--white); margin-bottom: .45rem;
-    }
-    .vsl-modal-sub {
-      font-size: 13.5px; color: var(--muted); line-height: 1.6;
-    }
-    .vsl-form { display: flex; flex-direction: column; gap: .85rem; }
-    .vsl-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
-    @media (max-width: 480px) { .vsl-form-row { grid-template-columns: 1fr; } }
-    .vsl-field { display: flex; flex-direction: column; gap: 5px; }
-    .vsl-label {
-      font-size: 12px; font-weight: 600; color: var(--white);
-      letter-spacing: .01em;
-    }
-    .vsl-input, .vsl-select {
-      width: 100%; padding: 11px 14px; border-radius: 11px;
-      border: 1px solid var(--border2);
-      background: rgba(255,255,255,.85);
-      box-shadow: 0 1px 2px rgba(15,23,42,.03);
-      font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--white);
-      outline: none;
-      transition: border-color .2s, box-shadow .2s;
-      -webkit-appearance: none; appearance: none;
-    }
-    .vsl-input::placeholder { color: var(--muted2); }
-    .vsl-input:focus, .vsl-select:focus {
-      border-color: var(--green);
-      box-shadow: 0 0 0 3.5px rgba(37,99,235,.14);
-      background: #ffffff;
-    }
-    .vsl-select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      padding-right: 34px;
-      cursor: pointer;
-    }
-    .vsl-submit {
-      margin-top: .5rem;
-      width: 100%; padding: 14px 20px; border-radius: 12px;
-      background: linear-gradient(180deg, #3674ee 0%, var(--green2) 100%);
-      color: #FFFFFF;
-      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 15px;
-      border: none; cursor: pointer;
-      box-shadow: 0 1px 2px rgba(15,23,42,.14), 0 5px 18px rgba(37,99,235,.32), inset 0 1px 0 rgba(255,255,255,.2);
-      transition: filter .2s, transform .25s var(--ease), box-shadow .25s var(--ease);
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-    }
-    .vsl-submit:hover {
-      filter: brightness(1.06);
-      transform: translateY(-1px);
-      box-shadow: 0 2px 4px rgba(15,23,42,.14), 0 8px 26px rgba(37,99,235,.42), inset 0 1px 0 rgba(255,255,255,.2);
-    }
-    .vsl-privacy {
-      text-align: center; font-size: 11.5px; color: var(--muted2);
-      margin-top: .6rem; line-height: 1.5;
-    }
-    @media (max-width: 640px) {
-      .vsl-modal-overlay {
-        padding: 1.25rem;
-        align-items: center;
-      }
-      .vsl-modal {
-        padding: 1.75rem 1.5rem 1.5rem;
-        border-radius: 24px;
-        max-height: 92vh;
-        overflow-y: auto;
-      }
-      .vsl-modal-header { margin-bottom: 1.1rem; }
-      .vsl-modal-title { font-size: 1.15rem; }
-      .vsl-modal-sub { display: none; }
-      .vsl-form { gap: .7rem; }
-      .vsl-input, .vsl-select { padding: 10px 13px; font-size: 13.5px; }
-      .vsl-label { font-size: 11.5px; }
-      .vsl-submit { padding: 13px 16px; font-size: 14px; margin-top: .25rem; }
-      .vsl-form-row { gap: .65rem; }
-      .vsl-desktop-only { display: none; }
-      .vsl-privacy { font-size: 11px; margin-top: .4rem; }
-    }
-
-    /* ─── COMPARE TABLE ─────────────────────────────── */
-    .compare-wrap {
-      margin-top: 2.5rem;
-    }
-    .compare-toggle-btn {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      width: 100%; padding: 13px 20px; border-radius: 12px;
-      border: 1px solid var(--border2);
-      background: rgba(255,255,255,.65); color: var(--muted);
-      box-shadow: var(--shadow-sm);
-      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
-      cursor: pointer; transition: border-color .2s, color .2s, background .2s;
-      backdrop-filter: blur(10px);
-    }
-    .compare-toggle-btn:hover { border-color: var(--green); color: var(--green); background: rgba(37,99,235,.04); }
-    .compare-toggle-btn .cmp-chevron { transition: transform .3s ease; }
-    .compare-toggle-btn.open .cmp-chevron { transform: rotate(180deg); }
-
-    .compare-table-wrap {
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .35s ease;
-      opacity: 0;
-    }
-    .compare-table-wrap.open {
-      max-height: 2000px;
-      opacity: 1;
-    }
-    .compare-table {
-      margin-top: 1.25rem;
-      background: rgba(255,255,255,.62);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,.75);
-      border-radius: 20px; overflow: hidden;
-      box-shadow: var(--ring), var(--shadow-sm);
-    }
-    .compare-table table {
-      width: 100%; border-collapse: collapse;
-    }
-    .compare-table thead tr {
-      border-bottom: 1px solid var(--border2);
-    }
-    .compare-table th {
-      padding: 14px 16px; text-align: center;
-      font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700;
-      letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
-    }
-    .compare-table th:first-child { text-align: left; }
-    .compare-table th.th-highlight {
-      color: var(--green);
-    }
-    .compare-table tbody tr {
-      border-bottom: 1px solid rgba(0,0,0,.06);
-      transition: background .18s;
-    }
-    .compare-table tbody tr:last-child { border-bottom: none; }
-    .compare-table tbody tr:hover { background: rgba(0,0,0,.025); }
-    .compare-table td {
-      padding: 11px 16px; text-align: center;
-      font-size: 13.5px; color: rgba(0,0,0,.68);
-    }
-    .compare-table td:first-child {
-      text-align: left; font-weight: 500; color: var(--white);
-    }
-    .cmp-check { color: var(--green); font-size: 15px; }
-    .cmp-cross { color: rgba(0,0,0,.2); font-size: 17px; line-height: 1; }
-    .cmp-note { font-size: 12px; color: var(--muted); }
-    @media (max-width: 640px) {
-      .compare-table th, .compare-table td { padding: 10px 10px; font-size: 12.5px; }
-      .compare-table td:first-child { font-size: 12px; }
-    }
-
-    /* ─── CONTACT FORM SECTION ──────────────────────── */
-    .contact-section { padding: 5.5rem 0; text-align: center; }
-    .contact-section .section-sub { margin-left: auto; margin-right: auto; text-align: center; }
-    .contact-form-card {
-      max-width: 680px; margin-left: auto; margin-right: auto; text-align: left;
-      background: rgba(255,255,255,.66);
-      backdrop-filter: blur(20px) saturate(170%); -webkit-backdrop-filter: blur(20px) saturate(170%);
-      border: 1px solid rgba(255,255,255,.78);
-      border-radius: 24px; padding: 2.5rem;
-      margin-top: 2.25rem;
-      box-shadow: var(--ring), var(--shadow-md), inset 0 1px 0 rgba(255,255,255,.85);
-    }
-    .contact-row { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; margin-bottom: .75rem; }
-    @media (max-width: 640px) { .contact-row { grid-template-columns: 1fr; } .contact-section { padding: 2.5rem 0; } }
-    .contact-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: .75rem; }
-    .contact-label { font-size: 12px; font-weight: 600; color: var(--white); }
-    .contact-input, .contact-textarea {
-      width: 100%; padding: 11px 14px; border-radius: 11px;
-      border: 1px solid var(--border2);
-      background: rgba(255,255,255,.85);
-      box-shadow: 0 1px 2px rgba(15,23,42,.03);
-      font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--white);
-      outline: none;
-      transition: border-color .2s, box-shadow .2s, background .2s;
-    }
-    .contact-input::placeholder, .contact-textarea::placeholder { color: var(--muted2); }
-    .contact-input:focus, .contact-textarea:focus {
-      border-color: var(--green);
-      box-shadow: 0 0 0 3.5px rgba(37,99,235,.14);
-      background: #ffffff;
-    }
-    .contact-textarea { resize: vertical; min-height: 110px; }
-    .contact-success {
-      display: none; margin-top: .75rem;
-      padding: 12px 16px; border-radius: 10px;
-      background: rgba(37,99,235,.08); border: 1px solid rgba(37,99,235,.2);
-      color: var(--green); font-size: 14px; font-weight: 500; text-align: center;
-    }
-
-    /* ─── GUARANTEE BADGE ────────────────────────────── */
-    .guarantee-badge {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 11px 22px; border-radius: 9999px;
-      background: rgba(255,255,255,.6);
-      border: 1px solid rgba(22,163,74,.3);
-      box-shadow: var(--shadow-sm);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      font-size: 13px; font-weight: 600; color: #14532d;
-      letter-spacing: .01em;
-    }
-    .guarantee-badge svg { flex-shrink: 0; color: #16a34a; }
-    .guarantee-badge strong { font-weight: 700; }
-
-    /* ─── CTA SECTION ────────────────────────────────── */
-    .cta-section {
-      padding: 5.5rem 2rem 6rem;
-      text-align: center;
-    }
-    .cta-card {
-      max-width: 700px; margin: 0 auto;
-      position: relative; overflow: hidden;
-      background: linear-gradient(132deg, #1e4fd8 0%, #2563eb 52%, #0c87dd 125%);
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 28px; padding: 3.75rem 2.5rem;
-      box-shadow: 0 24px 64px rgba(30,79,216,.3), 0 4px 12px rgba(15,23,42,.08), inset 0 1px 0 rgba(255,255,255,.28);
-    }
-    .cta-card::before {
-      content: ''; position: absolute;
-      top: -45%; right: -18%; width: 75%; aspect-ratio: 1;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,.18), transparent 70%);
-      pointer-events: none;
-    }
-    .cta-card::after {
-      content: ''; position: absolute;
-      bottom: -55%; left: -22%; width: 70%; aspect-ratio: 1;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(14,165,233,.3), transparent 70%);
-      pointer-events: none;
-    }
-    .cta-card > * { position: relative; z-index: 1; }
-    .cta-card h2 {
-      font-family: 'Poppins', sans-serif; font-weight: 800;
-      font-size: clamp(1.6rem, 4vw, 2.4rem); letter-spacing: -.03em;
-      line-height: 1.15; margin-bottom: 1rem;
-      color: #ffffff;
-    }
-    .cta-card p { font-size: 15px; color: rgba(255,255,255,.78); line-height: 1.7; margin-bottom: 2rem; }
-    .cta-actions { display: flex; flex-direction: column; align-items: center; gap: .8rem; }
-    .cta-card .btn-primary {
-      background: #ffffff; color: var(--green2);
-      box-shadow: 0 8px 24px rgba(7,22,60,.28);
-    }
-    .cta-card .btn-primary:hover {
-      filter: none; background: #eef3ff;
-      box-shadow: 0 12px 32px rgba(7,22,60,.34);
-    }
-    .cta-card .btn-whatsapp {
-      border-color: rgba(255,255,255,.35);
-      background: rgba(255,255,255,.1); color: #ffffff;
-      box-shadow: none; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-    }
-    .cta-card .btn-whatsapp:hover {
-      border-color: rgba(255,255,255,.6);
-      background: rgba(255,255,255,.18); color: #ffffff;
-      box-shadow: none;
-    }
-
-    /* ─── FOOTER ─────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 3rem 2rem;
-      max-width: 74rem; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-    }
-    .footer-logo {
-      display: flex; align-items: center; gap: 8px;
-      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px;
-      color: var(--white);
-    }
-    .footer-copy { font-size: 12px; color: var(--muted2); }
-    .footer-links { display: flex; align-items: center; gap: 1.5rem; }
-    .footer-link { font-size: 12px; color: var(--muted2); transition: color .2s; }
-    .footer-link:hover { color: var(--green); }
-
-    /* ─── HERO CTAS BELOW VSL ────────────────────────── */
-    .hero-badge-desktop { display: inline-flex; margin-bottom: 1.25rem; }
-    .hero-badge-mobile  { display: none; }
-    @media (max-width: 640px) {
-      .hero-badge-desktop { display: none; }
-      .hero-badge-mobile  { display: inline-flex; margin-bottom: 1.25rem; margin-top: 0; }
-      .hero-badge-mobile .hero-social-text strong { color: var(--green); }
-    }
-    .vsl-badge-wrap { display: none; }
-
-    .vsl-badge-wrap {
-      display: flex; justify-content: center;
-      padding: .75rem 2rem 0;
-    }
-
-    .hero-ctas-below {
-      display: flex; align-items: center; justify-content: center;
-      gap: 1rem; flex-wrap: wrap;
-      padding: 1.5rem 2rem 5rem;
-    }
-
-    /* ─── PROOF CTA ROW ──────────────────────────────── */
-    .proof-ctas {
-      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
-      margin-bottom: 2.5rem;
-      justify-content: flex-start;
-    }
-
-    /* ─── FAQ ───────────────────────────────────────── */
-    .faq-section { padding: 5.5rem 0; }
-    .faq-section .fade-up:first-child { text-align: center; }
-    .faq-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: .75rem; max-width: 720px; margin-left: auto; margin-right: auto; }
-    .faq-item {
-      background: rgba(255,255,255,.62); border: 1px solid rgba(255,255,255,.75);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      border-radius: 16px; overflow: hidden;
-      box-shadow: var(--ring), var(--shadow-sm);
-      transition: border-color .25s, box-shadow .25s;
-    }
-    .faq-item:hover { border-color: rgba(37,99,235,.3); box-shadow: 0 0 0 1px rgba(37,99,235,.12), 0 8px 24px rgba(37,99,235,.08); }
-    .faq-item.open { border-color: rgba(37,99,235,.3); box-shadow: 0 0 0 1px rgba(37,99,235,.12), 0 8px 24px rgba(37,99,235,.08); }
-    .faq-q {
-      width: 100%; display: flex; align-items: center; justify-content: space-between;
-      padding: 1.1rem 1.4rem; background: none; border: none; cursor: pointer;
-      font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600;
-      color: var(--white); text-align: left; gap: 1rem;
-    }
-    .faq-icon { flex-shrink: 0; transition: transform .3s; color: var(--green); }
-    .faq-item.open .faq-icon { transform: rotate(180deg); }
-    .faq-a {
-      max-height: 0; overflow: hidden;
-      font-size: 14px; color: var(--muted); line-height: 1.65;
-      transition: max-height .35s ease, padding .3s ease;
-      padding: 0 1.4rem;
-    }
-    .faq-item.open .faq-a { max-height: 200px; padding: 0 1.4rem 1.2rem; }
-
-    /* ─── MOBILE STICKY NAV ─────────────────────────── */
-    .mobile-nav {
-      display: none;
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      background: rgba(247,249,253,.92);
-      box-shadow: 0 1px 12px rgba(15,23,42,.06);
-      padding: 0 1.5rem;
-      height: 62px;
-      align-items: center; justify-content: space-between;
-      opacity: 0;
-      transform: translateY(-100%);
-      transition: opacity .4s ease, transform .4s cubic-bezier(.4,0,.2,1);
-      pointer-events: none;
-    }
-    .mobile-nav.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-    @media (max-width: 640px) {
-      .mobile-nav { display: flex; }
-    }
-
-    /* ─── RESPONSIVE ─────────────────────────────────── */
-    @media (max-width: 640px) {
-.price-card { background: rgba(255,255,255,.92); }
-      .feat-card  { background: rgba(255,255,255,.88); }
-      .hero { padding: 1.25rem 1.5rem 1rem; }
-      .wrap { padding: 0 1.5rem; }
-      .features-section,
-      .hiw-section,
-      .proof-section,
-      .pricing-section { padding: 2.5rem 0; }
-      .cta-section { padding: 2.5rem 1.5rem 3.5rem; }
-      .cta-card { padding: 2.75rem 1.75rem; border-radius: 24px; }
-      .hero-ctas-below { padding: 0.75rem 1.5rem 4rem; }
-      .proof-ctas { margin-bottom: 1.75rem; display: none; }
-      .feat-card { padding: 1.75rem; border-radius: 20px; }
-      .price-card { padding: 2rem 1.5rem; }
-      .contact-form-card { padding: 1.75rem 1.5rem; border-radius: 20px; }
-    }
-
-    /* ─── A11Y & MOTION ──────────────────────────────── */
-    a:focus-visible, button:focus-visible {
-      outline: 2px solid var(--green);
-      outline-offset: 3px;
-      border-radius: 6px;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-      }
-      .fade-up { opacity: 1; transform: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <div class="blobs" aria-hidden="true">
-    <div class="blob blob-a"></div>
-    <div class="blob blob-b"></div>
-    <div class="blob blob-c"></div>
-  </div>
-
-  <div style="position:relative;z-index:1;">
-
-    <!-- ── NAV ─────────────────────────────────────── -->
-    <nav>
-      <div class="nav-inner">
-        <div class="nav-logo">
-          <div class="nav-logo-dot"></div>
-          FLOWSA
-        </div>
-        <div class="nav-links">
-          <a href="#features" class="nav-link">Wat wij bieden</a>
-          <a href="#how-it-works" class="nav-link">Hoe het werkt</a>
-          <a href="#pricing" class="nav-link">Tarieven</a>
-          <a href="#contact" class="nav-link">Contact</a>
-        </div>
-        <!-- Login knop — vervang de href met jouw GHL subaccount login URL -->
-        <a href="https://Login.flowsa.app" class="login-btn">
-          <span class="login-btn__dot"></span>
-          <span class="login-btn__label">Inloggen</span>
-          <span class="login-btn__overlay">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
-          </span>
-        </a>
-      </div>
-    </nav>
-
-    <!-- ── MOBILE STICKY NAV (only on mobile, triggers after VSL scrolls out) ── -->
-    <div class="mobile-nav" id="mobile-nav">
-      <div class="nav-logo">
+  <!-- ── NAV ─────────────────────────────────────── -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
         <div class="nav-logo-dot"></div>
         FLOWSA
+      </a>
+      <div class="nav-links">
+        <a href="/functies" class="nav-link">Functies</a>
+        <a href="/functies#how-it-works" class="nav-link">Hoe het werkt</a>
+        <a href="/prijzen" class="nav-link">Prijzen</a>
+        <a href="/contact" class="nav-link">Contact</a>
       </div>
-      <a href="demo/" class="btn-primary" style="padding:9px 20px;font-size:13px;border-radius:10px;margin-right:8px;">Demo</a>
+      <!-- Login knop — vervang de href met jouw GHL subaccount login URL -->
+      <a href="https://Login.flowsa.app" class="login-btn">Inloggen</a>
+    </div>
+  </nav>
+
+  <!-- ── MOBILE STICKY NAV ─────────────────────────── -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-dot"></div>
+      FLOWSA
+    </a>
+    <a href="demo/" class="btn-primary" style="padding:9px 20px;font-size:13px;margin-right:8px;">Demo</a>
+  </div>
+
+  <!-- ── HERO ────────────────────────────────────── -->
+  <section class="hero">
+
+    <div class="hero-social-proof hero-badge-desktop fade-up" data-delay="0">
+      <span class="hero-stars">★★★★★</span>
+      <span class="hero-social-text"><strong>4.8</strong> — Beoordeeld door aannemers over heel Nederland &amp; België</span>
+    </div>
+    <div class="hero-social-proof hero-badge-mobile fade-up" data-delay="0">
+      <span class="hero-social-text"><strong>4.8</strong> beoordeeld door aannemers in Nederland en België</span>
     </div>
 
+    <h1 class="fade-up" data-delay="80">
+      Meer klanten<br><span class="accent-green">Minder gedoe</span>
+    </h1>
 
-    <!-- ── HERO ────────────────────────────────────── -->
-    <section class="hero">
+    <p class="hero-sub fade-up" data-delay="160">
+      De slimme website voor aannemers die willen groeien zonder extra personeel
+    </p>
 
-      <div class="hero-social-proof hero-badge-desktop fade-up" data-delay="0">
-        <span class="hero-stars">★★★★★</span>
-        <span class="hero-social-text"><strong>4.8</strong> — Beoordeeld door aannemers over heel Nederland &amp; België</span>
+    <div class="hero-ctas fade-up" data-delay="240">
+      <a href="demo/" class="btn-primary">
+        Plan demo
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
+      </a>
+      <a href="/functies#how-it-works" class="btn-ghost">
+        Hoe werkt het?
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
+    </div>
+
+    <!-- VSL label -->
+    <div class="vsl-label-wrap fade-up" data-delay="300">
+      <span class="vsl-label-dot"></span>
+      <span class="vsl-label-text">Bekijk de video</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.45;flex-shrink:0;"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+
+    <!-- VSL / Video -->
+    <div class="vsl-wrap fade-up" data-delay="320">
+      <video id="vsl-video"
+        playsinline
+        preload="none"
+        style="position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;background:#000;"
+      ></video>
+      <div class="vsl-overlay" id="vsl-overlay" onclick="playVsl()">
+        <picture>
+          <source srcset="vsl-thumb.webp" type="image/webp">
+          <img class="vsl-thumb" src="vsl-thumb.jpg" alt="Video thumbnail" width="1920" height="1080" loading="eager">
+        </picture>
+        <div class="vsl-blur"></div>
+        <div class="vsl-play-btn">
+          <div class="vsl-play">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
       </div>
-      <div class="hero-social-proof hero-badge-mobile fade-up" data-delay="0">
-        <span class="hero-social-text"><strong>4.8</strong> beoordeeld door aannemers in Nederland en België</span>
+    </div>
+
+  </section>
+
+  <!-- ── WAT WIJ BIEDEN (kort) ─────────────────────── -->
+  <section class="features-section band">
+    <div class="wrap">
+      <div class="fade-up" data-delay="0">
+        <div class="section-tag">Wat wij bieden</div>
+        <h2 class="section-h2">Een website die klanten aantrekt<br>en omzet oplevert</h2>
+        <p class="section-sub">Van websitebezoeker naar betalende klant, volledig automatisch, zonder dat jij er iets voor hoeft te doen</p>
       </div>
 
-      <h1 class="fade-up" data-delay="80">
-        Meer klanten<br><span class="accent-green">Minder gedoe</span>
-      </h1>
+      <div class="features-grid">
 
-      <p class="hero-sub fade-up" data-delay="160">
-        De slimme website voor aannemers die willen groeien zonder extra personeel
-      </p>
+        <!-- Website AI Chatbot -->
+        <div class="feat-card fade-up" data-delay="80">
+          <div class="feat-icon green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2554EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8M8 14h5"/></svg>
+          </div>
+          <h3 class="feat-title">Chatbot op jouw Website</h3>
+          <p class="feat-text">De chatbot staat 24/7 klaar op jouw website. Hij beantwoordt vragen, kwalificeert bezoekers en stuurt ze richting een afspraak, volledig in jouw eigen tone of voice en huisstijl</p>
+          <div class="feat-tags">
+            <span class="feat-tag green">Altijd online</span>
+            <span class="feat-tag green">Eigen huisstijl</span>
+          </div>
+        </div>
 
-      <div class="hero-ctas fade-up" data-delay="240">
+        <!-- AI Callback -->
+        <div class="feat-card purple fade-up" data-delay="160">
+          <div class="feat-icon purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.96-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <h3 class="feat-title">Call Systeem</h3>
+          <p class="feat-text">Ben jij niet beschikbaar? Ons call systeem neemt de telefoon voor jou op, zodat jij je kunt blijven focussen op wat echt belangrijk is</p>
+          <div class="feat-tags">
+            <span class="feat-tag purple">Terugbellen binnen 60s</span>
+            <span class="feat-tag purple">CRM integratie</span>
+          </div>
+        </div>
+
+        <!-- Google Reviews -->
+        <div class="feat-card amber fade-up" data-delay="240">
+          <div class="feat-icon amber">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972a6.033 6.033 0 1 1 0-12.064 5.96 5.96 0 0 1 4.076 1.594l2.858-2.858A9.969 9.969 0 0 0 12.545 2C6.981 2 2.5 6.477 2.5 12s4.481 10 10.045 10c5.792 0 9.63-4.074 9.63-9.796 0-.657-.07-1.298-.19-1.914l-9.44-.051z" fill="#FBBC04"/><path d="M6.306 7.691 2.898 5.198A9.965 9.965 0 0 0 2.5 12c0 1.614.384 3.14 1.063 4.494l3.424-2.655A5.98 5.98 0 0 1 6.5 12c0-.804.158-1.57.443-2.272l-.637-2.037z" fill="#2554EB"/><path d="m12.545 22c2.717 0 4.998-.9 6.664-2.44l-3.254-2.524c-.902.603-2.057.963-3.41.963a6.028 6.028 0 0 1-5.726-4.147l-3.424 2.655C5.013 19.833 8.51 22 12.545 22z" fill="#34A853"/></svg>
+          </div>
+          <h3 class="feat-title">Google Reviews Systeem</h3>
+          <p class="feat-text">Wij bouwen een volledig geautomatiseerd systeem dat jouw tevreden klanten actief vraagt om een Google review — en alleen de 4-sterren-en-hoger reviews doorstelt naar jouw Google-pagina</p>
+          <div class="feat-tags">
+            <span class="feat-tag amber">Alleen 4+ sterren</span>
+            <span class="feat-tag amber">Volledig automatisch</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="proof-ctas fade-up" data-delay="80" style="margin-top:2rem;">
+        <a href="/functies" class="btn-ghost">
+          Bekijk alle functies
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
         <a href="demo/" class="btn-primary">
           Plan demo
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
         </a>
-        <a href="#how-it-works" class="btn-ghost">
-          Hoe werkt het?
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </a>
-      </div>
-
-      <!-- VSL label -->
-      <div class="vsl-label-wrap fade-up" data-delay="300">
-        <span class="vsl-label-dot"></span>
-        <span class="vsl-label-text">Bekijk de video</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.45;flex-shrink:0;"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-
-      <!-- VSL / Video -->
-      <div class="vsl-wrap fade-up" data-delay="320">
-        <video id="vsl-video"
-          playsinline
-          preload="none"
-          style="position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;background:#000;"
-        ></video>
-        <div class="vsl-overlay" id="vsl-overlay" onclick="playVsl()">
-          <picture>
-            <source srcset="vsl-thumb.webp" type="image/webp">
-            <img class="vsl-thumb" src="vsl-thumb.jpg" alt="Video thumbnail" width="1920" height="1080" loading="eager">
-          </picture>
-          <div class="vsl-blur"></div>
-          <div class="vsl-play-btn">
-            <div class="vsl-play">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </section>
-
-
-
-
-    <!-- ── FEATURES ─────────────────────────────────── -->
-    <section class="features-section" id="features">
-      <div class="wrap">
-        <div class="fade-up" data-delay="0">
-          <div class="section-tag">Wat wij bieden</div>
-          <h2 class="section-h2">Een website die klanten aantrekt<br>en omzet oplevert</h2>
-          <p class="section-sub">Van websitebezoeker naar betalende klant, volledig automatisch, zonder dat jij er iets voor hoeft te doen</p>
-        </div>
-
-        <div class="features-grid">
-
-          <!-- Website AI Chatbot -->
-          <div class="feat-card fade-up" data-delay="80">
-            <div class="feat-icon green">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8M8 14h5"/></svg>
-            </div>
-            <h3 class="feat-title">Chatbot op jouw Website</h3>
-            <p class="feat-text">De chatbot staat 24/7 klaar op jouw website. Hij beantwoordt vragen, kwalificeert bezoekers en stuurt ze richting een afspraak, volledig in jouw eigen tone of voice en huisstijl</p>
-            <div class="feat-tags">
-              <span class="feat-tag green">Altijd online</span>
-              <span class="feat-tag green">Eigen huisstijl</span>
-              <span class="feat-tag green">Afspraken inplannen</span>
-              <span class="feat-tag green">Lead kwalificatie</span>
-            </div>
-          </div>
-
-          <!-- AI Callback -->
-          <div class="feat-card purple fade-up" data-delay="160">
-            <div class="feat-icon purple">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.96-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            </div>
-            <h3 class="feat-title">Call Systeem</h3>
-            <p class="feat-text">Ben jij niet beschikbaar? Ons call systeem neemt de telefoon voor jou op, zodat jij je kunt blijven focussen op wat echt belangrijk is</p>
-            <div class="feat-tags">
-              <span class="feat-tag purple">Terugbellen binnen 60s</span>
-              <span class="feat-tag purple">Menselijke stem</span>
-              <span class="feat-tag purple">CRM integratie</span>
-              <span class="feat-tag purple">Gespreksverslag</span>
-            </div>
-          </div>
-
-          <!-- CRM Dashboard -->
-          <div class="feat-card fade-up" data-delay="240">
-            <div class="feat-icon green">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-            </div>
-            <h3 class="feat-title">Alles-in-één CRM Dashboard</h3>
-            <p class="feat-text">Alle leads, chatgesprekken, callback-rapporten en afspraken staan op één plek. Met het Pro pakket voeg je ook WhatsApp automations toe, zo bereik je leads via elk kanaal. Aangedreven door Flowsa</p>
-            <div class="feat-tags">
-              <span class="feat-tag green">Pipeline overzicht</span>
-              <span class="feat-tag green">E-mail & SMS</span>
-              <span class="feat-tag green">Rapportages</span>
-              <span class="feat-tag green">WhatsApp (Pro)</span>
-            </div>
-          </div>
-
-          <!-- Google Reviews -->
-          <div class="feat-card fade-up" data-delay="320" style="border-color: rgba(251,188,4,.15);">
-            <div class="feat-icon" style="background:rgba(251,188,4,.1);border:1px solid rgba(251,188,4,.2);">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972a6.033 6.033 0 1 1 0-12.064 5.96 5.96 0 0 1 4.076 1.594l2.858-2.858A9.969 9.969 0 0 0 12.545 2C6.981 2 2.5 6.477 2.5 12s4.481 10 10.045 10c5.792 0 9.63-4.074 9.63-9.796 0-.657-.07-1.298-.19-1.914l-9.44-.051z" fill="#FBBC04"/><path d="M6.306 7.691 2.898 5.198A9.965 9.965 0 0 0 2.5 12c0 1.614.384 3.14 1.063 4.494l3.424-2.655A5.98 5.98 0 0 1 6.5 12c0-.804.158-1.57.443-2.272l-.637-2.037z" fill="#2563eb"/><path d="m12.545 22c2.717 0 4.998-.9 6.664-2.44l-3.254-2.524c-.902.603-2.057.963-3.41.963a6.028 6.028 0 0 1-5.726-4.147l-3.424 2.655C5.013 19.833 8.51 22 12.545 22z" fill="#34A853"/></svg>
-            </div>
-            <h3 class="feat-title">Google Reviews Systeem</h3>
-            <p class="feat-text">Wij bouwen een volledig geautomatiseerd systeem dat jouw tevreden klanten actief vraagt om een Google review — en alleen de 4-sterren-en-hoger reviews doorstelt naar jouw Google-pagina. Minder negatieve feedback zichtbaar, meer vertrouwen online</p>
-            <div class="feat-tags">
-              <span class="feat-tag" style="background:rgba(251,188,4,.1);color:#c27803;border:none;">Alleen 4+ sterren</span>
-              <span class="feat-tag" style="background:rgba(251,188,4,.1);color:#c27803;border:none;">Volledig automatisch</span>
-              <span class="feat-tag" style="background:rgba(251,188,4,.1);color:#c27803;border:none;">Meer vertrouwen</span>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="proof-ctas fade-up" data-delay="80" style="margin-top:2rem;">
-          <a href="demo/" class="btn-primary">
-            Plan demo
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ── HOW IT WORKS ──────────────────────────────── -->
-    <section class="hiw-section" id="how-it-works">
-      <div class="wrap">
-        <div class="fade-up" data-delay="0">
-          <div class="section-tag">Hoe het werkt</div>
-          <h2 class="section-h2">In 3 stappen naar meer klanten<br>via je website</h2>
-          <p class="section-sub">Wij bouwen, optimaliseren en automatiseren jouw website zodat je meer bezoekers aantrekt en omzet in klanten</p>
-        </div>
-
-        <div class="steps">
-
-          <div class="step fade-up" data-delay="80">
-            <div class="step-num">1</div>
-            <div class="step-body">
-              <h4 class="step-title">Strategie & website plan</h4>
-              <p class="step-text">We bepalen wat jouw doelgroep zoekt en bouwen een website die daarop aansluit</p>
-            </div>
-          </div>
-
-          <div class="step fade-up" data-delay="160">
-            <div class="step-num">2</div>
-            <div class="step-body">
-              <h4 class="step-title">Een website die converteert</h4>
-              <p class="step-text">Je website wordt gebouwd met focus op vindbaarheid in Google en conversie</p>
-            </div>
-          </div>
-
-          <div class="step fade-up" data-delay="240">
-            <div class="step-num">3</div>
-            <div class="step-body">
-              <h4 class="step-title">Meer bezoekers → meer klanten</h4>
-              <p class="step-text">Je website trekt bezoekers aan en zet ze om in aanvragen en klanten</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-
-
-    <!-- ── PRICING ───────────────────────────────────── -->
-    <section class="pricing-section" id="pricing">
-      <div class="wrap">
-        <div class="fade-up" data-delay="0">
-          <div class="section-tag">Tarieven</div>
-          <h2 class="section-h2">Transparante prijzen<br>Geen verborgen kosten</h2>
-          <p class="section-sub">Prijzen zijn exclusief btw</p>
-        </div>
-
-        <!-- Billing tabs -->
-        <div class="billing-tabs-wrap fade-up" data-delay="60">
-          <div class="billing-tabs">
-            <button class="billing-tab" id="tab-monthly" onclick="setBilling('monthly')">Maandelijks</button>
-            <button class="billing-tab active" id="tab-yearly" onclick="setBilling('yearly')">Jaarlijks <span class="tab-save">bespaar 20%</span></button>
-          </div>
-        </div>
-
-        <!-- Mobile plan switcher -->
-        <div class="plan-switcher" id="plan-switcher">
-          <button class="plan-switch-btn" data-plan="basic" onclick="switchPlan('basic')">Basic</button>
-          <button class="plan-switch-btn active" data-plan="plus" onclick="switchPlan('plus')">Plus</button>
-          <button class="plan-switch-btn" data-plan="pro" onclick="switchPlan('pro')">Pro</button>
-        </div>
-
-        <div class="pricing-grid">
-
-          <!-- BASIS -->
-          <div class="price-card-wrap fade-up" data-delay="0" data-plan="basic">
-            <div class="price-card">
-              <div class="price-card-header">
-                <span class="price-billing-label faded" id="basis-billing-label">Maandelijks</span>
-                <span class="price-plan-badge starter">Starter</span>
-              </div>
-              <div class="price-amount">
-                <span class="price-currency">€</span>
-                <span class="price-num" id="basis-price">48</span>
-                <span class="price-period">/mnd</span>
-              </div>
-              <div class="price-yearly-note" id="basis-yearly-note">€576 per jaar gefactureerd, je bespaart €144</div>
-              <p class="price-sub">Ideaal voor startende aannemers</p>
-              <div class="price-divider"></div>
-              <ul class="price-features">
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Website
-                </li>
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Desktop & Mobiel geoptimaliseerd
-                </li>
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Website SEO
-                </li>
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Contact formulier
-                </li>
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Chat Widget
-                </li>
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Support
-                </li>
-              </ul>
-              <a href="demo/" class="price-cta ghost">Begin met Basic</a>
-            </div>
-          </div>
-
-          <!-- STARTER -->
-          <div class="price-card-wrap fade-up" data-delay="80" data-plan="plus">
-            <div class="most-value-tag">MEEST GEKOZEN</div>
-            <div class="price-card featured">
-              <div class="price-card-header">
-                <span class="price-billing-label faded" id="starter-billing-label">Maandelijks</span>
-                <span class="price-plan-badge pro">Plus</span>
-              </div>
-              <div class="price-amount">
-                <span class="price-currency">€</span>
-                <span class="price-num" id="starter-price">96</span>
-                <span class="price-period">/mnd</span>
-              </div>
-              <div class="price-yearly-note" id="starter-yearly-note">€1.152 per jaar gefactureerd, je bespaart €288</div>
-              <p class="price-sub">Ideaal voor gevestigde aannemers</p>
-              <div class="price-divider"></div>
-              <ul class="price-features">
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Alles uit Starter
-                </li>
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Chatbot op jouw website
-                </li>
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Call systeem
-                </li>
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  CRM Dashboard (1 gebruiker)
-                </li>
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Google Review systeem
-                </li>
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Support
-                </li>
-              </ul>
-              <a href="demo/" class="price-cta primary">Begin met Plus</a>
-            </div>
-          </div>
-
-          <!-- PRO -->
-          <div class="price-card-wrap fade-up" data-delay="160" data-plan="pro">
-            <div class="price-card">
-              <div class="price-card-header">
-                <span class="price-billing-label faded" id="pro-billing-label">Maandelijks</span>
-                <span class="price-plan-badge starter">Pro</span>
-              </div>
-              <div class="price-amount">
-                <span class="price-currency">€</span>
-                <span class="price-num" id="pro-price">160</span>
-                <span class="price-period">/mnd</span>
-              </div>
-              <div class="price-yearly-note" id="pro-yearly-note">€1.920 per jaar gefactureerd, je bespaart €480</div>
-              <p class="price-sub">Ideaal voor groeiende aannemers</p>
-              <div class="price-divider"></div>
-              <ul class="price-features">
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Alles uit Plus
-                </li>
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  E-mail & SMS automations
-                </li>
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  WhatsApp integratie
-                </li>
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  5 teamleden kunnen samenwerken
-                </li>
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Onbeperkte leads & klanten
-                </li>
-                <li class="price-feature">
-                  <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Priority support
-                </li>
-              </ul>
-              <a href="demo/" class="price-cta ghost">Begin met Pro</a>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Guarantee -->
-        <div class="fade-up" data-delay="200" style="text-align:center;margin-top:1.5rem;">
-          <div class="guarantee-badge">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span><strong>30 dagen</strong> niet goed, geld terug garantie</span>
-          </div>
-        </div>
-
-        <!-- Compare Plans -->
-        <div class="compare-wrap fade-up" data-delay="240">
-          <button class="compare-toggle-btn" id="compare-btn" onclick="toggleCompare()">
-            Vergelijk alle functies
-            <svg class="cmp-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="compare-table-wrap" id="compare-table-wrap">
-            <div class="compare-table">
-              <table>
-                <thead>
-                  <tr>
-                    <th style="width:40%;">Functie</th>
-                    <th>Basic</th>
-                    <th class="th-highlight">Plus</th>
-                    <th>Pro</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Website</td>
-                    <td><span class="cmp-check">✓</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                  </tr>
-                  <tr>
-                    <td>Desktop &amp; Mobiel geoptimaliseerd</td>
-                    <td><span class="cmp-check">✓</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                  </tr>
-                  <tr>
-                    <td>Website SEO</td>
-                    <td><span class="cmp-check">✓</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                  </tr>
-                  <tr>
-                    <td>Contact formulier</td>
-                    <td><span class="cmp-check">✓</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                  </tr>
-                  <tr>
-                    <td>Chat Widget</td>
-                    <td><span class="cmp-check">✓</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                  </tr>
-                  <tr>
-                    <td>AI Chatbot op jouw website</td>
-                    <td><span class="cmp-cross">—</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                  </tr>
-                  <tr>
-                    <td>AI Call systeem</td>
-                    <td><span class="cmp-cross">—</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                  </tr>
-                  <tr>
-                    <td>CRM Dashboard</td>
-                    <td><span class="cmp-cross">—</span></td>
-                    <td><span class="cmp-note">1 gebruiker</span></td>
-                    <td><span class="cmp-note">5 gebruikers</span></td>
-                  </tr>
-                  <tr>
-                    <td>Google Review systeem</td>
-                    <td><span class="cmp-cross">—</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                  </tr>
-                  <tr>
-                    <td>E-mail &amp; SMS automations</td>
-                    <td><span class="cmp-cross">—</span></td>
-                    <td><span class="cmp-cross">—</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                  </tr>
-                  <tr>
-                    <td>WhatsApp integratie</td>
-                    <td><span class="cmp-cross">—</span></td>
-                    <td><span class="cmp-cross">—</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                  </tr>
-                  <tr>
-                    <td>Onbeperkte leads &amp; klanten</td>
-                    <td><span class="cmp-cross">—</span></td>
-                    <td><span class="cmp-cross">—</span></td>
-                    <td><span class="cmp-check">✓</span></td>
-                  </tr>
-                  <tr>
-                    <td>Support</td>
-                    <td><span class="cmp-note">Standaard</span></td>
-                    <td><span class="cmp-note">Standaard</span></td>
-                    <td><span class="cmp-note">Priority</span></td>
-                  </tr>
-                  <tr>
-                    <td>Meta Ads</td>
-                    <td><span class="cmp-note">Op aanvraag</span></td>
-                    <td><span class="cmp-note">Op aanvraag</span></td>
-                    <td><span class="cmp-note">Op aanvraag</span></td>
-                  </tr>
-                  <tr>
-                    <td>Google Ads</td>
-                    <td><span class="cmp-note">Op aanvraag</span></td>
-                    <td><span class="cmp-note">Op aanvraag</span></td>
-                    <td><span class="cmp-note">Op aanvraag</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <p class="fade-up" data-delay="280" style="margin-top:1.5rem;font-size:13px;color:var(--muted);text-align:center;">
-          Maatwerk nodig? <a href="#contact" style="color:var(--green);font-weight:600;">Neem contact op</a> voor een enterprise offerte.
-        </p>
-      </div>
-    </section>
-
-
-    <!-- ── CONTACT FORM ─────────────────────────────── -->
-    <section class="contact-section" id="contact">
-      <div class="wrap">
-        <div class="fade-up" data-delay="0">
-          <div class="section-tag">Contact</div>
-          <h2 class="section-h2">Neem contact op</h2>
-          <p class="section-sub">Vul het formulier in en we nemen binnen 24 uur contact met je op.</p>
-        </div>
-        <div class="contact-form-card fade-up" data-delay="80">
-          <form id="contact-form-main">
-            <div class="contact-row">
-              <div class="contact-field">
-                <label class="contact-label" for="cf-naam">Naam</label>
-                <input class="contact-input" id="cf-naam" name="naam" type="text" placeholder="Jan de Vries" required>
-              </div>
-              <div class="contact-field">
-                <label class="contact-label" for="cf-bedrijf">Bedrijfsnaam</label>
-                <input class="contact-input" id="cf-bedrijf" name="bedrijf" type="text" placeholder="De Vries Bouw" required>
-              </div>
-            </div>
-            <div class="contact-row">
-              <div class="contact-field">
-                <label class="contact-label" for="cf-tel">Telefoonnummer</label>
-                <input class="contact-input" id="cf-tel" name="telefoon" type="tel" placeholder="+31 6 12345678" required>
-              </div>
-              <div class="contact-field">
-                <label class="contact-label" for="cf-email">E-mailadres</label>
-                <input class="contact-input" id="cf-email" name="email" type="email" placeholder="jan@devries.nl" required>
-              </div>
-            </div>
-            <div class="contact-field">
-              <label class="contact-label" for="cf-bericht">Bericht</label>
-              <textarea class="contact-textarea" id="cf-bericht" name="bericht" placeholder="Vertel ons wat je nodig hebt..." required></textarea>
-            </div>
-            <button type="submit" class="btn-primary" style="margin-top:.5rem;">
-              Verstuur bericht
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
-            </button>
-            <div class="contact-success" id="contact-success">Bedankt! We nemen zo snel mogelijk contact met je op.</div>
-          </form>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ── FAQ ─────────────────────────────────────── -->
-    <section class="faq-section">
-      <div class="wrap">
-        <div class="fade-up" data-delay="0">
-          <div class="section-tag">FAQ</div>
-          <h2 class="section-h2">Veelgestelde vragen</h2>
-        </div>
-        <div class="faq-list fade-up" data-delay="80">
-          <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">
-              Werkt het ook voor mijn branche?
-              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="faq-a">Flowsa wordt gebruikt door aannemers, makelaars, klinieken en meer. Als jij klanten wil, werkt het voor jou</div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">
-              Hoe snel is het live?
-              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="faq-a">Gemiddeld binnen 5 werkdagen</div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">
-              Wat als ik vragen heb?
-              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="faq-a">Je hebt altijd toegang tot onze support — geen chatbot, gewoon een mens</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── CTA SECTION ───────────────────────────────── -->
-    <section class="cta-section" id="cta">
-      <div class="cta-card fade-up" data-delay="0">
-        <h2>Klaar om elke websitebezoeker om te zetten naar een klant?</h2>
-        <p>Plan een gratis demo in en ontdek hoe jouw website meer aanvragen kan genereren</p>
-        <div class="cta-actions">
-          <a href="demo/" class="btn-primary">
-            Plan demo
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
-          </a>
-          <a href="https://wa.me/31600000000?text=Hallo%2C%20ik%20wil%20graag%20meer%20weten%20over%20jullie%20systemen" class="btn-ghost btn-whatsapp">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-            WhatsApp ons
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── VSL LEAD MODAL ────────────────────────────── -->
-    <div class="vsl-modal-overlay" id="vsl-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="vsl-modal-title">
-      <div class="vsl-modal">
-        <div class="vsl-modal-header">
-          <div class="vsl-modal-badge">
-            <div class="vsl-modal-badge-dot"></div>
-            Bekijk de video gratis
-          </div>
-          <h2 class="vsl-modal-title" id="vsl-modal-title">Vul je gegevens in om de video te bekijken</h2>
-          <p class="vsl-modal-sub">We gebruiken je gegevens alleen om je te helpen meer klanten te krijgen — geen spam.</p>
-        </div>
-
-        <form class="vsl-form" id="vsl-lead-form" novalidate>
-
-          <div class="vsl-form-row">
-            <div class="vsl-field">
-              <label class="vsl-label" for="vsl-naam">Naam</label>
-              <input class="vsl-input" id="vsl-naam" name="naam" type="text" placeholder="Jan de Vries" required>
-            </div>
-            <div class="vsl-field">
-              <label class="vsl-label" for="vsl-bedrijf">Bedrijfsnaam</label>
-              <input class="vsl-input" id="vsl-bedrijf" name="bedrijf" type="text" placeholder="De Vries Bouw" required>
-            </div>
-          </div>
-
-          <div class="vsl-form-row">
-            <div class="vsl-field">
-              <label class="vsl-label" for="vsl-tel">Telefoonnummer</label>
-              <input class="vsl-input" id="vsl-tel" name="telefoon" type="tel" placeholder="+31 6 12345678" required>
-            </div>
-            <div class="vsl-field">
-              <label class="vsl-label" for="vsl-email">E-mailadres</label>
-              <input class="vsl-input" id="vsl-email" name="email" type="email" placeholder="jan@devries.nl" required>
-            </div>
-          </div>
-
-          <div class="vsl-field">
-            <label class="vsl-label" for="vsl-diensten">Welke werkzaamheden voer je uit?</label>
-            <select class="vsl-select" id="vsl-diensten" name="diensten" required>
-              <option value="" disabled selected>Selecteer een categorie</option>
-              <option>Schilderwerk</option>
-              <option>Loodgieterij</option>
-              <option>Elektra & installatie</option>
-              <option>Aanbouw & verbouw</option>
-              <option>Dakrenovatie</option>
-              <option>Vloeren & tegels</option>
-              <option>Tuinonderhoud & bestrating</option>
-              <option>Meerdere / Anders</option>
-            </select>
-          </div>
-
-          <div class="vsl-form-row vsl-desktop-only">
-            <div class="vsl-field">
-              <label class="vsl-label" for="vsl-medewerkers">Aantal medewerkers</label>
-              <select class="vsl-select" id="vsl-medewerkers" name="medewerkers" required>
-                <option value="" disabled selected>Selecteer</option>
-                <option>Alleen ik (ZZP)</option>
-                <option>2 – 5</option>
-                <option>6 – 15</option>
-                <option>Meer dan 15</option>
-              </select>
-            </div>
-            <div class="vsl-field">
-              <label class="vsl-label" for="vsl-klanten">Nieuwe klanten per maand?</label>
-              <select class="vsl-select" id="vsl-klanten" name="klanten_doel" required>
-                <option value="" disabled selected>Selecteer</option>
-                <option>1 – 3</option>
-                <option>3 – 5</option>
-                <option>5 – 10</option>
-                <option>Meer dan 10</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="vsl-field vsl-desktop-only">
-            <label class="vsl-label" for="vsl-aanpak">Hoe reageer je nu op nieuwe aanvragen?</label>
-            <select class="vsl-select" id="vsl-aanpak" name="huidige_aanpak" required>
-              <option value="" disabled selected>Selecteer een situatie</option>
-              <option>Ik bel zo snel mogelijk zelf terug</option>
-              <option>Via e-mail of WhatsApp</option>
-              <option>Via een medewerker of secretaresse</option>
-              <option>Ik heb geen vast systeem hiervoor</option>
-            </select>
-          </div>
-
-          <button type="submit" class="vsl-submit">
-            Bekijk de video
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-
-          <p class="vsl-privacy">🔒 Je gegevens zijn veilig en worden nooit gedeeld met derden.</p>
-
-        </form>
       </div>
     </div>
+  </section>
 
-    <!-- ── FOOTER ────────────────────────────────────── -->
-    <footer>
-      <div class="footer-logo">
-        <div class="nav-logo-dot" style="width:6px;height:6px;"></div>
-        FLOWSA
+  <!-- ── CTA SECTION ───────────────────────────────── -->
+  <section class="cta-section" id="cta">
+    <div class="cta-card fade-up" data-delay="0">
+      <h2>Klaar om elke websitebezoeker om te zetten naar een klant?</h2>
+      <p>Plan een gratis demo in en ontdek hoe jouw website meer aanvragen kan genereren</p>
+      <div class="cta-actions">
+        <a href="demo/" class="btn-primary">
+          Plan demo
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
+        </a>
+        <a href="https://wa.me/31600000000?text=Hallo%2C%20ik%20wil%20graag%20meer%20weten%20over%20jullie%20systemen" class="btn-ghost btn-whatsapp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp ons
+        </a>
       </div>
-      <span class="footer-copy">© 2026 — Alle rechten voorbehouden</span>
-    </footer>
+    </div>
+  </section>
 
+  <!-- ── VSL LEAD MODAL ────────────────────────────── -->
+  <div class="vsl-modal-overlay" id="vsl-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="vsl-modal-title">
+    <div class="vsl-modal">
+      <div class="vsl-modal-header">
+        <div class="vsl-modal-badge">
+          <div class="vsl-modal-badge-dot"></div>
+          Bekijk de video gratis
+        </div>
+        <h2 class="vsl-modal-title" id="vsl-modal-title">Vul je gegevens in om de video te bekijken</h2>
+        <p class="vsl-modal-sub">We gebruiken je gegevens alleen om je te helpen meer klanten te krijgen — geen spam.</p>
+      </div>
+      <form class="vsl-form" id="vsl-lead-form" novalidate>
+
+        <div class="vsl-form-row">
+          <div class="vsl-field">
+            <label class="vsl-label" for="vsl-naam">Naam</label>
+            <input class="vsl-input" id="vsl-naam" name="naam" type="text" placeholder="Jan de Vries" required>
+          </div>
+          <div class="vsl-field">
+            <label class="vsl-label" for="vsl-bedrijf">Bedrijfsnaam</label>
+            <input class="vsl-input" id="vsl-bedrijf" name="bedrijf" type="text" placeholder="De Vries Bouw" required>
+          </div>
+        </div>
+
+        <div class="vsl-form-row">
+          <div class="vsl-field">
+            <label class="vsl-label" for="vsl-tel">Telefoonnummer</label>
+            <input class="vsl-input" id="vsl-tel" name="telefoon" type="tel" placeholder="+31 6 12345678" required>
+          </div>
+          <div class="vsl-field">
+            <label class="vsl-label" for="vsl-email">E-mailadres</label>
+            <input class="vsl-input" id="vsl-email" name="email" type="email" placeholder="jan@devries.nl" required>
+          </div>
+        </div>
+
+        <div class="vsl-field">
+          <label class="vsl-label" for="vsl-diensten">Welke werkzaamheden voer je uit?</label>
+          <select class="vsl-select" id="vsl-diensten" name="diensten" required>
+            <option value="" disabled selected>Selecteer een categorie</option>
+            <option>Schilderwerk</option>
+            <option>Loodgieterij</option>
+            <option>Elektra &amp; installatie</option>
+            <option>Aanbouw &amp; verbouw</option>
+            <option>Dakrenovatie</option>
+            <option>Vloeren &amp; tegels</option>
+            <option>Tuinonderhoud &amp; bestrating</option>
+            <option>Meerdere / Anders</option>
+          </select>
+        </div>
+
+        <div class="vsl-form-row vsl-desktop-only">
+          <div class="vsl-field">
+            <label class="vsl-label" for="vsl-medewerkers">Aantal medewerkers</label>
+            <select class="vsl-select" id="vsl-medewerkers" name="medewerkers" required>
+              <option value="" disabled selected>Selecteer</option>
+              <option>Alleen ik (ZZP)</option>
+              <option>2 – 5</option>
+              <option>6 – 15</option>
+              <option>Meer dan 15</option>
+            </select>
+          </div>
+          <div class="vsl-field">
+            <label class="vsl-label" for="vsl-klanten">Nieuwe klanten per maand?</label>
+            <select class="vsl-select" id="vsl-klanten" name="klanten_doel" required>
+              <option value="" disabled selected>Selecteer</option>
+              <option>1 – 3</option>
+              <option>3 – 5</option>
+              <option>5 – 10</option>
+              <option>Meer dan 10</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="vsl-field vsl-desktop-only">
+          <label class="vsl-label" for="vsl-aanpak">Hoe reageer je nu op nieuwe aanvragen?</label>
+          <select class="vsl-select" id="vsl-aanpak" name="huidige_aanpak" required>
+            <option value="" disabled selected>Selecteer een situatie</option>
+            <option>Ik bel zo snel mogelijk zelf terug</option>
+            <option>Via e-mail of WhatsApp</option>
+            <option>Via een medewerker of secretaresse</option>
+            <option>Ik heb geen vast systeem hiervoor</option>
+          </select>
+        </div>
+
+        <button type="submit" class="vsl-submit">
+          Bekijk de video
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+
+        <p class="vsl-privacy">🔒 Je gegevens zijn veilig en worden nooit gedeeld met derden.</p>
+
+      </form>
+    </div>
   </div>
 
+  <!-- ── FOOTER ────────────────────────────────────── -->
+  <footer>
+    <a href="/" class="footer-logo">
+      <div class="nav-logo-dot" style="width:6px;height:6px;"></div>
+      FLOWSA
+    </a>
+    <div class="footer-links">
+      <a href="/functies" class="footer-link">Functies</a>
+      <a href="/prijzen" class="footer-link">Prijzen</a>
+      <a href="/contact" class="footer-link">Contact</a>
+    </div>
+    <span class="footer-copy">© 2026 — Alle rechten voorbehouden</span>
+  </footer>
 
-  <script>
-    if (history.scrollRestoration) history.scrollRestoration = 'manual';
-    window.scrollTo(0, 0);
-
-    /* Prevent iOS zoom on form inputs */
-    var vp = document.querySelector('meta[name="viewport"]');
-    document.addEventListener('focusin', function(e) {
-      if (['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))
-        vp.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0';
-    });
-    document.addEventListener('focusout', function(e) {
-      if (['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))
-        vp.content = 'width=device-width, initial-scale=1.0';
-    });
-
-    /* ── FADE IN on scroll ──────────────────────────── */
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const d = parseInt(e.target.dataset.delay || '0', 10);
-          e.target.style.transitionDelay = d + 'ms';
-          e.target.classList.add('visible');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: window.innerWidth < 640 ? 0.05 : 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-
-    /* ── FAQ ────────────────────────────────────────── */
-    function toggleFaq(btn) {
-      var item = btn.parentElement;
-      var isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(el) { el.classList.remove('open'); });
-      if (!isOpen) item.classList.add('open');
-    }
-
-    /* ── VSL PLAY ───────────────────────────────────── */
-    var vslLeadSubmitted = localStorage.getItem('vslLeadSubmitted') === '1';
-
-    function playVsl() {
-      if (!vslLeadSubmitted) {
-        document.getElementById('vsl-modal-overlay').classList.add('open');
-        document.body.style.overflow = 'hidden';
-        return;
-      }
-      var overlay = document.getElementById('vsl-overlay');
-      var video   = document.getElementById('vsl-video');
-      overlay.classList.add('hidden');
-      if (!video.src) {
-        video.src = 'vsl-v1.mp4';
-        video.load();
-      }
-      video.play();
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      var video = document.getElementById('vsl-video');
-      if (video) {
-        video.addEventListener('click', function () {
-          if (video.paused) { video.play(); } else { video.pause(); }
-        });
-      }
-
-      document.getElementById('vsl-modal-overlay').addEventListener('click', function (e) {
-        if (e.target === this) {
-          this.classList.remove('open');
-          document.body.style.overflow = '';
-        }
-      });
-
-      var form = document.getElementById('vsl-lead-form');
-      if (!form) return;
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        /* Validate only visible required fields */
-        var inputs = form.querySelectorAll('[required]');
-        var valid  = true;
-        inputs.forEach(function (el) {
-          if (el.offsetParent === null) return; /* skip hidden fields */
-          if (!el.value.trim()) { el.focus(); valid = false; }
-        });
-        if (!valid) return;
-
-        /* Mark submitted & persist across refreshes */
-        vslLeadSubmitted = true;
-        localStorage.setItem('vslLeadSubmitted', '1');
-        document.getElementById('vsl-modal-overlay').classList.remove('open');
-        document.body.style.overflow = '';
-
-        /* Start the video */
-        var overlay = document.getElementById('vsl-overlay');
-        var video   = document.getElementById('vsl-video');
-        overlay.classList.add('hidden');
-        if (!video.src) { video.src = 'vsl-v1.mp4'; video.load(); }
-        video.play();
-      });
-    });
-
-    /* ── BILLING TOGGLE ─────────────────────────────── */
-    // Plus: €97/mnd → €78/mnd jaarlijks (20% korting, €936/jaar, bespaar €228)
-    // Pro:  €197/mnd → €158/mnd jaarlijks (20% korting, €1.896/jaar, bespaar €468)
-    var billing = 'yearly';
-    var animating = false;
-
-    var PRICES = {
-      basis:   { monthly: 60,  yearly: 48  },
-      starter: { monthly: 120, yearly: 96  },
-      pro:     { monthly: 200, yearly: 160 },
-    };
-
-    function animateCount(elId, fromVal, toVal, duration) {
-      var el = document.getElementById(elId);
-      if (!el) return;
-      var start = performance.now();
-      var diff  = toVal - fromVal;
-      function step(now) {
-        var t = Math.min((now - start) / duration, 1);
-        var e = t < 0.5 ? 2*t*t : -1 + (4 - 2*t)*t;
-        el.textContent = Math.round(fromVal + diff * e);
-        if (t < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-    }
-
-    function setBilling(mode) {
-      if (mode === billing) return;
-      billing = mode;
-      var yearly = mode === 'yearly';
-
-      document.getElementById('tab-monthly').classList.toggle('active', !yearly);
-      document.getElementById('tab-yearly').classList.toggle('active',  yearly);
-
-      document.getElementById('basis-billing-label').classList.toggle('faded',   yearly);
-      document.getElementById('starter-billing-label').classList.toggle('faded', yearly);
-      document.getElementById('pro-billing-label').classList.toggle('faded',     yearly);
-
-      animateCount('basis-price',   yearly ? PRICES.basis.monthly   : PRICES.basis.yearly,   yearly ? PRICES.basis.yearly   : PRICES.basis.monthly,   480);
-      animateCount('starter-price', yearly ? PRICES.starter.monthly : PRICES.starter.yearly, yearly ? PRICES.starter.yearly : PRICES.starter.monthly, 480);
-      animateCount('pro-price',     yearly ? PRICES.pro.monthly     : PRICES.pro.yearly,     yearly ? PRICES.pro.yearly     : PRICES.pro.monthly,     480);
-
-      var bNote = document.getElementById('basis-yearly-note');
-      var sNote = document.getElementById('starter-yearly-note');
-      var pNote = document.getElementById('pro-yearly-note');
-
-      if (yearly) {
-        bNote.textContent = '€576 per jaar gefactureerd, je bespaart €144';
-        sNote.textContent = '€1.152 per jaar gefactureerd, je bespaart €288';
-        pNote.textContent = '€1.920 per jaar gefactureerd, je bespaart €480';
-        bNote.classList.remove('hidden');
-        sNote.classList.remove('hidden');
-        pNote.classList.remove('hidden');
-      } else {
-        bNote.classList.add('hidden');
-        sNote.classList.add('hidden');
-        pNote.classList.add('hidden');
-      }
-    }
-
-    /* ── MOBILE PLAN SWITCHER ───────────────────────── */
-    function switchPlan(plan) {
-      document.querySelectorAll('.pricing-grid .price-card-wrap[data-plan]').forEach(function(el) {
-        el.classList.toggle('plan-active', el.dataset.plan === plan);
-      });
-      document.querySelectorAll('.plan-switch-btn').forEach(function(btn) {
-        btn.classList.toggle('active', btn.dataset.plan === plan);
-      });
-    }
-    /* Init: show Plus by default on mobile */
-    if (window.innerWidth <= 620) switchPlan('plus');
-    window.addEventListener('resize', function() {
-      if (window.innerWidth <= 620) switchPlan(
-        document.querySelector('.plan-switch-btn.active')?.dataset.plan || 'plus'
-      );
-    });
-
-    /* ── CONTACT FORM ───────────────────────────────── */
-    (function () {
-      var form = document.getElementById('contact-form-main');
-      if (!form) return;
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var naam    = form.querySelector('[name="naam"]').value.trim();
-        var bedrijf = form.querySelector('[name="bedrijf"]').value.trim();
-        var tel     = form.querySelector('[name="telefoon"]').value.trim();
-        var email   = form.querySelector('[name="email"]').value.trim();
-        var bericht = form.querySelector('[name="bericht"]').value.trim();
-        var subject = encodeURIComponent('Nieuwe aanvraag van ' + naam + ' (' + bedrijf + ')');
-        var body    = encodeURIComponent('Naam: ' + naam + '\nBedrijf: ' + bedrijf + '\nTelefoon: ' + tel + '\nE-mail: ' + email + '\n\nBericht:\n' + bericht);
-        window.location.href = 'mailto:Guilliano@dailyshotsmedia.com?subject=' + subject + '&body=' + body;
-        document.getElementById('contact-success').style.display = 'block';
-        form.reset();
-      });
-    })();
-
-    /* ── COMPARE PLANS TOGGLE ──────────────────────── */
-    function toggleCompare() {
-      var btn  = document.getElementById('compare-btn');
-      var wrap = document.getElementById('compare-table-wrap');
-      var open = wrap.classList.toggle('open');
-      btn.classList.toggle('open', open);
-      btn.querySelector('.cmp-chevron').style.transform = open ? 'rotate(180deg)' : '';
-    }
-
-    /* ── MOBILE STICKY NAV SCROLL TRIGGER ──────────── */
-    (function () {
-      var mobileNav  = document.getElementById('mobile-nav');
-      var vslBlock   = document.querySelector('.vsl-wrap');
-      if (!mobileNav || !vslBlock) return;
-
-      var lastY = window.scrollY;
-
-      function onScroll() {
-        var y       = window.scrollY;
-        var rect    = vslBlock.getBoundingClientRect();
-        var pastVsl = rect.bottom < 0;
-        var goingUp = y < lastY;
-        lastY = y;
-
-        if (pastVsl && goingUp) {
-          mobileNav.classList.add('is-visible');
-        } else {
-          mobileNav.classList.remove('is-visible');
-        }
-      }
-
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-    })();
-
-    /* ── BLOB PARALLAX ──────────────────────────────── */
-    (function () {
-      const a = document.querySelector('.blob-a');
-      const b = document.querySelector('.blob-b');
-      const c = document.querySelector('.blob-c');
-      let raf = 0;
-      document.addEventListener('mousemove', e => {
-        const mx = e.clientX / window.innerWidth - .5;
-        const my = e.clientY / window.innerHeight - .5;
-        if (!raf) raf = requestAnimationFrame(() => {
-          if (a) a.style.transform = `translate(${mx * 28}px, ${my * 22}px)`;
-          if (b) b.style.transform = `translate(${-mx * 22}px, ${-my * 18}px)`;
-          if (c) c.style.transform = `translate(${mx * 18}px, ${my * 28}px)`;
-          raf = 0;
-        });
-      });
-    })();
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
