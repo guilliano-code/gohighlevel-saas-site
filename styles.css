@@ -77,6 +77,12 @@ a { text-decoration: none; color: inherit; }
   transition: opacity .7s var(--ease), transform .7s var(--ease), filter .7s var(--ease);
 }
 .fade-up.visible { opacity: 1; transform: none; filter: blur(0); }
+@media (max-width: 640px) {
+  /* Blur-filter animation is expensive on mobile GPUs and reads as
+     stutter/bounce — drop it there, keep a quicker, cheaper fade. */
+  .fade-up { filter: none; transform: translateY(10px); transition: opacity .4s var(--ease), transform .4s var(--ease); }
+  .fade-up.visible { filter: none; }
+}
 
 /* ─── SCROLL PROGRESS BAR ────────────────────────── */
 .scroll-progress {
@@ -262,7 +268,6 @@ nav {
   position: relative;
   aspect-ratio: 16 / 9;
 }
-@media (min-width: 901px) { .vsl-wrap { max-width: 80%; margin-left: auto; margin-right: auto; } }
 .vsl-overlay {
   position: absolute; inset: 0; border-radius: inherit;
   cursor: pointer; overflow: hidden;
@@ -331,7 +336,19 @@ nav {
   display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
   margin-top: 3rem;
 }
-@media (max-width: 640px) { .features-grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .features-grid {
+    display: flex; grid-template-columns: unset;
+    gap: .9rem;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-left: -1.5rem; margin-right: -1.5rem;
+    padding-left: 1.5rem; padding-right: 1.5rem;
+  }
+  .features-grid::-webkit-scrollbar { display: none; }
+  .features-grid .feat-card { flex: 0 0 86%; scroll-snap-align: start; }
+}
 
 .feat-card {
   background: var(--surface);
@@ -757,6 +774,19 @@ footer {
 .cases-section { padding: 5.5rem 0; }
 .cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 3rem; }
 @media (max-width: 720px) { .cases-grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .cases-grid {
+    display: flex; grid-template-columns: unset;
+    gap: .9rem;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-left: -1.5rem; margin-right: -1.5rem;
+    padding-left: 1.5rem; padding-right: 1.5rem;
+  }
+  .cases-grid::-webkit-scrollbar { display: none; }
+  .cases-grid .case-card { flex: 0 0 86%; scroll-snap-align: start; }
+}
 
 .case-card {
   background: var(--surface);
@@ -860,7 +890,8 @@ footer {
 
 /* ─── RESPONSIVE ─────────────────────────────────── */
 @media (max-width: 640px) {
-  .hero { padding: 1.25rem 1.5rem 1rem; }
+  .hero { padding: 1.25rem 1.5rem 2.5rem; }
+  .hero-ctas { margin-bottom: 1rem; }
   .page-header { padding: 1.75rem 1.5rem 1.5rem; }
   .wrap { padding: 0 1.5rem; }
   .features-section, .hiw-section, .proof-section, .pricing-section, .cases-section { padding: 2.5rem 0; }
