@@ -50,7 +50,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 66px; }
 body {
   background: var(--bg);
   color: var(--ink);
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   position: relative;
@@ -104,7 +104,7 @@ nav {
 }
 .nav-logo {
   display: flex; align-items: center; gap: 10px;
-  font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; font-size: 17px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif; font-weight: 900; font-size: 17px;
   color: var(--ink); letter-spacing: -.02em;
 }
 .nav-logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
@@ -115,7 +115,7 @@ nav {
   border: 1px solid var(--ink);
   padding: 8px 20px;
   background: var(--ink); color: #FFFFFF;
-  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+  font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
   cursor: pointer; outline: none;
   transition: background .15s, border-color .15s;
 }
@@ -144,7 +144,7 @@ nav {
 .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 
 .hero h1 {
-  font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif; font-weight: 900;
   font-size: clamp(2.6rem, 6.5vw, 4.3rem);
   line-height: 1.05; letter-spacing: -.035em;
   margin-bottom: 1rem;
@@ -182,7 +182,7 @@ nav {
   padding: 14px 28px; border-radius: var(--r-btn);
   background: var(--accent);
   color: #FFFFFF;
-  font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px;
+  font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px;
   border: 1px solid var(--accent);
   cursor: pointer;
   box-shadow: 3px 3px 0 var(--ink);
@@ -196,7 +196,7 @@ nav {
   padding: 14px 24px; border-radius: var(--r-btn);
   border: 1px solid var(--ink);
   background: var(--surface); color: var(--ink);
-  font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 14px;
+  font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px;
   cursor: pointer;
   transition: border-color .15s, background .15s, color .15s, transform .15s var(--ease), box-shadow .15s var(--ease);
 }
@@ -264,7 +264,7 @@ nav {
 }
 .stat-item { text-align: center; }
 .stat-num {
-  font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif; font-weight: 900;
   font-size: 1.9rem; color: var(--ink); letter-spacing: -.03em;
   line-height: 1;
 }
@@ -283,7 +283,7 @@ nav {
 }
 .section-tag::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
 .section-h2 {
-  font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif; font-weight: 900;
   font-size: clamp(1.7rem, 4vw, 2.6rem);
   letter-spacing: -.03em; line-height: 1.12;
   margin-bottom: .9rem;
@@ -321,7 +321,7 @@ nav {
 .feat-icon.amber  { background: var(--amber-tint);  border: 1px solid var(--amber); }
 
 .feat-title {
-  font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif; font-weight: 900;
   font-size: 1.13rem; line-height: 1.3; margin-bottom: .7rem;
   letter-spacing: -.018em;
   color: var(--ink);
@@ -352,14 +352,14 @@ nav {
 .step-num {
   width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif; font-weight: 900; font-size: 16px;
   border: 1px solid var(--ink);
   background: var(--surface);
   color: var(--ink); z-index: 1;
 }
 .step-body { padding-top: 10px; }
 .step-title {
-  font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif; font-weight: 900;
   font-size: 1.05rem; margin-bottom: .5rem; letter-spacing: -.015em;
   color: var(--ink);
 }
@@ -386,7 +386,7 @@ nav {
     flex: 1; padding: 9px 8px; border-radius: var(--r-btn);
     border: 1px solid var(--border2);
     background: var(--surface);
-    font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+    font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
     color: var(--muted); cursor: pointer;
     transition: background .15s, color .15s, border-color .15s;
   }
@@ -403,7 +403,7 @@ nav {
 }
 .billing-tab {
   padding: 8px 20px; border-radius: var(--r-pill); border: none;
-  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+  font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
   cursor: pointer; transition: background .18s, color .18s, opacity .18s;
   background: transparent; color: var(--muted);
   white-space: nowrap;
@@ -436,7 +436,7 @@ nav {
 .price-billing-label.faded { opacity: 0; }
 
 .price-plan-badge {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 11px; font-weight: 700; letter-spacing: .1em;
   text-transform: uppercase;
   padding: 4px 12px; border-radius: var(--r-pill);
@@ -445,9 +445,9 @@ nav {
 .price-plan-badge.pro { background: var(--accent-tint); color: var(--accent-dark); border: 1px solid var(--accent); }
 
 .price-amount { display: flex; align-items: baseline; gap: 4px; margin-bottom: .25rem; }
-.price-currency { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--ink); line-height: 1; padding-bottom: 2px; }
-.price-num { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 3rem; letter-spacing: -.02em; color: var(--ink); line-height: 1; font-variant-numeric: tabular-nums; }
-.price-period { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; color: var(--muted); padding-bottom: 2px; }
+.price-currency { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif; font-weight: 900; font-size: 1.5rem; color: var(--ink); line-height: 1; padding-bottom: 2px; }
+.price-num { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif; font-weight: 900; font-size: 3rem; letter-spacing: -.02em; color: var(--ink); line-height: 1; font-variant-numeric: tabular-nums; }
+.price-period { font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 500; color: var(--muted); padding-bottom: 2px; }
 .price-yearly-note {
   font-size: 12px; color: var(--accent-dark); font-weight: 600;
   margin-bottom: 1.5rem; overflow: hidden; max-height: 2em;
@@ -461,7 +461,7 @@ nav {
 .price-check { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
 .price-cta {
   display: block; width: 100%; padding: 13px 20px; border-radius: var(--r-btn);
-  font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px;
+  font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px;
   text-align: center; cursor: pointer; transition: background .15s, color .15s, border-color .15s;
   border: 1px solid var(--ink); text-decoration: none;
 }
@@ -496,7 +496,7 @@ nav {
 .vsl-modal-header { margin-bottom: 1.5rem; }
 .vsl-modal-badge { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-dark); margin-bottom: .85rem; }
 .vsl-modal-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-.vsl-modal-title { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; font-size: 1.35rem; letter-spacing: -.02em; line-height: 1.25; color: var(--ink); margin-bottom: .45rem; }
+.vsl-modal-title { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif; font-weight: 900; font-size: 1.35rem; letter-spacing: -.02em; line-height: 1.25; color: var(--ink); margin-bottom: .45rem; }
 .vsl-modal-sub { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
 .vsl-form { display: flex; flex-direction: column; gap: .85rem; }
 .vsl-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
@@ -507,7 +507,7 @@ nav {
   width: 100%; padding: 11px 14px; border-radius: var(--r-input);
   border: 1px solid var(--border2);
   background: var(--surface);
-  font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink);
+  font-family: 'Poppins', sans-serif; font-size: 14px; color: var(--ink);
   outline: none;
   transition: border-color .15s;
   -webkit-appearance: none; appearance: none;
@@ -526,7 +526,7 @@ nav {
   width: 100%; padding: 14px 20px; border-radius: var(--r-btn);
   background: var(--accent);
   color: #FFFFFF;
-  font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 15px;
+  font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px;
   border: 1px solid var(--accent); cursor: pointer;
   box-shadow: 3px 3px 0 var(--ink);
   transition: background .15s, transform .15s var(--ease), box-shadow .15s var(--ease);
@@ -556,7 +556,7 @@ nav {
   width: 100%; padding: 13px 20px; border-radius: var(--r-btn);
   border: 1px solid var(--border2);
   background: var(--surface); color: var(--muted);
-  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+  font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 600;
   cursor: pointer; transition: border-color .15s, color .15s;
 }
 .compare-toggle-btn:hover { border-color: var(--accent); color: var(--accent); }
@@ -573,7 +573,7 @@ nav {
 }
 .compare-table table { width: 100%; border-collapse: collapse; }
 .compare-table thead tr { border-bottom: 1px solid var(--border2); background: var(--bg-alt); }
-.compare-table th { padding: 14px 16px; text-align: center; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.compare-table th { padding: 14px 16px; text-align: center; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .compare-table th:first-child { text-align: left; }
 .compare-table th.th-highlight { color: var(--accent-dark); }
 .compare-table tbody tr { border-bottom: 1px solid var(--border); transition: background .15s; }
@@ -608,7 +608,7 @@ nav {
   width: 100%; padding: 11px 14px; border-radius: var(--r-input);
   border: 1px solid var(--border2);
   background: var(--surface);
-  font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink);
+  font-family: 'Poppins', sans-serif; font-size: 14px; color: var(--ink);
   outline: none;
   transition: border-color .15s;
 }
@@ -645,7 +645,7 @@ nav {
   box-shadow: 8px 8px 0 var(--accent-tint);
 }
 .cta-card h2 {
-  font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif; font-weight: 900;
   font-size: clamp(1.6rem, 4vw, 2.4rem); letter-spacing: -.03em;
   line-height: 1.15; margin-bottom: 1rem;
   color: #FFFFFF;
@@ -664,7 +664,7 @@ footer {
   max-width: 74rem; margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
 }
-.footer-logo { display: flex; align-items: center; gap: 8px; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; font-size: 14px; color: var(--ink); }
+.footer-logo { display: flex; align-items: center; gap: 8px; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif; font-weight: 900; font-size: 14px; color: var(--ink); }
 .footer-copy { font-size: 12px; color: var(--muted2); }
 .footer-links { display: flex; align-items: center; gap: 1.5rem; }
 .footer-link { font-size: 12px; color: var(--muted2); transition: color .15s; }
@@ -698,7 +698,7 @@ footer {
 .faq-q {
   width: 100%; display: flex; align-items: center; justify-content: space-between;
   padding: 1.1rem 1.4rem; background: none; border: none; cursor: pointer;
-  font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600;
+  font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 600;
   color: var(--ink); text-align: left; gap: 1rem;
 }
 .faq-icon { flex-shrink: 0; transition: transform .3s; color: var(--accent); }
