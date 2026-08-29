@@ -8,7 +8,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 66px; }
 
 :root {
   /* Backgrounds — two clearly distinct tones so sections read apart */
-  --bg:        #F3F5F7;
+  --bg:        #FFFFFF;
   --bg-alt:    #E4E7EC;
   --surface:   #FFFFFF;
 
@@ -56,10 +56,10 @@ body {
      deliberate pattern, not a rendering artifact. Scrolls with the
      page (real paper doesn't stay fixed while you scroll past it). */
   background-image:
-    linear-gradient(rgba(76,126,243,.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(76,126,243,.08) 1px, transparent 1px),
-    linear-gradient(rgba(76,126,243,.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(76,126,243,.035) 1px, transparent 1px);
+    linear-gradient(rgba(76,126,243,.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(76,126,243,.11) 1px, transparent 1px),
+    linear-gradient(rgba(76,126,243,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(76,126,243,.05) 1px, transparent 1px);
   background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
   color: var(--ink);
   font-family: 'Poppins', sans-serif;
