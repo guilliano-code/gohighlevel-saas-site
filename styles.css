@@ -21,20 +21,21 @@ html { scroll-behavior: smooth; scroll-padding-top: 66px; }
   --border:    #D3D7DE;
   --border2:   #B9BFC9;
 
-  /* Single flat accent (brand blue) */
-  --accent:      #2554EB;
-  --accent-dark: #1B3FBE;
-  --accent-tint: #E4EAFD;
+  /* Single flat accent (brand blue) — vivid, used boldly, not just as a whisper of tint */
+  --accent:        #3D5AFE;
+  --accent-dark:   #2541D6;
+  --accent-darker: #16218C;
+  --accent-tint:   #DCE3FF;
 
-  /* Secondary flat tone — used sparingly for a second category, never as a gradient partner */
-  --slate:      #334155;
-  --slate-tint: #E7E9ED;
+  /* Secondary flat tone — a real second color, not a gradient partner for --accent */
+  --slate:      #7C3AED;
+  --slate-tint: #EDE4FC;
 
-  /* Status flats */
-  --success:      #15803D;
-  --success-tint: #E5F5EA;
-  --amber:        #B45309;
-  --amber-tint:   #FBF0DD;
+  /* Status flats — kept dark enough to stay readable as text, bolder as fills */
+  --success:      #128A44;
+  --success-tint: #D3F5DE;
+  --amber:        #C2650A;
+  --amber-tint:   #FCE7C3;
   --whatsapp:     #1F9E52;
 
   /* Corner radii — rounded where it reads soft/premium, square where it reads structural */
@@ -104,7 +105,7 @@ nav {
   transition: color .15s, border-color .15s;
 }
 .nav-link:hover { color: var(--ink); }
-.nav-link.active { color: var(--ink); border-color: var(--accent); font-weight: 600; }
+.nav-link.active { color: var(--accent); border-color: var(--accent); font-weight: 700; }
 @media (max-width: 900px) { .nav-links { display: none; } }
 .nav-inner {
   max-width: 74rem; margin: 0 auto; padding: 0 2rem;
@@ -283,13 +284,13 @@ nav {
 .section-tag {
   display: inline-flex; align-items: center; gap: 7px;
   font-size: 11px; font-weight: 700; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--accent-dark);
-  padding: 5px 12px; border-radius: var(--r-pill);
+  text-transform: uppercase; color: #FFFFFF;
+  padding: 6px 13px; border-radius: var(--r-pill);
   border: 1px solid var(--accent);
-  background: var(--accent-tint);
+  background: var(--accent);
   margin-bottom: 1.1rem;
 }
-.section-tag::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+.section-tag::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #FFFFFF; flex-shrink: 0; }
 .section-h2 {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif; font-weight: 900;
   font-size: clamp(1.7rem, 4vw, 2.6rem);
@@ -324,9 +325,9 @@ nav {
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 1.4rem; flex-shrink: 0;
 }
-.feat-icon.green  { background: var(--accent-tint); border: 1px solid var(--accent); }
-.feat-icon.purple { background: var(--slate-tint);  border: 1px solid var(--slate); }
-.feat-icon.amber  { background: var(--amber-tint);  border: 1px solid var(--amber); }
+.feat-icon.green  { background: var(--accent); border: 1px solid var(--accent); }
+.feat-icon.purple { background: var(--slate);  border: 1px solid var(--slate); }
+.feat-icon.amber  { background: var(--surface); border: 1px solid var(--amber); }
 
 .feat-title {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif; font-weight: 900;
@@ -424,7 +425,7 @@ nav {
   position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
   font-size: 10px; font-weight: 700; letter-spacing: .1em;
   padding: 4px 14px; border-radius: var(--r-pill);
-  background: var(--ink);
+  background: var(--accent);
   color: #FFFFFF;
   white-space: nowrap; z-index: 2;
 }
@@ -435,9 +436,9 @@ nav {
   display: flex; flex-direction: column;
   transition: border-color .2s, transform .2s var(--ease), box-shadow .2s var(--ease);
 }
-.price-card.featured { border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--accent-tint); }
+.price-card.featured { border: 2px solid var(--accent); box-shadow: 6px 6px 0 var(--accent-tint); }
 .price-card:hover { border-color: var(--accent); transform: translate(-3px,-3px); box-shadow: 5px 5px 0 var(--accent-tint); }
-.price-card.featured:hover { border-color: var(--ink); transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--accent-tint); }
+.price-card.featured:hover { border-color: var(--accent-dark); transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--accent-tint); }
 
 .price-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .price-billing-label { font-size: 12px; font-weight: 500; color: var(--muted); transition: opacity .3s ease; letter-spacing: .01em; }
@@ -473,8 +474,8 @@ nav {
   text-align: center; cursor: pointer; transition: background .15s, color .15s, border-color .15s;
   border: 1px solid var(--ink); text-decoration: none;
 }
-.price-cta.primary { background: var(--ink); color: #FFFFFF; }
-.price-cta.primary:hover { background: var(--accent); border-color: var(--accent); }
+.price-cta.primary { background: var(--accent); color: #FFFFFF; border-color: var(--accent); }
+.price-cta.primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
 .price-cta.ghost { background: var(--surface); color: var(--ink); }
 .price-cta.ghost:hover { border-color: var(--accent); color: var(--accent); }
 .price-cta { transition: background .15s, color .15s, border-color .15s, transform .15s var(--ease); }
@@ -647,8 +648,8 @@ nav {
 .cta-card {
   max-width: 700px; margin: 0 auto;
   position: relative;
-  background: var(--ink);
-  border: 1px solid var(--ink);
+  background: var(--accent-darker);
+  border: 1px solid var(--accent-darker);
   border-radius: var(--r-lg); padding: 3.75rem 2.5rem;
   box-shadow: 8px 8px 0 var(--accent-tint);
 }
