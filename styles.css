@@ -37,6 +37,13 @@ html { scroll-behavior: smooth; scroll-padding-top: 66px; }
   --amber-tint:   #FBF0DD;
   --whatsapp:     #1F9E52;
 
+  /* Corner radii — rounded where it reads soft/premium, square where it reads structural */
+  --r-pill:  9999px;
+  --r-btn:   12px;
+  --r-input: 10px;
+  --r-card:  18px;
+  --r-lg:    24px;
+
   --ease: cubic-bezier(.22,1,.36,1);
 }
 
@@ -97,14 +104,14 @@ nav {
 }
 .nav-logo {
   display: flex; align-items: center; gap: 10px;
-  font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 17px;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; font-size: 17px;
   color: var(--ink); letter-spacing: -.02em;
 }
 .nav-logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
 
 .login-btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  border-radius: 0;
+  border-radius: var(--r-btn);
   border: 1px solid var(--ink);
   padding: 8px 20px;
   background: var(--ink); color: #FFFFFF;
@@ -128,7 +135,7 @@ nav {
 
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 6px 14px; border-radius: 0;
+  padding: 6px 14px; border-radius: var(--r-pill);
   border: 1px solid var(--accent);
   background: var(--accent-tint);
   font-size: 12px; font-weight: 600; color: var(--accent-dark);
@@ -137,7 +144,7 @@ nav {
 .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 
 .hero h1 {
-  font-family: 'Fraunces', Georgia, serif; font-weight: 800;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800;
   font-size: clamp(2.6rem, 6.5vw, 4.3rem);
   line-height: 1.05; letter-spacing: -.035em;
   margin-bottom: 1rem;
@@ -154,7 +161,7 @@ nav {
   display: inline-flex; align-items: center; gap: 10px;
   background: var(--surface);
   border: 1px solid var(--border2);
-  border-radius: 0; padding: 8px 18px 8px 15px;
+  border-radius: var(--r-pill); padding: 8px 18px 8px 15px;
   margin-bottom: 1.25rem;
   cursor: default;
 }
@@ -162,7 +169,7 @@ nav {
 @media (max-width: 640px) {
   .hero-stars { font-size: 0; }
   .hero-stars::before { content: '★'; font-size: 14px; color: var(--amber); letter-spacing: 0; }
-  .hero-social-proof { padding: 9px 16px; border-radius: 0; gap: 8px; }
+  .hero-social-proof { padding: 9px 16px; border-radius: var(--r-pill); gap: 8px; }
   .hero-social-text { font-size: 12px; }
 }
 .hero-social-text { font-size: 13px; color: var(--muted); }
@@ -172,7 +179,7 @@ nav {
 
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 28px; border-radius: 0;
+  padding: 14px 28px; border-radius: var(--r-btn);
   background: var(--accent);
   color: #FFFFFF;
   font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px;
@@ -186,7 +193,7 @@ nav {
 
 .btn-ghost {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 24px; border-radius: 0;
+  padding: 14px 24px; border-radius: var(--r-btn);
   border: 1px solid var(--ink);
   background: var(--surface); color: var(--ink);
   font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 14px;
@@ -213,7 +220,7 @@ nav {
 
 /* ─── VSL / VIDEO BLOCK ──────────────────────────── */
 .vsl-wrap {
-  width: 100%; border-radius: 0; overflow: hidden;
+  width: 100%; border-radius: var(--r-lg); overflow: hidden;
   border: 1px solid var(--ink);
   background: var(--ink);
   position: relative;
@@ -226,7 +233,11 @@ nav {
 }
 .vsl-overlay.hidden { opacity: 0; pointer-events: none; }
 .vsl-thumb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.vsl-blur { position: absolute; inset: 0; background: rgba(10,12,18,.45); }
+.vsl-blur {
+  position: absolute; inset: 0;
+  backdrop-filter: blur(9px) brightness(.68); -webkit-backdrop-filter: blur(9px) brightness(.68);
+  background: rgba(8,10,16,.32);
+}
 .vsl-play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
 .vsl-play {
   width: 72px; height: 72px; border-radius: 50%;
@@ -253,7 +264,7 @@ nav {
 }
 .stat-item { text-align: center; }
 .stat-num {
-  font-family: 'Fraunces', Georgia, serif; font-weight: 700;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700;
   font-size: 1.9rem; color: var(--ink); letter-spacing: -.03em;
   line-height: 1;
 }
@@ -265,14 +276,14 @@ nav {
   display: inline-flex; align-items: center; gap: 7px;
   font-size: 11px; font-weight: 700; letter-spacing: .12em;
   text-transform: uppercase; color: var(--accent-dark);
-  padding: 5px 12px; border-radius: 0;
+  padding: 5px 12px; border-radius: var(--r-pill);
   border: 1px solid var(--accent);
   background: var(--accent-tint);
   margin-bottom: 1.1rem;
 }
 .section-tag::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
 .section-h2 {
-  font-family: 'Fraunces', Georgia, serif; font-weight: 700;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700;
   font-size: clamp(1.7rem, 4vw, 2.6rem);
   letter-spacing: -.03em; line-height: 1.12;
   margin-bottom: .9rem;
@@ -291,7 +302,7 @@ nav {
 .feat-card {
   background: var(--surface);
   border: 1px solid var(--border2);
-  border-radius: 0; padding: 2.25rem;
+  border-radius: var(--r-card); padding: 2.25rem;
   transition: border-color .2s, transform .2s var(--ease), box-shadow .2s var(--ease);
   display: flex; flex-direction: column;
   position: relative;
@@ -301,7 +312,7 @@ nav {
 .feat-card.amber:hover { border-color: var(--amber); box-shadow: 5px 5px 0 var(--amber-tint); }
 
 .feat-icon {
-  width: 48px; height: 48px; border-radius: 0;
+  width: 48px; height: 48px; border-radius: var(--r-input);
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 1.4rem; flex-shrink: 0;
 }
@@ -310,14 +321,14 @@ nav {
 .feat-icon.amber  { background: var(--amber-tint);  border: 1px solid var(--amber); }
 
 .feat-title {
-  font-family: 'Fraunces', Georgia, serif; font-weight: 700;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700;
   font-size: 1.13rem; line-height: 1.3; margin-bottom: .7rem;
   letter-spacing: -.018em;
   color: var(--ink);
 }
 .feat-text { font-size: 14.5px; color: var(--muted); line-height: 1.7; flex: 1; margin-bottom: 1.5rem; }
 .feat-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.feat-tag { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 0; }
+.feat-tag { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: var(--r-pill); }
 .feat-tag.green  { background: var(--accent-tint); color: var(--accent-dark); border: 1px solid var(--accent); }
 .feat-tag.purple { background: var(--slate-tint);  color: var(--slate);       border: 1px solid var(--slate); }
 .feat-tag.amber  { background: var(--amber-tint);  color: var(--amber);       border: 1px solid var(--amber); }
@@ -341,14 +352,14 @@ nav {
 .step-num {
   width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 16px;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; font-size: 16px;
   border: 1px solid var(--ink);
   background: var(--surface);
   color: var(--ink); z-index: 1;
 }
 .step-body { padding-top: 10px; }
 .step-title {
-  font-family: 'Fraunces', Georgia, serif; font-weight: 700;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700;
   font-size: 1.05rem; margin-bottom: .5rem; letter-spacing: -.015em;
   color: var(--ink);
 }
@@ -372,7 +383,7 @@ nav {
 @media (max-width: 620px) {
   .plan-switcher { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 1.25rem; margin-bottom: .25rem; }
   .plan-switch-btn {
-    flex: 1; padding: 9px 8px; border-radius: 0;
+    flex: 1; padding: 9px 8px; border-radius: var(--r-btn);
     border: 1px solid var(--border2);
     background: var(--surface);
     font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
@@ -388,10 +399,10 @@ nav {
 .billing-tabs {
   display: inline-flex; align-items: center;
   background: var(--bg-alt); border: 1px solid var(--border2);
-  border-radius: 0; padding: 3px;
+  border-radius: var(--r-pill); padding: 3px;
 }
 .billing-tab {
-  padding: 8px 20px; border-radius: 0; border: none;
+  padding: 8px 20px; border-radius: var(--r-pill); border: none;
   font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
   cursor: pointer; transition: background .18s, color .18s, opacity .18s;
   background: transparent; color: var(--muted);
@@ -404,7 +415,7 @@ nav {
 .most-value-tag {
   position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
   font-size: 10px; font-weight: 700; letter-spacing: .1em;
-  padding: 4px 14px; border-radius: 0;
+  padding: 4px 14px; border-radius: var(--r-pill);
   background: var(--ink);
   color: #FFFFFF;
   white-space: nowrap; z-index: 2;
@@ -412,7 +423,7 @@ nav {
 
 .price-card {
   background: var(--surface); border: 1px solid var(--border2);
-  border-radius: 0; padding: 2.25rem 2rem;
+  border-radius: var(--r-card); padding: 2.25rem 2rem;
   display: flex; flex-direction: column;
   transition: border-color .2s, transform .2s var(--ease), box-shadow .2s var(--ease);
 }
@@ -428,14 +439,14 @@ nav {
   font-family: 'DM Sans', sans-serif;
   font-size: 11px; font-weight: 700; letter-spacing: .1em;
   text-transform: uppercase;
-  padding: 4px 12px; border-radius: 0;
+  padding: 4px 12px; border-radius: var(--r-pill);
 }
 .price-plan-badge.starter { background: var(--bg-alt); color: var(--muted); border: 1px solid var(--border2); }
 .price-plan-badge.pro { background: var(--accent-tint); color: var(--accent-dark); border: 1px solid var(--accent); }
 
 .price-amount { display: flex; align-items: baseline; gap: 4px; margin-bottom: .25rem; }
-.price-currency { font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 1.5rem; color: var(--ink); line-height: 1; padding-bottom: 2px; }
-.price-num { font-family: 'Fraunces', Georgia, serif; font-weight: 800; font-size: 3rem; letter-spacing: -.02em; color: var(--ink); line-height: 1; font-variant-numeric: tabular-nums; }
+.price-currency { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--ink); line-height: 1; padding-bottom: 2px; }
+.price-num { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 3rem; letter-spacing: -.02em; color: var(--ink); line-height: 1; font-variant-numeric: tabular-nums; }
 .price-period { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; color: var(--muted); padding-bottom: 2px; }
 .price-yearly-note {
   font-size: 12px; color: var(--accent-dark); font-weight: 600;
@@ -449,7 +460,7 @@ nav {
 .price-feature { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: var(--ink); }
 .price-check { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
 .price-cta {
-  display: block; width: 100%; padding: 13px 20px; border-radius: 0;
+  display: block; width: 100%; padding: 13px 20px; border-radius: var(--r-btn);
   font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px;
   text-align: center; cursor: pointer; transition: background .15s, color .15s, border-color .15s;
   border: 1px solid var(--ink); text-decoration: none;
@@ -475,7 +486,7 @@ nav {
   width: 100%; max-width: 520px;
   background: var(--surface);
   border: 1px solid var(--ink);
-  border-radius: 0;
+  border-radius: var(--r-lg);
   padding: 2.25rem 2rem 2rem;
   box-shadow: 8px 8px 0 rgba(255,255,255,.18);
   transform: translateY(16px);
@@ -485,7 +496,7 @@ nav {
 .vsl-modal-header { margin-bottom: 1.5rem; }
 .vsl-modal-badge { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-dark); margin-bottom: .85rem; }
 .vsl-modal-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-.vsl-modal-title { font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 1.35rem; letter-spacing: -.02em; line-height: 1.25; color: var(--ink); margin-bottom: .45rem; }
+.vsl-modal-title { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; font-size: 1.35rem; letter-spacing: -.02em; line-height: 1.25; color: var(--ink); margin-bottom: .45rem; }
 .vsl-modal-sub { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
 .vsl-form { display: flex; flex-direction: column; gap: .85rem; }
 .vsl-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
@@ -493,7 +504,7 @@ nav {
 .vsl-field { display: flex; flex-direction: column; gap: 5px; }
 .vsl-label { font-size: 12px; font-weight: 600; color: var(--ink); letter-spacing: .01em; }
 .vsl-input, .vsl-select {
-  width: 100%; padding: 11px 14px; border-radius: 0;
+  width: 100%; padding: 11px 14px; border-radius: var(--r-input);
   border: 1px solid var(--border2);
   background: var(--surface);
   font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink);
@@ -512,7 +523,7 @@ nav {
 }
 .vsl-submit {
   margin-top: .5rem;
-  width: 100%; padding: 14px 20px; border-radius: 0;
+  width: 100%; padding: 14px 20px; border-radius: var(--r-btn);
   background: var(--accent);
   color: #FFFFFF;
   font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 15px;
@@ -542,7 +553,7 @@ nav {
 .compare-wrap { margin-top: 2.5rem; }
 .compare-toggle-btn {
   display: flex; align-items: center; justify-content: center; gap: 8px;
-  width: 100%; padding: 13px 20px; border-radius: 0;
+  width: 100%; padding: 13px 20px; border-radius: var(--r-btn);
   border: 1px solid var(--border2);
   background: var(--surface); color: var(--muted);
   font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
@@ -558,7 +569,7 @@ nav {
   margin-top: 1.25rem;
   background: var(--surface);
   border: 1px solid var(--border2);
-  border-radius: 0; overflow: hidden;
+  border-radius: var(--r-card); overflow: hidden;
 }
 .compare-table table { width: 100%; border-collapse: collapse; }
 .compare-table thead tr { border-bottom: 1px solid var(--border2); background: var(--bg-alt); }
@@ -585,7 +596,7 @@ nav {
   max-width: 680px; margin-left: auto; margin-right: auto; text-align: left;
   background: var(--surface);
   border: 1px solid var(--border2);
-  border-radius: 0; padding: 2.5rem;
+  border-radius: var(--r-card); padding: 2.5rem;
   margin-top: 2.25rem;
   box-shadow: 6px 6px 0 var(--accent-tint);
 }
@@ -594,7 +605,7 @@ nav {
 .contact-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: .75rem; }
 .contact-label { font-size: 12px; font-weight: 600; color: var(--ink); }
 .contact-input, .contact-textarea {
-  width: 100%; padding: 11px 14px; border-radius: 0;
+  width: 100%; padding: 11px 14px; border-radius: var(--r-input);
   border: 1px solid var(--border2);
   background: var(--surface);
   font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink);
@@ -606,7 +617,7 @@ nav {
 .contact-textarea { resize: vertical; min-height: 110px; }
 .contact-success {
   display: none; margin-top: .75rem;
-  padding: 12px 16px; border-radius: 0;
+  padding: 12px 16px; border-radius: var(--r-input);
   background: var(--success-tint); border: 1px solid var(--success);
   color: var(--success); font-size: 14px; font-weight: 600; text-align: center;
 }
@@ -614,7 +625,7 @@ nav {
 /* ─── GUARANTEE BADGE ────────────────────────────── */
 .guarantee-badge {
   display: inline-flex; align-items: center; gap: 10px;
-  padding: 11px 22px; border-radius: 0;
+  padding: 11px 22px; border-radius: var(--r-pill);
   background: var(--success-tint);
   border: 1px solid var(--success);
   font-size: 13px; font-weight: 600; color: var(--success);
@@ -630,11 +641,11 @@ nav {
   position: relative;
   background: var(--ink);
   border: 1px solid var(--ink);
-  border-radius: 0; padding: 3.75rem 2.5rem;
+  border-radius: var(--r-lg); padding: 3.75rem 2.5rem;
   box-shadow: 8px 8px 0 var(--accent-tint);
 }
 .cta-card h2 {
-  font-family: 'Fraunces', Georgia, serif; font-weight: 800;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800;
   font-size: clamp(1.6rem, 4vw, 2.4rem); letter-spacing: -.03em;
   line-height: 1.15; margin-bottom: 1rem;
   color: #FFFFFF;
@@ -653,7 +664,7 @@ footer {
   max-width: 74rem; margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
 }
-.footer-logo { display: flex; align-items: center; gap: 8px; font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 14px; color: var(--ink); }
+.footer-logo { display: flex; align-items: center; gap: 8px; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; font-size: 14px; color: var(--ink); }
 .footer-copy { font-size: 12px; color: var(--muted2); }
 .footer-links { display: flex; align-items: center; gap: 1.5rem; }
 .footer-link { font-size: 12px; color: var(--muted2); transition: color .15s; }
@@ -679,7 +690,7 @@ footer {
 .faq-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: .75rem; max-width: 720px; margin-left: auto; margin-right: auto; }
 .faq-item {
   background: var(--surface); border: 1px solid var(--border2);
-  border-radius: 0; overflow: hidden;
+  border-radius: var(--r-card); overflow: hidden;
   transition: border-color .2s, transform .2s var(--ease), box-shadow .2s var(--ease);
 }
 .faq-item:hover { border-color: var(--accent); transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--accent-tint); }
