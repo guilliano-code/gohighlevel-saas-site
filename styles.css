@@ -80,9 +80,12 @@ a { text-decoration: none; color: inherit; }
 
 /* ─── SCROLL PROGRESS BAR ────────────────────────── */
 .scroll-progress {
-  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  position: fixed; top: 0; left: 0; height: 3px; width: 100%;
   background: var(--accent); z-index: 300;
   pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  will-change: transform;
 }
 
 /* ─── LAYOUT ─────────────────────────────────────── */
