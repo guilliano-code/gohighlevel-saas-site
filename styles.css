@@ -49,7 +49,18 @@ html { scroll-behavior: smooth; scroll-padding-top: 66px; }
 }
 
 body {
-  background: var(--bg);
+  background-color: var(--bg);
+  /* Graph-paper / drafting-grid backdrop — fine squares with a bolder
+     line every 5th, like an architect's grid pad or a math notebook.
+     Tinted with the accent hue instead of flat gray so it reads as a
+     deliberate pattern, not a rendering artifact. Scrolls with the
+     page (real paper doesn't stay fixed while you scroll past it). */
+  background-image:
+    linear-gradient(rgba(37,84,235,.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,84,235,.12) 1px, transparent 1px),
+    linear-gradient(rgba(37,84,235,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,84,235,.055) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
   color: var(--ink);
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -96,8 +107,11 @@ a { text-decoration: none; color: inherit; }
 
 /* ─── LAYOUT ─────────────────────────────────────── */
 .wrap { max-width: 74rem; margin: 0 auto; padding: 0 2rem; }
-.band { background: var(--surface); }
-.band-alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+/* Both transparent — sections used to alternate solid white/gray
+   fills here, which chopped the page into flat blocks with a hard
+   seam between them. Letting the body's grid pattern show through
+   everywhere instead keeps the background consistent top to bottom. */
+.band, .band-alt { background: transparent; }
 
 /* ─── NAV ────────────────────────────────────────── */
 nav {
