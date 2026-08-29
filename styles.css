@@ -262,7 +262,7 @@ nav {
   position: relative;
   aspect-ratio: 16 / 9;
 }
-@media (min-width: 901px) { .vsl-wrap { max-width: 80%; } }
+@media (min-width: 901px) { .vsl-wrap { max-width: 80%; margin-left: auto; margin-right: auto; } }
 .vsl-overlay {
   position: absolute; inset: 0; border-radius: inherit;
   cursor: pointer; overflow: hidden;
