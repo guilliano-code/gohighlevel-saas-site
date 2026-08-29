@@ -247,8 +247,8 @@ nav {
 .vsl-thumb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); }
 .vsl-blur {
   position: absolute; inset: 0;
-  backdrop-filter: blur(9px) brightness(.68); -webkit-backdrop-filter: blur(9px) brightness(.68);
-  background: rgba(8,10,16,.32);
+  backdrop-filter: blur(16px) brightness(.5); -webkit-backdrop-filter: blur(16px) brightness(.5);
+  background: rgba(6,8,14,.48);
 }
 .vsl-play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
 .vsl-play {
@@ -718,6 +718,49 @@ footer {
 .faq-a { max-height: 0; overflow: hidden; font-size: 14px; color: var(--muted); line-height: 1.65; transition: max-height .35s ease, padding .3s ease; padding: 0 1.4rem; }
 .faq-item.open .faq-a { max-height: 200px; padding: 0 1.4rem 1.2rem; }
 
+/* ─── CASES ──────────────────────────────────────── */
+.cases-section { padding: 5.5rem 0; }
+.cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 3rem; }
+@media (max-width: 720px) { .cases-grid { grid-template-columns: 1fr; } }
+
+.case-card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--r-card); padding: 2rem;
+  display: flex; flex-direction: column;
+  transition: border-color .2s, transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+.case-card:hover { border-color: var(--accent); transform: translate(-3px,-3px); box-shadow: 5px 5px 0 var(--accent-tint); }
+
+.case-head { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; }
+.case-avatar {
+  width: 44px; height: 44px; border-radius: var(--r-input); flex-shrink: 0;
+  background: var(--accent); color: #FFFFFF;
+  display: flex; align-items: center; justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 900; font-size: 15px; letter-spacing: -.02em;
+}
+.case-card.purple .case-avatar { background: var(--slate); }
+.case-card.amber  .case-avatar { background: var(--amber); }
+.case-company  { font-weight: 700; color: var(--ink); font-size: .95rem; }
+.case-industry { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+.case-stat { display: flex; align-items: baseline; gap: 9px; margin-bottom: 1rem; }
+.case-stat-num {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 900; font-size: 2.1rem; letter-spacing: -.02em; color: var(--accent); line-height: 1;
+}
+.case-card.purple .case-stat-num { color: var(--slate); }
+.case-card.amber  .case-stat-num { color: var(--amber); }
+.case-stat-label { font-size: 13px; color: var(--muted); line-height: 1.4; max-width: 15rem; }
+
+.case-quote { font-size: 14.5px; color: var(--ink); line-height: 1.7; flex: 1; margin-bottom: 1.25rem; }
+.case-author { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+
+.cases-note {
+  margin-top: 2rem; text-align: center; font-size: 12.5px; color: var(--muted2);
+}
+
 /* ─── MOBILE STICKY NAV ─────────────────────────── */
 .mobile-nav {
   display: none;
@@ -740,7 +783,7 @@ footer {
   .hero { padding: 1.25rem 1.5rem 1rem; }
   .page-header { padding: 1.75rem 1.5rem 1.5rem; }
   .wrap { padding: 0 1.5rem; }
-  .features-section, .hiw-section, .proof-section, .pricing-section { padding: 2.5rem 0; }
+  .features-section, .hiw-section, .proof-section, .pricing-section, .cases-section { padding: 2.5rem 0; }
   .cta-section { padding: 2.5rem 1.5rem 3.5rem; }
   .cta-card { padding: 2.75rem 1.75rem; }
   .hero-ctas-below { padding: 0.75rem 1.5rem 4rem; }
@@ -748,6 +791,7 @@ footer {
   .feat-card { padding: 1.75rem; }
   .price-card { padding: 2rem 1.5rem; }
   .contact-form-card { padding: 1.75rem 1.5rem; }
+  .case-card { padding: 1.5rem; }
 }
 
 /* ─── A11Y & MOTION ──────────────────────────────── */
