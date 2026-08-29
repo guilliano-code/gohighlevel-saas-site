@@ -761,6 +761,51 @@ footer {
   margin-top: 2rem; text-align: center; font-size: 12.5px; color: var(--muted2);
 }
 
+.case-card { cursor: pointer; }
+.case-cta {
+  margin-top: auto; padding-top: .5rem;
+  font-size: 13px; font-weight: 700; color: var(--accent);
+  display: flex; align-items: center; gap: 6px;
+  transition: gap .2s var(--ease);
+}
+.case-card:hover .case-cta { gap: 10px; }
+.case-card.purple .case-cta { color: var(--slate); }
+.case-card.amber  .case-cta { color: var(--amber); }
+
+/* ─── CASE DETAIL PAGE ───────────────────────────── */
+.case-mini-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-top: 1.75rem; }
+.case-mini-stat-num {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 900; font-size: 2rem; letter-spacing: -.02em; color: var(--accent); line-height: 1;
+}
+.case-mini-stat-label { font-size: 12.5px; color: var(--muted); margin-top: 5px; max-width: 11rem; }
+
+.case-body { max-width: 700px; margin: 0 auto; }
+.case-body h2 {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 900; font-size: 1.4rem; letter-spacing: -.02em;
+  color: var(--ink); margin: 2.5rem 0 .9rem;
+}
+.case-body h2:first-child { margin-top: 0; }
+.case-body p { font-size: 15.5px; color: var(--muted); line-height: 1.8; margin-bottom: 1.1rem; }
+
+.case-blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 1.4rem 1.6rem;
+  background: var(--accent-tint);
+  border-radius: 0 var(--r-card) var(--r-card) 0;
+  font-size: 16.5px; color: var(--ink); line-height: 1.75;
+  margin: 2.25rem 0;
+}
+.case-blockquote footer { margin-top: .9rem; font-size: 13px; color: var(--muted); font-weight: 700; }
+
+.case-back {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 13px; font-weight: 600; color: var(--muted);
+  margin-bottom: 1.5rem; transition: color .15s;
+}
+.case-back:hover { color: var(--accent); }
+
 /* ─── MOBILE STICKY NAV ─────────────────────────── */
 .mobile-nav {
   display: none;
