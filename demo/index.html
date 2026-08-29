@@ -17,7 +17,7 @@
       font-size: 13px; font-weight: 600; color: var(--muted);
       padding: 8px 16px; border-radius: var(--r-btn);
       border: 1px solid var(--border2); background: var(--surface);
-      transition: color .15s, border-color .15s;
+      transition: color .15s, border-color .15s, transform .15s ease-out;
     }
     .nav-back:hover { color: var(--accent); border-color: var(--accent); }
 
@@ -133,7 +133,7 @@
       background: var(--accent); color: #fff;
       font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px;
       cursor: pointer; margin-top: 1rem;
-      transition: background .15s;
+      transition: background .15s, transform .15s ease-out;
       opacity: .4; pointer-events: none;
     }
     .btn-next.ready { opacity: 1; pointer-events: auto; }
@@ -526,6 +526,38 @@
     if (['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))
       vp.content = 'width=device-width, initial-scale=1.0';
   });
+
+  /* ── SCROLL PROGRESS BAR ─────────────────────────── */
+  (function () {
+    var bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.prepend(bar);
+    function onScroll() {
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  })();
+
+  /* ── MAGNETIC BUTTONS ─────────────────────────────── */
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    var pull = 0.28, maxPull = 9;
+    document.querySelectorAll('.btn-next, .nav-back').forEach(function (el) {
+      el.addEventListener('mousemove', function (e) {
+        var r = el.getBoundingClientRect();
+        var dx = Math.max(-maxPull, Math.min(maxPull, (e.clientX - (r.left + r.width / 2)) * pull));
+        var dy = Math.max(-maxPull, Math.min(maxPull, (e.clientY - (r.top + r.height / 2)) * pull));
+        el.style.transform = 'translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px)';
+      });
+      el.addEventListener('mouseleave', function () { el.style.transform = ''; });
+    });
+  })();
 </script>
 </body>
 </html>

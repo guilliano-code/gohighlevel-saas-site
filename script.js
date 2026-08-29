@@ -4,6 +4,84 @@
 if (history.scrollRestoration) history.scrollRestoration = 'manual';
 window.scrollTo(0, 0);
 
+var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ── SCROLL PROGRESS BAR ─────────────────────────── */
+(function () {
+  var bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  bar.setAttribute('aria-hidden', 'true');
+  document.body.prepend(bar);
+  function onScroll() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+})();
+
+/* ── MAGNETIC BUTTONS ─────────────────────────────── */
+(function () {
+  if (prefersReducedMotion || window.matchMedia('(pointer: coarse)').matches) return;
+  var pull = 0.28, maxPull = 9;
+  document.querySelectorAll('.btn-primary, .btn-ghost').forEach(function (el) {
+    el.addEventListener('mousemove', function (e) {
+      var r = el.getBoundingClientRect();
+      var dx = Math.max(-maxPull, Math.min(maxPull, (e.clientX - (r.left + r.width / 2)) * pull));
+      var dy = Math.max(-maxPull, Math.min(maxPull, (e.clientY - (r.top + r.height / 2)) * pull));
+      el.style.transform = 'translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px)';
+    });
+    el.addEventListener('mouseleave', function () { el.style.transform = ''; });
+  });
+})();
+
+/* ── ANIMATED STAT COUNTERS ───────────────────────── */
+(function () {
+  var stats = document.querySelectorAll('.stat-num[data-count-to]');
+  if (!stats.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      io.unobserve(el);
+      var to = parseFloat(el.dataset.countTo);
+      var decimals = el.dataset.countTo.indexOf('.') > -1 ? 1 : 0;
+      var suffix = el.dataset.countSuffix || '';
+      if (prefersReducedMotion) { el.textContent = to.toFixed(decimals) + suffix; return; }
+      var start = performance.now(), duration = 1100;
+      function step(now) {
+        var t = Math.min((now - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = (to * eased).toFixed(decimals) + suffix;
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.5 });
+  stats.forEach(function (el) { io.observe(el); });
+})();
+
+/* ── HERO VIDEO PARALLAX ──────────────────────────── */
+(function () {
+  if (prefersReducedMotion) return;
+  var thumb = document.querySelector('.vsl-thumb');
+  if (!thumb) return;
+  var raf = 0;
+  function onScroll() {
+    if (raf) return;
+    raf = requestAnimationFrame(function () {
+      var rect = thumb.getBoundingClientRect();
+      var offset = (rect.top - window.innerHeight / 2) * 0.06;
+      thumb.style.transform = 'scale(1.08) translateY(' + offset.toFixed(1) + 'px)';
+      raf = 0;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
 /* Prevent iOS zoom on form inputs */
 (function () {
   var vp = document.querySelector('meta[name="viewport"]');
