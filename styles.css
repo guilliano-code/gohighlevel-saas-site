@@ -345,8 +345,9 @@ nav {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     margin-left: -1.5rem; margin-right: -1.5rem;
-    padding-left: 1.5rem; padding-right: 1.5rem;
+    padding: 0;
   }
+  .features-grid::before, .features-grid::after { content: ''; flex: 0 0 10%; }
   .features-grid::-webkit-scrollbar { display: none; }
   .features-grid .feat-card { flex: 0 0 80%; scroll-snap-align: center; }
 }
@@ -783,8 +784,9 @@ footer {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     margin-left: -1.5rem; margin-right: -1.5rem;
-    padding-left: 1.5rem; padding-right: 1.5rem;
+    padding: 0;
   }
+  .cases-grid::before, .cases-grid::after { content: ''; flex: 0 0 10%; }
   .cases-grid::-webkit-scrollbar { display: none; }
   .cases-grid .case-card { flex: 0 0 80%; scroll-snap-align: center; }
 }
