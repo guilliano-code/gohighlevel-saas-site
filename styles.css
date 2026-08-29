@@ -8,7 +8,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 66px; }
 
 :root {
   /* Backgrounds — two clearly distinct tones so sections read apart */
-  --bg:        #EEF0F3;
+  --bg:        #F3F5F7;
   --bg-alt:    #E4E7EC;
   --surface:   #FFFFFF;
 
@@ -22,10 +22,10 @@ html { scroll-behavior: smooth; scroll-padding-top: 66px; }
   --border2:   #B9BFC9;
 
   /* Single flat accent (brand blue) — lighter tone, matches the logo */
-  --accent:        #2554EB;
-  --accent-dark:   #1B3FBE;
-  --accent-darker: #142E96;
-  --accent-tint:   #E4EAFD;
+  --accent:        #4C7EF3;
+  --accent-dark:   #2554EB;
+  --accent-darker: #1B3FBE;
+  --accent-tint:   #EAF0FE;
 
   /* Secondary flat tone — a real second color, not a gradient partner for --accent */
   --slate:      #7C3AED;
@@ -56,10 +56,10 @@ body {
      deliberate pattern, not a rendering artifact. Scrolls with the
      page (real paper doesn't stay fixed while you scroll past it). */
   background-image:
-    linear-gradient(rgba(37,84,235,.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37,84,235,.12) 1px, transparent 1px),
-    linear-gradient(rgba(37,84,235,.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37,84,235,.055) 1px, transparent 1px);
+    linear-gradient(rgba(76,126,243,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(76,126,243,.08) 1px, transparent 1px),
+    linear-gradient(rgba(76,126,243,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(76,126,243,.035) 1px, transparent 1px);
   background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
   color: var(--ink);
   font-family: 'Poppins', sans-serif;
@@ -76,9 +76,21 @@ body::before {
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
+/* Vignette — fades the grid pattern to the plain background color on
+   every side of the viewport, so the pattern reads as a soft center
+   feature rather than edge-to-edge texture. Fixed so it stays put
+   while the grid underneath scrolls past it. */
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, var(--bg) 92%);
+}
 body > * { position: relative; z-index: 1; }
 ::selection { background: var(--accent); color: #FFFFFF; }
 a { text-decoration: none; color: inherit; }
+/* Buttons/links shouldn't trigger the mobile double-tap-to-zoom gesture. */
+a, button { touch-action: manipulation; }
 
 /* ─── FADE IN ────────────────────────────────────── */
 .fade-up {
@@ -291,8 +303,8 @@ nav {
 .vsl-thumb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); }
 .vsl-blur {
   position: absolute; inset: 0;
-  backdrop-filter: blur(16px) brightness(.5); -webkit-backdrop-filter: blur(16px) brightness(.5);
-  background: rgba(6,8,14,.48);
+  backdrop-filter: blur(9px) brightness(.68); -webkit-backdrop-filter: blur(9px) brightness(.68);
+  background: rgba(6,8,14,.28);
 }
 .vsl-play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
 .vsl-play {
