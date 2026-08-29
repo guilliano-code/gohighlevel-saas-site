@@ -21,11 +21,11 @@ html { scroll-behavior: smooth; scroll-padding-top: 66px; }
   --border:    #D3D7DE;
   --border2:   #B9BFC9;
 
-  /* Single flat accent (brand blue) — vivid, used boldly, not just as a whisper of tint */
-  --accent:        #3D5AFE;
-  --accent-dark:   #2541D6;
-  --accent-darker: #16218C;
-  --accent-tint:   #DCE3FF;
+  /* Single flat accent (brand blue) — lighter tone, matches the logo */
+  --accent:        #2554EB;
+  --accent-dark:   #1B3FBE;
+  --accent-darker: #142E96;
+  --accent-tint:   #E4EAFD;
 
   /* Secondary flat tone — a real second color, not a gradient partner for --accent */
   --slate:      #7C3AED;
