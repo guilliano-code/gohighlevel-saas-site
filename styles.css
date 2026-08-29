@@ -133,17 +133,41 @@ nav {
 }
 .login-btn:hover { background: var(--accent); border-color: var(--accent); }
 
+/* ─── DECORATIVE SHAPES ───────────────────────────
+   Crisp, unfilled, no blur — geometric depth without sliding back
+   into the soft blob/gradient-glow look. Used sparingly, one ring +
+   one dot-grid patch per hero-like section. */
+
 /* ─── PAGE HEADER (subpages) ─────────────────────── */
 .page-header {
   padding: 3.25rem 2rem 2.5rem;
   max-width: 74rem; margin: 0 auto;
   border-bottom: 1px solid var(--border);
+  position: relative; overflow: hidden;
 }
 .page-header .section-h2 { margin-bottom: .6rem; }
 .page-header .section-sub { max-width: 560px; }
+.page-header::before {
+  content: ''; position: absolute; top: -60px; right: -60px;
+  width: 220px; height: 220px; border-radius: 50%;
+  border: 1.5px solid var(--accent); opacity: .1; pointer-events: none;
+}
 
 /* ─── HERO ───────────────────────────────────────── */
-.hero { padding: 3.5rem 2rem 2.5rem; max-width: 74rem; margin: 0 auto; text-align: left; }
+.hero { padding: 3.5rem 2rem 2.5rem; max-width: 74rem; margin: 0 auto; text-align: left; position: relative; overflow: hidden; }
+.hero::before {
+  content: ''; position: absolute; top: -110px; right: -90px;
+  width: 420px; height: 420px; border-radius: 50%;
+  border: 1.5px solid var(--accent); opacity: .12; pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute; top: 60px; right: 40px;
+  width: 140px; height: 140px;
+  background-image: radial-gradient(var(--accent) 1.2px, transparent 1.2px);
+  background-size: 20px 20px;
+  opacity: .16; pointer-events: none;
+}
+@media (max-width: 900px) { .hero::before, .hero::after, .page-header::before { display: none; } }
 
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -238,6 +262,7 @@ nav {
   position: relative;
   aspect-ratio: 16 / 9;
 }
+@media (min-width: 901px) { .vsl-wrap { max-width: 80%; } }
 .vsl-overlay {
   position: absolute; inset: 0; border-radius: inherit;
   cursor: pointer; overflow: hidden;
@@ -647,12 +672,25 @@ nav {
 .cta-section { padding: 5.5rem 2rem 6rem; text-align: center; }
 .cta-card {
   max-width: 700px; margin: 0 auto;
-  position: relative;
+  position: relative; overflow: hidden;
   background: var(--accent-darker);
   border: 1px solid var(--accent-darker);
   border-radius: var(--r-lg); padding: 3.75rem 2.5rem;
   box-shadow: 8px 8px 0 var(--accent-tint);
 }
+.cta-card::before {
+  content: ''; position: absolute; bottom: -70px; left: -70px;
+  width: 260px; height: 260px; border-radius: 50%;
+  border: 1.5px solid #FFFFFF; opacity: .1; pointer-events: none;
+}
+.cta-card::after {
+  content: ''; position: absolute; top: -20px; right: 30px;
+  width: 130px; height: 130px;
+  background-image: radial-gradient(#FFFFFF 1.2px, transparent 1.2px);
+  background-size: 18px 18px;
+  opacity: .14; pointer-events: none;
+}
+.cta-card > * { position: relative; z-index: 1; }
 .cta-card h2 {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif; font-weight: 900;
   font-size: clamp(1.6rem, 4vw, 2.4rem); letter-spacing: -.03em;
