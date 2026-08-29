@@ -341,7 +341,7 @@ nav {
   .features-grid {
     display: flex; grid-template-columns: unset;
     gap: .9rem;
-    overflow-x: auto; scroll-snap-type: x mandatory;
+    overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; touch-action: pan-x;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     margin-left: -1.5rem; margin-right: -1.5rem;
@@ -779,7 +779,7 @@ footer {
   .cases-grid {
     display: flex; grid-template-columns: unset;
     gap: .9rem;
-    overflow-x: auto; scroll-snap-type: x mandatory;
+    overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; touch-action: pan-x;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     margin-left: -1.5rem; margin-right: -1.5rem;
