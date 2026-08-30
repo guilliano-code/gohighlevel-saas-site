@@ -337,24 +337,6 @@ nav {
   .vsl-play svg { width: 20px; height: 20px; margin-left: 3px; }
 }
 
-/* ─── STATS BAR ──────────────────────────────────── */
-.stats-bar {
-  display: flex; align-items: center; justify-content: center;
-  gap: 2.5rem; flex-wrap: wrap;
-  padding: 3rem 2rem;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-@media (max-width: 640px) { .stats-bar { display: none; } }
-.stat-item { text-align: center; }
-.stat-num {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif; font-weight: 900;
-  font-size: 1.9rem; color: var(--ink); letter-spacing: -.03em;
-  line-height: 1;
-}
-.stat-num span { color: var(--accent); }
-.stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
-
 /* ─── SECTION HEADINGS ───────────────────────────── */
 .section-tag {
   display: inline-flex; align-items: center; gap: 7px;
