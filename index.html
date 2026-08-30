@@ -70,36 +70,41 @@
     </div>
 
     <h1 class="fade-up" data-delay="80">
-      Meer klanten<br><span class="accent-green">Minder gedoe</span>
+      Meer klanten <span class="accent-green">minder gedoe</span>
     </h1>
 
     <p class="hero-sub fade-up" data-delay="160">
       De slimme website voor aannemers die willen groeien zonder extra personeel
     </p>
 
-    <!-- VSL label -->
-    <div class="vsl-label-wrap fade-up" data-delay="240">
-      <span class="vsl-label-dot"></span>
-      <span class="vsl-label-text">Bekijk de video</span>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.45;flex-shrink:0;"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
+    <!-- VSL block — label + video share the same 900px column, so the
+         label sits directly above the video's left corner, not the
+         hero's own (wider) left edge. -->
+    <div class="vsl-block">
+      <!-- VSL label -->
+      <div class="vsl-label-wrap fade-up" data-delay="240">
+        <span class="vsl-label-dot"></span>
+        <span class="vsl-label-text">Bekijk de video</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.45;flex-shrink:0;"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
 
-    <!-- VSL / Video -->
-    <div class="vsl-wrap fade-up" data-delay="300">
-      <video id="vsl-video"
-        playsinline
-        preload="none"
-        style="position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;background:var(--ink);"
-      ></video>
-      <div class="vsl-overlay" id="vsl-overlay" onclick="playVsl()">
-        <picture>
-          <source srcset="vsl-thumb.webp" type="image/webp">
-          <img class="vsl-thumb" src="vsl-thumb.jpg" alt="Video thumbnail" width="1920" height="1080" loading="eager">
-        </picture>
-        <div class="vsl-blur"></div>
-        <div class="vsl-play-btn">
-          <div class="vsl-play">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
+      <!-- VSL / Video -->
+      <div class="vsl-wrap fade-up" data-delay="300">
+        <video id="vsl-video"
+          playsinline
+          preload="none"
+          style="position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;background:var(--ink);"
+        ></video>
+        <div class="vsl-overlay" id="vsl-overlay" onclick="playVsl()">
+          <picture>
+            <source srcset="vsl-thumb.webp" type="image/webp">
+            <img class="vsl-thumb" src="vsl-thumb.jpg" alt="Video thumbnail" width="1920" height="1080" loading="eager">
+          </picture>
+          <div class="vsl-blur"></div>
+          <div class="vsl-play-btn">
+            <div class="vsl-play">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
+            </div>
           </div>
         </div>
       </div>

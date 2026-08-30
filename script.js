@@ -12,14 +12,19 @@ var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
   bar.className = 'scroll-progress';
   bar.setAttribute('aria-hidden', 'true');
   document.body.prepend(bar);
-  function onScroll() {
+  var raf = 0;
+  function update() {
+    raf = 0;
     var h = document.documentElement;
     var max = h.scrollHeight - h.clientHeight;
     bar.style.transform = 'scaleX(' + (max > 0 ? h.scrollTop / max : 0) + ')';
   }
+  function onScroll() {
+    if (!raf) raf = requestAnimationFrame(update);
+  }
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
-  onScroll();
+  update();
 })();
 
 /* ── MAGNETIC BUTTONS ─────────────────────────────── */

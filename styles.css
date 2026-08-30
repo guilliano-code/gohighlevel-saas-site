@@ -67,24 +67,37 @@ body {
   overflow-x: hidden;
   position: relative;
 }
-/* Fine paper-grain texture — tactile, not glossy. Fixed so it never scrolls or tiles visibly. */
+/* Fine paper-grain texture — tactile, not glossy. Fixed so it never scrolls or tiles visibly.
+   No mix-blend-mode: a fixed element blending against the scrolling grid behind it forces the
+   browser to recomposite every scroll frame, which is what was making the page feel janky. Plain
+   alpha overlay at this low opacity reads the same but is compositor-only (no per-frame repaint). */
 body::before {
   content: '';
   position: fixed; inset: 0; z-index: 0;
   pointer-events: none;
-  opacity: .035;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: .05;
+  /* filter region pinned to x/y/width/height="0%/0%/100%/100%" so it matches the tile's own
+     bounds exactly — without this, stitchTiles stitches against the filter's default (padded)
+     region instead of the actual 180x180 tile, leaving a visible seam/streak at each tile edge. */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 /* Vignette — fades the grid pattern to the plain background color on
    every side of the viewport, so the pattern reads as a soft center
    feature rather than edge-to-edge texture. Fixed so it stays put
-   while the grid underneath scrolls past it. */
+   while the grid underneath scrolls past it.
+   The radial alone under-fades the left/right edges on wide screens
+   (an ellipse sized to reach the corners stays lighter along the
+   flat sides), so straight left/right/top/bottom fades are layered
+   on top of it to guarantee every edge — sides included — reaches 0
+   opacity, not just the corners. */
 body::after {
   content: '';
   position: fixed; inset: 0; z-index: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse at center, transparent 40%, var(--bg) 92%);
+  background-image:
+    radial-gradient(ellipse at center, transparent 40%, var(--bg) 92%),
+    linear-gradient(to right, var(--bg) 0%, var(--bg) 8%, transparent 40%, transparent 60%, var(--bg) 92%, var(--bg) 100%),
+    linear-gradient(to bottom, var(--bg), transparent 18%, transparent 82%, var(--bg));
 }
 body > * { position: relative; z-index: 1; }
 ::selection { background: var(--accent); color: #FFFFFF; }
@@ -222,7 +235,7 @@ nav {
 .hero-sub {
   font-size: clamp(16px, 2.2vw, 18px);
   color: var(--muted); line-height: 1.65;
-  max-width: 460px; margin-bottom: 1.75rem;
+  max-width: none; margin-bottom: 1.75rem;
 }
 
 .hero-social-proof {
@@ -287,8 +300,10 @@ nav {
 .vsl-label-text { line-height: 1.45; }
 
 /* ─── VSL / VIDEO BLOCK ──────────────────────────── */
+.vsl-block { max-width: 900px; margin: 0 auto; }
 .vsl-wrap {
-  width: 100%; border-radius: var(--r-lg); overflow: hidden;
+  width: 100%;
+  border-radius: var(--r-lg); overflow: hidden;
   border: 1px solid var(--ink);
   background: var(--ink);
   position: relative;
