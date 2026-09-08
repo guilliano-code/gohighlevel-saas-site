@@ -323,17 +323,38 @@ nav {
 }
 .vsl-play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
 .vsl-play {
-  width: 72px; height: 72px; border-radius: 50%;
+  position: relative;
+  width: 76px; height: 76px; border-radius: 50%;
   background: var(--accent);
-  border: 1px solid #FFFFFF;
+  border: 2px solid rgba(255,255,255,.9);
   display: flex; align-items: center; justify-content: center;
-  cursor: pointer; transition: background .12s;
+  cursor: pointer;
+  transition: transform .25s var(--ease), background .15s, box-shadow .25s var(--ease);
   flex-shrink: 0;
+  box-shadow: 0 10px 30px rgba(27,63,190,.5);
 }
-.vsl-play:hover { background: var(--accent-dark); }
-.vsl-play svg { margin-left: 5px; }
+.vsl-play::before {
+  content: '';
+  position: absolute; inset: -16px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,.55);
+  animation: vslPulse 2.6s ease-out infinite;
+  pointer-events: none;
+}
+.vsl-overlay:hover .vsl-play {
+  background: var(--accent-dark);
+  transform: scale(1.08);
+  box-shadow: 0 12px 36px rgba(27,63,190,.6);
+}
+.vsl-play svg { position: relative; z-index: 1; margin-left: 5px; }
+@keyframes vslPulse {
+  0%   { transform: scale(.85); opacity: .6; }
+  70%  { transform: scale(1.4); opacity: 0; }
+  100% { opacity: 0; }
+}
 @media (max-width: 600px) {
-  .vsl-play { width: 52px; height: 52px; }
+  .vsl-play { width: 56px; height: 56px; }
+  .vsl-play::before { inset: -12px; }
   .vsl-play svg { width: 20px; height: 20px; margin-left: 3px; }
 }
 
