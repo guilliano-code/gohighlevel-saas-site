@@ -197,6 +197,10 @@ nav {
   width: 220px; height: 220px; border-radius: 50%;
   border: 1.5px solid var(--accent); opacity: .1; pointer-events: none;
 }
+/* Pull the first section right under a page title closer — the header's own
+   bottom padding + border already separates it, so the section doesn't need
+   its full inter-section top padding on top of that. */
+.page-header + section { padding-top: 2.5rem; }
 
 /* ─── HERO ───────────────────────────────────────── */
 .hero { padding: 3.5rem 2rem 2.5rem; max-width: 74rem; margin: 0 auto; text-align: left; position: relative; overflow: hidden; }
@@ -736,8 +740,8 @@ nav {
 .cta-card {
   max-width: 700px; margin: 0 auto;
   position: relative; overflow: hidden;
-  background: var(--accent-darker);
-  border: 1px solid var(--accent-darker);
+  background: var(--accent);
+  border: 1px solid var(--accent);
   border-radius: var(--r-lg); padding: 3.75rem 2.5rem;
   box-shadow: 8px 8px 0 var(--accent-tint);
 }
@@ -760,7 +764,7 @@ nav {
   line-height: 1.15; margin-bottom: 1rem;
   color: #FFFFFF;
 }
-.cta-card p { font-size: 15px; color: rgba(255,255,255,.72); line-height: 1.7; margin-bottom: 2rem; }
+.cta-card p { font-size: 15px; color: rgba(255,255,255,.92); line-height: 1.7; margin-bottom: 2rem; }
 .cta-actions { display: flex; flex-direction: column; align-items: center; gap: .8rem; }
 .cta-card .btn-primary { background: #FFFFFF; color: var(--ink); border-color: #FFFFFF; }
 .cta-card .btn-primary:hover { background: var(--accent-tint); }
