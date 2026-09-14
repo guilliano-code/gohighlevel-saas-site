@@ -190,6 +190,21 @@
     }
     .confirm-row { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: var(--ink); }
     .confirm-row svg { flex-shrink: 0; color: var(--accent); }
+
+    /* CONFIRM VSL PROMPT */
+    .confirm-vsl-prompt {
+      display: flex; flex-direction: column; align-items: center; gap: .4rem;
+      margin: 1.75rem 0 1rem; text-align: center;
+      font-size: 13px; font-weight: 600; color: var(--muted);
+    }
+    .confirm-vsl-arrow { color: var(--accent); animation: confirmArrowBounce 1.6s ease-in-out infinite; }
+    @keyframes confirmArrowBounce {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(6px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .confirm-vsl-arrow { animation: none; }
+    }
   </style>
 </head>
 <body>
@@ -338,6 +353,31 @@
       <div class="confirm-title">Boeking bevestigd!</div>
       <p class="confirm-sub">We hebben je aanvraag ontvangen en sturen je een bevestiging per e-mail. Tot dan!</p>
       <div class="confirm-details" id="confirm-details"></div>
+
+      <div class="confirm-vsl-prompt">
+        <svg class="confirm-vsl-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        <span>Bekijk deze video om je voor te bereiden op de call</span>
+      </div>
+
+      <div class="vsl-wrap">
+        <video id="confirm-vsl-video"
+          playsinline
+          preload="none"
+          style="position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;background:var(--ink);"
+        ></video>
+        <div class="vsl-overlay" id="confirm-vsl-overlay" onclick="playConfirmVsl()">
+          <picture>
+            <source srcset="../vsl-thumb.webp" type="image/webp">
+            <img class="vsl-thumb" src="../vsl-thumb.jpg" alt="Video thumbnail" width="1920" height="1080" loading="lazy">
+          </picture>
+          <div class="vsl-blur"></div>
+          <div class="vsl-play-btn">
+            <div class="vsl-play">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -420,13 +460,13 @@
   }
 
   // ── TIME SLOTS ────────────────────────────────────────
-  // ~20% of each day's slots are shown as already booked, so the
-  // agenda doesn't look suspiciously wide open. Deterministic per
+  // ~40% of each day's slots are shown as already booked, so the
+  // agenda oogt drukker in plaats van verdacht leeg. Deterministic per
   // date (seeded from y/m/d) so it stays stable across re-renders
   // instead of reshuffling every time a slot is clicked.
   function unavailableIndexesForDate(dt) {
     var seed  = dt.getFullYear() * 10000 + (dt.getMonth() + 1) * 100 + dt.getDate();
-    var count = Math.round(SLOTS.length * 0.2);
+    var count = Math.round(SLOTS.length * 0.4);
     var indexes = [];
     var s = seed;
     while (indexes.length < count) {
@@ -534,6 +574,15 @@
       row(personIcon(), naam + ' &mdash; ' + bedrijf) +
       row(mailIcon(), email) +
       row(phoneIcon(), tel);
+  }
+
+  function playConfirmVsl() {
+    var overlay = document.getElementById('confirm-vsl-overlay');
+    var video   = document.getElementById('confirm-vsl-video');
+    if (!overlay || !video) return;
+    overlay.classList.add('hidden');
+    if (!video.src) { video.src = '../vsl-v1.mp4'; video.load(); }
+    video.play();
   }
 
   function row(icon, text) {
