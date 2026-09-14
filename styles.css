@@ -837,7 +837,7 @@ footer {
 .case-company  { font-weight: 700; color: var(--ink); font-size: .95rem; }
 .case-industry { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
 
-.case-stat { display: flex; align-items: baseline; gap: 9px; margin-bottom: 1rem; }
+.case-stat { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 1rem; }
 .case-stat-num {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 900; font-size: 2.1rem; letter-spacing: -.02em; color: var(--accent); line-height: 1;
