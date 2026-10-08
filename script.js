@@ -202,7 +202,7 @@ var billing = 'yearly';
 var PRICES = {
   basis:   { monthly: 60,  yearly: 48  },
   starter: { monthly: 120, yearly: 96  },
-  pro:     { monthly: 249, yearly: 199 },
+  pro:     { monthly: 250, yearly: 200 },
 };
 
 function animateCount(elId, fromVal, toVal, duration) {
@@ -245,7 +245,7 @@ function setBilling(mode) {
   if (yearly) {
     bNote.textContent = '€576 per jaar gefactureerd, je bespaart €144';
     sNote.textContent = '€1.152 per jaar gefactureerd, je bespaart €288';
-    pNote.textContent = '€2.388 per jaar gefactureerd, je bespaart €600';
+    pNote.textContent = '€2.400 per jaar gefactureerd, je bespaart €600';
     bNote.classList.remove('hidden');
     sNote.classList.remove('hidden');
     pNote.classList.remove('hidden');
