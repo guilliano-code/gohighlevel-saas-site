@@ -942,3 +942,23 @@ a.call-cta { text-decoration: none; }
 .q-field .q-next { margin-top: 12px; }
 .q-field legend label { cursor: default; }
 .quiz-privacy { margin-top: 6px; }
+
+/* compact footer on mobile: no duplicate CTA, products live in the menu */
+@media (max-width: 768px) {
+  .footer { padding: 36px 0 24px; }
+  .footer .logo { font-size: 26px; }
+  .footer .logo-mascot { width: 28px !important; height: 45px !important; }
+  .footer-top { padding-bottom: 20px; gap: 16px; }
+  .footer-top-cta { font-size: 0; gap: 0; }
+  .footer-top-cta .btn { font-size: 15px; }
+  .footer-pitch, .footer-col-wide { display: none; }
+  .footer-cols { grid-template-columns: 1fr 1fr; gap: 0 20px; padding: 20px 0 12px; }
+  .footer-col h4 { font-size: 15px; margin-bottom: 4px; }
+  .footer-col a { font-size: 15px; padding: 0; min-height: 40px; display: flex; align-items: center; }
+  .footer-bottom { padding-top: 16px; font-size: 13px; flex-direction: column; gap: 4px; }
+}
+@media (max-width: 768px) {
+  .footer-top { flex-wrap: nowrap; align-items: center; }
+  .footer-top-cta .btn { padding: 11px 16px; white-space: nowrap; }
+}
+@media (max-width: 360px) { .footer .logo-text { font-size: 22px; } .footer-top-cta .btn { padding: 10px 12px; font-size: 14px; } }
