@@ -1096,8 +1096,8 @@ def call_page():
   <div class="quiz-overlay" id="quiz" role="dialog" aria-modal="true" aria-labelledby="quiz-title" hidden>
     <div class="quiz">
       <button type="button" class="quiz-close" data-close-quiz aria-label="Sluiten">{icon('<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>', 18, 2.5)}</button>
-      <h2 id="quiz-title">Bekijk de video gratis</h2>
-      <p class="quiz-sub">Nog een paar korte vragen en je kunt kijken.</p>
+      <h2 id="quiz-title">Wij helpen aannemers aan meer aanvragen, vanaf</h2>
+      <p class="quiz-price">€{PLAN_PRICE["Basic"]} per maand</p>
       <div class="quiz-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span id="quiz-bar"></span><em id="quiz-pct">50%</em></div>
       <form id="quiz-form" novalidate>
 {steps}      </form>
