@@ -21,14 +21,15 @@
       <h1>Wij helpen aannemers aan meer klussen met AI, slimme websites en 5-sterren reviews, vanaf</h1>
       <p class="call-price">€48 per maand <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></p>
 
-      <div class="call-video">
+      <div class="call-video is-locked" id="call-video-wrap">
         <video id="call-video" src="/vsl-v1.mp4" poster="/vsl-thumb.jpg" playsinline preload="none"></video>
-        <button type="button" class="call-play" id="call-play" aria-label="Video afspelen">
+        <button type="button" class="call-play" data-open-quiz aria-label="Bekijk de video">
           <span><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7 4 20 12 7 20 7 4" fill="currentColor"/></svg></span>
         </button>
       </div>
       <p class="call-step"><u>Stap 1:</u> bekijk deze korte video en zie wat we doen en hoe we je laten groeien</p>
-      <button type="button" class="call-cta" data-open-quiz>Bekijk hoe het werkt</button>
+      <button type="button" class="call-cta" id="call-cta" data-open-quiz>Bekijk hoe het werkt</button>
+      <a class="call-cta" id="call-book" href="/demo/" hidden>Plan je gesprek <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg></a>
       <p class="call-note">Vrijblijvend · Duurt minder dan een minuut</p>
     </section>
 
@@ -61,41 +62,44 @@
   <div class="quiz-overlay" id="quiz" role="dialog" aria-modal="true" aria-labelledby="quiz-title" hidden>
     <div class="quiz">
       <button type="button" class="quiz-close" data-close-quiz aria-label="Sluiten"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-      <h2 id="quiz-title">Wij helpen aannemers aan meer aanvragen, vanaf</h2>
-      <p class="quiz-price">€48 per maand</p>
-      <div class="quiz-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="quiz-bar"></span><em id="quiz-pct">0%</em></div>
-      <form id="quiz-form" novalidate data-total="5">
-        <fieldset class="q-step is-on" data-name="soort">
-          <legend>Wat voor werk doe je? <span aria-hidden="true">*</span></legend>
+      <h2 id="quiz-title">Bekijk de video gratis</h2>
+      <p class="quiz-sub">Nog een paar korte vragen en je kunt kijken.</p>
+      <div class="quiz-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span id="quiz-bar"></span><em id="quiz-pct">50%</em></div>
+      <form id="quiz-form" novalidate>
+        <fieldset class="q-step is-on" data-name="soort_werk">
+          <legend>Wat voor aannemerswerk doe je? <span aria-hidden="true">*</span></legend>
           <div class="q-opts"><button type="button" class="q-opt" data-value="Particulier">Particulier</button><button type="button" class="q-opt" data-value="Zakelijk">Zakelijk</button><button type="button" class="q-opt" data-value="Particulier & zakelijk">Particulier &amp; zakelijk</button><button type="button" class="q-opt" data-value="Ik ben geen aannemer">Ik ben geen aannemer</button></div>
         </fieldset>
-        <fieldset class="q-step" data-name="diensten">
-          <legend>Welke werkzaamheden voer je uit? <span aria-hidden="true">*</span></legend>
-          <div class="q-opts q-opts-2"><button type="button" class="q-opt" data-value="Schilderwerk">Schilderwerk</button><button type="button" class="q-opt" data-value="Loodgieterij">Loodgieterij</button><button type="button" class="q-opt" data-value="Elektra & installatie">Elektra &amp; installatie</button><button type="button" class="q-opt" data-value="Aanbouw & verbouw">Aanbouw &amp; verbouw</button><button type="button" class="q-opt" data-value="Dakwerk">Dakwerk</button><button type="button" class="q-opt" data-value="Vloeren & tegels">Vloeren &amp; tegels</button><button type="button" class="q-opt" data-value="Tuin & bestrating">Tuin &amp; bestrating</button><button type="button" class="q-opt" data-value="Meerdere / anders">Meerdere / anders</button></div>
+        <fieldset class="q-step" data-name="bedrijf_nu">
+          <legend>Hoe gaat het nu met je bedrijf? <span aria-hidden="true">*</span></legend>
+          <div class="q-opts"><button type="button" class="q-opt" data-value="Rustig, ik heb nu klussen nodig">Rustig, ik heb nu klussen nodig</button><button type="button" class="q-opt" data-value="Oké, maar niet constant">Oké, maar niet constant</button><button type="button" class="q-opt" data-value="Druk, volgeboekt">Druk, volgeboekt</button><button type="button" class="q-opt" data-value="Ik ben net gestart">Ik ben net gestart</button></div>
         </fieldset>
-        <fieldset class="q-step" data-name="medewerkers">
-          <legend>Hoeveel mensen werken er in je bedrijf? <span aria-hidden="true">*</span></legend>
-          <div class="q-opts"><button type="button" class="q-opt" data-value="Alleen ik (zzp)">Alleen ik (zzp)</button><button type="button" class="q-opt" data-value="2 – 5">2 – 5</button><button type="button" class="q-opt" data-value="6 – 15">6 – 15</button><button type="button" class="q-opt" data-value="Meer dan 15">Meer dan 15</button></div>
+        <fieldset class="q-step" data-name="wanneer">
+          <legend>Wanneer wil je dat oplossen? <span aria-hidden="true">*</span></legend>
+          <div class="q-opts"><button type="button" class="q-opt" data-value="Direct">Direct</button><button type="button" class="q-opt" data-value="In de komende maand of twee">In de komende maand of twee</button><button type="button" class="q-opt" data-value="Later dit jaar">Later dit jaar</button><button type="button" class="q-opt" data-value="Ik kijk gewoon wat er is">Ik kijk gewoon wat er is</button></div>
         </fieldset>
-        <fieldset class="q-step" data-name="aanpak">
-          <legend>Hoe reageer je nu op nieuwe aanvragen? <span aria-hidden="true">*</span></legend>
-          <div class="q-opts"><button type="button" class="q-opt" data-value="Ik bel zo snel mogelijk zelf terug">Ik bel zo snel mogelijk zelf terug</button><button type="button" class="q-opt" data-value="Via e-mail of WhatsApp">Via e-mail of WhatsApp</button><button type="button" class="q-opt" data-value="Via een medewerker of secretaresse">Via een medewerker of secretaresse</button><button type="button" class="q-opt" data-value="Ik heb hier geen vast systeem voor">Ik heb hier geen vast systeem voor</button></div>
+        <fieldset class="q-step" data-name="omzet">
+          <legend>Wat is je huidige omzet per maand? <span aria-hidden="true">*</span></legend>
+          <div class="q-opts"><button type="button" class="q-opt" data-value="€0 – €10.000">€0 – €10.000</button><button type="button" class="q-opt" data-value="€10.000 – €25.000">€10.000 – €25.000</button><button type="button" class="q-opt" data-value="€25.000 – €100.000">€25.000 – €100.000</button><button type="button" class="q-opt" data-value="€100.000+">€100.000+</button></div>
         </fieldset>
-        <fieldset class="q-step q-contact" data-name="contact">
-          <legend>Waar kunnen we je bereiken?</legend>
-          <div class="f-row">
-            <div class="f-field"><label for="q-naam">Naam</label><input id="q-naam" name="naam" type="text" placeholder="Jan de Vries" autocomplete="name" required></div>
-            <div class="f-field"><label for="q-bedrijf">Bedrijfsnaam</label><input id="q-bedrijf" name="bedrijf" type="text" placeholder="De Vries Bouw" autocomplete="organization" required></div>
-          </div>
-          <div class="f-row">
-            <div class="f-field"><label for="q-tel">Telefoonnummer</label><input id="q-tel" name="telefoon" type="tel" placeholder="+31 6 12345678" autocomplete="tel" required></div>
-            <div class="f-field"><label for="q-email">E-mailadres</label><input id="q-email" name="email" type="email" placeholder="jan@devries.nl" autocomplete="email" required></div>
-          </div>
-          <button type="submit" class="call-cta call-cta-sm">Kies een moment voor je gesprek <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg></button>
-          <p class="quiz-privacy">Je gegevens zijn veilig en worden nooit gedeeld met derden.</p>
+        <fieldset class="q-step q-field" data-name="telefoon">
+          <legend><label for="q-telefoon">Wat is je telefoonnummer?</label> <span aria-hidden="true">*</span></legend>
+          <input id="q-telefoon" name="telefoon" type="tel" placeholder="+31 6 12345678" autocomplete="tel" required>
+          <button type="button" class="call-cta call-cta-sm q-next">Volgende <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg></button>
+        </fieldset>
+        <fieldset class="q-step q-field" data-name="email">
+          <legend><label for="q-email">Wat is je meest gebruikte e-mailadres?</label> <span aria-hidden="true">*</span></legend>
+          <input id="q-email" name="email" type="email" placeholder="jan@devries.nl" autocomplete="email" required>
+          <button type="button" class="call-cta call-cta-sm q-next">Volgende <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg></button>
+        </fieldset>
+        <fieldset class="q-step q-field" data-name="naam">
+          <legend><label for="q-naam">Wat is je naam?</label> <span aria-hidden="true">*</span></legend>
+          <input id="q-naam" name="naam" type="text" placeholder="Jan de Vries" autocomplete="name" required>
+          <button type="submit" class="call-cta call-cta-sm q-next">Bekijk de video <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg></button>
         </fieldset>
       </form>
       <button type="button" class="quiz-back" id="quiz-back" hidden>← Vorige vraag</button>
+      <p class="quiz-privacy">Je gegevens zijn veilig en worden nooit gedeeld met derden.</p>
     </div>
   </div>
   <script src="/site.js"></script>

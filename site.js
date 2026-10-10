@@ -170,21 +170,20 @@ document.addEventListener('change', clearOnEdit);
   });
 })();
 
-/* ── Call page: VSL + quiz popup ─────────────────── */
+/* ── Call page: blurred VSL, unlocked by a small popup quiz ── */
 (function () {
-  var video = document.getElementById('call-video');
-  var play = document.getElementById('call-play');
-  if (video && play) {
-    play.addEventListener('click', function () {
-      video.controls = true;
-      video.parentElement.classList.add('is-playing');
-      video.play();
-    });
-  }
-
   var overlay = document.getElementById('quiz');
   var form = document.getElementById('quiz-form');
-  if (!overlay || !form) return;
+  var wrap = document.getElementById('call-video-wrap');
+  if (!overlay || !form || !wrap) return;
+
+  // Lead webhook (GoHighLevel). Leave the placeholder to skip sending.
+  var WEBHOOK = 'https://hooks.gohighlevel.com/YOUR_WEBHOOK_URL';
+  var STORE = 'flowsaCallLead';
+
+  var video = document.getElementById('call-video');
+  var cta = document.getElementById('call-cta');
+  var book = document.getElementById('call-book');
   var steps = form.querySelectorAll('.q-step');
   var back = document.getElementById('quiz-back');
   var bar = document.getElementById('quiz-bar');
@@ -193,28 +192,44 @@ document.addEventListener('change', clearOnEdit);
   var idx = 0;
   var lastFocus = null;
 
-  function show(i) {
-    idx = i;
-    steps.forEach(function (s, n) { s.classList.toggle('is-on', n === i); });
-    var p = Math.round(i / steps.length * 100);
+  function progress(p) {
     bar.style.transform = 'scaleX(' + (p / 100) + ')';
     pct.textContent = p + '%';
     bar.parentElement.setAttribute('aria-valuenow', p);
+  }
+  // Opens at 50% (like the reference funnel) and fills up per answered step.
+  function show(i) {
+    idx = i;
+    steps.forEach(function (s, n) { s.classList.toggle('is-on', n === i); });
+    progress(Math.round(50 + i * 50 / steps.length));
     back.hidden = i === 0;
-    var first = steps[i].querySelector('button, input');
+    var first = steps[i].querySelector('input, button');
     if (first) first.focus({ preventScroll: true });
   }
   function open() {
+    if (!wrap.classList.contains('is-locked')) return;
     lastFocus = document.activeElement;
     overlay.hidden = false;
     document.body.classList.add('quiz-open');
-    if (video && !video.paused) video.pause();
     show(idx);
   }
   function close() {
     overlay.hidden = true;
     document.body.classList.remove('quiz-open');
     if (lastFocus) lastFocus.focus();
+  }
+  function bookingLink(data) {
+    var q = new URLSearchParams();
+    Object.keys(data).forEach(function (k) { if (data[k]) q.set(k, data[k]); });
+    return '/demo/?' + q.toString();
+  }
+  function unlock(data, autoplay) {
+    wrap.classList.remove('is-locked');
+    video.controls = true;
+    cta.hidden = true;
+    book.hidden = false;
+    book.href = bookingLink(data);
+    if (autoplay) { video.play().catch(function () {}); }
   }
 
   document.querySelectorAll('[data-open-quiz]').forEach(function (b) { b.addEventListener('click', open); });
@@ -223,24 +238,46 @@ document.addEventListener('change', clearOnEdit);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !overlay.hidden) close(); });
   back.addEventListener('click', function () { if (idx > 0) show(idx - 1); });
 
+  // Choice steps: pick an answer and move on.
   form.querySelectorAll('.q-opt').forEach(function (b) {
     b.addEventListener('click', function () {
       var step = b.closest('.q-step');
       step.querySelectorAll('.q-opt').forEach(function (o) { o.classList.remove('is-picked'); });
       b.classList.add('is-picked');
       answers[step.dataset.name] = b.dataset.value;
-      setTimeout(function () { show(Math.min(idx + 1, steps.length - 1)); }, 180);
+      setTimeout(function () { show(idx + 1); }, 180);
     });
+  });
+
+  // Field steps: validate just this step, Enter moves on.
+  form.querySelectorAll('.q-field .q-next[type="button"]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var step = b.closest('.q-step');
+      if (validateForm(step)) show(idx + 1);
+    });
+  });
+  form.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' || e.target.tagName !== 'INPUT') return;
+    var next = steps[idx].querySelector('.q-next[type="button"]');
+    if (next) { e.preventDefault(); next.click(); }
   });
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    if (!validateForm(form)) return;
-    var q = new URLSearchParams();
-    ['naam', 'bedrijf', 'telefoon', 'email'].forEach(function (n) { q.set(n, form.querySelector('[name="' + n + '"]').value.trim()); });
-    Object.keys(answers).forEach(function (k) { q.set(k, answers[k]); });
-    bar.style.transform = 'scaleX(1)';
-    pct.textContent = '100%';
-    window.location.href = '/demo/?' + q.toString();
+    if (!validateForm(steps[idx])) return;
+    ['telefoon', 'email', 'naam'].forEach(function (n) { answers[n] = form.querySelector('[name="' + n + '"]').value.trim(); });
+    progress(100);
+    if (WEBHOOK.indexOf('YOUR_WEBHOOK_URL') === -1) {
+      var payload = Object.assign({ bron: 'flowsa-callpagina' }, answers);
+      fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }).catch(function () {});
+    }
+    try { localStorage.setItem(STORE, JSON.stringify({ naam: answers.naam, email: answers.email, telefoon: answers.telefoon })); } catch (err) {}
+    setTimeout(function () { close(); unlock(answers, true); }, 250);
   });
+
+  // Returning visitor who already filled it in: video stays unlocked.
+  try {
+    var saved = JSON.parse(localStorage.getItem(STORE) || 'null');
+    if (saved && saved.email) unlock(saved, false);
+  } catch (err) {}
 })();

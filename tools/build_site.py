@@ -1023,25 +1023,39 @@ def contact_page():
     return wrap_page("FLOWSA - Contact", "Neem contact op met FLOWSA. Vul het formulier in en we reageren binnen 24 uur, of app ons direct via WhatsApp.", body, "over")
 
 
+# Call-page quiz: same questions as the reference funnel, in Dutch. Opens at 50%.
 QUIZ = [
-    ("soort", "Wat voor werk doe je?", ["Particulier", "Zakelijk", "Particulier &amp; zakelijk", "Ik ben geen aannemer"]),
-    ("diensten", "Welke werkzaamheden voer je uit?", ["Schilderwerk", "Loodgieterij", "Elektra &amp; installatie", "Aanbouw &amp; verbouw",
-                                                     "Dakwerk", "Vloeren &amp; tegels", "Tuin &amp; bestrating", "Meerdere / anders"]),
-    ("medewerkers", "Hoeveel mensen werken er in je bedrijf?", ["Alleen ik (zzp)", "2 – 5", "6 – 15", "Meer dan 15"]),
-    ("aanpak", "Hoe reageer je nu op nieuwe aanvragen?", ["Ik bel zo snel mogelijk zelf terug", "Via e-mail of WhatsApp",
-                                                          "Via een medewerker of secretaresse", "Ik heb hier geen vast systeem voor"]),
+    ("soort_werk", "Wat voor aannemerswerk doe je?", ["Particulier", "Zakelijk", "Particulier &amp; zakelijk", "Ik ben geen aannemer"]),
+    ("bedrijf_nu", "Hoe gaat het nu met je bedrijf?", ["Rustig, ik heb nu klussen nodig", "Oké, maar niet constant", "Druk, volgeboekt", "Ik ben net gestart"]),
+    ("wanneer", "Wanneer wil je dat oplossen?", ["Direct", "In de komende maand of twee", "Later dit jaar", "Ik kijk gewoon wat er is"]),
+    ("omzet", "Wat is je huidige omzet per maand?", ["€0 – €10.000", "€10.000 – €25.000", "€25.000 – €100.000", "€100.000+"]),
+]
+QUIZ_FIELDS = [
+    ("telefoon", "Wat is je telefoonnummer?", "tel", "+31 6 12345678", "tel"),
+    ("email", "Wat is je meest gebruikte e-mailadres?", "email", "jan@devries.nl", "email"),
+    ("naam", "Wat is je naam?", "text", "Jan de Vries", "name"),
 ]
 
 
 def call_page():
-    """Standalone 'Boek een gesprek' funnel (no nav), modelled on the reference call page."""
+    """Standalone 'Boek een gesprek' funnel (no nav), modelled on the reference call page:
+    blurred VSL, small popup quiz that starts at 50%, video unlocks after the last step."""
     steps = ""
-    total = len(QUIZ) + 1
     for i, (name, q, opts) in enumerate(QUIZ):
         btns = "".join(f'<button type="button" class="q-opt" data-value="{html.unescape(o)}">{o}</button>' for o in opts)
         steps += f"""        <fieldset class="q-step{' is-on' if i == 0 else ''}" data-name="{name}">
           <legend>{q} <span aria-hidden="true">*</span></legend>
-          <div class="q-opts{' q-opts-2' if len(opts) > 4 else ''}">{btns}</div>
+          <div class="q-opts">{btns}</div>
+        </fieldset>
+"""
+    for i, (name, q, typ, ph, ac) in enumerate(QUIZ_FIELDS):
+        last = i == len(QUIZ_FIELDS) - 1
+        label = "Bekijk de video" if last else "Volgende"
+        btype = "submit" if last else "button"
+        steps += f"""        <fieldset class="q-step q-field" data-name="{name}">
+          <legend><label for="q-{name}">{q}</label> <span aria-hidden="true">*</span></legend>
+          <input id="q-{name}" name="{name}" type="{typ}" placeholder="{ph}" autocomplete="{ac}" required>
+          <button type="{btype}" class="call-cta call-cta-sm q-next">{label} {ARROW}</button>
         </fieldset>
 """
     cards = ""
@@ -1061,14 +1075,15 @@ def call_page():
       <h1>Wij helpen aannemers aan meer klussen met AI, slimme websites en 5-sterren reviews, vanaf</h1>
       <p class="call-price">€48 per maand {icon('<line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>', 28, 3)}</p>
 
-      <div class="call-video">
+      <div class="call-video is-locked" id="call-video-wrap">
         <video id="call-video" src="/vsl-v1.mp4" poster="/vsl-thumb.jpg" playsinline preload="none"></video>
-        <button type="button" class="call-play" id="call-play" aria-label="Video afspelen">
+        <button type="button" class="call-play" data-open-quiz aria-label="Bekijk de video">
           <span>{icon('<polygon points="7 4 20 12 7 20 7 4" fill="currentColor"/>', 34, 2)}</span>
         </button>
       </div>
       <p class="call-step"><u>Stap 1:</u> bekijk deze korte video en zie wat we doen en hoe we je laten groeien</p>
-      <button type="button" class="call-cta" data-open-quiz>Bekijk hoe het werkt</button>
+      <button type="button" class="call-cta" id="call-cta" data-open-quiz>Bekijk hoe het werkt</button>
+      <a class="call-cta" id="call-book" href="/demo/" hidden>Plan je gesprek {ARROW}</a>
       <p class="call-note">Vrijblijvend · Duurt minder dan een minuut</p>
     </section>
 
@@ -1081,25 +1096,13 @@ def call_page():
   <div class="quiz-overlay" id="quiz" role="dialog" aria-modal="true" aria-labelledby="quiz-title" hidden>
     <div class="quiz">
       <button type="button" class="quiz-close" data-close-quiz aria-label="Sluiten">{icon('<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>', 18, 2.5)}</button>
-      <h2 id="quiz-title">Wij helpen aannemers aan meer aanvragen, vanaf</h2>
-      <p class="quiz-price">€48 per maand</p>
-      <div class="quiz-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="quiz-bar"></span><em id="quiz-pct">0%</em></div>
-      <form id="quiz-form" novalidate data-total="{total}">
-{steps}        <fieldset class="q-step q-contact" data-name="contact">
-          <legend>Waar kunnen we je bereiken?</legend>
-          <div class="f-row">
-            <div class="f-field"><label for="q-naam">Naam</label><input id="q-naam" name="naam" type="text" placeholder="Jan de Vries" autocomplete="name" required></div>
-            <div class="f-field"><label for="q-bedrijf">Bedrijfsnaam</label><input id="q-bedrijf" name="bedrijf" type="text" placeholder="De Vries Bouw" autocomplete="organization" required></div>
-          </div>
-          <div class="f-row">
-            <div class="f-field"><label for="q-tel">Telefoonnummer</label><input id="q-tel" name="telefoon" type="tel" placeholder="+31 6 12345678" autocomplete="tel" required></div>
-            <div class="f-field"><label for="q-email">E-mailadres</label><input id="q-email" name="email" type="email" placeholder="jan@devries.nl" autocomplete="email" required></div>
-          </div>
-          <button type="submit" class="call-cta call-cta-sm">Kies een moment voor je gesprek {ARROW}</button>
-          <p class="quiz-privacy">Je gegevens zijn veilig en worden nooit gedeeld met derden.</p>
-        </fieldset>
-      </form>
+      <h2 id="quiz-title">Bekijk de video gratis</h2>
+      <p class="quiz-sub">Nog een paar korte vragen en je kunt kijken.</p>
+      <div class="quiz-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span id="quiz-bar"></span><em id="quiz-pct">50%</em></div>
+      <form id="quiz-form" novalidate>
+{steps}      </form>
       <button type="button" class="quiz-back" id="quiz-back" hidden>← Vorige vraag</button>
+      <p class="quiz-privacy">Je gegevens zijn veilig en worden nooit gedeeld met derden.</p>
     </div>
   </div>
 """ + tail()

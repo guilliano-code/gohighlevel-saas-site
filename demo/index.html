@@ -602,7 +602,7 @@
       tijd:    selTime,
       bron:    'flowsa-website'
     };
-    ['soort', 'diensten', 'medewerkers', 'aanpak'].forEach(function (k) { if (PARAMS.get(k)) payload[k] = PARAMS.get(k); });
+    ['soort_werk', 'bedrijf_nu', 'wanneer', 'omzet'].forEach(function (k) { if (PARAMS.get(k)) payload[k] = PARAMS.get(k); });
 
     // Stuur naar GHL webhook
     fetch(GHL_WEBHOOK, {
