@@ -255,6 +255,44 @@ TRADES_MAIN = [
 TRADES_ALL = sorted("""Aanbouw & verbouw|Airconditioning|Witgoed & apparaten|Taxateurs|Architecten & ingenieurs|Kunst & spiegels ophangen|Audio, video & computers|Zonneschermen & luifels|Metselwerk & natuursteen|Kasten & inbouwmeubels|Timmerlieden|Tapijt- & meubelreiniging|Plafonds|Centrale stofzuigsystemen|Schoonmaak & huishoudelijke hulp|Utiliteitsbouw|Beton|Bouw|Werkbladen|Terrassen|Sloopwerk|Ontwerpers & stylisten|Woningaanpassingen|Herstel na calamiteiten|Steigers & aanlegsteigers|Deuren|Gipswerk & stucwerk|Elektra|Grondwerk|Ventilatoren|Hekwerk & schuttingen|Haarden & houtkachels|Montage sporttoestellen|Vloeren & tapijt|Funderingen|Fonteinen & vijvers|Meubelmontage|Meubelreparatie & restauratie|Garages & garagedeuren|Algemene aannemers|Glas & spiegels|Dakgoten|Klusdiensten|Verwarming & cv-installaties|Bouwkundige keuringen|Woningonderhoud|Woondiensten|Jacuzzi's, spa's & sauna's|Huishoudelijke hulp|Klimaattechniek|Isolatie|Tuinaanleg|Gazon- & tuinonderhoud|Zware objecten verplaatsen|Slotenmakers|Metaalbewerking|Schimmel- & asbestsanering|Verhuizen|Nieuwbouw woningen|Professioneel opruimen|Speeltoestellen buiten|In- & uitpakservice|Schilderwerk|Bestrating|Vergunningsaanvragen|Ongediertebestrijding|Loodgieterswerk|Poedercoaten|Renovatie|Dakwerk|Zandstralen|Septic tanks & waterputten|Schuren & tuinhuizen|Gevelbekleding|Reclame & belettering|Dakramen & lichtkoepels|Sneeuwruimen|Zonnepanelen|Glas-in-lood|Zwembaden|Tennis- & sportvelden|Tegelwerk|Boomverzorging|Wandbekleding|Afvalafvoer|Waterbehandeling|Waterdichting|Raamdecoratie|Ramen & kozijnen|Tuinwerk""".split("|"))
 
 
+# Same list and order as the reference site. Logos: Simple Icons (CC0) in img/partners/;
+# brands without an icon there are shown as a wordmark. Trademarks belong to their owners.
+PARTNERS = [
+    ("Local Falcon", None, "#1E2A4A"), ("Meta", "meta", "#0467DF"), ("GoDaddy", "godaddy", "#111111"),
+    ("OpenAI", "openai", "#111111"), ("Google Business Profile", "google", "#4285F4"), ("Canva", "canva", "#00C4CC"),
+    ("Ahrefs", None, "#FF8800"), ("Google Analytics", "googleanalytics", "#E37400"), ("Mailgun", "mailgun", "#F06B66"),
+    ("Semrush", "semrush", "#FF642D"), ("Twilio", "twilio", "#F22F46"), ("Zapier", "zapier", "#FF4F00"),
+    ("Google Ads", "googleads", "#4285F4"), ("Google Search Console", "googlesearchconsole", "#458CF5"), ("LeadConnector", None, "#188BF6"),
+]
+
+
+def partner_logo(slug, size=40):
+    svg = (ROOT / "img" / "partners" / f"{slug}.svg").read_text()
+    inner = re.search(r"<svg[^>]*>(.*)</svg>", svg, re.S).group(1)
+    inner = re.sub(r"<title>.*?</title>", "", inner)
+    return f'<svg width="{size}" height="{size}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">{inner}</svg>'
+
+
+def partner_tile(name, slug, color, cls="p-tile"):
+    mark = partner_logo(slug) if slug else ""
+    word = " p-word" if not slug else ""
+    return f'<div class="{cls}{word}" style="--brand:{color}">{mark}<span>{name}</span></div>'
+
+
+def partners_strip():
+    tiles = "".join(partner_tile(n, s, c, "p-chip") for n, s, c in PARTNERS)
+    return f"""  <section class="partners-strip sec bg-navy">
+    <div class="wrap">
+      <h2 class="h-section rv">Zodat je weet dat het klopt,<br>werken we met…</h2>
+    </div>
+    <div class="marquee rv" aria-label="Platforms waar we mee werken">
+      <div class="marquee-track">{tiles}{tiles.replace('class="p-chip', 'aria-hidden="true" class="p-chip')}</div>
+    </div>
+    <div class="wrap"><p class="partners-more rv"><a href="/partners">Bekijk alle partners →</a></p></div>
+  </section>
+"""
+
+
 FAQ_GENERAL = [
     ("Werkt het ook voor mijn branche?", "FLOWSA wordt gebruikt door aannemers, makelaars, klinieken en meer. Schilder, loodgieter, dakdekker of hovenier: als jij klanten wil, werkt het voor jou."),
     ("Hoe snel is alles live?", "Gemiddeld binnen 5 werkdagen. Na het demogesprek vul je een kort formulier in met je bedrijfsgegevens, en dan gaan wij aan de slag."),
@@ -794,13 +832,12 @@ def vacatures_page():
 
 
 def partners_page():
-    body = page_hero("Zodat je weet dat het klopt,<br>werken we samen met…", "")
-    body = body.replace("    </div>\n  </section>\n", f"""{empty_state("Binnenkort zie je hier onze partners", "We zetten hier de partners en platforms waarmee we werken. Benieuwd met welke tools jouw systeem gebouwd wordt? Vraag het ons gerust tijdens een gesprek.", "/contact", "Neem contact op")}
-    </div>
-  </section>
-""", 1)
+    tiles = "".join("        " + partner_tile(n, sl, c) + "\n" for n, sl, c in PARTNERS)
+    body = page_hero("Zodat je weet dat het klopt,<br>werken we met…",
+                     "De platforms en tools waarop jouw website en marketingsysteem draaien.",
+                     extra=f'\n      <div class="p-grid rv">\n{tiles}      </div>\n      <p class="p-note rv">Merknamen en logo\'s zijn eigendom van de betreffende bedrijven.</p>')
     body += cta("bg-white") + results("bg-grey")
-    return wrap_page("FLOWSA - Partners", "De partners en platforms waarmee FLOWSA werkt.", body, "over")
+    return wrap_page("FLOWSA - Partners", "De platforms en tools waar FLOWSA mee werkt, zoals Google, Meta, OpenAI, Twilio en Zapier.", body, "over")
 
 
 def over_ons_page():
@@ -1070,7 +1107,7 @@ def call_page():
 
 def home_page():
     src = (SRC / "home.html").read_text()
-    src = src.replace("{{TRADES}}", trade_tiles(TRADES_MAIN[:8])).replace("{{RESULTS}}", results("bg-grey")).replace("{{PROCESS}}", process("bg-grey", "werkwijze"))
+    src = src.replace("{{PARTNERS}}", partners_strip()).replace("{{TRADES}}", trade_tiles(TRADES_MAIN[:8])).replace("{{RESULTS}}", results("bg-grey")).replace("{{PROCESS}}", process("bg-grey", "werkwijze"))
     body = src + "\n" + cta("bg-grey")
     return wrap_page("FLOWSA - Websites &amp; marketingsystemen voor aannemers",
                      "FLOWSA bouwt websites en slimme klantsystemen voor aannemers: chatbot, belsysteem, Google Review-systeem en CRM-dashboard. Meer aanvragen, zonder extra personeel.",
