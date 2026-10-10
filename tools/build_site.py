@@ -241,21 +241,19 @@ CASES = [
          used=["ai-chatbot", "alles-in-een-inbox", "automatische-lead-opvolging"]),
 ]
 
+# 21 trades with a photo (img/vakgebieden/<slug>.jpg, Unsplash, see site_src/photo_credits.json)
 TRADES_MAIN = [
-    ("Schilderwerk", '<rect x="3" y="3" width="14" height="6" rx="1"/><path d="M17 6h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-7v3"/><rect x="10" y="14" width="4" height="7" rx="1"/>'),
-    ("Loodgieterij", '<path d="M4 4h6v4H4zM7 8v5a3 3 0 0 0 3 3h6"/><path d="M16 13v6M19 16h-6"/><path d="M14 20h4"/>'),
-    ("Elektra &amp; installatie", '<polygon points="13 2 4 14 12 14 11 22 20 10 12 10 13 2"/>'),
-    ("Aanbouw &amp; verbouw", '<path d="M3 21h18M5 21V10l7-6 7 6v11"/><path d="M9 21v-6h6v6"/><path d="M15 4h3v4"/>'),
-    ("Dakrenovatie", '<path d="M2 13l10-9 10 9"/><path d="M5 11l7-6 7 6M8 9.5l4-3.5 4 3.5"/><path d="M5 13v8h14v-8"/>'),
-    ("Vloeren &amp; tegels", '<rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v6M15 9v6M9 15v6"/>'),
-    ("Tuin &amp; bestrating", '<path d="M12 22V12"/><path d="M12 12c0-4 3-7 7-7 0 4-3 7-7 7z"/><path d="M12 15c0-3-2.5-5.5-6-5.5 0 3 2.5 5.5 6 5.5z"/><path d="M4 22h16"/>'),
-    ("Klusbedrijven", '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>'),
-    ("Kozijnen &amp; deuren", '<rect x="4" y="2" width="16" height="20" rx="1"/><path d="M12 2v20M4 12h16"/>'),
-    ("CV &amp; warmtepompen", '<path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>'),
-    ("Stukadoors", '<path d="M3 21l7-7"/><rect x="9" y="3" width="12" height="9" rx="1" transform="rotate(0)"/><path d="M10 12l-2 2"/>'),
-    ("Timmerwerk", '<path d="M15 12l-8.5 8.5a2.12 2.12 0 0 1-3-3L12 9"/><path d="M17.64 15L22 10.64"/><path d="M20.91 11.7l-1.25-1.25a2.42 2.42 0 0 1 0-3.42l.34-.34a2 2 0 0 0 0-2.83l-.98-.98a2 2 0 0 0-2.83 0L14 4.97"/>'),
+    ("Hoveniers", "hoveniers"), ("Verbouwingen", "verbouwingen"), ("Hogedrukreiniging", "hogedrukreiniging"),
+    ("Hondentrimsalons", "hondentrimsalons"), ("Verhuisbedrijven", "verhuisbedrijven"), ("Vloer- &amp; tapijtreiniging", "vloer-tapijtreiniging"),
+    ("Dakdekkers", "dakdekkers"), ("Klimaattechniek", "klimaattechniek"), ("Loodgieters", "loodgieters"),
+    ("Elektriciens", "elektriciens"), ("Klusbedrijven", "klusbedrijven"), ("Schilders", "schilders"),
+    ("Terrassen &amp; vlonders", "terrassen-vlonders"), ("Gevelbekleding", "gevelbekleding"), ("Zwembadbouw", "zwembadbouw"),
+    ("Bestrating", "bestrating"), ("Tuinaanleg", "tuinaanleg"), ("Kozijnen &amp; deuren", "kozijnen-deuren"),
+    ("Aannemers", "aannemers"), ("Ongediertebestrijding", "ongediertebestrijding"), ("Boomverzorging", "boomverzorging"),
 ]
-TRADES_ALL = sorted("""Aannemers|Aanbouw & verbouw|Airco & koeling|Badkamerrenovatie|Behangers|Bestrating|Betonwerk|CV & verwarming|Dakdekkers|Dakgoten & zinkwerk|Elektriciens|Gevelreiniging|Glaszetters|Grondwerk|Hoveniers|Installatiebedrijven|Interieurbouw|Isolatie|Keukenmontage|Klusbedrijven|Kozijnen & deuren|Laadpalen|Loodgieters|Metselaars|Ongediertebestrijding|Overkappingen & veranda's|Rolluiken & zonwering|Schilders|Schoonmaakbedrijven|Schuttingen & tuinhout|Sloopwerk|Stukadoors|Tegelzetters|Timmerlieden|Trappen|Verhuizers|Vloerenleggers|Voegwerk|Warmtepompen|Zonnepanelen""".split("|"))
+# Full list, same entries as the reference site's "All Trades by Category", in Dutch
+TRADES_ALL = sorted("""Aanbouw & verbouw|Airconditioning|Witgoed & apparaten|Taxateurs|Architecten & ingenieurs|Kunst & spiegels ophangen|Audio, video & computers|Zonneschermen & luifels|Metselwerk & natuursteen|Kasten & inbouwmeubels|Timmerlieden|Tapijt- & meubelreiniging|Plafonds|Centrale stofzuigsystemen|Schoonmaak & huishoudelijke hulp|Utiliteitsbouw|Beton|Bouw|Werkbladen|Terrassen|Sloopwerk|Ontwerpers & stylisten|Woningaanpassingen|Herstel na calamiteiten|Steigers & aanlegsteigers|Deuren|Gipswerk & stucwerk|Elektra|Grondwerk|Ventilatoren|Hekwerk & schuttingen|Haarden & houtkachels|Montage sporttoestellen|Vloeren & tapijt|Funderingen|Fonteinen & vijvers|Meubelmontage|Meubelreparatie & restauratie|Garages & garagedeuren|Algemene aannemers|Glas & spiegels|Dakgoten|Klusdiensten|Verwarming & cv-installaties|Bouwkundige keuringen|Woningonderhoud|Woondiensten|Jacuzzi's, spa's & sauna's|Huishoudelijke hulp|Klimaattechniek|Isolatie|Tuinaanleg|Gazon- & tuinonderhoud|Zware objecten verplaatsen|Slotenmakers|Metaalbewerking|Schimmel- & asbestsanering|Verhuizen|Nieuwbouw woningen|Professioneel opruimen|Speeltoestellen buiten|In- & uitpakservice|Schilderwerk|Bestrating|Vergunningsaanvragen|Ongediertebestrijding|Loodgieterswerk|Poedercoaten|Renovatie|Dakwerk|Zandstralen|Septic tanks & waterputten|Schuren & tuinhuizen|Gevelbekleding|Reclame & belettering|Dakramen & lichtkoepels|Sneeuwruimen|Zonnepanelen|Glas-in-lood|Zwembaden|Tennis- & sportvelden|Tegelwerk|Boomverzorging|Wandbekleding|Afvalafvoer|Waterbehandeling|Waterdichting|Raamdecoratie|Ramen & kozijnen|Tuinwerk""".split("|"))
+
 
 FAQ_GENERAL = [
     ("Werkt het ook voor mijn branche?", "FLOWSA wordt gebruikt door aannemers, makelaars, klinieken en meer. Schilder, loodgieter, dakdekker of hovenier: als jij klanten wil, werkt het voor jou."),
@@ -596,7 +594,7 @@ def feature_page(f):
   </section>
 
 {results('bg-grey')}"""
-    return wrap_page(f"FLOWSA — {f['name']}", html.escape(html.unescape(f['lead']), quote=True), body, "producten")
+    return wrap_page(f"FLOWSA - {f['name']}", html.escape(html.unescape(f['lead']), quote=True), body, "producten")
 
 
 def functies_page():
@@ -613,7 +611,7 @@ def functies_page():
                      "Alles wat je nodig hebt om van websitebezoeker naar betalende klant te gaan. Volledig automatisch, zonder dat jij er iets voor hoeft te doen.",
                      extra=f'\n      <div class="ov-grid">\n{cards}      </div>')
     body += cta("bg-white") + process("bg-grey") + results("bg-white")
-    return wrap_page("FLOWSA — Producten", "Functionele website, AI-chatbot, AI-belsysteem, 5-sterren review funnel, alles-in-één inbox en meer: alle producten van FLOWSA voor aannemers.", body, "producten")
+    return wrap_page("FLOWSA - Producten", "Functionele website, AI-chatbot, AI-belsysteem, 5-sterren review funnel, alles-in-één inbox en meer: alle producten van FLOWSA voor aannemers.", body, "producten")
 
 
 def prijzen_page():
@@ -699,7 +697,7 @@ def prijzen_page():
 """
     body += faq([FAQ_GENERAL[3], FAQ_GENERAL[4], FAQ_GENERAL[0], FAQ_GENERAL[1], FAQ_GENERAL[5]])
     body += cta("bg-grey") + process("bg-white") + results("bg-grey")
-    return wrap_page("FLOWSA — Prijzen", "Transparante prijzen voor aannemers: Basic vanaf €48, Plus vanaf €96 en Pro vanaf €200 per maand. 30 dagen geld-terug-garantie.", body, "prijzen")
+    return wrap_page("FLOWSA - Prijzen", "Transparante prijzen voor aannemers: Basic vanaf €48, Plus vanaf €96 en Pro vanaf €200 per maand. 30 dagen geld-terug-garantie.", body, "prijzen")
 
 
 def testimonials_page():
@@ -723,7 +721,7 @@ def testimonials_page():
                      "Resultaten van aannemers die met FLOWSA werken, in aanvragen, reactietijd en reviews. De bedrijfsnamen zijn geanonimiseerd.",
                      extra=f'\n      <div class="t-grid">\n{cards}      </div>')
     body += cta("bg-white") + process("bg-grey")
-    return wrap_page("FLOWSA — Testimonials", "Wat aannemers zeggen over FLOWSA: meer aanvragen, snellere reacties en betere Google-reviews.", body, "testimonials")
+    return wrap_page("FLOWSA - Testimonials", "Wat aannemers zeggen over FLOWSA: meer aanvragen, snellere reacties en betere Google-reviews.", body, "testimonials")
 
 
 SAMPLE_SITES = [
@@ -757,7 +755,7 @@ def ons_werk_page():
                      "Binnenkort vind je hier websites die we voor klanten hebben gebouwd. Tot die tijd: een paar voorbeeldontwerpen in de stijl waarin we werken.",
                      extra=f'\n      <div class="work-grid">\n{tiles}      </div>')
     body += cta("bg-white") + process("bg-grey") + results("bg-white")
-    return wrap_page("FLOWSA — Ons werk", "Websites die FLOWSA bouwt voor aannemers: strak, snel, vindbaar in Google en gemaakt om aanvragen op te leveren.", body, "ons-werk")
+    return wrap_page("FLOWSA - Ons werk", "Websites die FLOWSA bouwt voor aannemers: strak, snel, vindbaar in Google en gemaakt om aanvragen op te leveren.", body, "ons-werk")
 
 
 def empty_state(title, text, btn_href, btn_label):
@@ -786,7 +784,7 @@ def blog_page():
   </section>
 """
     body += cta("bg-white") + process("bg-grey") + results("bg-white")
-    return wrap_page("FLOWSA — Blog", "Marketingstrategieën, websitetips en groeiplannen voor aannemers en vakbedrijven.", body, "blog")
+    return wrap_page("FLOWSA - Blog", "Marketingstrategieën, websitetips en groeiplannen voor aannemers en vakbedrijven.", body, "blog")
 
 
 def vacatures_page():
@@ -798,7 +796,7 @@ def vacatures_page():
         <div class="jobs-empty">Er zijn op dit moment geen openstaande vacatures. Denk je dat je toch iets toevoegt? Stuur ons een open sollicitatie via <a href="/contact">het contactformulier</a>.</div>
       </div>""")
     body += cta("bg-white") + results("bg-grey")
-    return wrap_page("FLOWSA — Vacatures", "Werken bij FLOWSA: bekijk openstaande vacatures of stuur een open sollicitatie.", body, "over")
+    return wrap_page("FLOWSA - Vacatures", "Werken bij FLOWSA: bekijk openstaande vacatures of stuur een open sollicitatie.", body, "over")
 
 
 def partners_page():
@@ -808,7 +806,7 @@ def partners_page():
   </section>
 """, 1)
     body += cta("bg-white") + results("bg-grey")
-    return wrap_page("FLOWSA — Partners", "De partners en platforms waarmee FLOWSA werkt.", body, "over")
+    return wrap_page("FLOWSA - Partners", "De partners en platforms waarmee FLOWSA werkt.", body, "over")
 
 
 def over_ons_page():
@@ -845,7 +843,7 @@ def over_ons_page():
   </section>
 """
     body += cta("bg-white") + results("bg-grey")
-    return wrap_page("FLOWSA — Over ons", "Leer FLOWSA kennen: websites en klantsystemen voor aannemers, simpel in gebruik en gericht op resultaat.", body, "over")
+    return wrap_page("FLOWSA - Over ons", "Leer FLOWSA kennen: websites en klantsystemen voor aannemers, simpel in gebruik en gericht op resultaat.", body, "over")
 
 
 def case_page(c):
@@ -887,7 +885,7 @@ def case_page(c):
   </section>
 
 {cta('bg-grey')}{results('bg-white')}"""
-    return wrap_page(f"FLOWSA — Case: {html.unescape(c['trade'])}", html.escape(html.unescape(c['sub']), quote=True), body, "testimonials")
+    return wrap_page(f"FLOWSA - Case: {html.unescape(c['trade'])}", html.escape(html.unescape(c['sub']), quote=True), body, "testimonials")
 
 
 def werkwijze_page():
@@ -923,11 +921,15 @@ def werkwijze_page():
   </section>
 
 {cta('bg-grey')}{results('bg-white')}"""
-    return wrap_page("FLOWSA — Werkwijze", "Zo werkt samenwerken met FLOWSA: demogesprek, wij bouwen je systeem in gemiddeld 5 werkdagen, en livegang.", body, "over")
+    return wrap_page("FLOWSA - Werkwijze", "Zo werkt samenwerken met FLOWSA: demogesprek, wij bouwen je systeem in gemiddeld 5 werkdagen, en livegang.", body, "over")
+
+
+def trade_tiles(trades):
+    return "".join(f'        <div class="trade rv"><img class="trade-img" src="/img/vakgebieden/{slug}.jpg" alt="" width="640" height="400" loading="lazy"><h3>{n}</h3></div>\n' for n, slug in trades)
 
 
 def vakgebieden_page():
-    tiles = "".join(f'        <div class="trade rv"><div class="trade-ic">{icon(d, 56, 1.5)}</div><h3>{n}</h3></div>\n' for n, d in TRADES_MAIN)
+    tiles = trade_tiles(TRADES_MAIN)
     lst = "".join(f'<li>{BADGE}{html.escape(t)}</li>' for t in TRADES_ALL)
     body = f"""  <section class="page-hero sec bg-grey">
     <div class="wrap">
@@ -947,7 +949,7 @@ def vakgebieden_page():
   </section>
 
 {cta('bg-grey')}{process('bg-white')}{results('bg-grey')}"""
-    return wrap_page("FLOWSA — Vakgebieden", "FLOWSA werkt voor schilders, loodgieters, dakdekkers, hoveniers, elektriciens, aannemers en elk ander vakgebied.", body, "over")
+    return wrap_page("FLOWSA - Vakgebieden", "FLOWSA werkt voor schilders, loodgieters, dakdekkers, hoveniers, elektriciens, aannemers en elk ander vakgebied.", body, "over")
 
 
 def contact_page():
@@ -987,14 +989,14 @@ def contact_page():
   </section>
 """
     body += faq([FAQ_GENERAL[0], FAQ_GENERAL[1], FAQ_GENERAL[5]], bg="bg-white")
-    return wrap_page("FLOWSA — Contact", "Neem contact op met FLOWSA. Vul het formulier in en we reageren binnen 24 uur, of app ons direct via WhatsApp.", body, "over")
+    return wrap_page("FLOWSA - Contact", "Neem contact op met FLOWSA. Vul het formulier in en we reageren binnen 24 uur, of app ons direct via WhatsApp.", body, "over")
 
 
 def home_page():
     src = (SRC / "home.html").read_text()
-    src = src.replace("{{RESULTS}}", results("bg-grey")).replace("{{PROCESS}}", process("bg-grey", "werkwijze"))
+    src = src.replace("{{TRADES}}", trade_tiles(TRADES_MAIN[:8])).replace("{{RESULTS}}", results("bg-grey")).replace("{{PROCESS}}", process("bg-grey", "werkwijze"))
     body = src + "\n" + cta("bg-grey")
-    return wrap_page("FLOWSA — Websites &amp; marketingsystemen voor aannemers",
+    return wrap_page("FLOWSA - Websites &amp; marketingsystemen voor aannemers",
                      "FLOWSA bouwt websites en slimme klantsystemen voor aannemers: chatbot, belsysteem, Google Review-systeem en CRM-dashboard. Meer aanvragen, zonder extra personeel.",
                      body)
 
