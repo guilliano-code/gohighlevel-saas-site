@@ -83,7 +83,7 @@ FEATURES = [
          facts=[("± 5", "werkdagen tot je website gemiddeld live staat"),
                 ("100%", "geoptimaliseerd voor desktop én mobiel"),
                 ("€48", "per maand, vanaf het Basic-pakket")],
-         what="Wat krijg je met een FLOWSA-website?",
+         what="Wat is een functionele website?",
          cards=[("search", "Vindbaar in Google", "Je website is vanaf dag één ingericht op lokale zoekopdrachten, zodat mensen in jouw regio je vinden als ze een vakman zoeken."),
                 ("mobile", "Perfect op elk scherm", "De meeste mensen zoeken een vakman op hun telefoon. Je website laadt snel en ziet er op elk scherm goed uit."),
                 ("file", "Contactformulier & chatwidget", "Bezoekers kunnen direct een offerte aanvragen of een vraag stellen. Elke aanvraag komt meteen bij jou binnen."),
@@ -95,7 +95,7 @@ FEATURES = [
          facts=[("24/7", "online, ook 's avonds en in het weekend"),
                 ("3×", "meer aanvragen binnen 8 weken bij een aannemer in aanbouw & verbouw"),
                 ("38%", "van die aanvragen kwam buiten werktijd binnen")],
-         what="Wat doet de chatbot voor je?",
+         what="Wat is de AI-chatbot?",
          cards=[("moon", "Altijd beschikbaar", "De chatbot beantwoordt vragen over je diensten en werkgebied, dag en nacht, ook als jij op de bouwplaats staat."),
                 ("filter", "Leads kwalificeren", "Hij vraagt door naar wat de bezoeker precies nodig heeft, zodat jij alleen serieuze aanvragen opvolgt."),
                 ("calendar", "Afspraken inplannen", "Past het? Dan plant de chatbot meteen een eerste afspraak in je agenda."),
@@ -108,7 +108,7 @@ FEATURES = [
          facts=[("< 60s", "en een gemiste oproep wordt automatisch opgevolgd"),
                 ("2 → 11", "leads per maand bij een dakdekkersbedrijf"),
                 ("24/7", "bereikbaar, ook buiten werktijd")],
-         what="Wat doet het belsysteem?",
+         what="Wat is het AI-belsysteem?",
          cards=[("phone", "Neemt op als jij niet kan", "Het belsysteem neemt de telefoon voor je op met een natuurlijk klinkende stem en vraagt waar de beller mee geholpen wil worden."),
                 ("file", "Gespreksverslag in je mail", "Na elk gesprek krijg je een kort verslag: wie belde, wat hij nodig heeft en hoe je hem bereikt."),
                 ("crm", "Direct in je overzicht", "De gegevens van de beller komen meteen in je systeem, inclusief of het om een spoedklus of een offerteaanvraag gaat."),
@@ -121,7 +121,7 @@ FEATURES = [
          facts=[("60 sec", "en de beller heeft automatisch een sms van je"),
                 ("0", "onbeantwoorde oproepen bij een dakdekkersbedrijf"),
                 ("€96", "per maand, onderdeel van het Plus-pakket")],
-         what="Waarom een sms bij een gemiste oproep?",
+         what="Wat is de gemiste-oproep-sms?",
          cards=[("zap", "Val op tussen de concurrentie", "De meeste vakmensen bellen pas uren later terug. Jij reageert binnen een minuut, nog voordat de klant de volgende belt."),
                 ("shield", "Geen verloren leads meer", "Iemand die geen gehoor krijgt, belt vaak meteen een ander. Met een sms houd je het gesprek bij jou."),
                 ("user", "Laat zien dat je om klanten geeft", "Een persoonlijk berichtje voelt beter dan een voicemail. Klanten weten meteen dat hun vraag gezien is."),
@@ -134,7 +134,7 @@ FEATURES = [
          facts=[("3.9 → 4.8", "Google-beoordeling in 4 maanden bij een hoveniersbedrijf"),
                 ("40+", "nieuwe reviews in diezelfde periode"),
                 ("€48", "per maand, al in het Basic-pakket")],
-         what="Hoe werkt het review-systeem?",
+         what="Wat is de 5-sterren review funnel?",
          cards=[("repeat", "Automatisch na elke klus", "Na elke afgeronde klus krijgt je klant vanzelf een verzoek met een directe link naar je Google-pagina."),
                 ("bell", "Melding bij ontevredenheid", "Is een klant minder tevreden? Dan krijg jij direct een melding, zodat je het persoonlijk kunt oplossen."),
                 ("map", "Hoger in Google Maps", "Meer en betere reviews betekent meer vertrouwen en een hogere plek in Google Maps, precies waar klanten zoeken."),
@@ -147,7 +147,7 @@ FEATURES = [
          facts=[("4 min", "gemiddelde reactietijd bij een schildersbedrijf, was ruim 2 dagen"),
                 ("1", "overzicht voor chat, telefoon, formulieren en afspraken"),
                 ("∞", "gebruikers, leads en klanten in het Pro-pakket")],
-         what="Wat zit er in het dashboard?",
+         what="Wat is de alles-in-één inbox?",
          cards=[("crm", "Alle leads op één plek", "Chatgesprekken, terugbelverslagen, formulieren en afspraken. Je ziet in één oogopslag wat er speelt."),
                 ("chart", "Pijplijnoverzicht", "Zie per lead waar hij staat: nieuw, afspraak, offerte of gewonnen. Zo valt er niets tussen wal en schip."),
                 ("users", "Onbeperkt gebruikers", "Geef je hele team toegang, zonder extra kosten per gebruiker."),
@@ -160,7 +160,7 @@ FEATURES = [
          facts=[("0", "gemiste aanvragen bij een schildersbedrijf"),
                 ("E-mail + sms", "opvolging via de kanalen die klanten lezen"),
                 ("€200", "per maand, onderdeel van het Pro-pakket")],
-         what="Wat doet automatische opvolging?",
+         what="Wat is automatische lead-opvolging?",
          cards=[("repeat", "Vanzelf opvolgen", "Na een offerte of eerste contact krijgt de klant op vaste momenten een vriendelijk berichtje. Jij hoeft er niet aan te denken."),
                 ("bell", "Stopt zodra de klant reageert", "Reageert de klant? Dan stopt de reeks automatisch en neem jij het gesprek over."),
                 ("user", "Persoonlijk, niet opdringerig", "De berichten zijn in jouw toon geschreven en voelen als een appje van jou, niet als spam."),
@@ -173,7 +173,7 @@ FEATURES = [
          facts=[("1", "inbox voor WhatsApp, sms, e-mail en chat"),
                 ("Automatisch", "afspraakbevestigingen en herinneringen"),
                 ("€200", "per maand, onderdeel van het Pro-pakket")],
-         what="Wat kun je met de WhatsApp-koppeling?",
+         what="Wat is de WhatsApp-koppeling?",
          cards=[("whatsapp", "Chat waar je klant zit", "Stuur en ontvang WhatsApp-berichten vanuit hetzelfde dashboard als al je andere leads."),
                 ("calendar", "Herinneringen voor afspraken", "Klanten krijgen automatisch een bevestiging en herinnering, zodat er minder afspraken mislopen."),
                 ("users", "Samen met je team", "Iedereen in je team ziet dezelfde gesprekken. Geen berichten meer op de privételefoon van één persoon."),
@@ -185,7 +185,7 @@ FEATURES = [
          facts=[("9", "extra aanvragen via Google in één kwartaal bij een hoveniersbedrijf"),
                 ("Lokaal", "ingericht op zoekopdrachten in jouw werkgebied"),
                 ("€48", "per maand, al in het Basic-pakket")],
-         what="Hoe zorgen we dat je gevonden wordt?",
+         what="Wat is lokale SEO?",
          cards=[("map", "Lokale zoekopdrachten", "Je website is ingericht op wat klanten in jouw regio zoeken, zoals \"schilder in Utrecht\" of \"dakdekker bij mij in de buurt\"."),
                 ("star", "Reviews die meetellen", "Samen met het review-systeem bouw je aan een sterk Google-profiel, en dat helpt je hoger in Google Maps."),
                 ("zap", "Snel en technisch in orde", "Snelle laadtijden, goede mobiele weergave en een nette opbouw: de basis waar Google op let."),
@@ -542,30 +542,18 @@ def wrap_page(title, desc, body, active=""):
 def feature_page(f):
     facts = "".join(f'          <div class="fact rv"><b>{v}</b><span>{l}</span></div>\n' for v, l in f["facts"])
     cards = "".join(f"""        <div class="what-card rv">
-          <h3><span class="what-ic">{icon(ICONS[ic], 26, 1.8)}</span>{t}</h3>
+          <h3><span class="what-ic">{icon(ICONS[ic], 64, 1.5)}</span>{t}</h3>
           <p>{p}</p>
         </div>
 """ for ic, t, p in f["cards"])
-    case_link = ""
-    if f.get("case"):
-        c = next(c for c in CASES if c["slug"] == f["case"].strip("/"))
-        case_link = f"""      <div class="feat-case rv">
-        <div class="feat-case-stat"><b>{c['stat']}</b><span>{c['stat_label']}</span></div>
-        <div><p>“{c['quote']}”</p><a href="/{c['slug']}" class="slide-link">Lees de case van dit {c['who'].lower()} →</a></div>
-      </div>
-"""
-    others = [o for o in FEATURES if o["slug"] != f["slug"]]
-    rel = "".join(f'        <a href="/producten/{o["slug"]}" class="rel-item"><span class="dd-ic">{icon(ICONS[o["icon"]])}</span><span><b>{o["name"]}</b><small>{o["short"]}</small></span></a>\n' for o in others)
-
     body = f"""  <section class="feat-hero sec bg-grey">
     <div class="wrap">
-      <h1 class="h-page rv">{f['title']}</h1>
-      <p class="page-sub rv">{f['lead']}</p>
+      <h1 class="h-page h-feat rv">{f['title']}</h1>
       <div class="feat-top">
         <div class="facts">
 {facts}        </div>
         <div class="feat-show rv">
-          <div class="feat-show-head">Zo ziet het eruit {plan_badge(f['plan'])}</div>
+          <div class="feat-show-head">Zo ziet het eruit</div>
           <div class="feat-visual">
 {MOCKS[f['mock']]}
           </div>
@@ -579,21 +567,10 @@ def feature_page(f):
       <h2 class="h-section rv">{f['what']}</h2>
       <div class="what-grid">
 {cards}      </div>
-{case_link}      <div class="what-cta rv"><a href="/demo/" class="btn">Boek een gesprek</a></div>
     </div>
   </section>
 
-{cta('bg-white')}
-{process('bg-grey')}
-  <section class="related sec bg-white">
-    <div class="wrap">
-      <h2 class="h-section rv">Werkt nog beter samen met…</h2>
-      <div class="rel-grid rv">
-{rel}      </div>
-    </div>
-  </section>
-
-{results('bg-grey')}"""
+{cta('bg-grey')}{process('bg-white')}{results('bg-grey')}"""
     return wrap_page(f"FLOWSA - {f['name']}", html.escape(html.unescape(f['lead']), quote=True), body, "producten")
 
 
