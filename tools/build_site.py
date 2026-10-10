@@ -539,6 +539,23 @@ def wrap_page(title, desc, body, active=""):
 
 # ── Pages ─────────────────────────────────────────────────────────────────
 
+def demo_video(f):
+    """Product demo video: a file at video/producten/<slug>.mp4, or f["video"]
+    (an .mp4 path or a YouTube/Vimeo embed URL). Placeholder until one exists."""
+    src = f.get("video") or (f"/video/producten/{f['slug']}.mp4" if (ROOT / "video" / "producten" / f"{f['slug']}.mp4").exists() else "")
+    if src.endswith(".mp4"):
+        poster = f"/video/producten/{f['slug']}.jpg"
+        poster_attr = f' poster="{poster}"' if (ROOT / poster.lstrip("/")).exists() else ""
+        return f'<video class="demo-video" src="{src}"{poster_attr} controls playsinline preload="metadata"></video>'
+    if src:
+        return f'<iframe class="demo-video" src="{src}" title="Demo: {f["name"]}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>'
+    return f"""<div class="demo-placeholder">
+              <span class="demo-play">{icon('<polygon points="7 4 20 12 7 20 7 4" fill="currentColor"/>', 30, 2)}</span>
+              <b>Uitlegvideo volgt binnenkort</b>
+              <span>Hier leggen we in een paar minuten uit hoe het werkt.</span>
+            </div>"""
+
+
 def feature_page(f):
     facts = "".join(f'          <div class="fact rv"><b>{v}</b><span>{l}</span></div>\n' for v, l in f["facts"])
     cards = "".join(f"""        <div class="what-card rv">
@@ -553,9 +570,9 @@ def feature_page(f):
         <div class="facts">
 {facts}        </div>
         <div class="feat-show rv">
-          <div class="feat-show-head">Zo ziet het eruit</div>
-          <div class="feat-visual">
-{MOCKS[f['mock']]}
+          <div class="feat-show-head">Bekijk hieronder een korte demo</div>
+          <div class="demo-frame">
+            {demo_video(f)}
           </div>
         </div>
       </div>
