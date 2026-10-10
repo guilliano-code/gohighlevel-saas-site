@@ -76,9 +76,9 @@ PLAN_PRICE = {"Basic": 48, "Plus": 96, "Pro": 200}
 # ── Features ──────────────────────────────────────────────────────────────
 # facts: (value, label) — only numbers that appear elsewhere on the site
 FEATURES = [
-    dict(slug="website", icon="website", mock="website", plan="Basic",
-         name="Professionele website", short="Een website die aanvragen oplevert",
-         title="Professionele website",
+    dict(slug="functionele-website", icon="website", mock="website", plan="Basic",
+         name="Functionele website", short="Een website die leads oplevert",
+         title="Functionele website",
          lead="Een website die er strak uitziet, gevonden wordt in Google en van bezoekers aanvragen maakt. Wij bouwen hem, jij keurt goed.",
          facts=[("± 5", "werkdagen tot je website gemiddeld live staat"),
                 ("100%", "geoptimaliseerd voor desktop én mobiel"),
@@ -88,9 +88,9 @@ FEATURES = [
                 ("mobile", "Perfect op elk scherm", "De meeste mensen zoeken een vakman op hun telefoon. Je website laadt snel en ziet er op elk scherm goed uit."),
                 ("file", "Contactformulier & chatwidget", "Bezoekers kunnen direct een offerte aanvragen of een vraag stellen. Elke aanvraag komt meteen bij jou binnen."),
                 ("star", "Laat je beste werk zien", "Projecten, reviews en je werkgebied staan overzichtelijk op één plek. Zo zien bezoekers meteen waarom ze voor jou moeten kiezen.")]),
-    dict(slug="chatbot", icon="chat", mock="chatbot", plan="Plus",
-         name="Chatbot", short="Beantwoordt vragen, 24/7",
-         title="Chatbot op jouw website",
+    dict(slug="ai-chatbot", icon="chat", mock="chatbot", plan="Plus",
+         name="AI-chatbot", short="Beantwoordt vragen, 24/7",
+         title="AI-chatbot op jouw website",
          lead="Je website slaapt nooit. Ook om 22:00 op zaterdag krijgt een bezoeker direct antwoord, en plant de chatbot meteen een afspraak in.",
          facts=[("24/7", "online, ook 's avonds en in het weekend"),
                 ("3×", "meer aanvragen binnen 8 weken bij een aannemer in aanbouw & verbouw"),
@@ -101,9 +101,9 @@ FEATURES = [
                 ("calendar", "Afspraken inplannen", "Past het? Dan plant de chatbot meteen een eerste afspraak in je agenda."),
                 ("user", "In jouw toon & huisstijl", "Geen robotachtige teksten. De chatbot praat zoals jij met je klanten praat.")],
          case="/case-de-vries-bouw"),
-    dict(slug="belsysteem", icon="phone", mock="belsysteem", plan="Plus",
-         name="Belsysteem", short="Neemt op als jij niet kan",
-         title="Belsysteem",
+    dict(slug="ai-belsysteem", icon="phone", mock="belsysteem", plan="Plus",
+         name="AI-belsysteem", short="Neemt op als jij niet kan",
+         title="AI-belsysteem",
          lead="Sta je op een dak of zit je onder een aanrecht? Het belsysteem neemt de telefoon voor je op en zorgt dat geen enkele beller verloren gaat.",
          facts=[("< 60s", "en een gemiste oproep wordt automatisch opgevolgd"),
                 ("2 → 11", "leads per maand bij een dakdekkersbedrijf"),
@@ -114,9 +114,9 @@ FEATURES = [
                 ("crm", "Direct in je overzicht", "De gegevens van de beller komen meteen in je systeem, inclusief of het om een spoedklus of een offerteaanvraag gaat."),
                 ("moon", "Ook buiten werktijd", "Belt iemand 's avonds of in het weekend? Die wordt net zo goed geholpen als op maandagochtend.")],
          case="/case-janssen-dakwerken"),
-    dict(slug="sms-bij-gemiste-oproep", icon="sms", mock="belsysteem", plan="Plus",
-         name="Sms bij gemiste oproep", short="Binnen 60 seconden terug",
-         title="Sms bij gemiste oproep",
+    dict(slug="gemiste-oproep-sms", icon="sms", mock="belsysteem", plan="Plus",
+         name="Gemiste-oproep-sms", short="Automatisch een sms terug",
+         title="Gemiste-oproep-sms",
          lead="Iedereen mist weleens een oproep. Maar niet iedereen stuurt binnen een minuut een berichtje terug. Wees degene die dat wél doet.",
          facts=[("60 sec", "en de beller heeft automatisch een sms van je"),
                 ("0", "onbeantwoorde oproepen bij een dakdekkersbedrijf"),
@@ -127,9 +127,9 @@ FEATURES = [
                 ("user", "Laat zien dat je om klanten geeft", "Een persoonlijk berichtje voelt beter dan een voicemail. Klanten weten meteen dat hun vraag gezien is."),
                 ("moon", "Ook 's avonds en in het weekend", "Gemist na werktijd? De sms gaat er toch meteen uit, zodat niemand tot maandag hoeft te wachten.")],
          case="/case-janssen-dakwerken"),
-    dict(slug="google-reviews", icon="star", mock="reviews", plan="Basic",
-         name="Google Review-systeem", short="Automatisch meer reviews",
-         title="Google Review-systeem",
+    dict(slug="5-sterren-review-funnel", icon="star", mock="reviews", plan="Basic",
+         name="5-sterren review funnel", short="Meer 5-sterren reviews",
+         title="5-sterren review funnel",
          lead="\"Ik laat zeker een review achter!\" Maar dan vergeten ze het. Wij herinneren je klanten er netjes aan, na elke klus.",
          facts=[("3.9 → 4.8", "Google-beoordeling in 4 maanden bij een hoveniersbedrijf"),
                 ("40+", "nieuwe reviews in diezelfde periode"),
@@ -140,9 +140,9 @@ FEATURES = [
                 ("map", "Hoger in Google Maps", "Meer en betere reviews betekent meer vertrouwen en een hogere plek in Google Maps, precies waar klanten zoeken."),
                 ("zap", "Geen omkijken naar", "Je hoeft er niet zelf aan te denken. Het systeem doet het werk, jij ziet de reviews binnenkomen.")],
          case="/case-bakker-tuinen"),
-    dict(slug="crm-dashboard", icon="crm", mock="crm", plan="Pro",
-         name="CRM-dashboard", short="Al je leads op één plek",
-         title="Alles-in-één CRM-dashboard",
+    dict(slug="alles-in-een-inbox", icon="crm", mock="crm", plan="Pro",
+         name="Alles-in-één inbox", short="Al je leads en berichten op één plek",
+         title="Alles-in-één inbox",
          lead="Geen briefjes, losse appjes en vergeten mails meer. Alle leads, gesprekken en afspraken staan op één plek.",
          facts=[("4 min", "gemiddelde reactietijd bij een schildersbedrijf, was ruim 2 dagen"),
                 ("1", "overzicht voor chat, telefoon, formulieren en afspraken"),
@@ -153,9 +153,9 @@ FEATURES = [
                 ("users", "Onbeperkt gebruikers", "Geef je hele team toegang, zonder extra kosten per gebruiker."),
                 ("mail", "E-mail & sms vanuit één plek", "Stuur berichten en volg leads op zonder te wisselen tussen apps.")],
          case="/case-van-dijk-schilderwerken"),
-    dict(slug="automatische-opvolging", icon="mail", mock="opvolging", plan="Pro",
-         name="Automatische opvolging", short="Via e-mail &amp; sms",
-         title="Automatische opvolging",
+    dict(slug="automatische-lead-opvolging", icon="mail", mock="opvolging", plan="Pro",
+         name="Automatische lead-opvolging", short="Volg leads vanzelf op",
+         title="Automatische lead-opvolging",
          lead="Offerte verstuurd en dan... stilte. Het systeem volgt automatisch op via e-mail en sms, tot de klant reageert.",
          facts=[("0", "gemiste aanvragen bij een schildersbedrijf"),
                 ("E-mail + sms", "opvolging via de kanalen die klanten lezen"),
@@ -166,7 +166,7 @@ FEATURES = [
                 ("user", "Persoonlijk, niet opdringerig", "De berichten zijn in jouw toon geschreven en voelen als een appje van jou, niet als spam."),
                 ("chart", "Meer offertes omgezet", "Veel klanten haken niet af omdat ze nee zeggen, maar omdat ze het vergeten. Opvolging haalt die terug.")],
          case="/case-van-dijk-schilderwerken"),
-    dict(slug="whatsapp", icon="whatsapp", mock="whatsapp", plan="Pro",
+    dict(slug="whatsapp-koppeling", icon="whatsapp", mock="whatsapp", plan="Pro",
          name="WhatsApp-koppeling", short="Bereik leads waar ze zitten",
          title="WhatsApp-koppeling",
          lead="Je klanten zitten op WhatsApp, dus jij ook. Bereik leads via het kanaal dat ze het meest gebruiken, gewoon vanuit je dashboard.",
@@ -178,9 +178,9 @@ FEATURES = [
                 ("calendar", "Herinneringen voor afspraken", "Klanten krijgen automatisch een bevestiging en herinnering, zodat er minder afspraken mislopen."),
                 ("users", "Samen met je team", "Iedereen in je team ziet dezelfde gesprekken. Geen berichten meer op de privételefoon van één persoon."),
                 ("crm", "Gekoppeld aan je leads", "Elk gesprek staat bij de juiste lead, met alle eerdere contactmomenten erbij.")]),
-    dict(slug="vindbaar-in-google", icon="search", mock="google", plan="Basic",
-         name="Vindbaar in Google", short="Lokale SEO vanaf dag één",
-         title="Vindbaar in Google",
+    dict(slug="lokale-seo", icon="search", mock="google", plan="Basic",
+         name="Lokale SEO", short="Gevonden worden in Google",
+         title="Lokale SEO",
          lead="Bovenaan staan in Google kost tijd, en wie iets anders belooft, liegt. Maar met de juiste basis begin je wel voorop.",
          facts=[("9", "extra aanvragen via Google in één kwartaal bij een hoveniersbedrijf"),
                 ("Lokaal", "ingericht op zoekopdrachten in jouw werkgebied"),
@@ -205,7 +205,7 @@ CASES = [
          approach=["FLOWSA bouwde een nieuwe website met een chatbot die continu klaarstaat. De chatbot beantwoordt veelgestelde vragen over diensten en werkgebied, vraagt door naar wat de bezoeker precies nodig heeft, en plant, als het past, meteen een eerste afspraak in. Alles komt binnen in één CRM-dashboard, zodat het team 's ochtends in één overzicht ziet wat er is binnengekomen.",
                    "In de praktijk reageert de chatbot nu ook 's avonds en in het weekend, precies de momenten waarop vroeger niemand klaarstond. Dat leverde meteen extra afspraken op die anders gemist zouden zijn, zonder dat het team er zelf iets voor hoeft te doen."],
          result="Binnen acht weken na livegang steeg het aantal aanvragen met een factor drie. 38% daarvan kwam 's avonds of in het weekend binnen, precies de momenten waarop er voorheen niets gebeurde. Van die extra aanvragen zijn er inmiddels drie omgezet in aanbouwprojecten van gemiddeld €18.000, samen goed voor ruim €50.000 extra omzet in het eerste kwartaal. Het team hoeft nu alleen nog de al-gekwalificeerde aanvragen op te volgen, in plaats van elke avond zelf de berichten door te spitten.",
-         used=["chatbot", "crm-dashboard"]),
+         used=["ai-chatbot", "alles-in-een-inbox"]),
     dict(slug="case-janssen-dakwerken", who="Dakdekkersbedrijf", trade="Dakrenovatie", av="DR",
          stat="2 → 11", stat_label="leads per maand na het belsysteem",
          quote="Vroeger belden klanten terwijl het team op het dak stond en werd er niet opgenomen. Nu belt het systeem meteen terug.",
@@ -216,7 +216,7 @@ CASES = [
          approach=["FLOWSA koppelde het belsysteem aan de bedrijfslijn: een gemiste oproep wordt binnen 60 seconden automatisch teruggebeld, met een natuurlijk klinkende stem die de reden van het gesprek vraagt en de gegevens direct in het CRM zet. Elk gesprek komt terug als notitie, inclusief of het om een spoedklus of een offerteaanvraag ging.",
                    "Vroeger belden klanten terwijl het team op het dak stond en werd er niet opgenomen. Nu belt het systeem meteen terug. Simpel, maar het werkt."],
          result="Het aantal leads per maand ging van gemiddeld twee naar elf. Van alle gemiste oproepen wordt inmiddels 92% binnen 60 seconden teruggebeld; voorheen verdween het grootste deel daarvan zonder dat het bedrijf het ooit merkte. Gemiddeld leidt dat tot zes geboekte dakklussen per maand, tegen een gemiddelde opdrachtwaarde van €4.200: ruim €25.000 aan omzet die er zonder het systeem niet was geweest. Er hoeft niets te veranderen aan de werkdag op het dak; het systeem vangt op wat er anders gemist zou worden.",
-         used=["belsysteem", "sms-bij-gemiste-oproep"]),
+         used=["ai-belsysteem", "gemiste-oproep-sms"]),
     dict(slug="case-bakker-tuinen", who="Hoveniersbedrijf", trade="Tuinonderhoud &amp; bestrating", av="TB",
          stat="3.9 → 4.8", stat_label="gemiddelde Google-beoordeling in 4 maanden",
          quote="Het reviewsysteem vraagt automatisch om een beoordeling na een geklaarde klus. De score is nu écht een afspiegeling van het werk.",
@@ -227,7 +227,7 @@ CASES = [
          approach=["FLOWSA bouwde een geautomatiseerd reviewsysteem dat na elke afgeronde klus een verzoek stuurt om een beoordeling achter te laten. Elke klant krijgt dezelfde vraag en een directe link naar de Google-pagina. Geeft iemand aan minder tevreden te zijn, dan krijgt het bedrijf meteen een melding, zodat het probleem persoonlijk opgelost kan worden.",
                    "Het reviewsysteem vraagt automatisch om een beoordeling na een geklaarde klus. De score is nu écht een afspiegeling van het geleverde werk."],
          result="Binnen vier maanden steeg de gemiddelde beoordeling van 3.9 naar 4.8 sterren, met een reviewaantal dat groeide van 12 naar 58: niet langer alleen de stem van een enkele ontevreden klant, maar een eerlijke afspiegeling van het werk. Die hogere positie in de Google Maps-resultaten leverde dat kwartaal negen nieuwe aanvragen op van klanten die zelf aangaven het bedrijf via Google te hebben gevonden, goed voor zo'n €14.000 extra omzet.",
-         used=["google-reviews", "vindbaar-in-google"]),
+         used=["5-sterren-review-funnel", "lokale-seo"]),
     dict(slug="case-van-dijk-schilderwerken", who="Schildersbedrijf", trade="Schilderwerk", av="SW",
          stat="4 min", stat_label="gemiddelde reactietijd, was ruim 2 dagen",
          quote="Er werd vaak pas na het weekend gereageerd. Nu krijgt iedereen binnen een paar minuten antwoord, ook buiten kantoortijd.",
@@ -238,7 +238,7 @@ CASES = [
          approach=["FLOWSA combineerde de chatbot met het CRM-dashboard: elke aanvraag krijgt direct een reactie, ook in het weekend en 's avonds. De chatbot stelt de eerste vragen (soort werk, oppervlakte, gewenste periode) en zet alles overzichtelijk klaar, zodat het team zelf alleen nog het gesprek hoeft te vervolgen, zonder dat er iets tussen wal en schip valt.",
                    "Er werd vaak pas na het weekend gereageerd. Nu krijgt iedereen binnen een paar minuten antwoord, ook als er niemand achter de telefoon zit."],
          result="De gemiddelde reactietijd ging van ruim twee dagen naar vier minuten. Waar vroeger zo'n 1 op de 4 aanvragen afhaakte voordat er was gereageerd, wordt nu vrijwel niemand meer koud. Dat betekent 30% meer aanvragen die uitmonden in een geboekte klus, goed voor zo'n €22.000 extra omzet per kwartaal.",
-         used=["chatbot", "crm-dashboard", "automatische-opvolging"]),
+         used=["ai-chatbot", "alles-in-een-inbox", "automatische-lead-opvolging"]),
 ]
 
 TRADES_MAIN = [
@@ -292,17 +292,18 @@ def dd_item(href, ic, title, sub):
 
 
 def nav(active=""):
-    mega = "".join(dd_item(f"/functies/{f['slug']}", f["icon"], f["name"], f["short"]) for f in FEATURES)
-    about = "".join([dd_item("/werkwijze", "steps", "Werkwijze", "Zo werken we samen"),
-                     dd_item("/vakgebieden", "house", "Vakgebieden", "Voor wie we werken"),
-                     dd_item("/cases", "chart", "Cases", "Resultaten van klanten"),
-                     dd_item("/contact", "mail", "Contact", "Stel je vraag")])
+    mega = "".join(dd_item(f"/producten/{f['slug']}", f["icon"], f["name"], f["short"]) for f in FEATURES)
+    about = "".join([dd_item("/over-ons", "users", "Over ons", "Leer FLOWSA kennen"),
+                     dd_item("/werkwijze", "steps", "Onze werkwijze", "Ontdek hoe we werken"),
+                     dd_item("/vakgebieden", "house", "Vakgebieden", "Met wie we werken"),
+                     dd_item("/vacatures", "file", "Vacatures", "Kom bij het team"),
+                     dd_item("/partners", "shield", "Partners", "Met wie we samenwerken")])
 
     def a(href, label, key):
         cur = ' aria-current="page"' if key == active else ""
         return f'<a href="{href}"{cur}>{label}</a>'
 
-    mm_feats = "".join(f'      <a href="/functies/{f["slug"]}">{f["name"]}</a>\n' for f in FEATURES)
+    mm_feats = "".join(f'      <a href="/producten/{f["slug"]}">{f["name"]}</a>\n' for f in FEATURES)
     return f"""  <header class="nav">
     <div class="nav-inner">
       <a href="/" class="logo" aria-label="FLOWSA home">
@@ -311,16 +312,17 @@ def nav(active=""):
       </a>
       <nav class="nav-links" aria-label="Hoofdmenu">
         <div class="dd">
-          <button class="dd-btn{' is-active' if active == 'functies' else ''}" type="button" aria-expanded="false">Functies {CHEV}</button>
+          <button class="dd-btn{' is-active' if active == 'producten' else ''}" type="button" aria-expanded="false">Producten {CHEV}</button>
           <div class="dd-panel dd-mega">
-            <div class="dd-title">Systemen &amp; functies <a href="/functies">Bekijk alle functies →</a></div>
+            <div class="dd-title">Systemen &amp; functies <a href="/producten">Bekijk alle producten →</a></div>
             <div class="dd-grid">
 {mega}            </div>
           </div>
         </div>
         {a('/prijzen', 'Prijzen', 'prijzen')}
-        {a('/cases', 'Cases', 'cases')}
-        {a('/werkwijze', 'Werkwijze', 'werkwijze')}
+        {a('/testimonials', 'Testimonials', 'testimonials')}
+        {a('/ons-werk', 'Ons werk', 'ons-werk')}
+        {a('/blog', 'Blog', 'blog')}
         <div class="dd">
           <button class="dd-btn{' is-active' if active == 'over' else ''}" type="button" aria-expanded="false">Over ons {CHEV}</button>
           <div class="dd-panel dd-small">
@@ -331,7 +333,7 @@ def nav(active=""):
       </nav>
       <div class="nav-right">
         <a href="{LOGIN}" class="nav-login">Inloggen</a>
-        <a href="/demo/" class="btn nav-cta">Plan demo</a>
+        <a href="/demo/" class="btn nav-cta">Boek een gesprek</a>
         <button class="burger" id="burger" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu">
           <span></span><span></span><span></span>
         </button>
@@ -339,52 +341,59 @@ def nav(active=""):
     </div>
   </header>
   <nav class="mobile-menu" id="mobile-menu" aria-label="Mobiel menu">
-    <details class="mm-group"><summary>Functies {CHEV}</summary>
-      <a href="/functies">Alle functies</a>
+    <details class="mm-group"><summary>Producten {CHEV}</summary>
+      <a href="/producten">Alle producten</a>
 {mm_feats}    </details>
     <a href="/prijzen">Prijzen</a>
-    <a href="/cases">Cases</a>
-    <a href="/werkwijze">Werkwijze</a>
+    <a href="/testimonials">Testimonials</a>
+    <a href="/ons-werk">Ons werk</a>
+    <a href="/blog">Blog</a>
     <details class="mm-group"><summary>Over ons {CHEV}</summary>
+      <a href="/over-ons">Over ons</a>
+      <a href="/werkwijze">Onze werkwijze</a>
       <a href="/vakgebieden">Vakgebieden</a>
+      <a href="/vacatures">Vacatures</a>
+      <a href="/partners">Partners</a>
       <a href="/contact">Contact</a>
     </details>
     <a href="{LOGIN}" class="mm-login">Inloggen</a>
-    <a href="/demo/" class="btn">Plan demo</a>
+    <a href="/demo/" class="btn">Boek een gesprek</a>
   </nav>
 """
 
 
 def footer():
-    feats = "".join(f'          <a href="/functies/{f["slug"]}">{f["name"]}</a>\n' for f in FEATURES[:5])
-    feats2 = "".join(f'          <a href="/functies/{f["slug"]}">{f["name"]}</a>\n' for f in FEATURES[5:])
+    feats = "".join(f'          <a href="/producten/{f["slug"]}">{f["name"]}</a>\n' for f in FEATURES[:5])
+    feats2 = "".join(f'          <a href="/producten/{f["slug"]}">{f["name"]}</a>\n' for f in FEATURES[5:])
     return f"""  <footer class="footer">
     <div class="wrap">
       <div class="footer-top">
         <a href="/" class="logo"><img class="logo-mascot" src="/mascot.svg" alt="" width="40" height="64" style="width:40px;height:64px;"><span class="logo-text">FLOWSA</span></a>
-        <div class="footer-top-cta">Klaar om te beginnen? <a href="/demo/" class="btn btn-sm">Plan demo</a></div>
+        <div class="footer-top-cta">Klaar om te beginnen? <a href="/demo/" class="btn btn-sm">Boek een gesprek</a></div>
       </div>
       <div class="footer-cols">
         <div class="footer-pitch">
-          <h4>Benieuwd wat we voor jouw bedrijf kunnen doen?</h4>
-          <a href="/demo/" class="btn">Plan een demo</a>
+          <h4>Wil je meer weten over hoe we je kunnen helpen?</h4>
+          <a href="/demo/" class="btn">Boek een gesprek</a>
         </div>
         <div class="footer-col">
           <h4>Links</h4>
           <a href="/prijzen">Prijzen</a>
-          <a href="/cases">Cases</a>
-          <a href="/functies">Alle functies</a>
+          <a href="/testimonials">Testimonials</a>
+          <a href="/ons-werk">Ons werk</a>
+          <a href="/blog">Blog</a>
           <a href="{LOGIN}">Inloggen</a>
         </div>
         <div class="footer-col">
           <h4>Over ons</h4>
-          <a href="/werkwijze">Werkwijze</a>
+          <a href="/werkwijze">Onze werkwijze</a>
           <a href="/vakgebieden">Vakgebieden</a>
+          <a href="/vacatures">Vacatures</a>
+          <a href="/partners">Partners</a>
           <a href="/contact">Contact</a>
-          <a href="/demo/">Demo plannen</a>
         </div>
         <div class="footer-col footer-col-wide">
-          <h4>Functies</h4>
+          <h4>Producten</h4>
           <div class="footer-2col"><div>
 {feats}          </div><div>
 {feats2}          </div></div>
@@ -420,7 +429,7 @@ def results(bg="bg-grey"):
 """
     return f"""  <section class="results sec {bg}">
     <div class="wrap">
-      <h2 class="h-section rv">Mooie woorden zijn makkelijk…<br>Dit is wat het oplevert</h2>
+      <h2 class="h-section rv">De proef op de som…<br>Dit zeggen onze klanten</h2>
       <div class="slider rv">
         <button class="slider-btn slider-prev" type="button" aria-label="Vorige">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 5 8 12 15 19"/></svg>
@@ -431,7 +440,7 @@ def results(bg="bg-grey"):
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 5 16 12 9 19"/></svg>
         </button>
       </div>
-      <div class="results-more rv"><a href="/cases" class="btn btn-outline">Bekijk alle cases</a></div>
+      <div class="results-more rv"><a href="/testimonials" class="btn btn-outline">Bekijk alle testimonials</a></div>
     </div>
   </section>
 """
@@ -463,8 +472,8 @@ def process(bg="bg-grey", anchor=""):
 """
 
 
-def cta(bg="bg-white", title="Zullen we even kennismaken?",
-        text="Plan een gratis demo in en ontdek hoe jouw website meer aanvragen kan opleveren. Vrijblijvend, in ongeveer 20 minuten."):
+def cta(bg="bg-white", title="Zullen we een moment plannen om te praten?",
+        text="Ontdek in een vrijblijvend gesprek van ongeveer 20 minuten hoe jouw website meer aanvragen kan opleveren."):
     return f"""  <section class="cta-wrap sec {bg}">
     <div class="wrap">
       <div class="cta-box rv">
@@ -472,7 +481,7 @@ def cta(bg="bg-white", title="Zullen we even kennismaken?",
           <h2>{title}</h2>
           <p>{text}</p>
           <div class="cta-actions">
-            <a href="/demo/" class="btn">Plan een demo</a>
+            <a href="/demo/" class="btn">Boek een gesprek</a>
             <a href="{WHATSAPP}" class="btn btn-outline-light">WhatsApp ons</a>
           </div>
         </div>
@@ -548,7 +557,7 @@ def feature_page(f):
       </div>
 """
     others = [o for o in FEATURES if o["slug"] != f["slug"]]
-    rel = "".join(f'        <a href="/functies/{o["slug"]}" class="rel-item"><span class="dd-ic">{icon(ICONS[o["icon"]])}</span><span><b>{o["name"]}</b><small>{o["short"]}</small></span></a>\n' for o in others)
+    rel = "".join(f'        <a href="/producten/{o["slug"]}" class="rel-item"><span class="dd-ic">{icon(ICONS[o["icon"]])}</span><span><b>{o["name"]}</b><small>{o["short"]}</small></span></a>\n' for o in others)
 
     body = f"""  <section class="feat-hero sec bg-grey">
     <div class="wrap">
@@ -572,7 +581,7 @@ def feature_page(f):
       <h2 class="h-section rv">{f['what']}</h2>
       <div class="what-grid">
 {cards}      </div>
-{case_link}      <div class="what-cta rv"><a href="/demo/" class="btn">Plan een demo</a></div>
+{case_link}      <div class="what-cta rv"><a href="/demo/" class="btn">Boek een gesprek</a></div>
     </div>
   </section>
 
@@ -587,13 +596,13 @@ def feature_page(f):
   </section>
 
 {results('bg-grey')}"""
-    return wrap_page(f"FLOWSA — {f['name']}", html.escape(html.unescape(f['lead']), quote=True), body, "functies")
+    return wrap_page(f"FLOWSA — {f['name']}", html.escape(html.unescape(f['lead']), quote=True), body, "producten")
 
 
 def functies_page():
     cards = ""
     for f in FEATURES:
-        cards += f"""        <a href="/functies/{f['slug']}" class="ov-card rv">
+        cards += f"""        <a href="/producten/{f['slug']}" class="ov-card rv">
           <span class="ov-ic">{icon(ICONS[f['icon']], 28, 1.8)}</span>
           <h3>{f['name']}</h3>
           <p>{f['lead']}</p>
@@ -604,7 +613,7 @@ def functies_page():
                      "Alles wat je nodig hebt om van websitebezoeker naar betalende klant te gaan. Volledig automatisch, zonder dat jij er iets voor hoeft te doen.",
                      extra=f'\n      <div class="ov-grid">\n{cards}      </div>')
     body += cta("bg-white") + process("bg-grey") + results("bg-white")
-    return wrap_page("FLOWSA — Functies", "Website, chatbot, belsysteem, Google Review-systeem, CRM-dashboard en meer: alle functies van FLOWSA voor aannemers.", body, "functies")
+    return wrap_page("FLOWSA — Producten", "Functionele website, AI-chatbot, AI-belsysteem, 5-sterren review funnel, alles-in-één inbox en meer: alle producten van FLOWSA voor aannemers.", body, "producten")
 
 
 def prijzen_page():
@@ -650,7 +659,7 @@ def prijzen_page():
 
     incl = ""
     for f in FEATURES:
-        incl += f"""          <details class="acc"><summary>{f['name']} <span class="plan-pill">vanaf {f['plan']}</span>{ACC_CHEV}</summary><div class="acc-a"><p>{f['lead']}</p><a href="/functies/{f['slug']}" class="slide-link">Meer over {f['name'].lower()} →</a></div></details>
+        incl += f"""          <details class="acc"><summary>{f['name']} <span class="plan-pill">vanaf {f['plan']}</span>{ACC_CHEV}</summary><div class="acc-a"><p>{f['lead']}</p><a href="/producten/{f['slug']}" class="slide-link">Meer over {f['name'].lower()} →</a></div></details>
 """
     extra_svc = [("Meta-advertenties", "Campagnes op Facebook en Instagram die gericht klanten in jouw regio bereiken."),
                  ("Google-advertenties", "Bovenaan in Google staan voor zoekopdrachten waar klanten nu al naar zoeken."),
@@ -693,34 +702,159 @@ def prijzen_page():
     return wrap_page("FLOWSA — Prijzen", "Transparante prijzen voor aannemers: Basic vanaf €48, Plus vanaf €96 en Pro vanaf €200 per maand. 30 dagen geld-terug-garantie.", body, "prijzen")
 
 
-def cases_page():
+def testimonials_page():
     cards = ""
     for c in CASES:
         used = "".join(f'<span class="plan-pill">{FEAT[u]["name"]}</span>' for u in c["used"])
-        cards += f"""        <a href="/{c['slug']}" class="case-card rv">
-          <div class="case-card-stat"><b>{c['stat']}</b><span>{c['stat_label']}</span></div>
-          <div class="case-card-body">
-            <div class="case-who"><span class="case-av">{c['av']}</span><span><b>{c['who']}</b><small>{c['trade']}</small></span></div>
-            <p>“{c['quote']}”</p>
+        cards += f"""        <article class="t-card rv">
+          <div class="t-stat"><b>{c['stat']}</b><span>{c['stat_label']}</span></div>
+          <div class="t-body">
+            <div class="t-stars" aria-hidden="true">“</div>
+            <p>{c['quote']}</p>
             <div class="case-used">{used}</div>
-            <span class="slide-link">Lees de volledige case →</span>
+            <div class="slide-foot">
+              <div class="slide-who">{c['who']}<span>{c['trade']}</span></div>
+              <a href="/{c['slug']}" class="slide-link">Lees case →</a>
+            </div>
           </div>
-        </a>
+        </article>
 """
-    body = page_hero("Mooie woorden zijn makkelijk…<br>Dit is wat het oplevert",
+    body = page_hero("De proef op de som…<br>Dit zeggen onze klanten",
                      "Resultaten van aannemers die met FLOWSA werken, in aanvragen, reactietijd en reviews. De bedrijfsnamen zijn geanonimiseerd.",
-                     extra=f'\n      <div class="case-grid">\n{cards}      </div>')
+                     extra=f'\n      <div class="t-grid">\n{cards}      </div>')
     body += cta("bg-white") + process("bg-grey")
-    return wrap_page("FLOWSA — Cases", "Resultaten van aannemers die met FLOWSA werken: meer aanvragen, snellere reacties en betere Google-reviews.", body, "cases")
+    return wrap_page("FLOWSA — Testimonials", "Wat aannemers zeggen over FLOWSA: meer aanvragen, snellere reacties en betere Google-reviews.", body, "testimonials")
+
+
+SAMPLE_SITES = [
+    ("Schildersbedrijf", "Strak geschilderd, zonder gedoe", "#1F3A5F", "#F2A93B"),
+    ("Dakwerken", "Uw dak in vakkundige handen", "#2B2D42", "#E63946"),
+    ("Hoveniersbedrijf", "Tuinen om van te genieten", "#1E4D2B", "#9BC53D"),
+    ("Installatietechniek", "Warm, veilig en duurzaam", "#3A0CA3", "#4CC9F0"),
+    ("Bouwbedrijf", "Bouwen op vertrouwen", "#3D2C1E", "#E9C46A"),
+    ("Loodgietersbedrijf", "Lekkage? Wij zijn er snel", "#0B4F6C", "#20BF55"),
+]
+
+
+def ons_werk_page():
+    tiles = ""
+    for name, tag, bg, acc in SAMPLE_SITES:
+        tiles += f"""        <div class="work-tile rv" style="--wt-bg:{bg};--wt-acc:{acc};">
+          <div class="mk-laptop" aria-hidden="true">
+            <div class="mk-lid"><div class="mk-screen">
+              <div class="ws-nav">{name} <i><span>Diensten</span><span>Projecten</span><span>Reviews</span><span>Contact</span></i></div>
+              <div class="ws-hero wt-hero">
+                <div><b>{tag}</b><small>Vakwerk in jouw regio.</small><span class="ws-btn wt-btn">Gratis offerte</span><div class="ws-rating">★★★★★ op Google</div></div>
+                <div class="ws-form"><b>Vraag een offerte aan</b><span></span><span></span><span class="tall"></span><em class="wt-btn">Versturen</em></div>
+              </div>
+            </div></div>
+            <div class="mk-base"></div>
+          </div>
+          <span class="work-label">Voorbeeldontwerp · {name}</span>
+        </div>
+"""
+    body = page_hero("Kijk wat we voor andere aannemers bouwen",
+                     "Binnenkort vind je hier websites die we voor klanten hebben gebouwd. Tot die tijd: een paar voorbeeldontwerpen in de stijl waarin we werken.",
+                     extra=f'\n      <div class="work-grid">\n{tiles}      </div>')
+    body += cta("bg-white") + process("bg-grey") + results("bg-white")
+    return wrap_page("FLOWSA — Ons werk", "Websites die FLOWSA bouwt voor aannemers: strak, snel, vindbaar in Google en gemaakt om aanvragen op te leveren.", body, "ons-werk")
+
+
+def empty_state(title, text, btn_href, btn_label):
+    return f"""      <div class="empty rv">
+        <img src="/mascot.svg" alt="" width="400" height="640">
+        <div>
+          <h2>{title}</h2>
+          <p>{text}</p>
+          <a href="{btn_href}" class="btn">{btn_label}</a>
+        </div>
+      </div>"""
+
+
+def blog_page():
+    body = f"""  <section class="blog-hero sec bg-navy">
+    <div class="wrap">
+      <div class="eyebrow rv">Kennis &amp; inzichten</div>
+      <h1 class="h-page rv">Het FLOWSA Blog</h1>
+      <p class="page-sub rv">Marketingstrategieën, websitetips en groeiplannen, speciaal voor aannemers en vakbedrijven.</p>
+    </div>
+  </section>
+  <section class="sec bg-grey">
+    <div class="wrap">
+{empty_state("De eerste artikelen komen eraan", "We werken aan praktische artikelen over meer aanvragen, betere reviews en slimmer werken. Wil je nu al weten wat er voor jouw bedrijf mogelijk is? Plan dan een vrijblijvend gesprek.", "/demo/", "Boek een gesprek")}
+    </div>
+  </section>
+"""
+    body += cta("bg-white") + process("bg-grey") + results("bg-white")
+    return wrap_page("FLOWSA — Blog", "Marketingstrategieën, websitetips en groeiplannen voor aannemers en vakbedrijven.", body, "blog")
+
+
+def vacatures_page():
+    body = page_hero("Kom je ons team versterken?",
+                     "Bij FLOWSA helpen we aannemers aan meer klanten, zonder gedoe. Houd je van heldere afspraken, korte lijnen en werk waar je resultaat van ziet? Dan horen we graag van je.",
+                     extra="""
+      <div class="jobs rv">
+        <div class="jobs-head">Openstaande vacatures</div>
+        <div class="jobs-empty">Er zijn op dit moment geen openstaande vacatures. Denk je dat je toch iets toevoegt? Stuur ons een open sollicitatie via <a href="/contact">het contactformulier</a>.</div>
+      </div>""")
+    body += cta("bg-white") + results("bg-grey")
+    return wrap_page("FLOWSA — Vacatures", "Werken bij FLOWSA: bekijk openstaande vacatures of stuur een open sollicitatie.", body, "over")
+
+
+def partners_page():
+    body = page_hero("Zodat je weet dat het klopt,<br>werken we samen met…", "")
+    body = body.replace("    </div>\n  </section>\n", f"""{empty_state("Binnenkort zie je hier onze partners", "We zetten hier de partners en platforms waarmee we werken. Benieuwd met welke tools jouw systeem gebouwd wordt? Vraag het ons gerust tijdens een gesprek.", "/contact", "Neem contact op")}
+    </div>
+  </section>
+""", 1)
+    body += cta("bg-white") + results("bg-grey")
+    return wrap_page("FLOWSA — Partners", "De partners en platforms waarmee FLOWSA werkt.", body, "over")
+
+
+def over_ons_page():
+    values = [("zap", "Simpel in gebruik", "Geen ingewikkelde software. Wij richten alles in, jij ziet alleen wat ertoe doet."),
+              ("chart", "Resultaat boven praatjes", "We meten wat het oplevert: meer aanvragen, snellere reacties en betere reviews."),
+              ("user", "Gewoon een mens", "Vragen? Dan spreek je onze klantenservice. Geen ticketsysteem, gewoon iemand die helpt."),
+              ("shield", "Eerlijk & transparant", "Heldere prijzen, geen verborgen kosten en 30 dagen geld-terug-garantie.")]
+    cards = "".join(f'        <div class="why-card rv">{icon(ICONS[ic], 40, 1.4)}<h3>{t}</h3><p>{p}</p></div>\n' for ic, t, p in values)
+    body = f"""  <section class="page-hero sec bg-grey">
+    <div class="wrap about-grid">
+      <div>
+        <h1 class="h-page about-h rv">Leer FLOWSA kennen</h1>
+        <p class="about-lead rv">Aannemers zijn goed in hun vak, niet in marketing. En dat hoeft ook niet. FLOWSA bouwt websites en slimme klantsystemen die aanvragen binnenhalen, opvolgen en omzetten, terwijl jij doet waar je goed in bent.</p>
+        <p class="about-lead rv">Geen dure bureaus, geen maandenlange trajecten en geen software waar je een cursus voor nodig hebt. Gewoon een systeem dat werkt, gemiddeld binnen 5 werkdagen live.</p>
+        <div class="rv" style="margin-top:28px;"><a href="/demo/" class="btn">Boek een gesprek</a></div>
+      </div>
+      <div class="about-mascot rv"><img src="/mascot.svg" alt="FLOWSA mascotte" width="400" height="640"></div>
+    </div>
+  </section>
+
+  <section class="why sec bg-white">
+    <div class="wrap">
+      <h2 class="h-section rv">Waar we voor staan</h2>
+      <div class="why-grid why-grid-4">
+{cards}      </div>
+    </div>
+  </section>
+
+  <section class="sec bg-grey">
+    <div class="wrap">
+      <h2 class="h-section rv">Het team</h2>
+{empty_state("Binnenkort stellen we ons hier voor", "Wil je nu al kennismaken? Plan een vrijblijvend gesprek, dan spreek je ons direct.", "/demo/", "Boek een gesprek")}
+    </div>
+  </section>
+"""
+    body += cta("bg-white") + results("bg-grey")
+    return wrap_page("FLOWSA — Over ons", "Leer FLOWSA kennen: websites en klantsystemen voor aannemers, simpel in gebruik en gericht op resultaat.", body, "over")
 
 
 def case_page(c):
     stats = "".join(f'<div class="fact"><b>{v}</b><span>{l}</span></div>' for v, l in c["stats"])
-    used = "".join(f'<a href="/functies/{u}" class="rel-item"><span class="dd-ic">{icon(ICONS[FEAT[u]["icon"]])}</span><span><b>{FEAT[u]["name"]}</b><small>{FEAT[u]["short"]}</small></span></a>' for u in c["used"])
+    used = "".join(f'<a href="/producten/{u}" class="rel-item"><span class="dd-ic">{icon(ICONS[FEAT[u]["icon"]])}</span><span><b>{FEAT[u]["name"]}</b><small>{FEAT[u]["short"]}</small></span></a>' for u in c["used"])
     appr = "".join(f"<p>{p}</p>" for p in c["approach"][:-1])
     body = f"""  <section class="page-hero sec bg-grey">
     <div class="wrap">
-      <a href="/cases" class="back-link rv">← Alle cases</a>
+      <a href="/testimonials" class="back-link rv">← Alle testimonials</a>
       <div class="case-who case-who-lg rv"><span class="case-av">{c['av']}</span><span><b>{c['who']}</b><small>{c['trade']}</small></span></div>
       <h1 class="h-page rv">{c['title']}</h1>
       <p class="page-sub rv">{c['sub']}</p>
@@ -746,14 +880,14 @@ def case_page(c):
         </div>
         <div class="side-card side-cta">
           <h3>Benieuwd wat dit voor jouw bedrijf kan doen?</h3>
-          <a href="/demo/" class="btn">Plan een demo</a>
+          <a href="/demo/" class="btn">Boek een gesprek</a>
         </div>
       </aside>
     </div>
   </section>
 
 {cta('bg-grey')}{results('bg-white')}"""
-    return wrap_page(f"FLOWSA — Case: {html.unescape(c['trade'])}", html.escape(html.unescape(c['sub']), quote=True), body, "cases")
+    return wrap_page(f"FLOWSA — Case: {html.unescape(c['trade'])}", html.escape(html.unescape(c['sub']), quote=True), body, "testimonials")
 
 
 def werkwijze_page():
@@ -789,7 +923,7 @@ def werkwijze_page():
   </section>
 
 {cta('bg-grey')}{results('bg-white')}"""
-    return wrap_page("FLOWSA — Werkwijze", "Zo werkt samenwerken met FLOWSA: demogesprek, wij bouwen je systeem in gemiddeld 5 werkdagen, en livegang.", body, "werkwijze")
+    return wrap_page("FLOWSA — Werkwijze", "Zo werkt samenwerken met FLOWSA: demogesprek, wij bouwen je systeem in gemiddeld 5 werkdagen, en livegang.", body, "over")
 
 
 def vakgebieden_page():
@@ -844,7 +978,7 @@ def contact_page():
           <div class="side-card">
             <h3>Meteen zien hoe het werkt?</h3>
             <p>Plan een gratis demo van ongeveer 20 minuten. Vrijblijvend.</p>
-            <a href="/demo/" class="btn btn-outline">Plan een demo</a>
+            <a href="/demo/" class="btn btn-outline">Boek een gesprek</a>
           </div>
           <img class="contact-mascot" src="/mascot.svg" alt="" width="400" height="640" loading="lazy">
         </aside>
@@ -860,17 +994,18 @@ def home_page():
     src = (SRC / "home.html").read_text()
     src = src.replace("{{RESULTS}}", results("bg-grey")).replace("{{PROCESS}}", process("bg-grey", "werkwijze"))
     body = src + "\n" + cta("bg-grey")
-    return wrap_page("FLOWSA — Websites &amp; klantsystemen voor aannemers",
+    return wrap_page("FLOWSA — Websites &amp; marketingsystemen voor aannemers",
                      "FLOWSA bouwt websites en slimme klantsystemen voor aannemers: chatbot, belsysteem, Google Review-systeem en CRM-dashboard. Meer aanvragen, zonder extra personeel.",
                      body)
 
 
 def main():
-    pages = {"index.html": home_page(), "functies.html": functies_page(), "prijzen.html": prijzen_page(),
-             "cases.html": cases_page(), "werkwijze.html": werkwijze_page(), "vakgebieden.html": vakgebieden_page(),
-             "contact.html": contact_page()}
+    pages = {"index.html": home_page(), "producten.html": functies_page(), "prijzen.html": prijzen_page(),
+             "testimonials.html": testimonials_page(), "werkwijze.html": werkwijze_page(), "vakgebieden.html": vakgebieden_page(),
+             "contact.html": contact_page(), "ons-werk.html": ons_werk_page(), "blog.html": blog_page(),
+             "vacatures.html": vacatures_page(), "partners.html": partners_page(), "over-ons.html": over_ons_page()}
     for f in FEATURES:
-        pages[f"functies/{f['slug']}.html"] = feature_page(f)
+        pages[f"producten/{f['slug']}.html"] = feature_page(f)
     for c in CASES:
         pages[f"{c['slug']}.html"] = case_page(c)
     for path, content in pages.items():
