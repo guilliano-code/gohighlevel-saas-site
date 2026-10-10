@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 640" role="img" aria-label="FLOWSA mascotte: een gespierde robot-aannemer met bouwhelm">
+  <defs>
+    <linearGradient id="plate" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4E62B3"/>
+      <stop offset="1" stop-color="#26306A"/>
+    </linearGradient>
+    <linearGradient id="plateDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2E3A7A"/>
+      <stop offset="1" stop-color="#171D45"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F2F5FD"/>
+      <stop offset=".55" stop-color="#B9C4E0"/>
+      <stop offset="1" stop-color="#8391B8"/>
+    </linearGradient>
+    <linearGradient id="hat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6E97FF"/>
+      <stop offset="1" stop-color="#1F49D6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#E9FBFF"/>
+      <stop offset=".45" stop-color="#7FE0FF"/>
+      <stop offset="1" stop-color="#2AA8FF"/>
+    </radialGradient>
+  </defs>
+
+  <g stroke="#0B1030" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+
+    <!-- ── Legs ── -->
+    <!-- boots -->
+    <path d="M118 586 L190 586 L196 624 L106 624 Z" fill="url(#plateDark)"/>
+    <path d="M210 586 L282 586 L294 624 L204 624 Z" fill="url(#plateDark)"/>
+    <path d="M108 612 H194 M206 612 H292" stroke-width="3" fill="none"/>
+    <path d="M124 586 L132 566 H178 L186 586 Z" fill="url(#steel)"/>
+    <path d="M214 586 L222 566 H268 L276 586 Z" fill="url(#steel)"/>
+    <!-- shins -->
+    <path d="M132 514 L186 514 L180 568 L136 568 Z" fill="url(#plate)"/>
+    <path d="M214 514 L268 514 L264 568 L220 568 Z" fill="url(#plate)"/>
+    <path d="M146 526 L172 526 L168 556 L150 556 Z" fill="#7FA0FF" stroke-width="3"/>
+    <path d="M228 526 L254 526 L250 556 L232 556 Z" fill="#7FA0FF" stroke-width="3"/>
+    <!-- knees -->
+    <path d="M136 496 L182 496 L190 516 L160 530 L128 516 Z" fill="url(#steel)"/>
+    <path d="M218 496 L264 496 L272 516 L240 530 L210 516 Z" fill="url(#steel)"/>
+    <!-- thighs -->
+    <path d="M132 428 L196 428 L190 498 L134 498 L124 460 Z" fill="url(#plate)"/>
+    <path d="M204 428 L268 428 L276 460 L266 498 L210 498 Z" fill="url(#plate)"/>
+    <path d="M146 444 L180 444 L176 486 L148 486 Z" fill="url(#plateDark)" stroke-width="3"/>
+    <path d="M220 444 L254 444 L252 486 L224 486 Z" fill="url(#plateDark)" stroke-width="3"/>
+    <!-- hip joint -->
+    <rect x="186" y="428" width="28" height="40" rx="4" fill="url(#steel)"/>
+
+    <!-- ── Torso ── -->
+    <!-- tool belt -->
+    <path d="M140 400 L260 400 L268 432 L132 432 Z" fill="#1A2147"/>
+    <rect x="186" y="402" width="28" height="28" rx="4" fill="url(#steel)"/>
+    <path d="M194 410 h12 v12 h-12 z" fill="#4C7EF3" stroke-width="3"/>
+    <path d="M116 404 L146 408 L144 452 L118 448 Z" fill="#26306A"/>
+    <path d="M120 414 L142 417" stroke-width="3"/>
+    <path d="M254 408 L286 404 L284 448 L256 452 Z" fill="#26306A"/>
+    <rect x="262" y="384" width="9" height="28" rx="2" fill="url(#steel)" stroke-width="3"/>
+    <!-- abs -->
+    <path d="M150 330 L250 330 L258 402 L142 402 Z" fill="url(#plateDark)"/>
+    <path d="M160 340 h36 v18 h-38 z M204 340 h36 l2 18 h-38 z M157 364 h39 v16 h-40 z M204 364 h40 l1 16 h-41 z M154 386 h42 v12 h-43 z M204 386 h43 l1 12 h-44 z" fill="url(#plate)" stroke-width="3"/>
+
+    <!-- shoulders / traps -->
+    <path d="M140 168 L260 168 L292 196 L108 196 Z" fill="url(#plateDark)"/>
+    <!-- chest -->
+    <path d="M112 196 L288 196 L272 300 L200 318 L128 300 Z" fill="url(#plate)"/>
+    <path d="M124 206 L194 206 L194 290 L136 278 Z" fill="url(#steel)"/>
+    <path d="M206 206 L276 206 L264 278 L206 290 Z" fill="url(#steel)"/>
+    <!-- emblem (FLOWSA wave) -->
+    <g transform="translate(200 246)">
+      <path d="M-30 0 L0 -26 L30 0 L0 26 Z" fill="#1A2147"/>
+      <path d="M-18 4 q8 -10 16 -2 q8 8 18 -4" fill="none" stroke="#7FA0FF" stroke-width="5"/>
+      <path d="M-16 13 q8 -8 15 -1 q8 7 16 -3" fill="none" stroke="#4C7EF3" stroke-width="4"/>
+    </g>
+
+    <!-- ── Arms (crossed) ── -->
+    <!-- upper arms -->
+    <path d="M62 222 L112 210 L124 300 L78 318 L56 276 Z" fill="url(#plate)"/>
+    <path d="M338 222 L288 210 L276 300 L322 318 L344 276 Z" fill="url(#plate)"/>
+    <path d="M72 236 L104 228 L110 282 L84 294 Z" fill="url(#plateDark)" stroke-width="3"/>
+    <path d="M328 236 L296 228 L290 282 L316 294 Z" fill="url(#plateDark)" stroke-width="3"/>
+    <!-- elbows -->
+    <path d="M70 300 L106 292 L114 330 L82 342 L64 326 Z" fill="url(#steel)"/>
+    <path d="M330 300 L294 292 L286 330 L318 342 L336 326 Z" fill="url(#steel)"/>
+    <!-- back forearm (right arm, behind) -->
+    <path d="M110 298 L292 290 L296 326 L112 334 Z" fill="url(#plateDark)"/>
+    <!-- front forearm (left arm, in front) -->
+    <path d="M96 310 L300 300 L308 344 L100 354 Z" fill="url(#plate)"/>
+    <path d="M120 318 L280 311 M122 344 L284 336" stroke-width="3" fill="none"/>
+    <path d="M150 316 h26 l2 26 h-26 z M224 312 h26 l2 26 h-26 z" fill="#7FA0FF" stroke-width="3"/>
+    <!-- fists tucked under biceps -->
+    <path d="M276 298 L312 294 L318 330 L296 340 L280 330 Z" fill="url(#steel)"/>
+    <path d="M88 304 L124 300 L120 340 L98 346 L84 330 Z" fill="url(#steel)"/>
+    <path d="M286 306 l22 -2 M288 318 l24 -2 M96 312 l22 -2 M94 324 l24 -2" stroke-width="3" fill="none"/>
+    <!-- pauldrons -->
+    <path d="M42 214 L66 172 L134 170 L142 196 L112 232 L54 246 Z" fill="url(#hat)"/>
+    <path d="M358 214 L334 172 L266 170 L258 196 L288 232 L346 246 Z" fill="url(#hat)"/>
+    <path d="M62 196 L122 186 M338 196 L278 186" stroke="#B9CDFF" stroke-width="3" fill="none"/>
+    <circle cx="70" cy="222" r="5" fill="url(#steel)" stroke-width="3"/>
+    <circle cx="330" cy="222" r="5" fill="url(#steel)" stroke-width="3"/>
+
+    <!-- ── Neck & head ── -->
+    <path d="M178 150 h44 v24 h-44 z" fill="url(#steel)"/>
+    <path d="M178 160 h44" stroke-width="3"/>
+    <!-- head -->
+    <path d="M156 92 L244 92 L250 126 L232 160 L168 160 L150 126 Z" fill="url(#plate)"/>
+    <!-- jaw / faceplate -->
+    <path d="M170 128 L230 128 L224 156 L176 156 Z" fill="url(#steel)"/>
+    <path d="M184 136 v14 M193 136 v16 M207 136 v16 M216 136 v14" stroke-width="3"/>
+    <!-- cheek vents -->
+    <path d="M154 108 L166 112 L166 128 L156 126 Z M246 108 L234 112 L234 128 L244 126 Z" fill="url(#plateDark)" stroke-width="3"/>
+    <!-- visor -->
+    <path d="M166 106 L234 106 L230 122 L170 122 Z" fill="#0B1030"/>
+    <path d="M172 110 L196 110 L194 118 L174 118 Z" fill="url(#glow)" stroke="none"/>
+    <path d="M204 110 L228 110 L226 118 L206 118 Z" fill="url(#glow)" stroke="none"/>
+    <!-- brow -->
+    <path d="M160 98 L240 98" stroke-width="5"/>
+
+    <!-- hard hat -->
+    <path d="M150 92 C150 46 174 26 200 26 C226 26 250 46 250 92 Z" fill="url(#hat)"/>
+    <path d="M190 28 L210 28 L212 92 L188 92 Z" fill="#2554EB" stroke-width="3"/>
+    <path d="M136 92 L264 92 L268 104 L132 104 Z" fill="#1F49D6"/>
+    <path d="M166 46 C172 38 182 33 190 32" stroke="#CFE0FF" stroke-width="5" fill="none"/>
+  </g>
+</svg>
