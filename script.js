@@ -147,6 +147,52 @@ function playVsl() {
   video.play();
 }
 
+/* ── FORM VALIDATION ────────────────────────────── */
+function validateForm(form) {
+  var first = null;
+  form.querySelectorAll('[required]').forEach(function (el) {
+    var msg = '';
+    var val = el.value.trim();
+    if (el.offsetParent !== null) { /* skip hidden fields */
+      if (!val) msg = el.tagName === 'SELECT' ? 'Maak een keuze.' : 'Dit veld is verplicht.';
+      else if (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val)) msg = 'Vul een geldig e-mailadres in.';
+      else if (el.type === 'tel' && val.replace(/\D/g, '').length < 8) msg = 'Vul een geldig telefoonnummer in.';
+    }
+    setFieldError(el, msg);
+    if (msg && !first) first = el;
+  });
+  if (first) first.focus();
+  return !first;
+}
+
+function setFieldError(el, msg) {
+  var id = el.id + '-error';
+  var err = document.getElementById(id);
+  if (!msg) {
+    el.classList.remove('is-invalid');
+    el.removeAttribute('aria-invalid');
+    if (err) err.remove();
+    return;
+  }
+  if (!err) {
+    err = document.createElement('p');
+    err.className = 'field-error';
+    err.id = id;
+    el.insertAdjacentElement('afterend', err);
+  }
+  err.textContent = msg;
+  el.classList.add('is-invalid');
+  el.setAttribute('aria-invalid', 'true');
+  el.setAttribute('aria-describedby', id);
+}
+
+/* Clear a field's error as soon as the user fixes it */
+document.addEventListener('input', clearOnEdit);
+document.addEventListener('change', clearOnEdit);
+function clearOnEdit(e) {
+  if (e.target.classList && e.target.classList.contains('is-invalid') && e.target.value.trim()) setFieldError(e.target, '');
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   var video = document.getElementById('vsl-video');
   if (video) {
@@ -170,13 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      var inputs = form.querySelectorAll('[required]');
-      var valid = true;
-      inputs.forEach(function (el) {
-        if (el.offsetParent === null) return; /* skip hidden fields */
-        if (!el.value.trim()) { el.focus(); valid = false; }
-      });
-      if (!valid) return;
+      if (!validateForm(form)) return;
 
       vslLeadSubmitted = true;
       try { localStorage.setItem('vslLeadSubmitted', '1'); } catch (err) {}
@@ -279,6 +319,7 @@ window.addEventListener('resize', function () {
   if (!form) return;
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    if (!validateForm(form)) return;
     var naam    = form.querySelector('[name="naam"]').value.trim();
     var bedrijf = form.querySelector('[name="bedrijf"]').value.trim();
     var tel     = form.querySelector('[name="telefoon"]').value.trim();

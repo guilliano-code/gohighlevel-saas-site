@@ -312,7 +312,7 @@
         <span id="summary-text"></span>
       </div>
 
-      <form id="details-form">
+      <form id="details-form" novalidate>
         <div class="form-row">
           <div class="form-field">
             <label class="form-label" for="f-naam">Naam</label>
@@ -391,6 +391,53 @@
   <span class="footer-copy">© 2026 — Alle rechten voorbehouden</span>
 </footer>
 
+<script>
+  /* ── FORM VALIDATION ────────────────────────────── */
+  function validateForm(form) {
+    var first = null;
+    form.querySelectorAll('[required]').forEach(function (el) {
+      var msg = '';
+      var val = el.value.trim();
+      if (el.offsetParent !== null) { /* skip hidden fields */
+        if (!val) msg = el.tagName === 'SELECT' ? 'Maak een keuze.' : 'Dit veld is verplicht.';
+        else if (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val)) msg = 'Vul een geldig e-mailadres in.';
+        else if (el.type === 'tel' && val.replace(/\D/g, '').length < 8) msg = 'Vul een geldig telefoonnummer in.';
+      }
+      setFieldError(el, msg);
+      if (msg && !first) first = el;
+    });
+    if (first) first.focus();
+    return !first;
+  }
+  
+  function setFieldError(el, msg) {
+    var id = el.id + '-error';
+    var err = document.getElementById(id);
+    if (!msg) {
+      el.classList.remove('is-invalid');
+      el.removeAttribute('aria-invalid');
+      if (err) err.remove();
+      return;
+    }
+    if (!err) {
+      err = document.createElement('p');
+      err.className = 'field-error';
+      err.id = id;
+      el.insertAdjacentElement('afterend', err);
+    }
+    err.textContent = msg;
+    el.classList.add('is-invalid');
+    el.setAttribute('aria-invalid', 'true');
+    el.setAttribute('aria-describedby', id);
+  }
+  
+  /* Clear a field's error as soon as the user fixes it */
+  document.addEventListener('input', clearOnEdit);
+  document.addEventListener('change', clearOnEdit);
+  function clearOnEdit(e) {
+    if (e.target.classList && e.target.classList.contains('is-invalid') && e.target.value.trim()) setFieldError(e.target, '');
+  }
+</script>
 <script>
   // ── CONFIG ────────────────────────────────────────────
   // Vervang met jouw GHL webhook URL
@@ -534,6 +581,7 @@
   // ── FORM SUBMIT ───────────────────────────────────────
   document.getElementById('details-form').addEventListener('submit', function(e) {
     e.preventDefault();
+    if (!validateForm(this)) return;
     var naam    = document.getElementById('f-naam').value.trim();
     var bedrijf = document.getElementById('f-bedrijf').value.trim();
     var tel     = document.getElementById('f-tel').value.trim();

@@ -37,6 +37,8 @@ html { scroll-behavior: smooth; scroll-padding-top: 66px; }
   --amber:        #C2650A;
   --amber-tint:   #FCE7C3;
   --whatsapp:     #1F9E52;
+  --error:        #C62828;
+  --error-tint:   #FDECEC;
 
   /* Corner radii — rounded where it reads soft/premium, square where it reads structural */
   --r-pill:  9999px;
@@ -591,6 +593,11 @@ nav {
 }
 .vsl-input::placeholder { color: var(--muted2); }
 .vsl-input:focus, .vsl-select:focus { border-color: var(--accent); }
+
+/* Form validation errors (shared by all forms) */
+.is-invalid, .is-invalid:focus { border-color: var(--error) !important; background-color: var(--error-tint) !important; }
+.field-error { display: flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; color: var(--error); margin-top: 2px; line-height: 1.4; }
+.field-error::before { content: '!'; flex-shrink: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--error); color: #FFFFFF; font-size: 10px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
 .vsl-select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23767b84' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
