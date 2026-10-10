@@ -4,444 +4,332 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FLOWSA — Prijzen</title>
-  <meta name="description" content="Transparante prijzen, geen verborgen kosten. Vergelijk Basic, Plus en Pro en start binnen 5 werkdagen.">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="description" content="Transparante prijzen voor aannemers: Basic vanaf €48, Plus vanaf €96 en Pro vanaf €200 per maand. 30 dagen geld-terug-garantie.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/site.css">
 </head>
 <body>
-
-  <!-- ── NAV ─────────────────────────────────────── -->
-  <nav>
+  <header class="nav">
     <div class="nav-inner">
-      <a href="/" class="nav-logo">
-        <div class="nav-logo-dot"></div>
-        FLOWSA
+      <a href="/" class="logo" aria-label="FLOWSA home">
+        <img class="logo-mascot" src="/mascot.svg" alt="" width="34" height="54">
+        <span class="logo-text">FLOWSA</span>
       </a>
-      <div class="nav-links">
-        <a href="/functies" class="nav-link">Functies</a>
-        <a href="/cases" class="nav-link">Cases</a>
-        <a href="/prijzen" class="nav-link active">Prijzen</a>
-        <a href="/contact" class="nav-link">Contact</a>
+      <nav class="nav-links" aria-label="Hoofdmenu">
+        <div class="dd">
+          <button class="dd-btn" type="button" aria-expanded="false">Functies <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="dd-chev" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dd-panel dd-mega">
+            <div class="dd-title">Systemen &amp; functies <a href="/functies">Bekijk alle functies →</a></div>
+            <div class="dd-grid">
+            <a href="/functies/website" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></span><span><b>Professionele website</b><small>Een website die aanvragen oplevert</small></span></a>
+            <a href="/functies/chatbot" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span><b>Chatbot</b><small>Beantwoordt vragen, 24/7</small></span></a>
+            <a href="/functies/belsysteem" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span><b>Belsysteem</b><small>Neemt op als jij niet kan</small></span></a>
+            <a href="/functies/sms-bij-gemiste-oproep" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 6h4"/><path d="M9 13l2 2 4-4"/></svg></span><span><b>Sms bij gemiste oproep</b><small>Binnen 60 seconden terug</small></span></a>
+            <a href="/functies/google-reviews" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><span><b>Google Review-systeem</b><small>Automatisch meer reviews</small></span></a>
+            <a href="/functies/crm-dashboard" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span><span><b>CRM-dashboard</b><small>Al je leads op één plek</small></span></a>
+            <a href="/functies/automatische-opvolging" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><polyline points="4 6 12 13 20 6"/></svg></span><span><b>Automatische opvolging</b><small>Via e-mail &amp; sms</small></span></a>
+            <a href="/functies/whatsapp" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/></svg></span><span><b>WhatsApp-koppeling</b><small>Bereik leads waar ze zitten</small></span></a>
+            <a href="/functies/vindbaar-in-google" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><span><b>Vindbaar in Google</b><small>Lokale SEO vanaf dag één</small></span></a>
+            </div>
+          </div>
+        </div>
+        <a href="/prijzen" aria-current="page">Prijzen</a>
+        <a href="/cases">Cases</a>
+        <a href="/werkwijze">Werkwijze</a>
+        <div class="dd">
+          <button class="dd-btn" type="button" aria-expanded="false">Over ons <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="dd-chev" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dd-panel dd-small">
+            <div class="dd-grid dd-grid-1">
+            <a href="/werkwijze" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></span><span><b>Werkwijze</b><small>Zo werken we samen</small></span></a>
+            <a href="/vakgebieden" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20h20M5 20V9l7-5 7 5v11"/></svg></span><span><b>Vakgebieden</b><small>Voor wie we werken</small></span></a>
+            <a href="/cases" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-6"/></svg></span><span><b>Cases</b><small>Resultaten van klanten</small></span></a>
+            <a href="/contact" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><polyline points="4 6 12 13 20 6"/></svg></span><span><b>Contact</b><small>Stel je vraag</small></span></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="nav-right">
+        <a href="https://Login.flowsa.app" class="nav-login">Inloggen</a>
+        <a href="/demo/" class="btn nav-cta">Plan demo</a>
+        <button class="burger" id="burger" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <div style="display:flex;align-items:center;gap:10px;">
-        <a href="demo/" class="btn-primary" style="padding:8px 18px;font-size:13px;">Plan demo</a>
-        <a href="https://Login.flowsa.app" class="login-btn">Inloggen</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ── MOBILE STICKY NAV ─────────────────────────── -->
-  <div class="mobile-nav" id="mobile-nav">
-    <a href="/" class="nav-logo">
-      <div class="nav-logo-dot"></div>
-      FLOWSA
-    </a>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <a href="demo/" class="btn-primary" style="padding:9px 20px;font-size:13px;">Demo</a>
-      <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-
-  <!-- ── MOBILE MENU ─────────────────────────────── -->
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="/functies" class="mobile-menu-link">Functies</a>
-    <a href="/cases" class="mobile-menu-link">Cases</a>
-    <a href="/prijzen" class="mobile-menu-link active">Prijzen</a>
-    <a href="/contact" class="mobile-menu-link">Contact</a>
-    <a href="https://Login.flowsa.app" class="mobile-menu-link">Inloggen</a>
-  </div>
-
-  <!-- ── PAGE HEADER ───────────────────────────────── -->
-  <header class="page-header">
-    <div class="fade-up" data-delay="0">
-      <div class="section-tag">Tarieven</div>
-      <h1 class="section-h2">Transparante prijzen<br>Geen verborgen kosten</h1>
-      <p class="section-sub">Prijzen zijn exclusief btw</p>
     </div>
   </header>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobiel menu">
+    <details class="mm-group"><summary>Functies <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="dd-chev" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <a href="/functies">Alle functies</a>
+      <a href="/functies/website">Professionele website</a>
+      <a href="/functies/chatbot">Chatbot</a>
+      <a href="/functies/belsysteem">Belsysteem</a>
+      <a href="/functies/sms-bij-gemiste-oproep">Sms bij gemiste oproep</a>
+      <a href="/functies/google-reviews">Google Review-systeem</a>
+      <a href="/functies/crm-dashboard">CRM-dashboard</a>
+      <a href="/functies/automatische-opvolging">Automatische opvolging</a>
+      <a href="/functies/whatsapp">WhatsApp-koppeling</a>
+      <a href="/functies/vindbaar-in-google">Vindbaar in Google</a>
+    </details>
+    <a href="/prijzen">Prijzen</a>
+    <a href="/cases">Cases</a>
+    <a href="/werkwijze">Werkwijze</a>
+    <details class="mm-group"><summary>Over ons <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="dd-chev" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <a href="/vakgebieden">Vakgebieden</a>
+      <a href="/contact">Contact</a>
+    </details>
+    <a href="https://Login.flowsa.app" class="mm-login">Inloggen</a>
+    <a href="/demo/" class="btn">Plan demo</a>
+  </nav>
 
-  <!-- ── PRICING ───────────────────────────────────── -->
-  <section class="pricing-section band">
+  <main>
+  <section class="page-hero sec bg-grey">
     <div class="wrap">
-
-      <!-- Billing tabs -->
-      <div class="billing-tabs-wrap fade-up" data-delay="60">
-        <div class="billing-tabs">
-          <button class="billing-tab" id="tab-monthly" onclick="setBilling('monthly')">Maandelijks</button>
-          <button class="billing-tab active" id="tab-yearly" onclick="setBilling('yearly')">Jaarlijks <span class="tab-save">bespaar 20%</span></button>
+      <h1 class="h-page rv">Onze prijzen</h1>
+      <p class="page-sub rv">Transparante prijzen, geen verborgen kosten. Alle prijzen zijn exclusief btw.</p>
+      <div class="bill-toggle rv" role="group" aria-label="Betaalperiode">
+        <button type="button" class="bill-opt" data-bill="monthly" aria-pressed="false">Maandelijks</button>
+        <button type="button" class="bill-switch" aria-label="Wissel betaalperiode"><span></span></button>
+        <button type="button" class="bill-opt is-on" data-bill="yearly" aria-pressed="true">Jaarlijks <em>bespaar 20%</em></button>
+      </div>
+      <div class="plans plans-page">
+        <div class="plan rv">
+          <h3>Basic</h3>
+          <div class="plan-for">Ideaal voor startende aannemers</div>
+          <div class="plan-price">€<span class="js-price" data-monthly="60" data-yearly="48">48</span> <small>/mnd</small></div>
+          <div class="plan-note js-note" data-monthly="Maandelijks opzegbaar tarief" data-yearly="€576 per jaar gefactureerd, je bespaart €144">€576 per jaar gefactureerd, je bespaart €144</div>
+          <ul><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Professionele website</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Perfect op desktop &amp; mobiel</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Vindbaar in Google (SEO)</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Contactformulier &amp; chatwidget</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automatisch meer Google reviews</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Persoonlijke ondersteuning</li></ul>
+          <a href="/demo/" class="btn btn-outline">Begin met Basic</a>
+        </div>
+        <div class="plan hot rv">
+          <span class="plan-tag">MEEST GEKOZEN</span><h3>Plus</h3>
+          <div class="plan-for">Ideaal voor gevestigde aannemers</div>
+          <div class="plan-price">€<span class="js-price" data-monthly="120" data-yearly="96">96</span> <small>/mnd</small></div>
+          <div class="plan-note js-note" data-monthly="Maandelijks opzegbaar tarief" data-yearly="€1.152 per jaar gefactureerd, je bespaart €288">€1.152 per jaar gefactureerd, je bespaart €288</div>
+          <ul><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Alles uit Basic</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>AI-chatbot die 24/7 vragen beantwoordt</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>AI-belsysteem dat opneemt als jij niet kan</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Gemiste oproep? Binnen 60 sec. automatisch een sms terug</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Gespreksverslagen &amp; meldingen per e-mail</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Persoonlijke ondersteuning</li></ul>
+          <a href="/demo/" class="btn">Begin met Plus</a>
+        </div>
+        <div class="plan rv">
+          <h3>Pro</h3>
+          <div class="plan-for">Ideaal voor groeiende aannemers</div>
+          <div class="plan-price">€<span class="js-price" data-monthly="250" data-yearly="200">200</span> <small>/mnd</small></div>
+          <div class="plan-note js-note" data-monthly="Maandelijks opzegbaar tarief" data-yearly="€2.400 per jaar gefactureerd, je bespaart €600">€2.400 per jaar gefactureerd, je bespaart €600</div>
+          <ul><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Alles uit Plus</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>CRM-dashboard met al je leads op één plek</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Onbeperkt gebruikers, leads &amp; klanten</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automatische opvolging via e-mail &amp; sms</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>WhatsApp-koppeling</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Ondersteuning met voorrang</li></ul>
+          <a href="/demo/" class="btn btn-outline">Begin met Pro</a>
         </div>
       </div>
-
-      <!-- Mobile plan switcher -->
-      <div class="plan-switcher" id="plan-switcher">
-        <button class="plan-switch-btn" data-plan="basic" onclick="switchPlan('basic')">Basic</button>
-        <button class="plan-switch-btn active" data-plan="plus" onclick="switchPlan('plus')">Plus</button>
-        <button class="plan-switch-btn" data-plan="pro" onclick="switchPlan('pro')">Pro</button>
+      <p class="guarantee rv"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg> 30 dagen niet goed, geld terug</p>
+    </div>
+  </section>
+  <section class="incl sec bg-white">
+    <div class="wrap">
+      <div class="incl-grid">
+        <div class="rv">
+          <div class="incl-head">Wat zit erin?</div>
+          <details class="acc"><summary>Professionele website <span class="plan-pill">vanaf Basic</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="acc-a"><p>Een website die er strak uitziet, gevonden wordt in Google en van bezoekers aanvragen maakt. Wij bouwen hem, jij keurt goed.</p><a href="/functies/website" class="slide-link">Meer over professionele website →</a></div></details>
+          <details class="acc"><summary>Chatbot <span class="plan-pill">vanaf Plus</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="acc-a"><p>Je website slaapt nooit. Ook om 22:00 op zaterdag krijgt een bezoeker direct antwoord, en plant de chatbot meteen een afspraak in.</p><a href="/functies/chatbot" class="slide-link">Meer over chatbot →</a></div></details>
+          <details class="acc"><summary>Belsysteem <span class="plan-pill">vanaf Plus</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="acc-a"><p>Sta je op een dak of zit je onder een aanrecht? Het belsysteem neemt de telefoon voor je op en zorgt dat geen enkele beller verloren gaat.</p><a href="/functies/belsysteem" class="slide-link">Meer over belsysteem →</a></div></details>
+          <details class="acc"><summary>Sms bij gemiste oproep <span class="plan-pill">vanaf Plus</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="acc-a"><p>Iedereen mist weleens een oproep. Maar niet iedereen stuurt binnen een minuut een berichtje terug. Wees degene die dat wél doet.</p><a href="/functies/sms-bij-gemiste-oproep" class="slide-link">Meer over sms bij gemiste oproep →</a></div></details>
+          <details class="acc"><summary>Google Review-systeem <span class="plan-pill">vanaf Basic</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="acc-a"><p>"Ik laat zeker een review achter!" Maar dan vergeten ze het. Wij herinneren je klanten er netjes aan, na elke klus.</p><a href="/functies/google-reviews" class="slide-link">Meer over google review-systeem →</a></div></details>
+          <details class="acc"><summary>CRM-dashboard <span class="plan-pill">vanaf Pro</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="acc-a"><p>Geen briefjes, losse appjes en vergeten mails meer. Alle leads, gesprekken en afspraken staan op één plek.</p><a href="/functies/crm-dashboard" class="slide-link">Meer over crm-dashboard →</a></div></details>
+          <details class="acc"><summary>Automatische opvolging <span class="plan-pill">vanaf Pro</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="acc-a"><p>Offerte verstuurd en dan... stilte. Het systeem volgt automatisch op via e-mail en sms, tot de klant reageert.</p><a href="/functies/automatische-opvolging" class="slide-link">Meer over automatische opvolging →</a></div></details>
+          <details class="acc"><summary>WhatsApp-koppeling <span class="plan-pill">vanaf Pro</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="acc-a"><p>Je klanten zitten op WhatsApp, dus jij ook. Bereik leads via het kanaal dat ze het meest gebruiken, gewoon vanuit je dashboard.</p><a href="/functies/whatsapp" class="slide-link">Meer over whatsapp-koppeling →</a></div></details>
+          <details class="acc"><summary>Vindbaar in Google <span class="plan-pill">vanaf Basic</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="acc-a"><p>Bovenaan staan in Google kost tijd, en wie iets anders belooft, liegt. Maar met de juiste basis begin je wel voorop.</p><a href="/functies/vindbaar-in-google" class="slide-link">Meer over vindbaar in google →</a></div></details>
+        </div>
+        <div class="rv">
+          <div class="incl-head">Andere diensten</div>
+          <details class="acc"><summary>Meta-advertenties<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="acc-a"><p>Campagnes op Facebook en Instagram die gericht klanten in jouw regio bereiken.</p><a href="/contact" class="slide-link">Vraag het aan →</a></div></details>
+          <details class="acc"><summary>Google-advertenties<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="acc-a"><p>Bovenaan in Google staan voor zoekopdrachten waar klanten nu al naar zoeken.</p><a href="/contact" class="slide-link">Vraag het aan →</a></div></details>
+          <details class="acc"><summary>Maatwerk<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="acc-a"><p>Meer nodig dan in de pakketten zit? Neem contact op voor een offerte op maat.</p><a href="/contact" class="slide-link">Vraag het aan →</a></div></details>
+        </div>
       </div>
-
-      <div class="pricing-grid">
-
-        <!-- BASIS -->
-        <div class="price-card-wrap fade-up" data-delay="0" data-plan="basic">
-          <div class="price-card">
-            <div class="price-card-header">
-              <span class="price-billing-label faded" id="basis-billing-label">Maandelijks</span>
-              <span class="price-plan-badge starter">Basic</span>
-            </div>
-            <div class="price-amount">
-              <span class="price-currency">€</span>
-              <span class="price-num" id="basis-price">48</span>
-              <span class="price-period">/mnd</span>
-            </div>
-            <div class="price-yearly-note" id="basis-yearly-note">€576 per jaar gefactureerd, je bespaart €144</div>
-            <p class="price-sub">Ideaal voor startende aannemers</p>
-            <div class="price-divider"></div>
-            <ul class="price-features">
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Professionele website
-              </li>
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Perfect op desktop &amp; mobiel
-              </li>
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Vindbaar in Google (SEO)
-              </li>
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Contactformulier
-              </li>
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Chatwidget
-              </li>
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Automatisch meer Google reviews
-              </li>
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Persoonlijke ondersteuning
-              </li>
-            </ul>
-            <a href="demo/" class="price-cta ghost">Begin met Basic</a>
+      <h2 class="h-section rv" style="margin-top:96px;">Vergelijk alle functies</h2>
+      <div class="cmp-wrap rv">
+        <table class="cmp">
+          <thead><tr><th scope="col">Functie</th><th scope="col">Basic</th><th scope="col" class="hot">Plus</th><th scope="col">Pro</th></tr></thead>
+          <tbody><tr><th scope="row">Website</th><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td></tr><tr><th scope="row">Geoptimaliseerd voor desktop &amp; mobiel</th><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td></tr><tr><th scope="row">Vindbaar in Google (SEO)</th><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td></tr><tr><th scope="row">Contactformulier</th><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td></tr><tr><th scope="row">Chatwidget</th><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td></tr><tr><th scope="row">Google Review-systeem</th><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td></tr><tr><th scope="row">AI-chatbot op jouw website</th><td class="no">—<span class="sr">Nee</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td></tr><tr><th scope="row">AI-belsysteem</th><td class="no">—<span class="sr">Nee</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td></tr><tr><th scope="row">Automatische sms bij gemiste oproep</th><td class="no">—<span class="sr">Nee</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td></tr><tr><th scope="row">Gespreksverslagen &amp; meldingen per e-mail</th><td class="no">—<span class="sr">Nee</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td></tr><tr><th scope="row">CRM-dashboard</th><td class="no">—<span class="sr">Nee</span></td><td class="no">—<span class="sr">Nee</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td></tr><tr><th scope="row">Onbeperkt gebruikers</th><td class="no">—<span class="sr">Nee</span></td><td class="no">—<span class="sr">Nee</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td></tr><tr><th scope="row">Automatische opvolging via e-mail &amp; sms</th><td class="no">—<span class="sr">Nee</span></td><td class="no">—<span class="sr">Nee</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td></tr><tr><th scope="row">WhatsApp-koppeling</th><td class="no">—<span class="sr">Nee</span></td><td class="no">—<span class="sr">Nee</span></td><td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr">Ja</span></td></tr><tr><th scope="row">Ondersteuning</th><td>Standaard</td><td>Standaard</td><td>Met voorrang</td></tr><tr><th scope="row">Meta-advertenties</th><td>Op aanvraag</td><td>Op aanvraag</td><td>Op aanvraag</td></tr><tr><th scope="row">Google-advertenties</th><td>Op aanvraag</td><td>Op aanvraag</td><td>Op aanvraag</td></tr></tbody>
+        </table>
+      </div>
+      <p class="cmp-note rv">Belminuten en sms vallen onder redelijk gebruik. Maatwerk nodig? <a href="/contact">Neem contact op</a> voor een offerte op maat.</p>
+    </div>
+  </section>
+  <section class="faq sec bg-grey">
+    <div class="wrap">
+      <h2 class="h-section rv">Veelgestelde vragen</h2>
+      <div class="faq-list">
+        <details class="faq-item rv" open>
+          <summary>Zijn belminuten en sms inbegrepen?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-a"><p>Ja, binnen redelijk gebruik. Bij uitzonderlijk hoog verbruik nemen we eerst contact met je op en rekenen we de extra kosten door tegen kostprijs, zonder verrassingen.</p></div>
+        </details>
+        <details class="faq-item rv">
+          <summary>Hoe werkt de 30 dagen geld-terug-garantie?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-a"><p>Ben je binnen 30 dagen na livegang niet tevreden? Dan krijg je je geld terug, ook bij jaarlijkse betaling.</p></div>
+        </details>
+        <details class="faq-item rv">
+          <summary>Werkt het ook voor mijn branche?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-a"><p>FLOWSA wordt gebruikt door aannemers, makelaars, klinieken en meer. Schilder, loodgieter, dakdekker of hovenier: als jij klanten wil, werkt het voor jou.</p></div>
+        </details>
+        <details class="faq-item rv">
+          <summary>Hoe snel is alles live?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-a"><p>Gemiddeld binnen 5 werkdagen. Na het demogesprek vul je een kort formulier in met je bedrijfsgegevens, en dan gaan wij aan de slag.</p></div>
+        </details>
+        <details class="faq-item rv">
+          <summary>Wat als ik vragen heb?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-a"><p>Je hebt altijd toegang tot onze klantenservice. Geen chatbot, gewoon een mens. Of stuur ons een berichtje via WhatsApp.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+  <section class="cta-wrap sec bg-grey">
+    <div class="wrap">
+      <div class="cta-box rv">
+        <div>
+          <h2>Zullen we even kennismaken?</h2>
+          <p>Plan een gratis demo in en ontdek hoe jouw website meer aanvragen kan opleveren. Vrijblijvend, in ongeveer 20 minuten.</p>
+          <div class="cta-actions">
+            <a href="/demo/" class="btn">Plan een demo</a>
+            <a href="https://wa.me/31600000000?text=Hallo%2C%20ik%20wil%20graag%20meer%20weten%20over%20jullie%20systemen" class="btn btn-outline-light">WhatsApp ons</a>
           </div>
         </div>
-
-        <!-- STARTER -->
-        <div class="price-card-wrap fade-up" data-delay="80" data-plan="plus">
-          <div class="most-value-tag">MEEST GEKOZEN</div>
-          <div class="price-card featured">
-            <div class="price-card-header">
-              <span class="price-billing-label faded" id="starter-billing-label">Maandelijks</span>
-              <span class="price-plan-badge pro">Plus</span>
-            </div>
-            <div class="price-amount">
-              <span class="price-currency">€</span>
-              <span class="price-num" id="starter-price">96</span>
-              <span class="price-period">/mnd</span>
-            </div>
-            <div class="price-yearly-note" id="starter-yearly-note">€1.152 per jaar gefactureerd, je bespaart €288</div>
-            <p class="price-sub">Ideaal voor gevestigde aannemers</p>
-            <div class="price-divider"></div>
-            <ul class="price-features">
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Alles uit Basic
-              </li>
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                AI-chatbot die 24/7 vragen beantwoordt
-              </li>
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                AI-belsysteem dat opneemt als jij niet kan
-              </li>
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Gemiste oproep? Binnen 60 sec. automatisch een sms terug
-              </li>
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Gespreksverslagen &amp; meldingen per e-mail
-              </li>
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Persoonlijke ondersteuning
-              </li>
-            </ul>
-            <a href="demo/" class="price-cta primary">Begin met Plus</a>
-          </div>
-        </div>
-
-        <!-- PRO -->
-        <div class="price-card-wrap fade-up" data-delay="160" data-plan="pro">
-          <div class="price-card">
-            <div class="price-card-header">
-              <span class="price-billing-label faded" id="pro-billing-label">Maandelijks</span>
-              <span class="price-plan-badge starter">Pro</span>
-            </div>
-            <div class="price-amount">
-              <span class="price-currency">€</span>
-              <span class="price-num" id="pro-price">200</span>
-              <span class="price-period">/mnd</span>
-            </div>
-            <div class="price-yearly-note" id="pro-yearly-note">€2.400 per jaar gefactureerd, je bespaart €600</div>
-            <p class="price-sub">Ideaal voor groeiende aannemers</p>
-            <div class="price-divider"></div>
-            <ul class="price-features">
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Alles uit Plus
-              </li>
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                CRM-dashboard met al je leads op één plek
-              </li>
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Onbeperkt gebruikers, leads &amp; klanten
-              </li>
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Automatische opvolging via e-mail &amp; sms
-              </li>
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                WhatsApp-koppeling
-              </li>
-              <li class="price-feature">
-                <svg class="price-check" viewBox="0 0 24 24" fill="none" stroke="#3D5AFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Ondersteuning met voorrang
-              </li>
-            </ul>
-            <a href="demo/" class="price-cta ghost">Begin met Pro</a>
-          </div>
-        </div>
-
+        <div class="cta-mascot"><img src="/mascot.svg" alt="" width="400" height="640" loading="lazy"></div>
       </div>
-
-      <!-- Guarantee -->
-      <div class="fade-up" data-delay="200" style="text-align:center;margin-top:1.5rem;">
-        <div class="guarantee-badge">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span><strong>30 dagen</strong> niet goed, geld terug garantie</span>
+    </div>
+  </section>
+  <section class="process sec bg-white">
+    <div class="wrap">
+      <h2 class="h-section rv">Zo ziet samenwerken met ons eruit…</h2>
+      <div class="steps">
+        <svg class="steps-line" viewBox="0 0 800 100" preserveAspectRatio="none" aria-hidden="true"><path d="M10 43 C 120 100, 240 100, 390 43 S 660 -10, 790 43" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="2 12" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg>
+        <div class="step rv">
+          <div class="step-num">1</div>
+          <h3>Demogesprek<br>(± 20 min)</h3>
+          <p>We laten je zien hoe het werkt, beantwoorden al je vragen en kijken samen wat jouw bedrijf nodig heeft. Geen verkooppraatjes, gewoon eerlijk advies.</p>
+        </div>
+        <div class="step rv">
+          <div class="step-num">2</div>
+          <h3>Wij bouwen jouw systeem<br>(± 5 werkdagen)</h3>
+          <p>Je vult een kort formulier in met je bedrijfsgegevens. Daarna gaan wij aan de slag met je website, chatbot, belsysteem en reviews.</p>
+        </div>
+        <div class="step rv">
+          <div class="step-num">3</div>
+          <h3>Livegang<br>(oplevergesprek)</h3>
+          <p>We lopen samen alles door en laten zien hoe het werkt. Daarna draait het vanzelf, en heb je vragen, dan spreek je gewoon een mens.</p>
         </div>
       </div>
-
-      <!-- Compare Plans -->
-      <div class="compare-wrap fade-up" data-delay="240">
-        <button class="compare-toggle-btn" id="compare-btn" onclick="toggleCompare()">
-          Vergelijk alle functies
-          <svg class="cmp-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+  <section class="results sec bg-grey">
+    <div class="wrap">
+      <h2 class="h-section rv">Mooie woorden zijn makkelijk…<br>Dit is wat het oplevert</h2>
+      <div class="slider rv">
+        <button class="slider-btn slider-prev" type="button" aria-label="Vorige">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 5 8 12 15 19"/></svg>
         </button>
-        <div class="compare-table-wrap" id="compare-table-wrap">
-          <div class="compare-table">
-            <table>
-              <thead>
-                <tr>
-                  <th style="width:40%;">Functie</th>
-                  <th>Basic</th>
-                  <th class="th-highlight">Plus</th>
-                  <th>Pro</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Website</td>
-                  <td><span class="cmp-check">✓</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Geoptimaliseerd voor desktop &amp; mobiel</td>
-                  <td><span class="cmp-check">✓</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Vindbaar in Google (SEO)</td>
-                  <td><span class="cmp-check">✓</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Contactformulier</td>
-                  <td><span class="cmp-check">✓</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Chatwidget</td>
-                  <td><span class="cmp-check">✓</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Google Review-systeem</td>
-                  <td><span class="cmp-check">✓</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>AI-chatbot op jouw website</td>
-                  <td><span class="cmp-cross">—</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>AI-belsysteem</td>
-                  <td><span class="cmp-cross">—</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Automatische sms bij gemiste oproep</td>
-                  <td><span class="cmp-cross">—</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Gespreksverslagen &amp; meldingen per e-mail</td>
-                  <td><span class="cmp-cross">—</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>CRM-dashboard</td>
-                  <td><span class="cmp-cross">—</span></td>
-                  <td><span class="cmp-cross">—</span></td>
-                  <td><span class="cmp-note">Onbeperkt gebruikers</span></td>
-                </tr>
-                <tr>
-                  <td>Automatische opvolging via e-mail &amp; sms</td>
-                  <td><span class="cmp-cross">—</span></td>
-                  <td><span class="cmp-cross">—</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>WhatsApp-koppeling</td>
-                  <td><span class="cmp-cross">—</span></td>
-                  <td><span class="cmp-cross">—</span></td>
-                  <td><span class="cmp-check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Ondersteuning</td>
-                  <td><span class="cmp-note">Standaard</span></td>
-                  <td><span class="cmp-note">Standaard</span></td>
-                  <td><span class="cmp-note">Met voorrang</span></td>
-                </tr>
-                <tr>
-                  <td>Meta-advertenties</td>
-                  <td><span class="cmp-note">Op aanvraag</span></td>
-                  <td><span class="cmp-note">Op aanvraag</span></td>
-                  <td><span class="cmp-note">Op aanvraag</span></td>
-                </tr>
-                <tr>
-                  <td>Google-advertenties</td>
-                  <td><span class="cmp-note">Op aanvraag</span></td>
-                  <td><span class="cmp-note">Op aanvraag</span></td>
-                  <td><span class="cmp-note">Op aanvraag</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="slider-track">
+          <article class="slide">
+            <div class="slide-stat"><b>3×</b><span>meer aanvragen binnen 8 weken na livegang</span></div>
+            <div class="slide-body">
+              <div class="slide-quote-mark" aria-hidden="true">“</div>
+              <p>De chatbot reageert nu ook 's avonds en in het weekend. Dat leverde meteen extra afspraken op die anders gemist zouden zijn.</p>
+              <div class="slide-foot">
+                <div class="slide-who">Aannemersbedrijf<span>Aanbouw &amp; verbouw</span></div>
+                <a href="/case-de-vries-bouw" class="slide-link">Lees case →</a>
+              </div>
+            </div>
+          </article>
+          <article class="slide">
+            <div class="slide-stat"><b>2 → 11</b><span>leads per maand na het belsysteem</span></div>
+            <div class="slide-body">
+              <div class="slide-quote-mark" aria-hidden="true">“</div>
+              <p>Vroeger belden klanten terwijl het team op het dak stond en werd er niet opgenomen. Nu belt het systeem meteen terug.</p>
+              <div class="slide-foot">
+                <div class="slide-who">Dakdekkersbedrijf<span>Dakrenovatie</span></div>
+                <a href="/case-janssen-dakwerken" class="slide-link">Lees case →</a>
+              </div>
+            </div>
+          </article>
+          <article class="slide">
+            <div class="slide-stat"><b>3.9 → 4.8</b><span>gemiddelde Google-beoordeling in 4 maanden</span></div>
+            <div class="slide-body">
+              <div class="slide-quote-mark" aria-hidden="true">“</div>
+              <p>Het reviewsysteem vraagt automatisch om een beoordeling na een geklaarde klus. De score is nu écht een afspiegeling van het werk.</p>
+              <div class="slide-foot">
+                <div class="slide-who">Hoveniersbedrijf<span>Tuinonderhoud &amp; bestrating</span></div>
+                <a href="/case-bakker-tuinen" class="slide-link">Lees case →</a>
+              </div>
+            </div>
+          </article>
+          <article class="slide">
+            <div class="slide-stat"><b>4 min</b><span>gemiddelde reactietijd, was ruim 2 dagen</span></div>
+            <div class="slide-body">
+              <div class="slide-quote-mark" aria-hidden="true">“</div>
+              <p>Er werd vaak pas na het weekend gereageerd. Nu krijgt iedereen binnen een paar minuten antwoord, ook buiten kantoortijd.</p>
+              <div class="slide-foot">
+                <div class="slide-who">Schildersbedrijf<span>Schilderwerk</span></div>
+                <a href="/case-van-dijk-schilderwerken" class="slide-link">Lees case →</a>
+              </div>
+            </div>
+          </article>
         </div>
+        <button class="slider-btn slider-next" type="button" aria-label="Volgende">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 5 16 12 9 19"/></svg>
+        </button>
       </div>
-
-      <p class="fade-up" data-delay="280" style="margin-top:1.5rem;font-size:13px;color:var(--muted);text-align:center;">
-        Belminuten en sms vallen onder redelijk gebruik. Maatwerk nodig? <a href="/contact" style="color:var(--accent);font-weight:600;">Neem contact op</a> voor een enterprise offerte.
-      </p>
+      <div class="results-more rv"><a href="/cases" class="btn btn-outline">Bekijk alle cases</a></div>
     </div>
   </section>
+  </main>
 
-  <!-- ── FAQ ─────────────────────────────────────── -->
-  <section class="faq-section band-alt">
+  <footer class="footer">
     <div class="wrap">
-      <div class="fade-up" data-delay="0">
-        <div class="section-tag">FAQ</div>
-        <h2 class="section-h2">Veelgestelde vragen</h2>
+      <div class="footer-top">
+        <a href="/" class="logo"><img class="logo-mascot" src="/mascot.svg" alt="" width="40" height="64" style="width:40px;height:64px;"><span class="logo-text">FLOWSA</span></a>
+        <div class="footer-top-cta">Klaar om te beginnen? <a href="/demo/" class="btn btn-sm">Plan demo</a></div>
       </div>
-      <div class="faq-list fade-up" data-delay="80">
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            Werkt het ook voor mijn branche?
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-a">Flowsa wordt gebruikt door aannemers, makelaars, klinieken en meer. Als jij klanten wil, werkt het voor jou</div>
+      <div class="footer-cols">
+        <div class="footer-pitch">
+          <h4>Benieuwd wat we voor jouw bedrijf kunnen doen?</h4>
+          <a href="/demo/" class="btn">Plan een demo</a>
         </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            Hoe snel is het live?
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-a">Gemiddeld binnen 5 werkdagen</div>
+        <div class="footer-col">
+          <h4>Links</h4>
+          <a href="/prijzen">Prijzen</a>
+          <a href="/cases">Cases</a>
+          <a href="/functies">Alle functies</a>
+          <a href="https://Login.flowsa.app">Inloggen</a>
         </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            Wat als ik vragen heb?
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-a">Je hebt altijd toegang tot onze klantenservice — geen chatbot, gewoon een mens</div>
+        <div class="footer-col">
+          <h4>Over ons</h4>
+          <a href="/werkwijze">Werkwijze</a>
+          <a href="/vakgebieden">Vakgebieden</a>
+          <a href="/contact">Contact</a>
+          <a href="/demo/">Demo plannen</a>
         </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            Zijn belminuten en sms inbegrepen?
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-a">Ja, binnen redelijk gebruik. Bij uitzonderlijk hoog verbruik nemen we eerst contact met je op en rekenen we de extra kosten door tegen kostprijs, zonder verrassingen</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            Hoe werkt de 30 dagen geld-terug-garantie?
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-a">Ben je binnen 30 dagen na livegang niet tevreden? Dan krijg je je geld terug, ook bij jaarlijkse betaling</div>
+        <div class="footer-col footer-col-wide">
+          <h4>Functies</h4>
+          <div class="footer-2col"><div>
+          <a href="/functies/website">Professionele website</a>
+          <a href="/functies/chatbot">Chatbot</a>
+          <a href="/functies/belsysteem">Belsysteem</a>
+          <a href="/functies/sms-bij-gemiste-oproep">Sms bij gemiste oproep</a>
+          <a href="/functies/google-reviews">Google Review-systeem</a>
+          </div><div>
+          <a href="/functies/crm-dashboard">CRM-dashboard</a>
+          <a href="/functies/automatische-opvolging">Automatische opvolging</a>
+          <a href="/functies/whatsapp">WhatsApp-koppeling</a>
+          <a href="/functies/vindbaar-in-google">Vindbaar in Google</a>
+          </div></div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ── CTA SECTION ───────────────────────────────── -->
-  <section class="cta-section" id="cta">
-    <div class="cta-card fade-up" data-delay="0">
-      <h2>Klaar om elke websitebezoeker om te zetten naar een klant?</h2>
-      <p>Plan een gratis demo in en ontdek hoe jouw website meer aanvragen kan genereren</p>
-      <div class="cta-actions">
-        <a href="demo/" class="btn-primary">
-          Plan demo
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
-        </a>
-        <a href="https://wa.me/31600000000?text=Hallo%2C%20ik%20wil%20graag%20meer%20weten%20over%20jullie%20systemen" class="btn-ghost btn-whatsapp">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-          WhatsApp ons
-        </a>
+      <div class="footer-bottom">
+        <span>© 2026 FLOWSA — Alle rechten voorbehouden</span>
+        <span>Prijzen exclusief btw</span>
       </div>
     </div>
-  </section>
-
-  <!-- ── FOOTER ────────────────────────────────────── -->
-  <footer>
-    <a href="/" class="footer-logo">
-      <div class="nav-logo-dot" style="width:6px;height:6px;"></div>
-      FLOWSA
-    </a>
-    <div class="footer-links">
-      <a href="/functies" class="footer-link">Functies</a>
-      <a href="/cases" class="footer-link">Cases</a>
-      <a href="/prijzen" class="footer-link">Prijzen</a>
-      <a href="/contact" class="footer-link">Contact</a>
-    </div>
-    <span class="footer-copy">© 2026 — Alle rechten voorbehouden</span>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="/site.js"></script>
 </body>
 </html>

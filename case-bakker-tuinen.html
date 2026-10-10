@@ -3,148 +3,247 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FLOWSA — Case: Tuinonderhoud &amp; bestrating</title>
-  <meta name="description" content="Hoe een hoveniersbedrijf met het FLOWSA reviewsysteem van 3.9 naar 4.8 sterren op Google ging.">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <title>FLOWSA — Case: Tuinonderhoud & bestrating</title>
+  <meta name="description" content="Hoe een automatisch reviewsysteem het echte werk van dit hoveniersbedrijf eindelijk zichtbaar maakte op Google.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/site.css">
 </head>
 <body>
-
-  <!-- ── NAV ─────────────────────────────────────── -->
-  <nav>
+  <header class="nav">
     <div class="nav-inner">
-      <a href="/" class="nav-logo">
-        <div class="nav-logo-dot"></div>
-        FLOWSA
+      <a href="/" class="logo" aria-label="FLOWSA home">
+        <img class="logo-mascot" src="/mascot.svg" alt="" width="34" height="54">
+        <span class="logo-text">FLOWSA</span>
       </a>
-      <div class="nav-links">
-        <a href="/functies" class="nav-link">Functies</a>
-        <a href="/cases" class="nav-link active">Cases</a>
-        <a href="/prijzen" class="nav-link">Prijzen</a>
-        <a href="/contact" class="nav-link">Contact</a>
-      </div>
-      <div style="display:flex;align-items:center;gap:10px;">
-        <a href="demo/" class="btn-primary" style="padding:8px 18px;font-size:13px;">Plan demo</a>
-        <a href="https://Login.flowsa.app" class="login-btn">Inloggen</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ── MOBILE STICKY NAV ─────────────────────────── -->
-  <div class="mobile-nav" id="mobile-nav">
-    <a href="/" class="nav-logo">
-      <div class="nav-logo-dot"></div>
-      FLOWSA
-    </a>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <a href="demo/" class="btn-primary" style="padding:9px 20px;font-size:13px;">Demo</a>
-      <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-
-  <!-- ── MOBILE MENU ─────────────────────────────── -->
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="/functies" class="mobile-menu-link">Functies</a>
-    <a href="/cases" class="mobile-menu-link active">Cases</a>
-    <a href="/prijzen" class="mobile-menu-link">Prijzen</a>
-    <a href="/contact" class="mobile-menu-link">Contact</a>
-    <a href="https://Login.flowsa.app" class="mobile-menu-link">Inloggen</a>
-  </div>
-
-  <!-- ── PAGE HEADER ───────────────────────────────── -->
-  <header class="page-header">
-    <div class="fade-up" data-delay="0">
-      <a href="/cases" class="case-back">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        Alle cases
-      </a>
-      <div class="case-head" style="margin-bottom:1.25rem;">
-        <div class="case-avatar" style="background:var(--amber);">TB</div>
-        <div>
-          <div class="case-company">Hoveniersbedrijf</div>
-          <div class="case-industry">Tuinonderhoud &amp; bestrating</div>
+      <nav class="nav-links" aria-label="Hoofdmenu">
+        <div class="dd">
+          <button class="dd-btn" type="button" aria-expanded="false">Functies <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="dd-chev" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dd-panel dd-mega">
+            <div class="dd-title">Systemen &amp; functies <a href="/functies">Bekijk alle functies →</a></div>
+            <div class="dd-grid">
+            <a href="/functies/website" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></span><span><b>Professionele website</b><small>Een website die aanvragen oplevert</small></span></a>
+            <a href="/functies/chatbot" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span><b>Chatbot</b><small>Beantwoordt vragen, 24/7</small></span></a>
+            <a href="/functies/belsysteem" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span><b>Belsysteem</b><small>Neemt op als jij niet kan</small></span></a>
+            <a href="/functies/sms-bij-gemiste-oproep" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 6h4"/><path d="M9 13l2 2 4-4"/></svg></span><span><b>Sms bij gemiste oproep</b><small>Binnen 60 seconden terug</small></span></a>
+            <a href="/functies/google-reviews" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><span><b>Google Review-systeem</b><small>Automatisch meer reviews</small></span></a>
+            <a href="/functies/crm-dashboard" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span><span><b>CRM-dashboard</b><small>Al je leads op één plek</small></span></a>
+            <a href="/functies/automatische-opvolging" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><polyline points="4 6 12 13 20 6"/></svg></span><span><b>Automatische opvolging</b><small>Via e-mail &amp; sms</small></span></a>
+            <a href="/functies/whatsapp" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/></svg></span><span><b>WhatsApp-koppeling</b><small>Bereik leads waar ze zitten</small></span></a>
+            <a href="/functies/vindbaar-in-google" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><span><b>Vindbaar in Google</b><small>Lokale SEO vanaf dag één</small></span></a>
+            </div>
+          </div>
         </div>
-      </div>
-      <h1 class="section-h2">Van 3.9 naar 4.8 sterren<br>in 4 maanden</h1>
-      <p class="section-sub">Hoe een automatisch reviewsysteem het echte werk van dit hoveniersbedrijf eindelijk zichtbaar maakte op Google.</p>
-      <div class="case-mini-stats">
-        <div>
-          <div class="case-mini-stat-num" style="color:var(--amber);">3.9 → 4.8</div>
-          <div class="case-mini-stat-label">Google-beoordeling</div>
+        <a href="/prijzen">Prijzen</a>
+        <a href="/cases" aria-current="page">Cases</a>
+        <a href="/werkwijze">Werkwijze</a>
+        <div class="dd">
+          <button class="dd-btn" type="button" aria-expanded="false">Over ons <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="dd-chev" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dd-panel dd-small">
+            <div class="dd-grid dd-grid-1">
+            <a href="/werkwijze" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></span><span><b>Werkwijze</b><small>Zo werken we samen</small></span></a>
+            <a href="/vakgebieden" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20h20M5 20V9l7-5 7 5v11"/></svg></span><span><b>Vakgebieden</b><small>Voor wie we werken</small></span></a>
+            <a href="/cases" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-6"/></svg></span><span><b>Cases</b><small>Resultaten van klanten</small></span></a>
+            <a href="/contact" class="dd-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><polyline points="4 6 12 13 20 6"/></svg></span><span><b>Contact</b><small>Stel je vraag</small></span></a>
+            </div>
+          </div>
         </div>
-        <div>
-          <div class="case-mini-stat-num" style="color:var(--amber);">4 mnd</div>
-          <div class="case-mini-stat-label">tot resultaat</div>
-        </div>
-        <div>
-          <div class="case-mini-stat-num" style="color:var(--amber);">40+</div>
-          <div class="case-mini-stat-label">nieuwe reviews</div>
-        </div>
+      </nav>
+      <div class="nav-right">
+        <a href="https://Login.flowsa.app" class="nav-login">Inloggen</a>
+        <a href="/demo/" class="btn nav-cta">Plan demo</a>
+        <button class="burger" id="burger" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobiel menu">
+    <details class="mm-group"><summary>Functies <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="dd-chev" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <a href="/functies">Alle functies</a>
+      <a href="/functies/website">Professionele website</a>
+      <a href="/functies/chatbot">Chatbot</a>
+      <a href="/functies/belsysteem">Belsysteem</a>
+      <a href="/functies/sms-bij-gemiste-oproep">Sms bij gemiste oproep</a>
+      <a href="/functies/google-reviews">Google Review-systeem</a>
+      <a href="/functies/crm-dashboard">CRM-dashboard</a>
+      <a href="/functies/automatische-opvolging">Automatische opvolging</a>
+      <a href="/functies/whatsapp">WhatsApp-koppeling</a>
+      <a href="/functies/vindbaar-in-google">Vindbaar in Google</a>
+    </details>
+    <a href="/prijzen">Prijzen</a>
+    <a href="/cases">Cases</a>
+    <a href="/werkwijze">Werkwijze</a>
+    <details class="mm-group"><summary>Over ons <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="dd-chev" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <a href="/vakgebieden">Vakgebieden</a>
+      <a href="/contact">Contact</a>
+    </details>
+    <a href="https://Login.flowsa.app" class="mm-login">Inloggen</a>
+    <a href="/demo/" class="btn">Plan demo</a>
+  </nav>
 
-  <!-- ── CASE BODY ─────────────────────────────────── -->
-  <section class="features-section band">
+  <main>
+  <section class="page-hero sec bg-grey">
     <div class="wrap">
-      <div class="case-body fade-up" data-delay="0">
+      <a href="/cases" class="back-link rv">← Alle cases</a>
+      <div class="case-who case-who-lg rv"><span class="case-av">TB</span><span><b>Hoveniersbedrijf</b><small>Tuinonderhoud &amp; bestrating</small></span></div>
+      <h1 class="h-page rv">Van 3.9 naar 4.8 sterren in 4 maanden</h1>
+      <p class="page-sub rv">Hoe een automatisch reviewsysteem het echte werk van dit hoveniersbedrijf eindelijk zichtbaar maakte op Google.</p>
+      <div class="case-stats rv"><div class="fact"><b>3.9 → 4.8</b><span>Google-beoordeling</span></div><div class="fact"><b>4 mnd</b><span>tot resultaat</span></div><div class="fact"><b>40+</b><span>nieuwe reviews</span></div></div>
+    </div>
+  </section>
 
+  <section class="article sec bg-white">
+    <div class="wrap article-grid">
+      <article class="article-body">
         <h2>De uitdaging</h2>
         <p>Een hoveniersbedrijf levert al jaren goed werk, maar dat was niet te zien op Google: een handvol oude reviews en een score net onder de 4. Tevreden klanten dachten simpelweg niet aan het achterlaten van een beoordeling, terwijl een enkele ontevreden klant wél de moeite nam. Het resultaat: een score die het werk niet eerlijk weergaf, en twijfelende nieuwe klanten.</p>
-
         <h2>De aanpak</h2>
         <p>FLOWSA bouwde een geautomatiseerd reviewsysteem dat na elke afgeronde klus een verzoek stuurt om een beoordeling achter te laten. Elke klant krijgt dezelfde vraag en een directe link naar de Google-pagina. Geeft iemand aan minder tevreden te zijn, dan krijgt het bedrijf meteen een melding, zodat het probleem persoonlijk opgelost kan worden.</p>
-
-        <blockquote class="case-blockquote">
-          Het reviewsysteem vraagt automatisch om een beoordeling na een geklaarde klus. De score is nu écht een afspiegeling van het geleverde werk.
-        </blockquote>
-
+        <blockquote>“Het reviewsysteem vraagt automatisch om een beoordeling na een geklaarde klus. De score is nu écht een afspiegeling van het geleverde werk.”</blockquote>
         <h2>Het resultaat</h2>
-        <p>Binnen vier maanden steeg de gemiddelde beoordeling van 3.9 naar 4.8 sterren, met een reviewaantal dat groeide van 12 naar 58 — niet langer alleen de stem van een enkele ontevreden klant, maar een eerlijke afspiegeling van het werk. Die hogere positie in de Google Maps-resultaten leverde dat kwartaal negen nieuwe aanvragen op van klanten die zelf aangaven het bedrijf via Google te hebben gevonden, goed voor zo'n €14.000 extra omzet.</p>
-
-      </div>
+        <p>Binnen vier maanden steeg de gemiddelde beoordeling van 3.9 naar 4.8 sterren, met een reviewaantal dat groeide van 12 naar 58: niet langer alleen de stem van een enkele ontevreden klant, maar een eerlijke afspiegeling van het werk. Die hogere positie in de Google Maps-resultaten leverde dat kwartaal negen nieuwe aanvragen op van klanten die zelf aangaven het bedrijf via Google te hebben gevonden, goed voor zo'n €14.000 extra omzet.</p>
+      </article>
+      <aside class="article-side">
+        <div class="side-card">
+          <div class="incl-head">Gebruikte functies</div>
+          <a href="/functies/google-reviews" class="rel-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><span><b>Google Review-systeem</b><small>Automatisch meer reviews</small></span></a><a href="/functies/vindbaar-in-google" class="rel-item"><span class="dd-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><span><b>Vindbaar in Google</b><small>Lokale SEO vanaf dag één</small></span></a>
+        </div>
+        <div class="side-card side-cta">
+          <h3>Benieuwd wat dit voor jouw bedrijf kan doen?</h3>
+          <a href="/demo/" class="btn">Plan een demo</a>
+        </div>
+      </aside>
     </div>
   </section>
 
-  <!-- ── CTA SECTION ───────────────────────────────── -->
-  <section class="cta-section" id="cta">
-    <div class="cta-card fade-up" data-delay="0">
-      <h2>Benieuwd wat dit voor jouw bedrijf kan doen?</h2>
-      <p>Plan een gratis demo in en ontdek hoe jouw website meer aanvragen kan genereren</p>
-      <div class="cta-actions">
-        <a href="demo/" class="btn-primary">
-          Plan demo
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
-        </a>
-        <a href="/cases" class="btn-ghost">
-          Meer cases
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
-        </a>
+  <section class="cta-wrap sec bg-grey">
+    <div class="wrap">
+      <div class="cta-box rv">
+        <div>
+          <h2>Zullen we even kennismaken?</h2>
+          <p>Plan een gratis demo in en ontdek hoe jouw website meer aanvragen kan opleveren. Vrijblijvend, in ongeveer 20 minuten.</p>
+          <div class="cta-actions">
+            <a href="/demo/" class="btn">Plan een demo</a>
+            <a href="https://wa.me/31600000000?text=Hallo%2C%20ik%20wil%20graag%20meer%20weten%20over%20jullie%20systemen" class="btn btn-outline-light">WhatsApp ons</a>
+          </div>
+        </div>
+        <div class="cta-mascot"><img src="/mascot.svg" alt="" width="400" height="640" loading="lazy"></div>
       </div>
     </div>
   </section>
-
-  <!-- ── FOOTER ────────────────────────────────────── -->
-  <footer>
-    <a href="/" class="footer-logo">
-      <div class="nav-logo-dot" style="width:6px;height:6px;"></div>
-      FLOWSA
-    </a>
-    <div class="footer-links">
-      <a href="/functies" class="footer-link">Functies</a>
-      <a href="/cases" class="footer-link">Cases</a>
-      <a href="/prijzen" class="footer-link">Prijzen</a>
-      <a href="/contact" class="footer-link">Contact</a>
+  <section class="results sec bg-white">
+    <div class="wrap">
+      <h2 class="h-section rv">Mooie woorden zijn makkelijk…<br>Dit is wat het oplevert</h2>
+      <div class="slider rv">
+        <button class="slider-btn slider-prev" type="button" aria-label="Vorige">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 5 8 12 15 19"/></svg>
+        </button>
+        <div class="slider-track">
+          <article class="slide">
+            <div class="slide-stat"><b>3×</b><span>meer aanvragen binnen 8 weken na livegang</span></div>
+            <div class="slide-body">
+              <div class="slide-quote-mark" aria-hidden="true">“</div>
+              <p>De chatbot reageert nu ook 's avonds en in het weekend. Dat leverde meteen extra afspraken op die anders gemist zouden zijn.</p>
+              <div class="slide-foot">
+                <div class="slide-who">Aannemersbedrijf<span>Aanbouw &amp; verbouw</span></div>
+                <a href="/case-de-vries-bouw" class="slide-link">Lees case →</a>
+              </div>
+            </div>
+          </article>
+          <article class="slide">
+            <div class="slide-stat"><b>2 → 11</b><span>leads per maand na het belsysteem</span></div>
+            <div class="slide-body">
+              <div class="slide-quote-mark" aria-hidden="true">“</div>
+              <p>Vroeger belden klanten terwijl het team op het dak stond en werd er niet opgenomen. Nu belt het systeem meteen terug.</p>
+              <div class="slide-foot">
+                <div class="slide-who">Dakdekkersbedrijf<span>Dakrenovatie</span></div>
+                <a href="/case-janssen-dakwerken" class="slide-link">Lees case →</a>
+              </div>
+            </div>
+          </article>
+          <article class="slide">
+            <div class="slide-stat"><b>3.9 → 4.8</b><span>gemiddelde Google-beoordeling in 4 maanden</span></div>
+            <div class="slide-body">
+              <div class="slide-quote-mark" aria-hidden="true">“</div>
+              <p>Het reviewsysteem vraagt automatisch om een beoordeling na een geklaarde klus. De score is nu écht een afspiegeling van het werk.</p>
+              <div class="slide-foot">
+                <div class="slide-who">Hoveniersbedrijf<span>Tuinonderhoud &amp; bestrating</span></div>
+                <a href="/case-bakker-tuinen" class="slide-link">Lees case →</a>
+              </div>
+            </div>
+          </article>
+          <article class="slide">
+            <div class="slide-stat"><b>4 min</b><span>gemiddelde reactietijd, was ruim 2 dagen</span></div>
+            <div class="slide-body">
+              <div class="slide-quote-mark" aria-hidden="true">“</div>
+              <p>Er werd vaak pas na het weekend gereageerd. Nu krijgt iedereen binnen een paar minuten antwoord, ook buiten kantoortijd.</p>
+              <div class="slide-foot">
+                <div class="slide-who">Schildersbedrijf<span>Schilderwerk</span></div>
+                <a href="/case-van-dijk-schilderwerken" class="slide-link">Lees case →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <button class="slider-btn slider-next" type="button" aria-label="Volgende">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 5 16 12 9 19"/></svg>
+        </button>
+      </div>
+      <div class="results-more rv"><a href="/cases" class="btn btn-outline">Bekijk alle cases</a></div>
     </div>
-    <span class="footer-copy">© 2026 — Alle rechten voorbehouden</span>
+  </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <a href="/" class="logo"><img class="logo-mascot" src="/mascot.svg" alt="" width="40" height="64" style="width:40px;height:64px;"><span class="logo-text">FLOWSA</span></a>
+        <div class="footer-top-cta">Klaar om te beginnen? <a href="/demo/" class="btn btn-sm">Plan demo</a></div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-pitch">
+          <h4>Benieuwd wat we voor jouw bedrijf kunnen doen?</h4>
+          <a href="/demo/" class="btn">Plan een demo</a>
+        </div>
+        <div class="footer-col">
+          <h4>Links</h4>
+          <a href="/prijzen">Prijzen</a>
+          <a href="/cases">Cases</a>
+          <a href="/functies">Alle functies</a>
+          <a href="https://Login.flowsa.app">Inloggen</a>
+        </div>
+        <div class="footer-col">
+          <h4>Over ons</h4>
+          <a href="/werkwijze">Werkwijze</a>
+          <a href="/vakgebieden">Vakgebieden</a>
+          <a href="/contact">Contact</a>
+          <a href="/demo/">Demo plannen</a>
+        </div>
+        <div class="footer-col footer-col-wide">
+          <h4>Functies</h4>
+          <div class="footer-2col"><div>
+          <a href="/functies/website">Professionele website</a>
+          <a href="/functies/chatbot">Chatbot</a>
+          <a href="/functies/belsysteem">Belsysteem</a>
+          <a href="/functies/sms-bij-gemiste-oproep">Sms bij gemiste oproep</a>
+          <a href="/functies/google-reviews">Google Review-systeem</a>
+          </div><div>
+          <a href="/functies/crm-dashboard">CRM-dashboard</a>
+          <a href="/functies/automatische-opvolging">Automatische opvolging</a>
+          <a href="/functies/whatsapp">WhatsApp-koppeling</a>
+          <a href="/functies/vindbaar-in-google">Vindbaar in Google</a>
+          </div></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 FLOWSA — Alle rechten voorbehouden</span>
+        <span>Prijzen exclusief btw</span>
+      </div>
+    </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="/site.js"></script>
 </body>
 </html>
