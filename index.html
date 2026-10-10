@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLOWSA — Websites &amp; klantsystemen voor aannemers</title>
+  <meta name="description" content="FLOWSA bouwt websites en slimme klantsystemen voor aannemers: chatbot, belsysteem, Google Review-systeem en CRM-dashboard. Meer aanvragen, zonder extra personeel.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+  <!-- ── NAV ─────────────────────────────────────── -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="/" class="logo" aria-label="FLOWSA home">
+        <img class="logo-mark" src="favicon.svg" alt="" width="30" height="30">
+        <span>FLOWSA</span>
+      </a>
+      <nav class="nav-links" aria-label="Hoofdmenu">
+        <a href="/functies">Functies</a>
+        <a href="/prijzen">Prijzen</a>
+        <a href="/cases">Cases</a>
+        <a href="#werkwijze">Werkwijze</a>
+        <a href="/vsl">Video</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <a href="https://Login.flowsa.app" class="nav-login">Inloggen</a>
+        <a href="demo/" class="btn btn-sm">Plan demo</a>
+        <button class="burger" id="burger" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobiel menu">
+    <a href="/functies">Functies</a>
+    <a href="/prijzen">Prijzen</a>
+    <a href="/cases">Cases</a>
+    <a href="#werkwijze">Werkwijze</a>
+    <a href="/vsl">Bekijk de video</a>
+    <a href="/contact">Contact</a>
+    <a href="https://Login.flowsa.app">Inloggen</a>
+  </nav>
+
+  <main>
+
+  <!-- ── HERO ────────────────────────────────────── -->
+  <section class="hero sec">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <h1>Websites &amp; klantsystemen voor <em>aannemers</em></h1>
+
+          <div class="hero-bottom">
+            <p class="hero-sub">Geen tijd voor een website? Wij regelen het. Een website die gevonden wordt, een chatbot en belsysteem die nooit een aanvraag missen, en automatisch meer Google reviews. Jij doet het vakwerk, wij zorgen voor de klanten.</p>
+          </div>
+
+          <div class="hero-cta" style="margin-top:32px;">
+            <a href="demo/" class="btn">
+              Plan een gratis demo
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg>
+            </a>
+            <small>Vrijblijvend · Gemiddeld binnen 5 werkdagen live</small>
+          </div>
+
+          <div class="hero-proof">
+            <div class="proof-item">
+              <div class="proof-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFB400"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <div>
+                <div class="proof-label">4.8 / 5</div>
+                <div class="stars" aria-label="4.8 van 5 sterren">★★★★★</div>
+              </div>
+            </div>
+            <div class="proof-item">
+              <div>
+                <div class="proof-label">Aannemers in NL &amp; BE</div>
+                <div class="proof-sub">beoordelen ons met een 4.8</div>
+              </div>
+            </div>
+            <div class="proof-item">
+              <div>
+                <div class="proof-label">30 dagen</div>
+                <div class="proof-sub">niet goed, geld terug</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="/vsl" class="hero-video" aria-label="Bekijk de video over FLOWSA">
+          <picture>
+            <source srcset="vsl-thumb.webp" type="image/webp">
+            <img src="vsl-thumb.jpg" alt="" width="1920" height="1080" loading="eager">
+          </picture>
+          <span class="hero-video-play" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <span class="hero-video-cap">
+            <strong>Bekijk de video</strong>
+            <span>Zie hoe FLOWSA aannemers aan meer klanten helpt</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESULTATEN ──────────────────────────────── -->
+  <section class="results sec bg-grey chev">
+    <div class="wrap">
+      <h2 class="h-section rv">Mooie woorden zijn makkelijk…<br>Dit is wat het oplevert</h2>
+
+      <div class="slider rv">
+        <button class="slider-btn slider-prev" type="button" aria-label="Vorige">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 5 8 12 15 19"/></svg>
+        </button>
+        <div class="slider-track" id="slider-track">
+
+          <article class="slide">
+            <div class="slide-stat"><b>3×</b><span>meer aanvragen binnen 8 weken na livegang</span></div>
+            <div class="slide-body">
+              <div class="slide-quote-mark" aria-hidden="true">“</div>
+              <p>De chatbot reageert nu ook 's avonds en in het weekend. Dat leverde meteen extra afspraken op die anders gemist zouden zijn.</p>
+              <div class="slide-foot">
+                <div class="slide-who">Aannemersbedrijf<span>Aanbouw &amp; verbouw</span></div>
+                <a href="/case-de-vries-bouw" class="slide-link">Lees case →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide">
+            <div class="slide-stat"><b>2 → 11</b><span>leads per maand na het belsysteem</span></div>
+            <div class="slide-body">
+              <div class="slide-quote-mark" aria-hidden="true">“</div>
+              <p>Vroeger belden klanten terwijl het team op het dak stond en werd er niet opgenomen. Nu belt het systeem meteen terug.</p>
+              <div class="slide-foot">
+                <div class="slide-who">Dakdekkersbedrijf<span>Dakrenovatie</span></div>
+                <a href="/case-janssen-dakwerken" class="slide-link">Lees case →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide">
+            <div class="slide-stat"><b>3.9 → 4.8</b><span>gemiddelde Google-beoordeling in 4 maanden</span></div>
+            <div class="slide-body">
+              <div class="slide-quote-mark" aria-hidden="true">“</div>
+              <p>Het reviewsysteem vraagt automatisch om een beoordeling na een geklaarde klus. De score is nu écht een afspiegeling van het werk.</p>
+              <div class="slide-foot">
+                <div class="slide-who">Hoveniersbedrijf<span>Tuinonderhoud &amp; bestrating</span></div>
+                <a href="/case-bakker-tuinen" class="slide-link">Lees case →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide">
+            <div class="slide-stat"><b>4 min</b><span>gemiddelde reactietijd, was ruim 2 dagen</span></div>
+            <div class="slide-body">
+              <div class="slide-quote-mark" aria-hidden="true">“</div>
+              <p>Er werd vaak pas na het weekend gereageerd. Nu krijgt iedereen binnen een paar minuten antwoord, ook buiten kantoortijd.</p>
+              <div class="slide-foot">
+                <div class="slide-who">Schildersbedrijf<span>Schilderwerk</span></div>
+                <a href="/case-van-dijk-schilderwerken" class="slide-link">Lees case →</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+        <button class="slider-btn slider-next" type="button" aria-label="Volgende">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 5 16 12 9 19"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FUNCTIES ────────────────────────────────── -->
+  <section class="features sec bg-white chev" id="functies">
+    <div class="wrap">
+      <h2 class="h-section features-head rv">Simpele systemen die gewoon werken<br>Geen diploma nodig, alleen een bouwhelm</h2>
+
+      <!-- Website -->
+      <div class="feat">
+        <div class="feat-visual rv">
+          <div class="mk-laptop" aria-hidden="true">
+            <div class="mk-lid">
+              <div class="mk-screen">
+                <div class="ws-nav">Jouw Bedrijf <i><span>Diensten</span><span>Projecten</span><span>Reviews</span><span>Contact</span></i></div>
+                <div class="ws-hero">
+                  <div>
+                    <b>Vakmanschap waar je op kunt bouwen</b>
+                    <small>Verbouw, aanbouw en renovatie in jouw regio.</small>
+                    <span class="ws-btn">Gratis offerte</span>
+                    <div class="ws-rating">★★★★★ 4.9 op Google</div>
+                  </div>
+                  <div class="ws-form">
+                    <b>Vraag een offerte aan</b>
+                    <span></span><span></span><span class="tall"></span>
+                    <em>Versturen</em>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mk-base"></div>
+          </div>
+          <div class="float-badge fb-1"><span class="dot" style="background:#D3F5DE;color:#128A44;">✓</span><div>Nieuwe aanvraag<small>via je website · zojuist</small></div></div>
+        </div>
+        <div class="rv">
+          <h3>Professionele website</h3>
+          <p class="feat-lead">Een website die er strak uitziet, gevonden wordt in Google en van bezoekers aanvragen maakt.</p>
+          <ul class="feat-list">
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Vindbaar in Google</strong><p>Zoekt iemand in jouw regio naar een vakman? Dan wil je bovenaan staan. Je website is vanaf dag één ingericht op lokale zoekopdrachten (SEO).</p></li>
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Perfect op desktop &amp; mobiel</strong><p>De meeste mensen zoeken een vakman op hun telefoon. Je website ziet er op elk scherm goed uit en laadt snel.</p></li>
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Contactformulier &amp; chatwidget</strong><p>Bezoekers kunnen direct een offerte aanvragen of een vraag stellen. Elke aanvraag komt meteen bij jou binnen.</p></li>
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Wij regelen alles</strong><p>Geen tijd om zelf aan een website te sleutelen? Hoeft ook niet. Wij bouwen, jij keurt goed.</p></li>
+          </ul>
+          <a href="demo/" class="btn">Plan een demo</a>
+        </div>
+      </div>
+
+      <!-- Chatbot -->
+      <div class="feat rev">
+        <div class="feat-visual rv">
+          <div class="mk-phone" aria-hidden="true">
+            <div class="mk-notch"></div>
+            <div class="mk-phone-screen">
+              <div class="mk-status"></div>
+              <div class="chat-head"><div class="chat-avatar">J</div><div><b>Jouw Bedrijf</b><small>● Online</small></div></div>
+              <div class="chat-body">
+                <div class="bub in">Hoi! 👋 Waarmee kan ik je helpen?</div>
+                <div class="bub out">Ik wil mijn badkamer laten verbouwen</div>
+                <div class="bub in">Mooi project! In welke plaats woon je?</div>
+                <div class="bub out">Utrecht</div>
+                <div class="bub in">Dat valt in ons werkgebied. Wanneer schikt een kennismaking?</div>
+                <div class="chips"><span>Do 10:00</span><span>Do 14:30</span><span>Vr 09:00</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="float-badge fb-2"><span class="dot" style="background:var(--accent-tint);color:var(--accent-dark);">📅</span><div>Afspraak ingepland<small>za 22:14 · buiten werktijd</small></div></div>
+        </div>
+        <div class="rv">
+          <h3>Chatbot op jouw website</h3>
+          <p class="feat-lead">Je website slaapt nooit. Ook om 22:00 op zaterdag krijgt een bezoeker direct antwoord.</p>
+          <ul class="feat-list">
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>24/7 online</strong><p>De chatbot beantwoordt vragen over je diensten en werkgebied, dag en nacht, ook als jij op de bouwplaats staat.</p></li>
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Leads kwalificeren</strong><p>Hij vraagt door naar wat de bezoeker precies nodig heeft, zodat jij alleen serieuze aanvragen opvolgt.</p></li>
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Afspraken inplannen</strong><p>Past het? Dan plant de chatbot meteen een eerste afspraak in je agenda. Jij hoeft alleen nog te komen opdagen.</p></li>
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>In jouw toon &amp; huisstijl</strong><p>Geen robotachtige teksten. De chatbot praat zoals jij met je klanten praat.</p></li>
+          </ul>
+          <a href="demo/" class="btn">Plan een demo</a>
+        </div>
+      </div>
+
+      <!-- Belsysteem -->
+      <div class="feat">
+        <div class="feat-visual rv">
+          <div class="mk-phone" aria-hidden="true">
+            <div class="mk-notch"></div>
+            <div class="mk-phone-screen mc-screen">
+              <div class="mk-status"></div>
+              <div class="mc-time">10:42</div>
+              <div class="mc-date">dinsdag 14 oktober</div>
+              <div class="mc-note">
+                <span class="ic" style="background:#E5484D;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="23" y1="1" x2="17" y2="7"/><line x1="17" y1="1" x2="23" y2="7"/><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                <div><b>Gemiste oproep</b><span>06 12 34 56 78</span></div><time>nu</time>
+              </div>
+              <div class="mc-note">
+                <span class="ic" style="background:#30B94D;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+                <div><b>Sms verstuurd</b><span>"Sorry dat we je oproep misten, we staan op de bouwplaats. Waarmee kunnen we je helpen?"</span></div><time>nu</time>
+              </div>
+              <div class="mc-note">
+                <span class="ic" style="background:var(--accent-dark);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><polyline points="4 6 12 13 20 6"/></svg></span>
+                <div><b>Gespreksverslag</b><span>Lekkage dakgoot, wil deze week een offerte.</span></div><time>1 min</time>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rv">
+          <h3>Belsysteem dat nooit een klant mist</h3>
+          <p class="feat-lead">Iedereen mist weleens een oproep. Maar niet iedereen belt binnen een minuut terug. Wees degene die dat wél doet.</p>
+          <ul class="feat-list">
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Neemt op als jij niet kan</strong><p>Sta je op een dak of zit je onder een aanrecht? Het belsysteem neemt de telefoon voor je op, met een menselijke stem.</p></li>
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Sms binnen 60 seconden</strong><p>Gemiste oproep? Binnen een minuut krijgt de beller automatisch een sms, zodat hij niet doorbelt naar de concurrent.</p></li>
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Gespreksverslag in je mail</strong><p>Na elk gesprek krijg je een kort verslag: wie belde, wat hij nodig heeft en hoe je hem bereikt.</p></li>
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Ook buiten werktijd</strong><p>Belt iemand 's avonds of in het weekend? Die wordt net zo goed geholpen als op maandagochtend.</p></li>
+          </ul>
+          <a href="demo/" class="btn">Plan een demo</a>
+        </div>
+      </div>
+
+      <!-- Reviews -->
+      <div class="feat rev">
+        <div class="feat-visual rv">
+          <div class="mk-phone" aria-hidden="true">
+            <div class="mk-notch"></div>
+            <div class="mk-phone-screen rv-screen">
+              <div class="rv-logo">JB</div>
+              <b>Bedankt voor je vertrouwen! Hoe tevreden ben je over de klus?</b>
+              <div class="rv-stars">★★★★★</div>
+              <div class="rv-btn">Laat een Google review achter</div>
+              <div class="rv-alt">Kost maar 30 seconden</div>
+            </div>
+          </div>
+          <div class="float-badge fb-1"><span class="dot" style="background:#FFF3D1;color:#C2650A;">★</span><div>Nieuwe 5-sterren review<small>Google · 2 min geleden</small></div></div>
+        </div>
+        <div class="rv">
+          <h3>Google Review-systeem</h3>
+          <p class="feat-lead">"Ik laat zeker een review achter!" Maar dan vergeten ze het. Wij herinneren ze er netjes aan.</p>
+          <ul class="feat-list">
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Automatisch na elke klus</strong><p>Na elke afgeronde klus krijgt je klant vanzelf een verzoek om een Google review. Jij hoeft er niet aan te denken.</p></li>
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Melding bij ontevredenheid</strong><p>Is een klant minder tevreden? Dan krijg jij direct een melding, zodat je het persoonlijk kunt oplossen.</p></li>
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Meer vertrouwen online</strong><p>Meer reviews betekent meer vertrouwen. En een hogere plek in Google Maps, precies waar klanten zoeken.</p></li>
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>In elk pakket</strong><p>Het review-systeem zit standaard in elk pakket, vanaf Basic.</p></li>
+          </ul>
+          <a href="demo/" class="btn">Plan een demo</a>
+        </div>
+      </div>
+
+      <!-- CRM -->
+      <div class="feat">
+        <div class="feat-visual rv">
+          <div class="mk-laptop" aria-hidden="true">
+            <div class="mk-lid">
+              <div class="mk-screen">
+                <div class="crm">
+                  <div class="crm-side"><b>FLOWSA</b><span class="on"></span><span></span><span></span><span></span><span></span></div>
+                  <div class="crm-main">
+                    <b>Pijplijn</b>
+                    <div class="crm-cols">
+                      <div class="crm-col"><i>Nieuw</i><div class="crm-card"><b>Badkamer</b><span>via chatbot</span></div><div class="crm-card"><b>Dakgoot</b><span>via belsysteem</span></div><div class="crm-card"><b>Schuur</b><span>via website</span></div></div>
+                      <div class="crm-col"><i>Afspraak</i><div class="crm-card"><b>Aanbouw</b><span>do 10:00</span></div><div class="crm-card"><b>Kozijnen</b><span>vr 09:00</span></div></div>
+                      <div class="crm-col"><i>Offerte</i><div class="crm-card"><b>Keuken</b><span>€ 14.500</span></div></div>
+                      <div class="crm-col won"><i>Gewonnen</i><div class="crm-card"><b>Aanbouw</b><span>€ 18.000</span></div><div class="crm-card"><b>Schilderwerk</b><span>€ 3.200</span></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mk-base"></div>
+          </div>
+        </div>
+        <div class="rv">
+          <h3>Alles-in-één CRM-dashboard</h3>
+          <p class="feat-lead">Geen briefjes, losse appjes en vergeten mails meer. Alles wat binnenkomt staat op één plek.</p>
+          <ul class="feat-list">
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Alle leads op één plek</strong><p>Chatgesprekken, terugbelverslagen, formulieren en afspraken. Je ziet in één oogopslag wat er speelt.</p></li>
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Automatische opvolging</strong><p>Offerte verstuurd maar nog niets gehoord? Het systeem volgt automatisch op via e-mail en sms.</p></li>
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>WhatsApp-koppeling</strong><p>Bereik je leads via het kanaal dat ze het meest gebruiken, gewoon vanuit hetzelfde dashboard.</p></li>
+            <li><strong><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Onbeperkt gebruikers</strong><p>Geef je hele team toegang, zonder extra kosten per gebruiker. Onderdeel van het Pro-pakket.</p></li>
+          </ul>
+          <a href="demo/" class="btn">Plan een demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VAKGEBIEDEN ─────────────────────────────── -->
+  <section class="trades sec bg-navy chev">
+    <div class="wrap">
+      <h2 class="h-section rv">Voor al deze vakgebieden en meer…</h2>
+      <div class="trades-grid">
+        <div class="trade rv"><div class="trade-ic"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="14" height="6" rx="1"/><path d="M17 6h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-7v3"/><rect x="10" y="14" width="4" height="7" rx="1"/></svg></div><h3>Schilderwerk</h3></div>
+        <div class="trade rv"><div class="trade-ic"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h6v4H4zM7 8v5a3 3 0 0 0 3 3h6"/><path d="M16 13v6M19 16h-6"/><path d="M14 20h4"/></svg></div><h3>Loodgieterij</h3></div>
+        <div class="trade rv"><div class="trade-ic"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 4 14 12 14 11 22 20 10 12 10 13 2"/></svg></div><h3>Elektra &amp; installatie</h3></div>
+        <div class="trade rv"><div class="trade-ic"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10l7-6 7 6v11"/><path d="M9 21v-6h6v6"/><path d="M15 4h3v4"/></svg></div><h3>Aanbouw &amp; verbouw</h3></div>
+        <div class="trade rv"><div class="trade-ic"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13l10-9 10 9"/><path d="M5 11l7-6 7 6M8 9.5l4-3.5 4 3.5"/><path d="M5 13v8h14v-8"/></svg></div><h3>Dakrenovatie</h3></div>
+        <div class="trade rv"><div class="trade-ic"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v6M15 9v6M9 15v6"/></svg></div><h3>Vloeren &amp; tegels</h3></div>
+        <div class="trade rv"><div class="trade-ic"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22V12"/><path d="M12 12c0-4 3-7 7-7 0 4-3 7-7 7z"/><path d="M12 15c0-3-2.5-5.5-6-5.5 0 3 2.5 5.5 6 5.5z"/><path d="M4 22h16"/></svg></div><h3>Tuin &amp; bestrating</h3></div>
+        <div class="trade rv"><div class="trade-ic"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Klusbedrijven</h3></div>
+      </div>
+      <div class="trades-cta rv">
+        <p>Staat jouw vakgebied er niet tussen? Als jij klanten wil, werkt het voor jou.</p>
+        <a href="demo/" class="btn">Plan een demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WERKWIJZE ───────────────────────────────── -->
+  <section class="process sec bg-grey chev" id="werkwijze">
+    <div class="wrap">
+      <h2 class="h-section rv">Zo ziet samenwerken met ons eruit…</h2>
+      <div class="steps">
+        <svg class="steps-line" viewBox="0 0 800 100" preserveAspectRatio="none" aria-hidden="true"><path d="M10 43 C 120 100, 240 100, 390 43 S 660 -10, 790 43" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="2 12" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg>
+        <div class="step rv">
+          <div class="step-num">1</div>
+          <h3>Demogesprek<br>(± 20 min)</h3>
+          <p>We laten je zien hoe het werkt, beantwoorden al je vragen en kijken samen wat jouw bedrijf nodig heeft. Geen verkooppraatjes, gewoon eerlijk advies.</p>
+        </div>
+        <div class="step rv">
+          <div class="step-num">2</div>
+          <h3>Wij bouwen jouw systeem<br>(± 5 werkdagen)</h3>
+          <p>Je vult een kort formulier in met je bedrijfsgegevens. Daarna gaan wij aan de slag met je website, chatbot, belsysteem en reviews.</p>
+        </div>
+        <div class="step rv">
+          <div class="step-num">3</div>
+          <h3>Livegang<br>(oplevergesprek)</h3>
+          <p>We lopen samen alles door en laten zien hoe het werkt. Daarna draait het vanzelf, en heb je vragen, dan spreek je gewoon een mens.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WAAROM FLOWSA ───────────────────────────── -->
+  <section class="why sec bg-white chev">
+    <div class="wrap">
+      <h2 class="h-section rv">Waarom wij "helemaal anders" zijn…<br>net als iedereen, toch?</h2>
+      <div class="why-grid">
+        <div class="why-card rv">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V6a2 2 0 0 1 4 0v5"/><path d="M13 10a2 2 0 0 1 4 0v1a2 2 0 0 1 4 0v3a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.4L4.6 14a1.8 1.8 0 0 1 3-2L9 13.5"/></svg>
+          <h3>Simpel in gebruik</h3>
+          <p>Geen ingewikkelde software waar je een cursus voor nodig hebt. Wij richten alles in, jij ziet alleen wat ertoe doet.</p>
+        </div>
+        <div class="why-card rv">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15 9.5a3 3 0 0 0-5.6 1.5 3 3 0 0 0 5.6 1.5M8 11h5M8 13h5"/></svg>
+          <h3>Betaalbaar</h3>
+          <p>Vanaf €48 per maand. Transparante prijzen, geen verborgen kosten en belminuten en sms binnen redelijk gebruik inbegrepen.</p>
+        </div>
+        <div class="why-card rv">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          <h3>Geld-terug-garantie</h3>
+          <p>Ben je binnen 30 dagen na livegang niet tevreden? Dan krijg je je geld terug, ook bij jaarlijkse betaling.</p>
+        </div>
+        <div class="why-card rv">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+          <h3>Gewoon een mens</h3>
+          <p>Vragen? Dan spreek je onze klantenservice. Geen ticketsysteem of chatbot, gewoon iemand die je helpt.</p>
+        </div>
+        <div class="why-card rv">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-6"/><polyline points="16 8 20 8 20 12"/></svg>
+          <h3>Bewezen resultaat</h3>
+          <p>Meer aanvragen, snellere reacties en betere reviews. Bekijk de <a href="/cases">cases van andere aannemers</a>.</p>
+        </div>
+        <div class="why-card rv">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+          <h3>Snel live</h3>
+          <p>Gemiddeld staat alles binnen 5 werkdagen live. Geen maandenlange trajecten of eindeloze vergaderingen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRIJZEN ─────────────────────────────────── -->
+  <section class="pricing sec bg-navy chev" id="prijzen">
+    <div class="wrap">
+      <h2 class="h-section rv">Transparante prijzen,<br>geen verborgen kosten</h2>
+      <p class="pricing-sub rv">Prijzen per maand bij jaarlijkse betaling, exclusief btw</p>
+      <div class="plans">
+        <div class="plan rv">
+          <h3>Basic</h3>
+          <div class="plan-for">Ideaal voor startende aannemers</div>
+          <div class="plan-price">€48 <small>/mnd</small></div>
+          <div class="plan-note">€60 /mnd bij maandelijkse betaling</div>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Professionele website</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Perfect op desktop &amp; mobiel</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Vindbaar in Google (SEO)</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Contactformulier &amp; chatwidget</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automatisch meer Google reviews</li>
+          </ul>
+          <a href="/prijzen" class="btn btn-outline">Bekijk Basic</a>
+        </div>
+        <div class="plan hot rv">
+          <span class="plan-tag">MEEST GEKOZEN</span>
+          <h3>Plus</h3>
+          <div class="plan-for">Ideaal voor gevestigde aannemers</div>
+          <div class="plan-price">€96 <small>/mnd</small></div>
+          <div class="plan-note">€120 /mnd bij maandelijkse betaling</div>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Alles uit Basic</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>AI-chatbot die 24/7 vragen beantwoordt</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>AI-belsysteem dat opneemt als jij niet kan</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Sms binnen 60 sec. bij gemiste oproep</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Gespreksverslagen per e-mail</li>
+          </ul>
+          <a href="/prijzen" class="btn">Bekijk Plus</a>
+        </div>
+        <div class="plan rv">
+          <h3>Pro</h3>
+          <div class="plan-for">Ideaal voor groeiende aannemers</div>
+          <div class="plan-price">€200 <small>/mnd</small></div>
+          <div class="plan-note">€250 /mnd bij maandelijkse betaling</div>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Alles uit Plus</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>CRM-dashboard met al je leads</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Onbeperkt gebruikers, leads &amp; klanten</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automatische opvolging via e-mail &amp; sms</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>WhatsApp-koppeling</li>
+          </ul>
+          <a href="/prijzen" class="btn btn-outline">Bekijk Pro</a>
+        </div>
+      </div>
+      <p class="pricing-foot rv">30 dagen niet goed, geld terug. <a href="/prijzen">Vergelijk alle functies</a></p>
+    </div>
+  </section>
+
+  <!-- ── FAQ ─────────────────────────────────────── -->
+  <section class="faq sec bg-grey">
+    <div class="wrap">
+      <h2 class="h-section rv">Veelgestelde vragen</h2>
+      <div class="faq-list">
+        <details class="faq-item rv" open>
+          <summary>Werkt het ook voor mijn branche?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-a"><p>FLOWSA wordt gebruikt door aannemers, makelaars, klinieken en meer. Schilder, loodgieter, dakdekker of hovenier: als jij klanten wil, werkt het voor jou.</p></div>
+        </details>
+        <details class="faq-item rv">
+          <summary>Hoe snel is alles live?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-a"><p>Gemiddeld binnen 5 werkdagen. Na het demogesprek vul je een kort formulier in met je bedrijfsgegevens, en dan gaan wij aan de slag.</p></div>
+        </details>
+        <details class="faq-item rv">
+          <summary>Moet ik zelf technische kennis hebben?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-a"><p>Nee. Wij bouwen en richten alles voor je in. Bij de livegang lopen we samen door hoe het werkt, en daarna kun je altijd bij ons terecht met vragen.</p></div>
+        </details>
+        <details class="faq-item rv">
+          <summary>Zijn belminuten en sms inbegrepen?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-a"><p>Ja, binnen redelijk gebruik. Bij uitzonderlijk hoog verbruik nemen we eerst contact met je op en rekenen we de extra kosten door tegen kostprijs, zonder verrassingen.</p></div>
+        </details>
+        <details class="faq-item rv">
+          <summary>Hoe werkt de 30 dagen geld-terug-garantie?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-a"><p>Ben je binnen 30 dagen na livegang niet tevreden? Dan krijg je je geld terug, ook bij jaarlijkse betaling.</p></div>
+        </details>
+        <details class="faq-item rv">
+          <summary>Wat als ik vragen heb?<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-a"><p>Je hebt altijd toegang tot onze klantenservice. Geen chatbot, gewoon een mens. Of stuur ons een berichtje via WhatsApp.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ─────────────────────────────────────── -->
+  <section class="cta-wrap sec bg-grey">
+    <div class="wrap">
+      <div class="cta-box rv">
+        <div>
+          <h2>Zullen we even kennismaken?</h2>
+          <p>Plan een gratis demo in en ontdek hoe jouw website meer aanvragen kan opleveren. Vrijblijvend, in ongeveer 20 minuten.</p>
+          <div class="cta-actions">
+            <a href="demo/" class="btn">Plan een demo</a>
+            <a href="https://wa.me/31600000000?text=Hallo%2C%20ik%20wil%20graag%20meer%20weten%20over%20jullie%20systemen" class="btn btn-outline-light">WhatsApp ons</a>
+          </div>
+        </div>
+        <a href="demo/" class="cta-cal" aria-label="Plan een demo">
+          <div class="cta-cal-head">Kies een moment <small>Demo · 20 min</small></div>
+          <div class="cal-grid" aria-hidden="true">
+            <i>ma</i><i>di</i><i>wo</i><i>do</i><i>vr</i><i>za</i><i>zo</i>
+            <span>6</span><span class="av">7</span><span class="av">8</span><span class="sel">9</span><span class="av">10</span><span>11</span><span>12</span>
+            <span class="av">13</span><span class="av">14</span><span>15</span><span class="av">16</span><span class="av">17</span><span>18</span><span>19</span>
+          </div>
+          <div class="cal-slots" aria-hidden="true"><span>09:00</span><span class="sel">10:30</span><span>14:00</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ── FOOTER ──────────────────────────────────── -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <a href="/" class="logo"><img class="logo-mark" src="favicon.svg" alt="" width="38" height="38" style="width:38px;height:38px;"><span>FLOWSA</span></a>
+        <div class="footer-top-cta">Klaar om te beginnen? <a href="demo/" class="btn btn-sm">Plan demo</a></div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-pitch">
+          <h4>Benieuwd wat we voor jouw bedrijf kunnen doen?</h4>
+          <a href="/vsl" class="btn">Bekijk de video</a>
+        </div>
+        <div class="footer-col">
+          <h4>Links</h4>
+          <a href="/prijzen">Prijzen</a>
+          <a href="/cases">Cases</a>
+          <a href="/vsl">Video</a>
+          <a href="https://Login.flowsa.app">Inloggen</a>
+        </div>
+        <div class="footer-col">
+          <h4>Over ons</h4>
+          <a href="#werkwijze">Werkwijze</a>
+          <a href="demo/">Demo plannen</a>
+          <a href="/contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Functies</h4>
+          <a href="/functies">Professionele website</a>
+          <a href="/functies">Chatbot</a>
+          <a href="/functies">Belsysteem</a>
+          <a href="/functies">Google Review-systeem</a>
+          <a href="/functies">CRM-dashboard</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 FLOWSA — Alle rechten voorbehouden</span>
+        <span>Prijzen exclusief btw</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    (function () {
+      var btn = document.getElementById('burger');
+      var menu = document.getElementById('mobile-menu');
+      btn.addEventListener('click', function () {
+        var open = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      menu.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') { menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+      });
+    })();
+
+    // Results slider
+    (function () {
+      var track = document.getElementById('slider-track');
+      var prev = document.querySelector('.slider-prev');
+      var next = document.querySelector('.slider-next');
+      function step() { var s = track.querySelector('.slide'); return s.offsetWidth + 32; }
+      function update() {
+        prev.disabled = track.scrollLeft < 4;
+        next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      }
+      prev.addEventListener('click', function () { track.scrollBy({ left: -step() }); });
+      next.addEventListener('click', function () { track.scrollBy({ left: step() }); });
+      track.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+
+    // Only one FAQ open at a time
+    document.querySelectorAll('.faq-item').forEach(function (d) {
+      d.addEventListener('toggle', function () {
+        if (!d.open) return;
+        document.querySelectorAll('.faq-item').forEach(function (o) { if (o !== d) o.open = false; });
+      });
+    });
+
+    // Reveal on scroll
+    (function () {
+      var els = document.querySelectorAll('.rv');
+      if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in'); }); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+</body>
+</html>
