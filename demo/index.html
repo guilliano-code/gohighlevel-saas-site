@@ -578,6 +578,12 @@
     document.getElementById('step-label').textContent = 'Kies een moment';
   }
 
+  // ── PREFILL (from /boek-een-gesprek) ─────────────────
+  var PARAMS = new URLSearchParams(window.location.search);
+  [['naam', 'f-naam'], ['bedrijf', 'f-bedrijf'], ['telefoon', 'f-tel'], ['email', 'f-email']].forEach(function (m) {
+    if (PARAMS.get(m[0])) document.getElementById(m[1]).value = PARAMS.get(m[0]);
+  });
+
   // ── FORM SUBMIT ───────────────────────────────────────
   document.getElementById('details-form').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -596,6 +602,7 @@
       tijd:    selTime,
       bron:    'flowsa-website'
     };
+    ['soort', 'diensten', 'medewerkers', 'aanpak'].forEach(function (k) { if (PARAMS.get(k)) payload[k] = PARAMS.get(k); });
 
     // Stuur naar GHL webhook
     fetch(GHL_WEBHOOK, {

@@ -582,7 +582,8 @@ a.plan-pill:hover { background: #DCE6FD; }
 .bill-opt { background: none; border: 0; cursor: pointer; font-size: 16px; font-weight: 500; color: var(--muted); }
 .bill-opt.is-on { color: var(--ink); font-weight: 700; }
 .bill-opt em { font-style: normal; font-size: 12.5px; font-weight: 700; color: #128A44; background: #D3F5DE; border-radius: 99px; padding: 2px 8px; margin-left: 4px; }
-.bill-switch { width: 52px; height: 28px; border-radius: 99px; background: var(--accent-dark); border: 0; position: relative; cursor: pointer; }
+.bill-switch { width: 52px; height: 28px; border-radius: 99px; background: var(--accent-dark); border: 0; position: relative; cursor: pointer; transition: background .2s; }
+.bill-switch.is-monthly { background: #B9BFC9; }
 .bill-switch span { position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: var(--white); transform: translateX(24px); transition: transform .2s var(--ease); }
 .bill-switch.is-monthly span { transform: none; }
 .plans-page { margin-top: 44px; }
@@ -812,3 +813,78 @@ a.plan-pill:hover { background: #DCE6FD; }
 }
 .bill-switch::after { content: ""; position: absolute; inset: -8px -4px; }
 @media (max-width: 900px) { .feat-hero .feat-show { order: -1; } .feat-hero .facts { gap: 12px; } }
+
+/* ── Call page (/boek-een-gesprek) ───────────────── */
+.call { background: var(--white); min-height: 100dvh; display: flex; flex-direction: column; }
+.call-top { display: flex; justify-content: center; padding: 18px 16px 0; }
+.call-top .logo-text { font-size: 24px; }
+.call-top .logo-mascot { width: 30px; height: 48px; }
+.call-hero { max-width: 980px; margin: 0 auto; padding: 18px 20px 56px; text-align: center; }
+.call-hero h1 { font-size: clamp(1.7rem, 4.2vw, 2.9rem); font-weight: 800; line-height: 1.18; color: var(--accent-dark); letter-spacing: -.025em; }
+.call-price { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; font-size: clamp(1.6rem, 3.6vw, 2.4rem); font-weight: 800; font-style: italic; color: var(--ink); }
+.call-price svg { color: var(--accent-dark); }
+.call-video { position: relative; max-width: 760px; margin: 28px auto 0; aspect-ratio: 16 / 9; border-radius: 6px; overflow: hidden; background: var(--navy); box-shadow: 0 24px 50px -24px rgba(26,32,64,.45); }
+.call-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.call-play { position: absolute; inset: 0; border: 0; cursor: pointer; display: grid; place-items: center; background: rgba(26,32,64,.25); transition: background .2s; }
+.call-play:hover { background: rgba(26,32,64,.1); }
+.call-play span { width: 92px; height: 64px; border-radius: 16px; background: var(--accent-dark); color: var(--white); display: grid; place-items: center; padding-left: 4px; box-shadow: 0 10px 30px -8px rgba(37,84,235,.7); transition: transform .2s var(--ease); }
+.call-play:hover span { transform: scale(1.06); }
+.call-video.is-playing .call-play { display: none; }
+.call-step { margin-top: 18px; font-size: 17px; font-weight: 600; color: var(--ink); }
+.call-cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; margin-top: 18px; width: min(100%, 470px); min-height: 64px; padding: 16px 28px; border: 0; border-radius: 6px; cursor: pointer;
+  background: #1FA84A; color: var(--white); font: inherit; font-size: clamp(1.1rem, 2.4vw, 1.45rem); font-weight: 700; box-shadow: 0 10px 28px -10px rgba(31,168,74,.8); transition: background .15s, transform .15s var(--ease); }
+.call-cta:hover { background: #188A3C; transform: translateY(-1px); }
+.call-cta-sm { width: 100%; min-height: 56px; font-size: 1.1rem; margin-top: 8px; }
+.call-note { margin-top: 10px; font-size: 14px; color: var(--muted); }
+.call-reviews { width: 100%; max-width: 980px; margin: 0 auto; padding: 0 20px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.call-review { border: 1px solid #E3E5EA; border-radius: 6px; padding: 16px; display: grid; gap: 12px; background: var(--white); box-shadow: 0 6px 18px -12px rgba(26,32,64,.25); }
+.call-review-stat { background: var(--navy); border-radius: 4px; padding: 18px; }
+.call-review-stat b { display: block; font-size: 2rem; font-weight: 800; color: var(--accent-soft); line-height: 1; letter-spacing: -.03em; }
+.call-review-stat span { display: block; margin-top: 6px; font-size: 14px; color: #D5D9E8; }
+.call-review blockquote { font-size: 15px; line-height: 1.6; color: var(--ink); font-weight: 500; }
+.call-review figcaption { font-size: 14px; font-weight: 700; color: var(--ink); display: grid; gap: 2px; }
+.call-review .stars { font-size: 15px; }
+.call-foot { margin-top: auto; text-align: center; font-size: 13px; color: var(--muted); padding: 20px 16px 28px; border-top: 1px solid #EEF0F3; }
+@media (max-width: 700px) { .call-reviews { grid-template-columns: 1fr; } .call-step { font-size: 15.5px; } .call-play span { width: 74px; height: 52px; } }
+
+/* quiz popup */
+.quiz-overlay { position: fixed; inset: 0; z-index: 100; background: rgba(15,19,40,.62); display: grid; place-items: center; padding: 16px; overflow-y: auto; }
+.quiz-overlay[hidden] { display: none; }
+.quiz { position: relative; width: min(100%, 520px); background: var(--white); border-radius: 12px; padding: 28px 24px 24px; text-align: center; animation: quizIn .25s var(--ease); }
+@keyframes quizIn { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+.quiz-close { position: absolute; top: -14px; right: -14px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--white); color: var(--ink); cursor: pointer; display: grid; place-items: center; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.quiz h2 { font-size: clamp(1.35rem, 3.6vw, 1.8rem); font-weight: 800; color: var(--accent-dark); line-height: 1.2; }
+.quiz-price { font-size: 1.7rem; font-weight: 800; font-style: italic; color: var(--ink); margin-top: 4px; }
+.quiz-bar { position: relative; height: 24px; border-radius: 99px; background: #E6E8EE; margin: 18px 0 22px; overflow: hidden; }
+.quiz-bar span { position: absolute; inset: 0 auto 0 0; width: 100%; transform-origin: left; transform: scaleX(0); border-radius: 99px; transition: transform .35s var(--ease);
+  background: repeating-linear-gradient(-45deg, #2EBE5B 0 10px, #23A94D 10px 20px); }
+.quiz-bar em { position: absolute; inset: 0; display: grid; place-items: center; font-style: normal; font-size: 12px; font-weight: 700; color: var(--ink); }
+.q-step { border: 0; display: none; }
+.q-step.is-on { display: block; animation: quizIn .2s var(--ease); }
+.q-step legend { font-size: 17px; font-weight: 700; color: var(--ink); margin: 0 auto 14px; padding: 0; }
+.q-step legend span { color: #C62828; }
+.q-opts { display: grid; gap: 10px; }
+.q-opts-2 { grid-template-columns: 1fr 1fr; }
+.q-opt { min-height: 52px; padding: 12px 14px; border: 2px solid #E3E5EA; border-radius: 8px; background: var(--white); font: inherit; font-size: 15.5px; font-weight: 600; color: var(--ink); cursor: pointer; transition: border-color .15s, background .15s; }
+.q-opt:hover, .q-opt:focus-visible { border-color: var(--accent-dark); background: var(--accent-tint); }
+.q-opt.is-picked { border-color: var(--accent-dark); background: var(--accent-dark); color: var(--white); }
+.q-contact { text-align: left; }
+.q-contact legend { text-align: center; width: 100%; }
+.q-contact .f-row { margin-bottom: 12px; }
+.quiz-privacy { font-size: 13px; color: var(--muted); text-align: center; margin-top: 10px; }
+.quiz-back { margin-top: 14px; min-height: 44px; border: 0; background: none; font: inherit; font-size: 14.5px; font-weight: 600; color: var(--muted); cursor: pointer; }
+.quiz-back:hover { color: var(--accent-dark); }
+.quiz-done { padding: 12px 0; font-size: 16px; color: var(--ink); }
+@media (max-width: 520px) { .q-opts-2 { grid-template-columns: 1fr; } .quiz { padding: 24px 16px 18px; } .quiz-close { top: 8px; right: 8px; box-shadow: none; background: #F0F1F4; } .q-contact .f-row { grid-template-columns: 1fr; } }
+body.quiz-open { overflow: hidden; }
+
+/* wider nav dropdowns on desktop (mega menu spans the header, centred) */
+@media (min-width: 1181px) {
+  .nav-links .dd:first-child { position: static; }
+  .dd-mega { top: calc(100% - 1px); left: 50%; width: min(1200px, calc(100vw - 48px)); margin-left: calc(min(1200px, calc(100vw - 48px)) / -2); padding: 22px 24px 24px; }
+  .dd-mega .dd-panel::before, .dd-mega::before { top: -30px; height: 30px; }
+  .dd-mega .dd-grid { gap: 10px 16px; }
+  .dd-small { width: 420px; }
+}
+/* quiz: keep title clear of the close button */
+@media (max-width: 520px) { .quiz h2 { padding: 0 36px; } }

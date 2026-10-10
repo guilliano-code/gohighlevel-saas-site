@@ -81,7 +81,20 @@ document.querySelectorAll('.faq-list, .incl-grid > div').forEach(function (list)
   var sw = document.querySelector('.bill-switch');
   if (!opts.length) return;
   var mode = 'yearly';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function countTo(el, to) {
+    var from = parseInt(el.textContent, 10) || 0;
+    if (reduce || from === to) { el.textContent = to; return; }
+    var start = performance.now(), dur = 480;
+    (function tick(now) {
+      var t = Math.min((now - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(from + (to - from) * eased);
+      if (t < 1) requestAnimationFrame(tick);
+    })(start);
+  }
   function set(m) {
+    if (m === mode) return;
     mode = m;
     opts.forEach(function (o) {
       var on = o.dataset.bill === m;
@@ -89,7 +102,8 @@ document.querySelectorAll('.faq-list, .incl-grid > div').forEach(function (list)
       o.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
     sw.classList.toggle('is-monthly', m === 'monthly');
-    document.querySelectorAll('.js-price, .js-note').forEach(function (el) { el.textContent = el.dataset[m]; });
+    document.querySelectorAll('.js-price').forEach(function (el) { countTo(el, parseInt(el.dataset[m], 10)); });
+    document.querySelectorAll('.js-note').forEach(function (el) { el.textContent = el.dataset[m]; });
   }
   opts.forEach(function (o) { o.addEventListener('click', function () { set(o.dataset.bill); }); });
   sw.addEventListener('click', function () { set(mode === 'yearly' ? 'monthly' : 'yearly'); });
@@ -153,5 +167,80 @@ document.addEventListener('change', clearOnEdit);
     window.location.href = 'mailto:Guilliano@dailyshotsmedia.com?subject=' + subject + '&body=' + body;
     document.getElementById('contact-success').hidden = false;
     form.reset();
+  });
+})();
+
+/* ── Call page: VSL + quiz popup ─────────────────── */
+(function () {
+  var video = document.getElementById('call-video');
+  var play = document.getElementById('call-play');
+  if (video && play) {
+    play.addEventListener('click', function () {
+      video.controls = true;
+      video.parentElement.classList.add('is-playing');
+      video.play();
+    });
+  }
+
+  var overlay = document.getElementById('quiz');
+  var form = document.getElementById('quiz-form');
+  if (!overlay || !form) return;
+  var steps = form.querySelectorAll('.q-step');
+  var back = document.getElementById('quiz-back');
+  var bar = document.getElementById('quiz-bar');
+  var pct = document.getElementById('quiz-pct');
+  var answers = {};
+  var idx = 0;
+  var lastFocus = null;
+
+  function show(i) {
+    idx = i;
+    steps.forEach(function (s, n) { s.classList.toggle('is-on', n === i); });
+    var p = Math.round(i / steps.length * 100);
+    bar.style.transform = 'scaleX(' + (p / 100) + ')';
+    pct.textContent = p + '%';
+    bar.parentElement.setAttribute('aria-valuenow', p);
+    back.hidden = i === 0;
+    var first = steps[i].querySelector('button, input');
+    if (first) first.focus({ preventScroll: true });
+  }
+  function open() {
+    lastFocus = document.activeElement;
+    overlay.hidden = false;
+    document.body.classList.add('quiz-open');
+    if (video && !video.paused) video.pause();
+    show(idx);
+  }
+  function close() {
+    overlay.hidden = true;
+    document.body.classList.remove('quiz-open');
+    if (lastFocus) lastFocus.focus();
+  }
+
+  document.querySelectorAll('[data-open-quiz]').forEach(function (b) { b.addEventListener('click', open); });
+  overlay.querySelector('[data-close-quiz]').addEventListener('click', close);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !overlay.hidden) close(); });
+  back.addEventListener('click', function () { if (idx > 0) show(idx - 1); });
+
+  form.querySelectorAll('.q-opt').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var step = b.closest('.q-step');
+      step.querySelectorAll('.q-opt').forEach(function (o) { o.classList.remove('is-picked'); });
+      b.classList.add('is-picked');
+      answers[step.dataset.name] = b.dataset.value;
+      setTimeout(function () { show(Math.min(idx + 1, steps.length - 1)); }, 180);
+    });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!validateForm(form)) return;
+    var q = new URLSearchParams();
+    ['naam', 'bedrijf', 'telefoon', 'email'].forEach(function (n) { q.set(n, form.querySelector('[name="' + n + '"]').value.trim()); });
+    Object.keys(answers).forEach(function (k) { q.set(k, answers[k]); });
+    bar.style.transform = 'scaleX(1)';
+    pct.textContent = '100%';
+    window.location.href = '/demo/?' + q.toString();
   });
 })();

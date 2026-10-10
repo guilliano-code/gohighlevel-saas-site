@@ -331,7 +331,7 @@ def nav(active=""):
       </nav>
       <div class="nav-right">
         <a href="{LOGIN}" class="nav-login">Inloggen</a>
-        <a href="/demo/" class="btn nav-cta">Boek een gesprek</a>
+        <a href="/boek-een-gesprek" class="btn nav-cta">Boek een gesprek</a>
         <button class="burger" id="burger" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu">
           <span></span><span></span><span></span>
         </button>
@@ -355,7 +355,7 @@ def nav(active=""):
       <a href="/contact">Contact</a>
     </details>
     <a href="{LOGIN}" class="mm-login">Inloggen</a>
-    <a href="/demo/" class="btn">Boek een gesprek</a>
+    <a href="/boek-een-gesprek" class="btn">Boek een gesprek</a>
   </nav>
 """
 
@@ -367,12 +367,12 @@ def footer():
     <div class="wrap">
       <div class="footer-top">
         <a href="/" class="logo"><img class="logo-mascot" src="/mascot.svg" alt="" width="40" height="64" style="width:40px;height:64px;"><span class="logo-text">FLOWSA</span></a>
-        <div class="footer-top-cta">Klaar om te beginnen? <a href="/demo/" class="btn btn-sm">Boek een gesprek</a></div>
+        <div class="footer-top-cta">Klaar om te beginnen? <a href="/boek-een-gesprek" class="btn btn-sm">Boek een gesprek</a></div>
       </div>
       <div class="footer-cols">
         <div class="footer-pitch">
           <h4>Wil je meer weten over hoe we je kunnen helpen?</h4>
-          <a href="/demo/" class="btn">Boek een gesprek</a>
+          <a href="/boek-een-gesprek" class="btn">Boek een gesprek</a>
         </div>
         <div class="footer-col">
           <h4>Links</h4>
@@ -479,7 +479,7 @@ def cta(bg="bg-white", title="Zullen we een moment plannen om te praten?",
           <h2>{title}</h2>
           <p>{text}</p>
           <div class="cta-actions">
-            <a href="/demo/" class="btn">Boek een gesprek</a>
+            <a href="/boek-een-gesprek" class="btn">Boek een gesprek</a>
             <a href="{WHATSAPP}" class="btn btn-outline-light">WhatsApp ons</a>
           </div>
         </div>
@@ -626,9 +626,9 @@ def prijzen_page():
           {tag}<h3>{name}</h3>
           <div class="plan-for">{sub}</div>
           <div class="plan-price">€<span class="js-price" data-monthly="{m}" data-yearly="{y}">{y}</span> <small>/mnd</small></div>
-          <div class="plan-note js-note" data-monthly="Maandelijks opzegbaar tarief" data-yearly="€{eur(y*12)} per jaar gefactureerd, je bespaart €{eur((m-y)*12)}">€{eur(y*12)} per jaar gefactureerd, je bespaart €{eur((m-y)*12)}</div>
+          <div class="plan-note js-note" data-monthly="Bij maandelijkse betaling" data-yearly="€{eur(y*12)} per jaar gefactureerd, je bespaart €{eur((m-y)*12)}">€{eur(y*12)} per jaar gefactureerd, je bespaart €{eur((m-y)*12)}</div>
           <ul>{lis}</ul>
-          <a href="/demo/" class="{btn}">Begin met {name}</a>
+          <a href="/boek-een-gesprek" class="{btn}">Begin met {name}</a>
         </div>
 """
     rows = [
@@ -773,7 +773,7 @@ def blog_page():
   </section>
   <section class="sec bg-grey">
     <div class="wrap">
-{empty_state("De eerste artikelen komen eraan", "We werken aan praktische artikelen over meer aanvragen, betere reviews en slimmer werken. Wil je nu al weten wat er voor jouw bedrijf mogelijk is? Plan dan een vrijblijvend gesprek.", "/demo/", "Boek een gesprek")}
+{empty_state("De eerste artikelen komen eraan", "We werken aan praktische artikelen over meer aanvragen, betere reviews en slimmer werken. Wil je nu al weten wat er voor jouw bedrijf mogelijk is? Plan dan een vrijblijvend gesprek.", "/boek-een-gesprek", "Boek een gesprek")}
     </div>
   </section>
 """
@@ -815,7 +815,7 @@ def over_ons_page():
         <h1 class="h-page about-h rv">Leer FLOWSA kennen</h1>
         <p class="about-lead rv">Aannemers zijn goed in hun vak, niet in marketing. En dat hoeft ook niet. FLOWSA bouwt websites en slimme klantsystemen die aanvragen binnenhalen, opvolgen en omzetten, terwijl jij doet waar je goed in bent.</p>
         <p class="about-lead rv">Geen dure bureaus, geen maandenlange trajecten en geen software waar je een cursus voor nodig hebt. Gewoon een systeem dat werkt, gemiddeld binnen 5 werkdagen live.</p>
-        <div class="rv" style="margin-top:28px;"><a href="/demo/" class="btn">Boek een gesprek</a></div>
+        <div class="rv" style="margin-top:28px;"><a href="/boek-een-gesprek" class="btn">Boek een gesprek</a></div>
       </div>
       <div class="about-mascot rv"><img src="/mascot.svg" alt="FLOWSA mascotte" width="400" height="640"></div>
     </div>
@@ -832,7 +832,7 @@ def over_ons_page():
   <section class="sec bg-grey">
     <div class="wrap">
       <h2 class="h-section rv">Het team</h2>
-{empty_state("Binnenkort stellen we ons hier voor", "Wil je nu al kennismaken? Plan een vrijblijvend gesprek, dan spreek je ons direct.", "/demo/", "Boek een gesprek")}
+{empty_state("Binnenkort stellen we ons hier voor", "Wil je nu al kennismaken? Plan een vrijblijvend gesprek, dan spreek je ons direct.", "/boek-een-gesprek", "Boek een gesprek")}
     </div>
   </section>
 """
@@ -872,7 +872,7 @@ def case_page(c):
         </div>
         <div class="side-card side-cta">
           <h3>Benieuwd wat dit voor jouw bedrijf kan doen?</h3>
-          <a href="/demo/" class="btn">Boek een gesprek</a>
+          <a href="/boek-een-gesprek" class="btn">Boek een gesprek</a>
         </div>
       </aside>
     </div>
@@ -974,7 +974,7 @@ def contact_page():
           <div class="side-card">
             <h3>Meteen zien hoe het werkt?</h3>
             <p>Plan een gratis demo van ongeveer 20 minuten. Vrijblijvend.</p>
-            <a href="/demo/" class="btn btn-outline">Boek een gesprek</a>
+            <a href="/boek-een-gesprek" class="btn btn-outline">Boek een gesprek</a>
           </div>
           <img class="contact-mascot" src="/mascot.svg" alt="" width="400" height="640" loading="lazy">
         </aside>
@@ -984,6 +984,88 @@ def contact_page():
 """
     body += faq([FAQ_GENERAL[0], FAQ_GENERAL[1], FAQ_GENERAL[5]], bg="bg-white")
     return wrap_page("FLOWSA - Contact", "Neem contact op met FLOWSA. Vul het formulier in en we reageren binnen 24 uur, of app ons direct via WhatsApp.", body, "over")
+
+
+QUIZ = [
+    ("soort", "Wat voor werk doe je?", ["Particulier", "Zakelijk", "Particulier &amp; zakelijk", "Ik ben geen aannemer"]),
+    ("diensten", "Welke werkzaamheden voer je uit?", ["Schilderwerk", "Loodgieterij", "Elektra &amp; installatie", "Aanbouw &amp; verbouw",
+                                                     "Dakwerk", "Vloeren &amp; tegels", "Tuin &amp; bestrating", "Meerdere / anders"]),
+    ("medewerkers", "Hoeveel mensen werken er in je bedrijf?", ["Alleen ik (zzp)", "2 – 5", "6 – 15", "Meer dan 15"]),
+    ("aanpak", "Hoe reageer je nu op nieuwe aanvragen?", ["Ik bel zo snel mogelijk zelf terug", "Via e-mail of WhatsApp",
+                                                          "Via een medewerker of secretaresse", "Ik heb hier geen vast systeem voor"]),
+]
+
+
+def call_page():
+    """Standalone 'Boek een gesprek' funnel (no nav), modelled on the reference call page."""
+    steps = ""
+    total = len(QUIZ) + 1
+    for i, (name, q, opts) in enumerate(QUIZ):
+        btns = "".join(f'<button type="button" class="q-opt" data-value="{html.unescape(o)}">{o}</button>' for o in opts)
+        steps += f"""        <fieldset class="q-step{' is-on' if i == 0 else ''}" data-name="{name}">
+          <legend>{q} <span aria-hidden="true">*</span></legend>
+          <div class="q-opts{' q-opts-2' if len(opts) > 4 else ''}">{btns}</div>
+        </fieldset>
+"""
+    cards = ""
+    for c in CASES:
+        cards += f"""      <figure class="call-review rv">
+        <div class="call-review-stat"><b>{c['stat']}</b><span>{c['stat_label']}</span></div>
+        <blockquote>“{c['quote']}”</blockquote>
+        <figcaption>{c['who']} · {c['trade']}</figcaption>
+      </figure>
+"""
+    return head("FLOWSA - Boek een gesprek", "Wij helpen aannemers aan meer klussen met AI, slimme websites en 5-sterren reviews. Bekijk de video en boek een vrijblijvend gesprek.") + f"""  <main class="call">
+    <header class="call-top">
+      <a href="/" class="logo" aria-label="FLOWSA home"><img class="logo-mascot" src="/mascot.svg" alt="" width="30" height="48"><span class="logo-text">FLOWSA</span></a>
+    </header>
+
+    <section class="call-hero">
+      <h1>Wij helpen aannemers aan meer klussen met AI, slimme websites en 5-sterren reviews, vanaf</h1>
+      <p class="call-price">€48 per maand {icon('<line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>', 28, 3)}</p>
+
+      <div class="call-video">
+        <video id="call-video" src="/vsl-v1.mp4" poster="/vsl-thumb.jpg" playsinline preload="none"></video>
+        <button type="button" class="call-play" id="call-play" aria-label="Video afspelen">
+          <span>{icon('<polygon points="7 4 20 12 7 20 7 4" fill="currentColor"/>', 34, 2)}</span>
+        </button>
+      </div>
+      <p class="call-step"><u>Stap 1:</u> bekijk deze korte video en zie wat we doen en hoe we je laten groeien</p>
+      <button type="button" class="call-cta" data-open-quiz>Bekijk hoe het werkt</button>
+      <p class="call-note">Vrijblijvend · Duurt minder dan een minuut</p>
+    </section>
+
+    <section class="call-reviews">
+{cards}    </section>
+
+    <footer class="call-foot">© Copyright FLOWSA {YEAR} | Alle rechten voorbehouden</footer>
+  </main>
+
+  <div class="quiz-overlay" id="quiz" role="dialog" aria-modal="true" aria-labelledby="quiz-title" hidden>
+    <div class="quiz">
+      <button type="button" class="quiz-close" data-close-quiz aria-label="Sluiten">{icon('<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>', 18, 2.5)}</button>
+      <h2 id="quiz-title">Wij helpen aannemers aan meer aanvragen, vanaf</h2>
+      <p class="quiz-price">€48 per maand</p>
+      <div class="quiz-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="quiz-bar"></span><em id="quiz-pct">0%</em></div>
+      <form id="quiz-form" novalidate data-total="{total}">
+{steps}        <fieldset class="q-step q-contact" data-name="contact">
+          <legend>Waar kunnen we je bereiken?</legend>
+          <div class="f-row">
+            <div class="f-field"><label for="q-naam">Naam</label><input id="q-naam" name="naam" type="text" placeholder="Jan de Vries" autocomplete="name" required></div>
+            <div class="f-field"><label for="q-bedrijf">Bedrijfsnaam</label><input id="q-bedrijf" name="bedrijf" type="text" placeholder="De Vries Bouw" autocomplete="organization" required></div>
+          </div>
+          <div class="f-row">
+            <div class="f-field"><label for="q-tel">Telefoonnummer</label><input id="q-tel" name="telefoon" type="tel" placeholder="+31 6 12345678" autocomplete="tel" required></div>
+            <div class="f-field"><label for="q-email">E-mailadres</label><input id="q-email" name="email" type="email" placeholder="jan@devries.nl" autocomplete="email" required></div>
+          </div>
+          <button type="submit" class="call-cta call-cta-sm">Kies een moment voor je gesprek {ARROW}</button>
+          <p class="quiz-privacy">Je gegevens zijn veilig en worden nooit gedeeld met derden.</p>
+        </fieldset>
+      </form>
+      <button type="button" class="quiz-back" id="quiz-back" hidden>← Vorige vraag</button>
+    </div>
+  </div>
+""" + tail()
 
 
 def home_page():
@@ -999,7 +1081,8 @@ def main():
     pages = {"index.html": home_page(), "producten.html": functies_page(), "prijzen.html": prijzen_page(),
              "testimonials.html": testimonials_page(), "werkwijze.html": werkwijze_page(), "vakgebieden.html": vakgebieden_page(),
              "contact.html": contact_page(), "ons-werk.html": ons_werk_page(), "blog.html": blog_page(),
-             "vacatures.html": vacatures_page(), "partners.html": partners_page(), "over-ons.html": over_ons_page()}
+             "vacatures.html": vacatures_page(), "partners.html": partners_page(), "over-ons.html": over_ons_page(),
+             "boek-een-gesprek.html": call_page()}
     for f in FEATURES:
         pages[f"producten/{f['slug']}.html"] = feature_page(f)
     for c in CASES:
