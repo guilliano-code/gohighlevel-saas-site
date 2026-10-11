@@ -1073,7 +1073,7 @@ def call_page():
 
     <section class="call-hero">
       <h1>Wij helpen aannemers aan meer klussen met AI, slimme websites en 5-sterren reviews, vanaf</h1>
-      <p class="call-price">€48 per maand {icon('<line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>', 28, 3)}</p>
+      <p class="call-price">€{PLAN_PRICE["Basic"]} per maand <span class="call-finger" aria-hidden="true">👇</span></p>
 
       <div class="call-video is-locked" id="call-video-wrap">
         <video id="call-video" src="/vsl-v1.mp4" poster="/vsl-thumb.jpg" playsinline preload="none"></video>

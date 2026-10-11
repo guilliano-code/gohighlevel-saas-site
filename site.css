@@ -962,3 +962,4 @@ a.call-cta { text-decoration: none; }
   .footer-top-cta .btn { padding: 11px 16px; white-space: nowrap; }
 }
 @media (max-width: 360px) { .footer .logo-text { font-size: 22px; } .footer-top-cta .btn { padding: 10px 12px; font-size: 14px; } }
+.call-finger { font-style: normal; font-size: .9em; }
